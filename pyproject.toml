@@ -1,0 +1,14 @@
+[project]
+dependencies = [
+  "langgraph>=0.6.8",
+]
+description = "Add your description here"
+name = "foundation-introduction-to-langgraph"
+readme = "README.md"
+requires-python = ">=3.12"
+version = "0.1.0"
+
+[dependency-groups]
+dev = [
+  "ipykernel (>=6.30.1,<7.0.0)",
+]
