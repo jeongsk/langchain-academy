@@ -1,6 +1,7 @@
 [project]
 dependencies = [
   "langgraph>=0.6.8",
+  "python-dotenv>=1.1.1",
 ]
 description = "Add your description here"
 name = "foundation-introduction-to-langgraph"
