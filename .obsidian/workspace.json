@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Graph API/Overview.md",
+                "file": "docs/Graph API/Use the Graph API.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Overview"
+              "title": "Use the Graph API"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Graph API/Overview.md",
+                "file": "docs/Graph API/Use the Graph API.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Overview 의 백링크"
+              "title": "Use the Graph API 의 백링크"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Graph API/Overview.md",
+                "file": "docs/Graph API/Use the Graph API.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Overview 의 나가는 링크"
+              "title": "Use the Graph API 의 나가는 링크"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Graph API/Overview.md",
+                "file": "docs/Graph API/Use the Graph API.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Overview 의 개요"
+              "title": "Use the Graph API 의 개요"
             }
           },
           {
@@ -182,8 +182,8 @@
   },
   "active": "00314c881d5194fc",
   "lastOpenFiles": [
-    "docs/Graph API/Use the Graph API.md",
     "docs/Graph API/Overview.md",
+    "docs/Graph API/Use the Graph API.md",
     "[Use.md",
     "docs/Graph API"
   ]
