@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "161d296c0f37ff4c",
+            "id": "00314c881d5194fc",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 325.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -150,13 +150,23 @@
               "icon": "lucide-list",
               "title": "Overview 의 개요"
             }
+          },
+          {
+            "id": "9efa15db135bdeac",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,9 +180,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b70f29c88e4c9cfe",
+  "active": "00314c881d5194fc",
   "lastOpenFiles": [
-    "docs/Graph API",
-    "docs/Graph API/Overview.md"
+    "docs/Graph API/Use the Graph API.md",
+    "docs/Graph API/Overview.md",
+    "[Use.md",
+    "docs/Graph API"
   ]
 }
