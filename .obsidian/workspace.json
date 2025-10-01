@@ -11,10 +11,14 @@
             "id": "00314c881d5194fc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/concepts/plans.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "plans"
             }
           }
         ]
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/concepts/plans.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "백링크"
+              "title": "plans 의 백링크"
             }
           },
           {
@@ -108,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "docs/concepts/plans.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "나가는 링크"
+              "title": "plans 의 나가는 링크"
             }
           },
           {
@@ -136,12 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "docs/concepts/plans.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "개요"
+              "title": "plans 의 개요"
             }
           },
           {
@@ -175,6 +182,11 @@
   },
   "active": "00314c881d5194fc",
   "lastOpenFiles": [
+    "docs/concepts/mcp.md",
+    "docs/concepts/low_level.md",
+    "docs/concepts/langgraph_studio.md",
+    "docs/concepts/agentic_concepts.md",
+    "docs/how-tos/graph-api.md",
     "mkdocs.yml",
     "docs/how-tos/use-remote-graph.md",
     "docs/how-tos/use-functional-api.md",
@@ -195,7 +207,6 @@
     "docs/how-tos/memory/semantic-search.ipynb",
     "docs/how-tos/memory/add-memory.md",
     "docs/how-tos/memory",
-    "docs/how-tos/many-tools.ipynb",
     "docs/how-tos/human_in_the_loop/time-travel.md",
     "docs/how-tos/human_in_the_loop/add-human-in-the-loop.md",
     "docs/how-tos/http/custom_routes.md",
@@ -216,10 +227,6 @@
     "docs/how-tos/assets/graph_api_image_2.png",
     "docs/tutorials/workflows.md",
     "docs/tutorials/sql/sql-agent.md",
-    "docs/tutorials/rag/langgraph_agentic_rag.md",
-    "docs/tutorials/multi_agent/agent_supervisor.md",
-    "docs/tutorials/langgraph-platform/local-server.md",
-    "docs/tutorials/get-started/6-time-travel.md",
-    "docs/tutorials/get-started/5-customize-state.md"
+    "docs/tutorials/rag/langgraph_agentic_rag.md"
   ]
 }
