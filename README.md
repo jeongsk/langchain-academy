@@ -6,6 +6,15 @@ LangGraph 입문 과정에 오신 것을 환영합니다! 본 과정은 기초�
 
 각 모듈에는 핵심 개념을 안내하는 동영상 강의와 해당 노트북이 포함되어 있습니다. 또한 각 모듈에는 '**studio**' 하위 디렉터리가 마련되어 있으며, 여기에는 LangGraph API와 Studio를 활용하여 탐구할 관련 그래프 세트가 포함되어 있습니다.
 
+### 목차
+
+- **[Module 1: LangGraph 입문](./module-1/README.md)**: LangGraph의 기본 개념과 핵심 구성 요소를 학습하는 모듈입니다. 그래프, 노드, 에지의 기초부터 시작하여 메모리를 가진 에이전트 구축까지 단계별로 진행합니다.
+- **[Module 2: 상태 관리와 메모리](./module-2/README.md)**: LangGraph의 고급 상태 관리 기법과 메모리 시스템을 학습하는 모듈입니다. 상태 스키마 커스터마이징부터 시작하여 외부 데이터베이스를 활용한 지속적 메모리까지 단계별로 진행합니다.
+- **[Module 3: Human-in-the-Loop](./module-3/README.md)**: LangGraph에서 사람이 개입할 수 있는 워크플로우를 구현하는 방법을 학습하는 모듈입니다. 스트리밍부터 시작하여 중단점, 상태 편집, 동적 중단점, 시간 여행까지 단계별로 진행합니다.
+- **[Module 4: 고급 LangGraph 기술](./module-4/README.md)**: LangGraph의 병렬 처리, 서브그래프, 맵리듀스 등 고급 기능을 학습하고, 이를 활용하여 리서치 어시스턴트를 구축합니다.
+- **[Module 5: LangGraph 메모리 심화](./module-5/README.md)**: LangGraph의 고급 메모리 관리 기법을 학습하는 모듈입니다. `BaseStore`를 활용한 메모리 저장소 커스터마이징부터 `StateSchema`를 이용한 복잡한 상태 관리까지 다룹니다.
+- **[Module 6: LangGraph 서버 배포 및 연결](./module-6/README.md)**: LangGraph로 구축한 그래프를 원격 서버로 배포하고, 클라이언트에서 해당 서버에 연결하여 사용하는 방법을 학습합니다.
+
 ### 설정
 
 본 강좌를 시작하기 위한 권장 설정입니다. [여기](https://github.com/jeongsk/langchain-academy)에 위치한 노트북 세트를 사용할 예정입니다. 
