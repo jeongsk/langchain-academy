@@ -208,4 +208,6 @@ __marimo__/
 
 # LangGraph
 .langgraph_api
-module-2/state_db
+state_db
+
+temp
