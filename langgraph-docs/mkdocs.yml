@@ -1,6 +1,6 @@
-site_name: "LangGraph"
-site_description: Build reliable, stateful AI systems, without giving up control
-site_url: https://langchain-ai.github.io/langgraph/
+site_name: LangGraph
+docs_dir: docs
+site_url: https://langchain-doc.vercel.app/docs/langgraph/
 repo_url: https://github.com/langchain-ai/langgraph
 edit_uri: edit/main/docs/
 docs_dir: .

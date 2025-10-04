@@ -1,3 +1,3 @@
-[submodule "docs/A2A"]
-	path = docs/A2A
+[submodule "A2A-docs"]
+	path = A2A-docs
 	url = https://github.com/jeongsk/A2A.git
