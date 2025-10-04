@@ -1,4 +1,4 @@
 [build]
-  command = "pip install -r requirements.txt && pip install git+https://${GH_TOKEN}@github.com/langchain-ai/mkdocs-material-insiders.git && mkdocs build"
+  command = "pip install git+https://${GH_TOKEN}@github.com/langchain-ai/mkdocs-material-insiders.git && mkdocs build"
   publish = "site/"
   environment = { PYTHON_VERSION = "3.12"}
