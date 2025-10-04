@@ -3,9 +3,10 @@ site_description: Build reliable, stateful AI systems, without giving up control
 site_url: https://langchain-ai.github.io/langgraph/
 repo_url: https://github.com/langchain-ai/langgraph
 edit_uri: edit/main/docs/
+docs_dir: .
 theme:
   name: material
-  custom_dir: overrides
+  # custom_dir: overrides  # Directory not found
   logo_dark_mode: static/wordmark_light.svg
   logo_light_mode: static/wordmark_dark.svg
   favicon: static/favicon.png
@@ -152,7 +153,7 @@ plugins:
   - tags
   - include-markdown
   - mkdocstrings:
-      custom_templates: templates
+      # custom_templates: templates  # Directory not found
       handlers:
         python:
           import:
@@ -344,8 +345,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets:
-      auto_append:
-        - includes/mkdocs.md
+      # auto_append:
+        # - includes/mkdocs.md  # Directory not found
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -357,8 +358,8 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - github-callouts
-hooks:
-  - _scripts/notebook_hooks.py
+# hooks:
+  # - _scripts/notebook_hooks.py  # Directory not found
 extra:
   social:
     - icon: fontawesome/brands/js
