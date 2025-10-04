@@ -182,6 +182,8 @@
   },
   "active": "00314c881d5194fc",
   "lastOpenFiles": [
+    "docs/langgraph/requirements.txt",
+    "docs/langgraph/netlify.toml",
     "docs/langgraph/deploy.sh",
     "docs/langgraph/index.md",
     "docs/langgraph/README.md",
@@ -224,9 +226,7 @@
     "docs/langgraph/how-tos/human_in_the_loop/wait-user-input.ipynb",
     "docs/langgraph/cloud/deployment/self_hosted_data_plane.md",
     "docs/langgraph/reference/swarm.md",
-    "docs/langgraph/how-tos/react-agent-structured-output.ipynb",
     "docs/langgraph/concepts/tools.md",
-    "docs/langgraph/cloud/how-tos/iterate_graph_studio.md",
-    "docs/langgraph/snippets"
+    "docs/langgraph/cloud/how-tos/iterate_graph_studio.md"
   ]
 }
