@@ -21,6 +21,9 @@ LangGraph's [persistence](../../concepts/persistence.md) layer supports **human-
 
 Starting with the existing code from the [Add memory to the chatbot](3-add-memory.md) tutorial, add the `human_assistance` tool to the chatbot. This tool uses `interrupt` to receive information from a human.
 
+Let's first select a chat model:
+
+:::python
 {% include-markdown "../../snippets/chat_model_tabs.md" %}
 
 <!---
@@ -530,7 +533,7 @@ Check out the code snippet below to review the graph from this tutorial:
 
 :::python
 
-{% include-markdown "../../../snippets/chat_model_tabs.md" %}
+{% include-markdown "../../snippets/chat_model_tabs.md" %}
 
 ```python
 from typing import Annotated
