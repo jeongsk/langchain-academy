@@ -71,8 +71,8 @@ LangGraph는 단독으로 사용할 수도 있지만, 모든 LangChain 제품과
 
 ## 추가 자료
 
-- [가이드](https://langchain-ai.github.io/langgraph/guides/): 스트리밍, 메모리 및 영속성 추가, 디자인 패턴(예: 분기, 서브그래프 등)과 같은 주제에 대한 빠르고 실행 가능한 코드 스니펫입니다.
-- [레퍼런스](https://langchain-ai.github.io/langgraph/reference/graphs/): 핵심 클래스, 메서드, 그래프 및 체크포인팅 API 사용 방법, 그리고 더 높은 수준의 사전 빌드된 컴포넌트에 대한 상세한 레퍼런스입니다.
+- [가이드](./guides/index): 스트리밍, 메모리 및 영속성 추가, 디자인 패턴(예: 분기, 서브그래프 등)과 같은 주제에 대한 빠르고 실행 가능한 코드 스니펫입니다.
+- [레퍼런스](./reference/graphs): 핵심 클래스, 메서드, 그래프 및 체크포인팅 API 사용 방법, 그리고 더 높은 수준의 사전 빌드된 컴포넌트에 대한 상세한 레퍼런스입니다.
 - [예제](https://langchain-ai.github.io/langgraph/examples/): LangGraph 시작에 대한 안내 예제입니다.
 - [LangChain 포럼](https://forum.langchain.com/): 커뮤니티와 연결하여 모든 기술적인 질문, 아이디어, 피드백을 공유하세요.
 - [LangChain 아카데미](https://academy.langchain.com/courses/intro-to-langgraph): 무료 구조화된 과정에서 LangGraph의 기본을 배우세요.
