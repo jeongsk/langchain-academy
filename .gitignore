@@ -210,4 +210,7 @@ __marimo__/
 .langgraph_api
 state_db
 
+# Projects
 temp
+projects/**/faiss_index
+projects/**/cache
