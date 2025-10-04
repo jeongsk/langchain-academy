@@ -113,7 +113,7 @@ Let's first select a chat model:
 
 :::python
 
-{% include-markdown "../../../snippets/chat_model_tabs.md" %}
+{% include-markdown "../../snippets/chat_model_tabs.md" %}
 
 <!---
 ```python

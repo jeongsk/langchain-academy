@@ -175,10 +175,7 @@ For the `StateGraph` you created in the [first tutorial](1-build-basic-chatbot.m
 For the `StateGraph` you created in the [first tutorial](1-build-basic-chatbot.md), add `bindTools` on the LLM. This lets the LLM know the correct JSON format to use if it wants to use the search engine.
 :::
 
-Let's first select our LLM:
-
-:::python
-{% include-markdown "../../../snippets/chat_model_tabs.md" %}
+{% include-markdown "../../snippets/chat_model_tabs.md" %}
 
 <!---
 ```python
@@ -635,7 +632,7 @@ For ease of use, adjust your code to replace the following with LangGraph prebui
 - `BasicToolNode` is replaced with the prebuilt [ToolNode](https://langchain-ai.github.io/langgraph/reference/prebuilt/#toolnode)
 - `route_tools` is replaced with the prebuilt [tools_condition](https://langchain-ai.github.io/langgraph/reference/prebuilt/#tools_condition)
 
-{% include-markdown "../../../snippets/chat_model_tabs.md" %}
+{% include-markdown "../../snippets/chat_model_tabs.md" %}
 
 <!---
 ```python
