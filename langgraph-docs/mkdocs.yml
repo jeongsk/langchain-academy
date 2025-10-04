@@ -151,9 +151,6 @@ plugins:
         - tutorials/auth/resource_auth.md
   - tags
   - include-markdown
-  - mkdocstrings:
-      # custom_templates: templates  # Directory not found
-      handlers:
 
 
 nav:
