@@ -182,6 +182,8 @@
   },
   "active": "051fd250ee4e5b58",
   "lastOpenFiles": [
+    "projects/01-Github-Code-QA-RAG/01-Github-Code-QA-RAG.ipynb",
+    "projects/01-Github-Code-QA-RAG",
     "langgraph-docs/site/search/search_index.json",
     "langgraph-docs/site/search",
     "langgraph-docs/site/tutorials/sql/sql-agent/index.html",
@@ -191,8 +193,6 @@
     "langgraph-docs/site/tutorials/multi_agent/agent_supervisor/index.html",
     "langgraph-docs/site/tutorials/multi_agent/agent_supervisor",
     "langgraph-docs/site/tutorials/langgraph-platform/local-server/index.html",
-    "langgraph-docs/site/tutorials/langgraph-platform/local-server",
-    "langgraph-docs/site/tutorials/langgraph-platform",
     "langgraph-docs/site/assets/images/favicon.png",
     "langgraph-docs/site/tutorials/workflows/img/parallelization.png",
     "langgraph-docs/site/tutorials/workflows/img/worker.png",
