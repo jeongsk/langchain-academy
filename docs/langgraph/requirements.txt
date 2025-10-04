@@ -1,8 +1,1 @@
-mkdocs-exclude-search
-mkdocs-tags-plugin
-mkdocs-include-markdown-plugin
-mkdocstrings[python]
-pymdown-extensions
-langchain
-langchain-core
-mkdocs-github-callouts
+mkdocs
