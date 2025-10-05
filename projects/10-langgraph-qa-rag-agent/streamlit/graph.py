@@ -1,13 +1,33 @@
-from langgraph.graph import END, StateGraph, START
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.errors import GraphRecursionError
+import getpass
+import os
+
+import streamlit as st
+from dotenv import load_dotenv
 from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
-import streamlit as st
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.errors import GraphRecursionError
+from langgraph.graph import END, START, StateGraph
+from nodes import *
+from rag import create_rag_chain
 from retrievers import init_retriever
 from states import GraphState
-from rag import create_rag_chain
-from nodes import *
+
+load_dotenv("./.env", override=True)
+
+
+def _set_env(var: str):
+    env_value = os.environ.get(var)
+    if not env_value:
+        env_value = getpass.getpass(f"{var}: ")
+
+    os.environ[var] = env_value
+
+
+os.environ["LANGSMITH_TRACING"] = "true"
+os.environ["LANGSMITH_PROJECT"] = "10-langgraph-qa-rag-agent"
+_set_env("LANGSMITH_API_KEY")
+_set_env("OPENAI_API_KEY")
 
 
 DB_INDEX = "LANGCHAIN_DB_INDEX"
