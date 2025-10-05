@@ -41,7 +41,7 @@ def create_graph():
 
     builder = StateGraph(State)
 
-    # 노드 정의
+    # 노드
     builder.add_node("query_expand", QueryRewriteNode())  # 질문 재작성
     builder.add_node("query_rewrite", QueryRewriteNode())  # 질문 재작성
     builder.add_node("web_search", WebSearchNode())  # 웹 검색
@@ -50,7 +50,7 @@ def create_graph():
     builder.add_node("general_answer", GeneralAnswerNode())  # 일반 답변 생성
     builder.add_node("rag_answer", RagAnswerNode())  # RAG 답변 생성
 
-    # 엣지 추가
+    # 엣지
     builder.add_conditional_edges(
         START,
         RouteQuestionNode(),
