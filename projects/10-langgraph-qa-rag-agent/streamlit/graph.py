@@ -8,10 +8,15 @@ from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.errors import GraphRecursionError
 from langgraph.graph import END, START, StateGraph
-from nodes import *
-from rag import create_rag_chain
+from nodes import (
+    FilteringDocumentsNode,
+    GeneralAnswerNode,
+    QueryRewriteNode,
+    RagAnswerNode,
+    RetrieveNode,
+    WebSearchNode,
+)
 from retrievers import init_retriever
-from states import GraphState
 
 load_dotenv("./.env", override=True)
 
@@ -30,30 +35,28 @@ _set_env("LANGSMITH_API_KEY")
 _set_env("OPENAI_API_KEY")
 
 
-DB_INDEX = "LANGCHAIN_DB_INDEX"
-
-
 def create_graph():
     retriever = init_retriever()
+
     # 문서 검색 체인 생성
     rag_chain = create_rag_chain()
 
     # 그래프 상태 초기화
-    workflow = StateGraph(GraphState)
+    builder = StateGraph(GraphState)
 
     # 노드 정의
-    workflow.add_node("query_expand", QueryRewriteNode())  # 질문 재작성
-    workflow.add_node("query_rewrite", QueryRewriteNode())  # 질문 재작성
-    workflow.add_node("web_search", WebSearchNode())  # 웹 검색
-    workflow.add_node("retrieve", RetrieveNode(retriever))  # 문서 검색
-    workflow.add_node("grade_documents", FilteringDocumentsNode())  # 문서 평가
-    workflow.add_node(
+    builder.add_node("query_expand", QueryRewriteNode())  # 질문 재작성
+    builder.add_node("query_rewrite", QueryRewriteNode())  # 질문 재작성
+    builder.add_node("web_search", WebSearchNode())  # 웹 검색
+    builder.add_node("retrieve", RetrieveNode(retriever))  # 문서 검색
+    builder.add_node("grade_documents", FilteringDocumentsNode())  # 문서 평가
+    builder.add_node(
         "general_answer", GeneralAnswerNode(ChatOpenAI(model="gpt-4o", temperature=0))
     )  # 일반 답변 생성
-    workflow.add_node("rag_answer", RagAnswerNode(rag_chain))  # RAG 답변 생성
+    builder.add_node("rag_answer", RagAnswerNode(rag_chain))  # RAG 답변 생성
 
     # 엣지 추가
-    workflow.add_conditional_edges(
+    builder.add_conditional_edges(
         START,
         RouteQuestionNode(),
         {
@@ -62,10 +65,10 @@ def create_graph():
         },
     )
 
-    workflow.add_edge("query_expand", "retrieve")
-    workflow.add_edge("retrieve", "grade_documents")
+    builder.add_edge("query_expand", "retrieve")
+    builder.add_edge("retrieve", "grade_documents")
 
-    workflow.add_conditional_edges(
+    builder.add_conditional_edges(
         "grade_documents",
         decide_to_web_search_node,
         {
@@ -74,9 +77,9 @@ def create_graph():
         },
     )
 
-    workflow.add_edge("query_rewrite", "rag_answer")
+    builder.add_edge("query_rewrite", "rag_answer")
 
-    workflow.add_conditional_edges(
+    builder.add_conditional_edges(
         "rag_answer",
         AnswerGroundednessCheckNode(),
         {
@@ -86,10 +89,10 @@ def create_graph():
         },
     )
 
-    workflow.add_edge("web_search", "rag_answer")
+    builder.add_edge("web_search", "rag_answer")
 
     # 그래프 컴파일
-    app = workflow.compile(checkpointer=MemorySaver())
+    app = builder.compile(checkpointer=MemorySaver())
     return app
 
 
