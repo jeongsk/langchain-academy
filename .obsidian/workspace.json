@@ -74,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 202.5
+    "width": 355.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -176,7 +176,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8c7cbda1bde7a415",
+  "active": "b70f29c88e4c9cfe",
   "lastOpenFiles": [
     "docs/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/LangGraph 배포 가이드.md",
