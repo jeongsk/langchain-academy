@@ -4,7 +4,6 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_core.runnables import RunnableConfig
-from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.errors import GraphRecursionError
 from langgraph.graph import END, START, StateGraph
@@ -14,6 +13,7 @@ from nodes import (
     QueryRewriteNode,
     RagAnswerNode,
     RetrieveNode,
+    RouteQuestionNode,
     WebSearchNode,
 )
 from retrievers import init_retriever
@@ -39,10 +39,6 @@ _set_env("OPENAI_API_KEY")
 def create_graph():
     retriever = init_retriever()
 
-    # 문서 검색 체인 생성
-    rag_chain = create_rag_chain()
-
-    # 그래프 상태 초기화
     builder = StateGraph(State)
 
     # 노드 정의
@@ -51,10 +47,8 @@ def create_graph():
     builder.add_node("web_search", WebSearchNode())  # 웹 검색
     builder.add_node("retrieve", RetrieveNode(retriever))  # 문서 검색
     builder.add_node("grade_documents", FilteringDocumentsNode())  # 문서 평가
-    builder.add_node(
-        "general_answer", GeneralAnswerNode(ChatOpenAI(model="gpt-4o", temperature=0))
-    )  # 일반 답변 생성
-    builder.add_node("rag_answer", RagAnswerNode(rag_chain))  # RAG 답변 생성
+    builder.add_node("general_answer", GeneralAnswerNode())  # 일반 답변 생성
+    builder.add_node("rag_answer", RagAnswerNode())  # RAG 답변 생성
 
     # 엣지 추가
     builder.add_conditional_edges(

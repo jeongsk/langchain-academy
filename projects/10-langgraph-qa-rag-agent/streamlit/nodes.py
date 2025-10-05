@@ -1,10 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Annotated, Literal
 
-from chains import (
-    create_answer_grade_chain,
-    create_groundedness_checker_chain,
-)
 from langchain_core.documents import Document
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
@@ -111,7 +107,7 @@ class RetrieveNode(BaseNode):
 
 
 class GeneralAnswerNode(BaseNode):
-    def __init__(self, llm, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = "GeneralAnswerNode"
         self.llm = ChatOpenAI(
@@ -129,7 +125,7 @@ class GeneralAnswerNode(BaseNode):
 
 
 class RagAnswerNode(BaseNode):
-    def __init__(self, rag_chain, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = "RagAnswerNode"
         self.llm = ChatOpenAI(
@@ -304,23 +300,24 @@ class AnswerGroundednessCheckNode(BaseNode):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = "AnswerGroundednessCheckNode"
-        self.groundedness_checker = create_groundedness_checker_chain()
-        self.relevant_answer_checker = create_answer_grade_chain()
+        llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
+        self.groundedness_checker = llm.with_structured_output(GroundednessChecker)
+        self.relevant_answer_checker = llm.with_structured_output(RelevantAnswerChecker)
 
     def execute(self, state: State) -> State:
         question = state.get("question")
         documents = state.get("documents")
         generation = state.get("generation")
 
-        score = self.groundedness_checker.invoke(
-            {"documents": documents, "generation": generation}
+        response = self.groundedness_checker.invoke(
+            f"Set of facts: \n\n {documents} \n\n LLM generation: {generation}"
         )
 
-        if score.binary_score == "yes":
-            score = self.relevant_answer_checker.invoke(
-                {"question": question, "generation": generation}
+        if response.binary_score == 1:
+            response = self.relevant_answer_checker.invoke(
+                f"User question: \n\n {question} \n\n LLM generation: {generation}"
             )
-            if score.binary_score == "yes":
+            if response.binary_score == 1:
                 return "relevant"
             else:
                 return "not relevant"
@@ -330,10 +327,9 @@ class AnswerGroundednessCheckNode(BaseNode):
 
 # 추가 정보 검색 필요성 여부 평가 노드
 def decide_to_web_search_node(state):
-    # 문서 검색 결과 가져오기
-    filtered_docs = state["documents"]
+    documents = state.get("documents")
 
-    if len(filtered_docs) < 2:
+    if len(documents) < 2:
         return "web_search"
     else:
         return "rag_answer"
