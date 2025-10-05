@@ -1,6 +1,8 @@
 langchain
 langchain-openai
 langchain-community
+langchain-cohere
+langchain-tavily
 langgraph
 streamlit
 faiss-cpu

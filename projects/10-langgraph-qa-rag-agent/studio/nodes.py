@@ -171,6 +171,7 @@ class RagAnswerNode(BaseNode):
         )
         return {
             "messages": [response],
+            "generation": response.content,
             "question": "",
             "documents": [],
         }

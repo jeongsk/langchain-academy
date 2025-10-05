@@ -52,8 +52,8 @@ builder.add_conditional_edges(
     START,
     routing_node,
     {
-        "query_expansion": "query_expand",  # 웹 검색으로 라우팅
-        "general_answer": "general_answer",  # 벡터스토어로 라우팅
+        "query_expansion": "query_expand",  # 질문 확장 후 검색으로 라우팅
+        "general_answer": "general_answer",  # 일반 답변으로 라우팅
     },
 )
 
