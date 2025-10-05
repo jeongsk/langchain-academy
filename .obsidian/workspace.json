@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 325.5
+    "width": 202.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -182,17 +182,18 @@
   },
   "active": "051fd250ee4e5b58",
   "lastOpenFiles": [
+    "projects/10-langgraph-qa-rag-agent/studio/__pycache__/tools.cpython-313.pyc",
+    "projects/10-langgraph-qa-rag-agent/studio/__pycache__/states.cpython-313.pyc",
+    "projects/10-langgraph-qa-rag-agent/studio/__pycache__/retrievers.cpython-313.pyc",
+    "projects/10-langgraph-qa-rag-agent/studio/__pycache__/nodes.cpython-313.pyc",
+    "projects/10-langgraph-qa-rag-agent/studio/__pycache__/main.cpython-313.pyc",
+    "projects/10-langgraph-qa-rag-agent/studio/__pycache__/graph.cpython-313.pyc",
+    "projects/10-langgraph-qa-rag-agent/studio/__pycache__",
     "projects/10-langgraph-qa-rag-agent/studio/README.md",
     "projects/10-langgraph-qa-rag-agent/studio/tools.py",
     "projects/10-langgraph-qa-rag-agent/studio/states.py",
     "projects/10-langgraph-qa-rag-agent/studio/retrievers.py",
     "projects/10-langgraph-qa-rag-agent/studio/requirements.txt",
-    "projects/10-langgraph-qa-rag-agent/studio/nodes.py",
-    "projects/10-langgraph-qa-rag-agent/studio/main.py",
-    "projects/10-langgraph-qa-rag-agent/studio/langgraph.json",
-    "projects/10-langgraph-qa-rag-agent/studio/graph.py",
-    "projects/10-langgraph-qa-rag-agent/studio",
-    "projects/10-langgraph-qa-rag-agent/streamlit/langgraph.json",
     "langgraph/security.md",
     "langgraph/libs/cli/js-examples/static/studio.png",
     "langgraph/libs/cli/js-examples/README.md",
@@ -226,7 +227,6 @@
     "langgraph/docs/docs/tutorials/rag/langgraph_agentic_rag.md",
     "langgraph/docs/docs/tutorials/multi_agent/agent_supervisor.md",
     "langgraph/docs/docs/tutorials/langgraph-platform/local-server.md",
-    "langgraph/docs/docs/tutorials/get-started/6-time-travel.md",
-    "langgraph/docs/docs/tutorials/get-started/5-customize-state.md"
+    "langgraph/docs/docs/tutorials/get-started/6-time-travel.md"
   ]
 }
