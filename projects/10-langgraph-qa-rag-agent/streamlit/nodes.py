@@ -69,7 +69,7 @@ class RouteQuestionNode(BaseNode):
 
 
 class RewriteQuery(BaseModel):
-    question: Annotated[
+    improved_question: Annotated[
         str,
         Field(
             ...,
@@ -91,9 +91,9 @@ class QueryRewriteNode(BaseNode):
 
     def execute(self, state: State) -> State:
         question = state["question"]
-        better_question = self.llm.invoke({"question": question})
+        response = self.llm.invoke({"question": question})
         return {
-            "question": better_question,
+            "question": response.improved_question,
         }
 
 
