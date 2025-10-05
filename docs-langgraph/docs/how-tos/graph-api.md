@@ -1,3 +1,7 @@
+---
+title: Graph API 사용법
+---
+
 # Graph API 사용법
 
 이 가이드는 LangGraph의 Graph API 기본 사항을 설명합니다. [상태](https://langchain-ai.github.io/langgraph/how-tos/graph-api/#define-and-update-state)부터 시작하여 [시퀀스](https://langchain-ai.github.io/langgraph/how-tos/graph-api/#create-a-sequence-of-steps), [브랜치](https://langchain-ai.github.io/langgraph/how-tos/graph-api/#create-branches), [루프](https://langchain-ai.github.io/langgraph/how-tos/graph-api/#create-and-control-loops)와 같은 일반적인 그래프 구조를 구성하는 방법을 다룹니다. 또한 맵-리듀스 워크플로를 위한 [Send API](https://langchain-ai.github.io/langgraph/how-tos/graph-api/#map-reduce-and-the-send-api)와 상태 업데이트를 노드 간 "이동"과 결합하는 [Command API](https://langchain-ai.github.io/langgraph/how-tos/graph-api/#combine-control-flow-and-state-updates-with-command) 같은 LangGraph의 제어 기능도 다룹니다.
