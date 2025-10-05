@@ -182,17 +182,18 @@
   },
   "active": "051fd250ee4e5b58",
   "lastOpenFiles": [
+    "projects/10-langgraph-qa-rag-agent/studio/requirements.txt",
+    "projects/10-langgraph-qa-rag-agent/studio/langgraph.json",
+    "projects/10-langgraph-qa-rag-agent/studio/prompts/code-rag-prompt.yaml",
+    "projects/10-langgraph-qa-rag-agent/studio/utils.py",
+    "projects/10-langgraph-qa-rag-agent/studio/tools.py",
+    "projects/10-langgraph-qa-rag-agent/studio/streamlit_wrapper.py",
+    "projects/10-langgraph-qa-rag-agent/studio/states.py",
+    "projects/10-langgraph-qa-rag-agent/studio/retrievers.py",
+    "projects/10-langgraph-qa-rag-agent/studio/rag.py",
+    "projects/10-langgraph-qa-rag-agent/studio/pyproject.toml",
+    "projects/10-langgraph-qa-rag-agent/studio/prompts",
     "langgraph/security.md",
-    "langgraph/libs/cli/python-monorepo-example/libs/shared/src/shared/utils.py",
-    "langgraph/libs/cli/python-monorepo-example/libs/shared/src/shared/__init__.py",
-    "langgraph/libs/cli/python-monorepo-example/apps/agent/src/agent/state.py",
-    "langgraph/libs/cli/python-monorepo-example/apps/agent/src/agent/__init__.py",
-    "langgraph/libs/cli/python-monorepo-example/apps/agent/src/agent/graph.py",
-    "langgraph/libs/cli/js-monorepo-example/libs/shared/src/index.ts",
-    "langgraph/libs/cli/js-monorepo-example/apps/agent/src/state.ts",
-    "langgraph/libs/cli/js-monorepo-example/apps/agent/src/graph.ts",
-    "langgraph/libs/cli/python-monorepo-example/libs/shared/src/shared",
-    "langgraph/libs/cli/python-monorepo-example/apps/agent/src/agent",
     "langgraph/libs/cli/js-examples/static/studio.png",
     "langgraph/libs/cli/js-examples/README.md",
     "langgraph/libs/sdk-py/README.md",
@@ -226,7 +227,6 @@
     "langgraph/docs/docs/tutorials/multi_agent/agent_supervisor.md",
     "langgraph/docs/docs/tutorials/langgraph-platform/local-server.md",
     "langgraph/docs/docs/tutorials/get-started/6-time-travel.md",
-    "langgraph/docs/docs/tutorials/get-started/5-customize-state.md",
-    "langgraph/docs/docs/tutorials/get-started/4-human-in-the-loop.md"
+    "langgraph/docs/docs/tutorials/get-started/5-customize-state.md"
   ]
 }
