@@ -262,35 +262,6 @@ class RelevantAnswerChecker(BaseModel):
     ]
 
 
-class AnswerGroundednessCheckNode(BaseNode):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.name = "AnswerGroundednessCheckNode"
-        llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
-        self.groundedness_checker = llm.with_structured_output(GroundednessChecker)
-        self.relevant_answer_checker = llm.with_structured_output(RelevantAnswerChecker)
-
-    def execute(self, state: State) -> State:
-        question = state.get("question")
-        documents = state.get("documents")
-        generation = state.get("generation")
-
-        response = self.groundedness_checker.invoke(
-            f"Set of facts: \n\n {documents} \n\n LLM generation: {generation}"
-        )
-
-        if response.binary_score == 1:
-            response = self.relevant_answer_checker.invoke(
-                f"User question: \n\n {question} \n\n LLM generation: {generation}"
-            )
-            if response.binary_score == 1:
-                return "relevant"
-            else:
-                return "not relevant"
-        else:
-            return "not grounded"
-
-
 class RouteQuery(BaseModel):
     binary_score: Annotated[
         Literal[1, 0],
@@ -320,6 +291,39 @@ def routing_node(state):
         return "query_expansion"
     else:
         return "general_answer"
+
+
+# 답변의 환각 여부/관련성 여부 평가 노드
+def answer_groundedness_check(state):
+    # 질문과 문서 검색 결과 가져오기
+    question = state.get("question")
+    documents = state.get("documents")
+    generation = state.get("generation")
+
+    llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
+    groundedness_checker = llm.with_structured_output(GroundednessChecker)
+    relevant_answer_checker = llm.with_structured_output(RelevantAnswerChecker)
+
+    # Groundedness 평가
+    response = groundedness_checker.invoke(
+        f"Set of facts: \n\n {documents} \n\n LLM generation: {generation}"
+    )
+
+    # Groundedness 평가 결과에 따른 처리
+    if response.binary_score == 1:
+        # 답변의 관련성(Relevance) 평가
+        response = relevant_answer_checker.invoke(
+            f"User question: \n\n {question} \n\n LLM generation: {generation}"
+        )
+
+        # 관련성 평가 결과에 따른 처리
+        if response.binary_score == 1:
+            return "relevant"
+        else:
+            return "not relevant"
+
+    else:
+        return "not grounded"
 
 
 # 추가 정보 검색 필요성 여부 평가 노드
