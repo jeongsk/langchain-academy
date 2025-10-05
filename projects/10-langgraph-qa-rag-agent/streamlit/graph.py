@@ -13,8 +13,9 @@ from nodes import (
     QueryRewriteNode,
     RagAnswerNode,
     RetrieveNode,
-    RouteQuestionNode,
     WebSearchNode,
+    decide_to_web_search_node,
+    routing_node,
 )
 from retrievers import init_retriever
 from states import State
@@ -53,7 +54,7 @@ def create_graph():
     # 엣지
     builder.add_conditional_edges(
         START,
-        RouteQuestionNode(),
+        routing_node,
         {
             "query_expansion": "query_expand",  # 웹 검색으로 라우팅
             "general_answer": "general_answer",  # 벡터스토어로 라우팅

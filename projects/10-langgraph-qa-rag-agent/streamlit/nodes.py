@@ -29,35 +29,6 @@ class BaseNode(ABC):
         return self.execute(state)
 
 
-class RouteQuery(BaseModel):
-    binary_score: Annotated[
-        Literal[1, 0],
-        Field(
-            ...,
-            description="사용자 질문이 벡터 스토어 검색이 필요한지 여부를 판단합니다."
-            "벡터 스토어에는 LangGraph 와 RAG(Retrieval Augmented Generation) 관련 소스 코드와 문서가 포함되어 있습니다."
-            "관련 있는 경우는 1를 반환합니다."
-            "질문이 소스 코드 또는 문서와 관련된지 판단할 수 없는 경우 1을 반환하십시오."
-            "답변을 모르는 경우 1를 반환하십시오."
-            "그 외에는 모두 0을 반환합니다.",
-        ),
-    ]
-
-
-def routing_node(state):
-    llm = ChatOpenAI(
-        model="gpt-4.1-mini",
-        temperature=0,
-    ).with_structured_output(RouteQuery)
-
-    response = llm.invoke([state["messages"][-1]])
-
-    if response.binary_score == 1:
-        return "query_expansion"
-    else:
-        return "general_answer"
-
-
 class RewriteQuery(BaseModel):
     improved_question: Annotated[
         str,
@@ -318,6 +289,37 @@ class AnswerGroundednessCheckNode(BaseNode):
                 return "not relevant"
         else:
             return "not grounded"
+
+
+class RouteQuery(BaseModel):
+    binary_score: Annotated[
+        Literal[1, 0],
+        Field(
+            ...,
+            description="사용자 질문이 벡터 스토어 검색이 필요한지 여부를 판단합니다."
+            "벡터 스토어에는 LangGraph 와 RAG(Retrieval Augmented Generation) 관련 소스 코드와 문서가 포함되어 있습니다."
+            "관련 있는 경우는 1를 반환합니다."
+            "질문이 소스 코드 또는 문서와 관련된지 판단할 수 없는 경우 1을 반환하십시오."
+            "답변을 모르는 경우 1를 반환하십시오."
+            "그 외에는 모두 0을 반환합니다.",
+        ),
+    ]
+
+
+def routing_node(state):
+    question = state.get("messages")[-1].content
+
+    llm = ChatOpenAI(
+        model="gpt-4.1-mini",
+        temperature=0,
+    ).with_structured_output(RouteQuery)
+
+    response = llm.invoke(question)
+
+    if response.binary_score == 1:
+        return "query_expansion"
+    else:
+        return "general_answer"
 
 
 # 추가 정보 검색 필요성 여부 평가 노드
