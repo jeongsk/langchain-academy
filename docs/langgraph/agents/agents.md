@@ -1,33 +1,33 @@
 ---
-title: LangGraph quickstart
+title: LangGraph 빠른 시작
 source: https://langchain-ai.github.io/langgraph/agents/agents/
 ---
 
-## LangGraph quickstart
+## LangGraph 빠른 시작
 
-This guide shows you how to set up and use LangGraph's **prebuilt**, **reusable** components, which are designed to help you construct agentic systems quickly and reliably.
+이 가이드는 에이전트 시스템을 빠르고 안정적으로 구축할 수 있도록 설계된 LangGraph의 **사전 구축된**, **재사용 가능한** 컴포넌트를 설정하고 사용하는 방법을 보여줍니다.
 
-## Prerequisites
+## 사전 요구 사항
 
-Before you start this tutorial, ensure you have the following:
+이 튜토리얼을 시작하기 전에 다음이 필요합니다:
 
-- An [Anthropic](https://console.anthropic.com/settings/keys) API key
+- [Anthropic](https://console.anthropic.com/settings/keys) API 키
 
-## 1\. Install dependencies
+## 1\. 종속성 설치
 
-If you haven't already, install LangGraph and LangChain:
+아직 설치하지 않았다면 LangGraph와 LangChain을 설치하세요:
 
 ```js
 pip install -U langgraph "langchain[anthropic]"
 ```
 
-Info
+정보
 
-`langchain[anthropic]` is installed so the agent can call the [model](https://python.langchain.com/docs/integrations/chat/).
+`langchain[anthropic]`는 에이전트가 [모델](https://python.langchain.com/docs/integrations/chat/)을 호출할 수 있도록 설치됩니다.
 
-## 2\. Create an agent
+## 2\. 에이전트 생성
 
-To create an agent, use [`create_react_agent`](https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent):
+에이전트를 생성하려면 [`create_react_agent`](https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent)를 사용하세요:
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a></i></sup>
 
@@ -44,28 +44,28 @@ agent = create_react_agent(
     prompt="You are a helpful assistant"  
 )
 
-# Run the agent
+# 에이전트 실행
 agent.invoke(
     {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
 )
 ```
 
-## 3\. Configure an LLM
+## 3\. LLM 구성
 
-To configure an LLM with specific parameters, such as temperature, use [init\_chat\_model](https://python.langchain.com/api_reference/langchain/chat_models/langchain.chat_models.base.init_chat_model.html):
+temperature와 같은 특정 매개변수로 LLM을 구성하려면 [init\_chat\_model](https://python.langchain.com/api_reference/langchain/chat_models/langchain.chat_models.base.init_chat_model.html)을 사용하세요:
 
 <sup><i>API Reference: <a href="https://python.langchain.com/api_reference/langchain/chat_models/langchain.chat_models.base.init_chat_model.html">init_chat_model</a> | <a href="https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a></i></sup>
 
-For more information on how to configure LLMs, see [Models](https://langchain-ai.github.io/langgraph/agents/models/).
+LLM 구성 방법에 대한 자세한 내용은 [Models](https://langchain-ai.github.io/langgraph/agents/models/)를 참조하세요.
 
-## 4\. Add a custom prompt
+## 4\. 사용자 정의 프롬프트 추가
 
-Prompts instruct the LLM how to behave. Add one of the following types of prompts:
+프롬프트는 LLM의 동작 방식을 지시합니다. 다음 유형의 프롬프트 중 하나를 추가하세요:
 
-- **Static**: A string is interpreted as a **system message**.
-- **Dynamic**: A list of messages generated at **runtime**, based on input or configuration.
+- **정적**: 문자열은 **시스템 메시지**로 해석됩니다.
+- **동적**: 입력 또는 구성을 기반으로 **런타임**에 생성되는 메시지 목록입니다.
 
-Define a fixed prompt string or list of messages:
+고정된 프롬프트 문자열 또는 메시지 목록을 정의하세요:
 
 ```python
 from langgraph.prebuilt import create_react_agent
@@ -73,7 +73,7 @@ from langgraph.prebuilt import create_react_agent
 agent = create_react_agent(
     model="anthropic:claude-3-7-sonnet-latest",
     tools=[get_weather],
-    # A static prompt that never changes
+    # 변경되지 않는 정적 프롬프트
     prompt="Never answer questions about the weather."
 )
 
@@ -82,7 +82,7 @@ agent.invoke(
 )
 ```
 
-Define a function that returns a message list based on the agent's state and configuration:
+에이전트의 상태 및 구성을 기반으로 메시지 목록을 반환하는 함수를 정의하세요:
 
 ```python
 from langchain_core.messages import AnyMessage
@@ -106,16 +106,16 @@ agent.invoke(
     config={"configurable": {"user_name": "John Smith"}}
 )
 ```
-1. Dynamic prompts allow including non-message [context](https://langchain-ai.github.io/langgraph/agents/context/) when constructing an input to the LLM, such as:
-	- Information passed at runtime, like a `user_id` or API credentials (using `config`).
-	- Internal agent state updated during a multi-step reasoning process (using `state`).
-	Dynamic prompts can be defined as functions that take `state` and `config` and return a list of messages to send to the LLM.
+1. 동적 프롬프트를 사용하면 LLM에 대한 입력을 구성할 때 메시지가 아닌 [컨텍스트](https://langchain-ai.github.io/langgraph/agents/context/)를 포함할 수 있습니다:
+	- `user_id`나 API 자격 증명과 같이 런타임에 전달되는 정보(`config` 사용).
+	- 다단계 추론 프로세스 중에 업데이트되는 내부 에이전트 상태(`state` 사용).
+	동적 프롬프트는 `state`와 `config`를 받아 LLM에 보낼 메시지 목록을 반환하는 함수로 정의할 수 있습니다.
 
-For more information, see [Context](https://langchain-ai.github.io/langgraph/agents/context/).
+자세한 내용은 [Context](https://langchain-ai.github.io/langgraph/agents/context/)를 참조하세요.
 
-## 5\. Add memory
+## 5\. 메모리 추가
 
-To allow multi-turn conversations with an agent, you need to enable [persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/) by providing a checkpointer when creating an agent. At runtime, you need to provide a config containing `thread_id` — a unique identifier for the conversation (session):
+에이전트와의 다회전 대화를 허용하려면 에이전트 생성 시 체크포인터를 제공하여 [지속성](https://langchain-ai.github.io/langgraph/concepts/persistence/)을 활성화해야 합니다. 런타임에는 대화(세션)의 고유 식별자인 `thread_id`가 포함된 config를 제공해야 합니다:
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a> | <a href="https://langchain-ai.github.io/langgraph/reference/checkpoints/#langgraph.checkpoint.memory.InMemorySaver">InMemorySaver</a></i></sup>
 
@@ -131,7 +131,7 @@ agent = create_react_agent(
     checkpointer=checkpointer  
 )
 
-# Run the agent
+# 에이전트 실행
 config = {"configurable": {"thread_id": "1"}}
 sf_response = agent.invoke(
     {"messages": [{"role": "user", "content": "what is the weather in sf"}]},
@@ -143,22 +143,22 @@ ny_response = agent.invoke(
 )
 ```
 
-When you enable the checkpointer, it stores agent state at every step in the provided checkpointer database (or in memory, if using `InMemorySaver`).
+체크포인터를 활성화하면 제공된 체크포인터 데이터베이스(또는 `InMemorySaver`를 사용하는 경우 메모리)에 모든 단계에서 에이전트 상태가 저장됩니다.
 
-Note that in the above example, when the agent is invoked the second time with the same `thread_id`, the original message history from the first conversation is automatically included, together with the new user input.
+위 예제에서 동일한 `thread_id`로 에이전트가 두 번째로 호출되면 첫 번째 대화의 원본 메시지 기록이 새 사용자 입력과 함께 자동으로 포함됩니다.
 
-For more information, see [Memory](https://langchain-ai.github.io/langgraph/how-tos/memory/add-memory/).
+자세한 내용은 [Memory](https://langchain-ai.github.io/langgraph/how-tos/memory/add-memory/)를 참조하세요.
 
-## 6\. Configure structured output
+## 6\. 구조화된 출력 구성
 
-To produce structured responses conforming to a schema, use the `response_format` parameter. The schema can be defined with a `Pydantic` model or `TypedDict`. The result will be accessible via the `structured_response` field.
+스키마를 준수하는 구조화된 응답을 생성하려면 `response_format` 매개변수를 사용하세요. 스키마는 `Pydantic` 모델 또는 `TypedDict`로 정의할 수 있습니다. 결과는 `structured_response` 필드를 통해 액세스할 수 있습니다.
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a></i></sup>
 
-LLM post-processing
+LLM 후처리
 
-Structured output requires an additional call to the LLM to format the response according to the schema.
+구조화된 출력은 스키마에 따라 응답을 포맷하기 위해 LLM에 대한 추가 호출이 필요합니다.
 
-- [Deploy your agent locally](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/)
-- [Learn more about prebuilt agents](https://langchain-ai.github.io/langgraph/agents/overview/)
-- [LangGraph Platform quickstart](https://langchain-ai.github.io/langgraph/cloud/quick_start/)
+- [에이전트를 로컬에 배포하기](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/)
+- [사전 구축된 에이전트에 대해 자세히 알아보기](https://langchain-ai.github.io/langgraph/agents/overview/)
+- [LangGraph Platform 빠른 시작](https://langchain-ai.github.io/langgraph/cloud/quick_start/)
