@@ -4,7 +4,6 @@ from typing import Annotated, Literal
 from chains import (
     create_answer_grade_chain,
     create_groundedness_checker_chain,
-    create_retrieval_grader_chain,
 )
 from langchain_core.documents import Document
 from langchain_openai import ChatOpenAI
@@ -215,25 +214,41 @@ class RagAnswerNode(BaseNode):
         }
 
 
+# 문서 평가를 위한 데이터 모델 정의
+class GradeDocuments(BaseModel):
+    """검색된 문서의 관련성 검증"""
+
+    binary_score: Annotated[
+        Literal[1, 0],
+        Field(
+            ..., description="Context 문서가 질문과 관련이 있는가? 1 또는 0 으로 답변"
+        ),
+    ]
+
+
 class FilteringDocumentsNode(BaseNode):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = "FilteringDocumentsNode"
-        self.retrieval_grader = create_retrieval_grader_chain()
+        self.llm = ChatOpenAI(
+            model="gpt-4.1-mini",
+            temperature=0,
+        ).with_structured_output(GradeDocuments)
 
     def execute(self, state: State) -> State:
-        question = state["question"]
-        documents = state["documents"]
+        question = state.get("question")
+        documents = state.get("documents")
 
-        filtered_docs = []
-        for d in documents:
-            score = self.retrieval_grader.invoke(
-                {"question": question, "document": d.page_content}
-            )
-            if score.binary_score == "yes":
-                filtered_docs.append(d)
+        filtered_docs: list[Document] = []
+        for doc in documents:
+            response = self.llm.invoke(f"{question}\n\n{doc}")
+            if response.binary_score == 1:
+                filtered_docs.append(doc)
+            continue
 
-        return State(documents=filtered_docs)
+        return {
+            "documents": filtered_docs,
+        }
 
 
 class WebSearchNode(BaseNode):
@@ -243,16 +258,46 @@ class WebSearchNode(BaseNode):
         self.web_search_tool = create_web_search_tool()
 
     def execute(self, state: State) -> State:
-        question = state["question"]
+        question = state.get("question")
         web_results = self.web_search_tool.invoke({"query": question})
-        web_results_docs = [
-            Document(
-                page_content=web_result["content"],
-                metadata={"source": web_result["url"]},
+
+        documents: list[Document] = []
+        for r in web_results["results"]:
+            documents.append(
+                Document(
+                    page_content=f"# {r['title']}\n\n{r['content']}",
+                    metadata={
+                        "source": r["url"],
+                        "score": r["score"],
+                    },
+                )
             )
-            for web_result in web_results
-        ]
-        return State(documents=web_results_docs)
+
+        return {
+            "documents": documents,
+        }
+
+
+class GroundednessChecker(BaseModel):
+    binary_score: Annotated[
+        Literal[1, 0],
+        Field(
+            ...,
+            description="LLM 답변이 검색된 사실 집합에 근거하거나 이를 뒷받침하는지 평가하는 채점 도구입니다."
+            "답변이 사실 집합에 근거하거나 이를 뒷받침하면 1을 반환하고, 그렇지 않으면 0을 반환하세요.",
+        ),
+    ]
+
+
+class RelevantAnswerChecker(BaseModel):
+    binary_score: Annotated[
+        Literal[1, 0],
+        Field(
+            ...,
+            description="답변이 질문을 해결했는지 평가하는 채점 도구입니다."
+            "질문에 대한 답변이 해결되었다면 1을 반환하고, 그렇지 않다면 0을 반환하세요.",
+        ),
+    ]
 
 
 class AnswerGroundednessCheckNode(BaseNode):
@@ -263,9 +308,9 @@ class AnswerGroundednessCheckNode(BaseNode):
         self.relevant_answer_checker = create_answer_grade_chain()
 
     def execute(self, state: State) -> State:
-        question = state["question"]
-        documents = state["documents"]
-        generation = state["generation"]
+        question = state.get("question")
+        documents = state.get("documents")
+        generation = state.get("generation")
 
         score = self.groundedness_checker.invoke(
             {"documents": documents, "generation": generation}
