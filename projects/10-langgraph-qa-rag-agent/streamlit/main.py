@@ -1,20 +1,28 @@
+import getpass
+import os
+
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.messages.chat import ChatMessage
-from langchain_teddynote import logging
-from langchain_teddynote.messages import random_uuid
 from langsmith import Client
 from streamlit_wrapper import create_graph, stream_graph
 
-load_dotenv()
+load_dotenv("./.env", override=True)
 
-# 프로젝트 이름을 입력합니다.
-LANGSMITH_PROJECT = "Github-Code-QA-RAG"
 
-# LangSmith 추적을 설정합니다.
-logging.langsmith(LANGSMITH_PROJECT)
+def _set_env(var: str):
+    env_value = os.environ.get(var)
+    if not env_value:
+        env_value = getpass.getpass(f"{var}: ")
 
+    os.environ[var] = env_value
+
+
+os.environ["LANGSMITH_TRACING"] = "true"
+os.environ["LANGSMITH_PROJECT"] = "10-langgraph-qa-rag-agent-streamlit"
+_set_env("LANGSMITH_API_KEY")
+_set_env("OPENAI_API_KEY")
 
 NAMESPACE = "langchain"
 
@@ -33,10 +41,6 @@ st.title("LangGraph 코드 어시스턴트 💬")
 st.markdown("**`LangGraph`** 문서 기반으로 답변하는 봇입니다. ")
 
 with st.sidebar:
-    st.markdown("🧑‍💻 저작자 [@테디노트](https://www.youtube.com/@teddynote)")
-    st.markdown(
-        "🔥 이 챗봇을 만드는 과정은 [RAG 비법노트](https://fastcampus.co.kr/data_online_teddy) 강의에서 다룹니다."
-    )
     st.markdown(
         "✅ [LangGraph](https://github.com/langchain-ai/langgraph) 도큐먼트를 기반으로 답변합니다. "
     )
