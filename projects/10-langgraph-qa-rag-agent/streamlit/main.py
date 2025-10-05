@@ -1,5 +1,6 @@
 import getpass
 import os
+from datetime import datetime
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -51,7 +52,7 @@ if "messages" not in st.session_state:
 
 # 스레드 ID를 저장하기 위한 용도로 생성
 if "thread_id" not in st.session_state:
-    st.session_state["thread_id"] = random_uuid()
+    st.session_state["thread_id"] = str(datetime.now().timestamp())
 
 # 사이드바 생성
 with st.sidebar:
@@ -59,7 +60,9 @@ with st.sidebar:
 
     # 초기화 버튼 생성
     clear_btn = st.button(
-        "새로운 주제로 질문", type="primary", use_container_width=True
+        "새로운 주제로 질문",
+        type="primary",
+        use_container_width=True,
     )
 
 

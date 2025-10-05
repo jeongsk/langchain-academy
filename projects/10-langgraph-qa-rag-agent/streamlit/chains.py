@@ -1,20 +1,14 @@
 from typing import Literal
 
-from langchain_core.prompts import ChatPromptTemplate
-from pydantic import BaseModel, Field
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
 
-MODEL_NAME = "gpt-4o"
+llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
 
 
 class RouteQuery(BaseModel):
-
     # 데이터 소스 선택을 위한 리터럴 타입 필드
     binary_score: Literal["yes", "no"] = Field(
         ...,
@@ -24,7 +18,7 @@ class RouteQuery(BaseModel):
 
 def create_question_router_chain():
     # LLM 초기화 및 함수 호출을 통한 구조화된 출력 생성
-    llm = ChatOpenAI(model=MODEL_NAME, temperature=0)
+
     structured_llm_router = llm.with_structured_output(RouteQuery)
 
     # 시스템 메시지와 사용자 질문을 포함한 프롬프트 템플릿 생성
@@ -48,9 +42,6 @@ def create_question_router_chain():
 
 
 def create_question_rewrite_chain():
-    # LLM 설정
-    llm = ChatOpenAI(model=MODEL_NAME, temperature=0)
-
     # Query Rewrite 시스템 프롬프트
     system = """You a question re-writer that converts an input question to a better version that is optimized for CODE SEARCH(github repository). 
     Look at the input and try to reason about the underlying semantic intent / meaning.
@@ -88,7 +79,6 @@ class GradeDocuments(BaseModel):
 
 def create_retrieval_grader_chain():
     # LLM 초기화 및 함수 호출을 통한 구조화된 출력 생성
-    llm = ChatOpenAI(model=MODEL_NAME, temperature=0)
     structured_llm_grader = llm.with_structured_output(GradeDocuments)
 
     # 시스템 메시지와 사용자 질문을 포함한 프롬프트 템플릿 생성
@@ -123,7 +113,6 @@ class AnswerGroundedness(BaseModel):
 
 def create_groundedness_checker_chain():
     # LLM 설정
-    llm = ChatOpenAI(model=MODEL_NAME, temperature=0)
     structured_llm_grader = llm.with_structured_output(AnswerGroundedness)
 
     # 프롬프트 설정
@@ -156,7 +145,6 @@ class GradeAnswer(BaseModel):
 
 def create_answer_grade_chain():
     # 함수 호출을 통한 LLM 초기화
-    llm = ChatOpenAI(model=MODEL_NAME, temperature=0)
     structured_llm_grader = llm.with_structured_output(GradeAnswer)
 
     # 프롬프트 설정
