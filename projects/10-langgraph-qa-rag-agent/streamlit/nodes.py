@@ -59,7 +59,7 @@ class RouteQuestionNode(BaseNode):
         ).with_structured_output(RouteQuery)
 
     def execute(self, state: State) -> str:
-        question = state["question"]
+        question = state.get("question")
         evaluation = self.llm.invoke({"question": question})
 
         if evaluation.binary_score == 1:
@@ -90,7 +90,7 @@ class QueryRewriteNode(BaseNode):
         ).with_structured_output(RewriteQuery)
 
     def execute(self, state: State) -> State:
-        question = state["question"]
+        question = state.get("question")
         response = self.llm.invoke({"question": question})
         return {
             "question": response.improved_question,
@@ -104,9 +104,11 @@ class RetrieveNode(BaseNode):
         self.retriever = retriever
 
     def execute(self, state: State) -> State:
-        question = state["question"]
+        question = state.get("question")
         documents = self.retriever.invoke(question)
-        return State(documents=documents)
+        return {
+            "documents": documents,
+        }
 
 
 class GeneralAnswerNode(BaseNode):
