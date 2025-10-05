@@ -44,23 +44,18 @@ class RouteQuery(BaseModel):
     ]
 
 
-class RouteQuestionNode(BaseNode):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.name = "RouteQuestionNode"
-        self.llm = ChatOpenAI(
-            model="gpt-4.1-mini",
-            temperature=0,
-        ).with_structured_output(RouteQuery)
+def routing_node(state):
+    llm = ChatOpenAI(
+        model="gpt-4.1-mini",
+        temperature=0,
+    ).with_structured_output(RouteQuery)
 
-    def execute(self, state: State) -> str:
-        question = state.get("question")
-        evaluation = self.llm.invoke({"question": question})
+    response = llm.invoke([state["messages"][-1]])
 
-        if evaluation.binary_score == 1:
-            return "query_expansion"
-        else:
-            return "general_answer"
+    if response.binary_score == 1:
+        return "query_expansion"
+    else:
+        return "general_answer"
 
 
 class RewriteQuery(BaseModel):
