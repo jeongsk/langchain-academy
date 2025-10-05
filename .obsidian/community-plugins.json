@@ -1,5 +1,7 @@
 [
   "obsidian-git",
   "obsidian-copy-block-link",
-  "notebook-navigator"
+  "notebook-navigator",
+  "remove-empty-folders",
+  "file-explorer-note-count"
 ]
