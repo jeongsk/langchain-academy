@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+                "file": "docs/LangGraph 배포 가이드.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링"
+              "title": "LangGraph 배포 가이드"
             }
           }
         ]
@@ -182,6 +182,9 @@
   },
   "active": "051fd250ee4e5b58",
   "lastOpenFiles": [
+    "docs/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+    "docs/LangGraph 배포 가이드.md",
+    "projects/11-langgraph-qa-rag-agent/studio/DEPLOYMENT.md",
     "projects/12-perflexity-clone/README.md",
     "projects/12-perflexity-clone",
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallfff024c3-a250-5ca3-8a4f-03666f617d97",
@@ -224,9 +227,6 @@
     "docs-langgraph/node_modules/@langchain/core/README.md",
     "docs-langgraph/node_modules/@types/uuid/README.md",
     "docs-langgraph/node_modules/@types/retry/README.md",
-    "docs-langgraph/node_modules/@types/node-fetch/README.md",
-    "docs-langgraph/node_modules/@types/nock/README.md",
-    "docs-langgraph/node_modules/@types/msgpack-lite/README.md",
-    "docs-langgraph/node_modules/@tsconfig/recommended/README.md"
+    "docs-langgraph/node_modules/@types/node-fetch/README.md"
   ]
 }
