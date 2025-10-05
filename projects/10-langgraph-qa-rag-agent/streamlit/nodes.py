@@ -115,25 +115,104 @@ class GeneralAnswerNode(BaseNode):
     def __init__(self, llm, **kwargs):
         super().__init__(**kwargs)
         self.name = "GeneralAnswerNode"
-        self.llm = llm
+        self.llm = ChatOpenAI(
+            model="gpt-4.1-mini",
+            temperature=0,
+        )
 
     def execute(self, state: State) -> State:
-        question = state["question"]
-        answer = self.llm.invoke(question)
-        return State(generation=answer.content)
+        response = self.llm.invoke(state.get("messages"))
+        return {
+            "messages": [response],
+            "question": "",
+            "documents": [],
+        }
 
 
 class RagAnswerNode(BaseNode):
     def __init__(self, rag_chain, **kwargs):
         super().__init__(**kwargs)
         self.name = "RagAnswerNode"
-        self.rag_chain = rag_chain
+        self.llm = ChatOpenAI(
+            model="gpt-4.1-mini",
+            temperature=0,
+        )
+        self.system_prompt = """당신은 RAG(Retrieval Augmented Generation) 기반 코드 어시스턴트입니다.
+제공된 소스 코드와 문서를 기반으로 질문에 답변합니다.
+
+## 핵심 원칙
+
+- 제공된 CONTEXT 내의 정보만 사용
+- 답변을 모르는 경우 솔직히 모른다고 응답
+- 외부 정보 추측 금지
+- 모든 답변은 한국어로 작성
+
+## 답변 작성 가이드
+
+### 1. 코드 중심 답변
+- 가능한 한 많은 예제 코드 포함
+- 전체 코드 스니펫 작성 권장
+- 실행 가능한 완전한 코드 제공
+
+### 2. 출처 인용
+- CONTEXT 내 각 문서의 출처 확인
+- 관련 진술 옆에 인라인 인용 표기: [1], [2], ...
+- 중복 출처는 하나로 통합
+- 답변 하단에 출처 목록 작성
+
+**출처 표기 형식:**
+```
+**출처**
+- [1] 문서명.md (또는 전체 URL)
+- [2] 문서명.md (또는 전체 URL)
+```
+
+**출처 표기 예시:**
+- `<source>assistant/docs/llama3_1.md" page="7"</source>` → [1] llama3_1.md
+- 마크다운 줄바꿈: 각 줄 끝에 공백 두 개 사용
+
+## 입력 데이터
+
+### CONTEXT
+질문에 답변할 때 사용할 수 있는 소스 코드 및 문서:
+
+{context}
+
+### 질문
+사용자의 질문:
+
+{question}
+
+## 최종 체크리스트
+
+답변 제출 전 다음 사항을 확인하세요:
+
+- [ ] CONTEXT 정보만 사용했는가?
+- [ ] 전체 코드 스니펫이 포함되었는가?
+- [ ] 출처가 올바르게 인용되었는가?
+- [ ] 중복 출처가 제거되었는가?
+- [ ] 한국어로 작성되었는가?
+- [ ] 단계별 논리적 설명이 포함되었는가?
+
+---
+
+질문에 대한 답변과 출처:
+"""
 
     def execute(self, state: State) -> State:
-        question = state["question"]
-        documents = state["documents"]
-        answer = self.rag_chain.invoke({"context": documents, "question": question})
-        return State(generation=answer)
+        question = state.get("question")
+        documents = state.get("documents")
+        response = self.llm.invoke(
+            self.system_prompt.format(
+                context=documents,
+                question=question,
+            )
+        )
+        return {
+            "messages": [response],
+            "question": "",
+            "documents": [],
+        }
 
 
 class FilteringDocumentsNode(BaseNode):
