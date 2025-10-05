@@ -1,23 +1,28 @@
-import streamlit as st
 from langchain.retrievers import ContextualCompressionRetriever
-from langchain_community.document_compressors import JinaRerank
-from langchain_openai import OpenAIEmbeddings
+from langchain_cohere import CohereRerank
 from langchain_community.vectorstores.faiss import FAISS
+from langchain_openai import OpenAIEmbeddings
 
 
-def init_retriever(db_index="LANGCHAIN_DB_INDEX", fetch_k=30, top_n=8):
-    # Embeddings 설정
+def init_retriever(fetch_k=30, top_n=8):
+    # 임베딩 모델 초기화
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-    # 저장된 DB 로드
-    langgraph_db = FAISS.load_local(
-        db_index, embeddings, allow_dangerous_deserialization=True
-    )
-    # retriever 생성
-    code_retriever = langgraph_db.as_retriever(search_kwargs={"k": fetch_k})
 
-    # JinaRerank 설정
-    compressor = JinaRerank(model="jina-reranker-v2-base-multilingual", top_n=top_n)
-    compression_retriever = ContextualCompressionRetriever(
-        base_compressor=compressor, base_retriever=code_retriever
+    # 벡터 스토어 불러오기
+    vector_store = FAISS.load_local(
+        "../faiss_index",
+        embeddings,
+        allow_dangerous_deserialization=True,
     )
+
+    # Retriever 설정
+    retriever = vector_store.as_retriever(search_kwargs={"k": fetch_k})
+
+    # CohereRerank 설정
+    compressor = CohereRerank(model="rerank-v3.5", top_n=20)
+    compression_retriever = ContextualCompressionRetriever(
+        base_compressor=compressor,
+        base_retriever=retriever,
+    )
+
     return compression_retriever
