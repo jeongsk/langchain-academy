@@ -183,6 +183,7 @@
   "active": "051fd250ee4e5b58",
   "lastOpenFiles": [
     "projects/10-langgraph-qa-rag-agent/streamlit/states.py",
+    "projects/10-langgraph-qa-rag-agent/streamlit/state.py",
     "projects/10-langgraph-qa-rag-agent/streamlit/tools.py",
     "projects/10-langgraph-qa-rag-agent/streamlit/nodes.py",
     "projects/10-langgraph-qa-rag-agent/streamlit/retrievers copy.py",
@@ -192,7 +193,6 @@
     "projects/10-langgraph-qa-rag-agent/studio/langgraph.json",
     "projects/10-langgraph-qa-rag-agent/studio",
     "projects/10-langgraph-qa-rag-agent/streamlit/prompts/code-rag-prompt.yaml",
-    "projects/10-langgraph-qa-rag-agent/streamlit/utils.py",
     "langgraph/security.md",
     "langgraph/libs/cli/js-examples/static/studio.png",
     "langgraph/libs/cli/js-examples/README.md",

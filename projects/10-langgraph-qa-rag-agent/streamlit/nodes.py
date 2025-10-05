@@ -4,11 +4,10 @@ from typing import Annotated, Literal
 from chains import (
     create_answer_grade_chain,
     create_groundedness_checker_chain,
-    create_question_rewrite_chain,
-    create_question_router_chain,
     create_retrieval_grader_chain,
 )
 from langchain_core.documents import Document
+from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 from states import State
 from tools import create_web_search_tool
@@ -54,28 +53,48 @@ class RouteQuestionNode(BaseNode):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = "RouteQuestionNode"
-        self.router_chain = create_question_router_chain()
+        self.llm = ChatOpenAI(
+            model="gpt-4.1-mini",
+            temperature=0,
+        ).with_structured_output(RouteQuery)
 
     def execute(self, state: State) -> str:
         question = state["question"]
-        evaluation = self.router_chain.invoke({"question": question})
+        evaluation = self.llm.invoke({"question": question})
 
-        if evaluation.binary_score == "yes":
+        if evaluation.binary_score == 1:
             return "query_expansion"
         else:
             return "general_answer"
+
+
+class RewriteQuery(BaseModel):
+    question: Annotated[
+        str,
+        Field(
+            ...,
+            description="질문 재작성 도구로, 입력된 질문을 CODE SEARCH(github repository)에 최적화된 더 나은 버전으로 변환합니다."
+            "기존 질문의 근본적인 의미적 의도/의미를 추론하세요."
+            "영어로 작성하세요.",
+        ),
+    ]
 
 
 class QueryRewriteNode(BaseNode):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = "QueryRewriteNode"
-        self.rewriter_chain = create_question_rewrite_chain()
+        self.llm = ChatOpenAI(
+            model="gpt-4.1-mini",
+            temperature=0,
+        ).with_structured_output(RewriteQuery)
 
     def execute(self, state: State) -> State:
         question = state["question"]
-        better_question = self.rewriter_chain.invoke({"question": question})
-        return State(question=better_question)
+        better_question = self.llm.invoke({"question": question})
+        return {
+            "question": better_question,
+        }
 
 
 class RetrieveNode(BaseNode):

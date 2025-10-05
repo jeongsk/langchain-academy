@@ -17,6 +17,7 @@ from nodes import (
     WebSearchNode,
 )
 from retrievers import init_retriever
+from states import State
 
 load_dotenv("./.env", override=True)
 
@@ -42,7 +43,7 @@ def create_graph():
     rag_chain = create_rag_chain()
 
     # 그래프 상태 초기화
-    builder = StateGraph(GraphState)
+    builder = StateGraph(State)
 
     # 노드 정의
     builder.add_node("query_expand", QueryRewriteNode())  # 질문 재작성
