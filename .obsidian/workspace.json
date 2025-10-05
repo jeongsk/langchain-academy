@@ -182,6 +182,7 @@
   },
   "active": "051fd250ee4e5b58",
   "lastOpenFiles": [
+    "projects/10-langgraph-qa-rag-agent/studio/README.md",
     "projects/10-langgraph-qa-rag-agent/studio/tools.py",
     "projects/10-langgraph-qa-rag-agent/studio/states.py",
     "projects/10-langgraph-qa-rag-agent/studio/retrievers.py",
@@ -192,7 +193,6 @@
     "projects/10-langgraph-qa-rag-agent/studio/graph.py",
     "projects/10-langgraph-qa-rag-agent/studio",
     "projects/10-langgraph-qa-rag-agent/streamlit/langgraph.json",
-    "projects/10-langgraph-qa-rag-agent/streamlit/states.py",
     "langgraph/security.md",
     "langgraph/libs/cli/js-examples/static/studio.png",
     "langgraph/libs/cli/js-examples/README.md",
