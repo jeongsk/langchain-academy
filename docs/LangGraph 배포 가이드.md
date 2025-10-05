@@ -384,26 +384,26 @@ python server.py
 - **systemd 서비스로 등록** (Linux)
   
   `/etc/systemd/system/langgraph-rag.service`:
-  ```ini
-  [Unit]
-  Description=LangGraph RAG Agent
-  After=network.target
+```ini
+[Unit]
+Description=LangGraph RAG Agent
+After=network.target
 
-  [Service]
-  User=ubuntu
-  WorkingDirectory=/home/ubuntu/langgraph-rag-agent
-  Environment="PATH=/home/ubuntu/.venv/bin"
-  ExecStart=/home/ubuntu/.venv/bin/gunicorn server:app -w 4 -k uvicorn.workers.UvicornWorker
-  Restart=always
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/langgraph-rag-agent
+Environment="PATH=/home/ubuntu/.venv/bin"
+ExecStart=/home/ubuntu/.venv/bin/gunicorn server:app -w 4 -k uvicorn.workers.UvicornWorker
+Restart=always
 
-  [Install]
-  WantedBy=multi-user.target
-  ```
+[Install]
+WantedBy=multi-user.target
+```
 
-  ```bash
-  sudo systemctl enable langgraph-rag
-  sudo systemctl start langgraph-rag
-  ```
+```bash
+sudo systemctl enable langgraph-rag
+sudo systemctl start langgraph-rag
+```
 
 ---
 
@@ -614,13 +614,3 @@ start_http_server(9090)
 - [LangSmith 문서](https://docs.smith.langchain.com/)
 - [Docker 공식 문서](https://docs.docker.com/)
 - [FastAPI 문서](https://fastapi.tiangolo.com/)
-
----
-
-## 도움이 필요하신가요?
-
-- GitHub Issues: 문제 보고
-- Discord: LangChain 커뮤니티
-- 이메일: support@example.com
-
-Happy Deploying! 🚀

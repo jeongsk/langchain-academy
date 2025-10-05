@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "a1988f5c13131c07",
+        "id": "732edea00f828db7",
         "type": "tabs",
         "children": [
           {
-            "id": "051fd250ee4e5b58",
+            "id": "8c7cbda1bde7a415",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/LangGraph 배포 가이드.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "LangGraph 배포 가이드"
+              "title": "새 탭"
             }
           }
         ]
@@ -180,7 +176,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "051fd250ee4e5b58",
+  "active": "8c7cbda1bde7a415",
   "lastOpenFiles": [
     "docs/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/LangGraph 배포 가이드.md",
