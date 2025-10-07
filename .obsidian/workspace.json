@@ -11,10 +11,14 @@
             "id": "c1ff7a9c20e95d6b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/langgraph/reference/prebuilt/Agents.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "Agents"
             }
           }
         ]
@@ -84,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 369.5
+    "width": 285.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -184,11 +188,16 @@
       "command-palette:명령어 팔레트 열기": false,
       "bases:새 베이스 생성하기": false,
       "obsidian-git:Open Git source control": false,
-      "notebook-navigator:Notebook Navigator": false
+      "notebook-navigator:Notebook Navigator": false,
+      "digitalgarden:Digital Garden Publication Center": false
     }
   },
-  "active": "c1ff7a9c20e95d6b",
+  "active": "b70f29c88e4c9cfe",
   "lastOpenFiles": [
+    "docs/langgraph/reference/prebuilt/agents.md",
+    "docs/langgraph/reference/prebuilt/Agents.md",
+    "docs/langgraph/reference/prebuilt",
+    "docs/langgraph/reference",
     "docs/langgraph/agents/agents.md",
     "docs/langgraph/concepts/low_level.md",
     "docs/langgraph/how-tos/graph-api.md",
@@ -219,12 +228,9 @@
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffe3d108-7e1a-53cb-9eeb-25e2bedb625e",
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffe1f10c-969b-5ba2-87cf-cd95a285da23",
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffc8abc9-2e13-57d0-9bca-a81d2054aae2",
-    "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffc313aa-ed9b-5947-a906-722b99b54d9e",
-    "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffc0a4bc-8c64-57fd-9e54-85a578889574",
     "projects/11-langgraph-qa-rag-agent/studio/README.md",
     "docs-langgraph/node_modules/openai/src/internal/qs/README.md",
     "docs-langgraph/node_modules/openai/src/internal/qs/LICENSE.md",
-    "docs-langgraph/node_modules/openai/src/_vendor/partial-json-parser/README.md",
     "docs-langgraph/site/tutorials/workflows/img/worker.png",
     "docs-langgraph/site/tutorials/workflows/img/routing.png",
     "docs-langgraph/site/tutorials/workflows/img/prompt_chain.png",
