@@ -1,9 +1,6 @@
 ---
-title: Overview
 source: https://langchain-ai.github.io/langgraph/concepts/low_level/
 ---
-
-## Graph API 개념
 
 ## 그래프
 
@@ -43,9 +40,9 @@ graph = graph_builder.compile(...)
 
 ### Schema
 
-그래프 스키마를 지정하는 가장 일반적인 방법은 [`TypedDict`](https://docs.python.org/3/library/typing.html#typing.TypedDict)를 사용하는 것입니다. 기본값을 제공하려면 [`dataclass`](https://docs.python.org/3/library/dataclasses.html)를 사용할 수 있습니다. 재귀적인 데이터 검증이 필요하면 Pydantic의 [BaseModel](../how-tos/graph-api.md#use-pydantic-models-for-graph-state)을 사용할 수도 있지만, 성능은 `TypedDict`나 `dataclass`보다 낮습니다.
+그래프 스키마를 지정하는 가장 일반적인 방법은 [`TypedDict`](https://docs.python.org/3/library/typing.html#typing.TypedDict)를 사용하는 것입니다. 기본값을 제공하려면 [`dataclass`](https://docs.python.org/3/library/dataclasses.html)를 사용할 수 있습니다. 재귀적인 데이터 검증이 필요하면 Pydantic의 [BaseModel](Graph%20API%20사용법.md#use-pydantic-models-for-graph-state)을 사용할 수도 있지만, 성능은 `TypedDict`나 `dataclass`보다 낮습니다.
 
-기본적으로 그래프는 동일한 입력·출력 스키마를 가집니다. 필요에 따라 명시적인 입력·출력 스키마를 별도로 지정할 수도 있습니다. 이는 키가 많고, 일부는 입력 전용, 일부는 출력 전용일 때 유용합니다. 자세한 내용은 [가이드](../how-tos/graph-api.md#define-input-and-output-schemas)를 참고하세요.
+기본적으로 그래프는 동일한 입력·출력 스키마를 가집니다. 필요에 따라 명시적인 입력·출력 스키마를 별도로 지정할 수도 있습니다. 이는 키가 많고, 일부는 입력 전용, 일부는 출력 전용일 때 유용합니다. 자세한 내용은 [가이드](Graph%20API%20사용법.md#define-input-and-output-schemas)를 참고하세요.
 
 #### Multiple schemas
 
@@ -54,7 +51,7 @@ graph = graph_builder.compile(...)
 - 내부 노드는 그래프 입력·출력에 필요하지 않은 정보를 전달할 수 있습니다.
 - 그래프에 별도의 입력·출력 스키마를 사용하고 싶을 때, 출력은 예를 들어 단일 관련 키만 포함하도록 할 수 있습니다.
 
-노드가 내부적으로만 사용하는 `PrivateState`와 같은 프라이빗 스키마를 정의해 비공개 채널에 쓰는 것도 가능합니다. 이러한 경우, 전체 스키마는 `InternalState`이며, `input` 및 `output` 스키마는 InternalState의 부분집합으로 제한됩니다. 자세한 내용은 [가이드](../how-tos/graph-api.md#define-input-and-output-schemas)를 확인하세요.
+노드가 내부적으로만 사용하는 `PrivateState`와 같은 프라이빗 스키마를 정의해 비공개 채널에 쓰는 것도 가능합니다. 이러한 경우, 전체 스키마는 `InternalState`이며, `input` 및 `output` 스키마는 InternalState의 부분집합으로 제한됩니다. 자세한 내용은 [가이드](Graph%20API%20사용법.md#define-input-and-output-schemas)를 확인하세요.
 
 예시를 살펴보겠습니다:
 
@@ -399,7 +396,7 @@ def my_node(state: State) -> Command[Literal["my_other_node"]]:
 
 **주의**: `Command`를 반환하는 함수는 반환 타입에 라우팅될 노드 이름 리스트를 명시해야 합니다(`Command[Literal["my_other_node"]]`). 이는 그래프 렌더링과 타입 검증에 필요합니다.
 
-`Command` 사용법에 대한 전체적인 예시는 이 [사용 방법 가이드](../how-tos/graph-api.md#combine-control-flow-and-state-updates-with-command)를 참고하세요.
+`Command` 사용법에 대한 전체적인 예시는 이 [사용 방법 가이드](Graph%20API%20사용법.md#combine-control-flow-and-state-updates-with-command)를 참고하세요.
 
 ### 언제 Command를 사용하고 Conditional Edges를 사용하지 않을까?
 
@@ -423,11 +420,11 @@ def my_node(state: State) -> Command[Literal["other_subgraph"]]:
 
 이는 특히 [다중 에이전트 핸드오프](multi_agent.md#handoffs)를 구현할 때 유용합니다.
 
-자세한 내용은 [이 가이드](../how-tos/graph-api.md#navigate-to-a-node-in-a-parent-graph)를 참조하세요.
+자세한 내용은 [이 가이드](Graph%20API%20사용법.md#navigate-to-a-node-in-a-parent-graph)를 참조하세요.
 
 ## 도구 내부에서 사용하기
 
-툴 내부에서 그래프 상태를 업데이트하는 경우가 많습니다. 예를 들어, 고객 지원 애플리케이션에서 초기 단계에 고객 정보를 조회하고 싶을 때 툴을 호출해 상태를 업데이트할 수 있습니다. 자세한 내용은 해당 [가이드](../how-tos/graph-api.md#use-inside-tools)를 참고하세요.
+툴 내부에서 그래프 상태를 업데이트하는 경우가 많습니다. 예를 들어, 고객 지원 애플리케이션에서 초기 단계에 고객 정보를 조회하고 싶을 때 툴을 호출해 상태를 업데이트할 수 있습니다. 자세한 내용은 해당 [가이드](Graph%20API%20사용법.md#use-inside-tools)를 참고하세요.
 
 ## Human‑in‑the‑loop
 
@@ -471,7 +468,7 @@ def node_a(state: State, runtime: Runtime[ContextSchema]):
     ...
 ```
 
-자세한 내용은 [구성 가이드](../how-tos/graph-api.md#런타임%20구성%20추가)를 참고하세요.
+자세한 내용은 [구성 가이드](Graph%20API%20사용법.md#런타임%20구성%20추가)를 참고하세요.
 
 ## Recursion Limit
 
@@ -481,8 +478,8 @@ def node_a(state: State, runtime: Runtime[ContextSchema]):
 graph.invoke(inputs, config={"recursion_limit": 5}, context={"llm": "anthropic"})
 ```
 
-자세한 내용은 [재귀 제한 가이드](../how-tos/graph-api.md#루프%20생성%20및%20제어)를 확인하세요.
+자세한 내용은 [재귀 제한 가이드](Graph%20API%20사용법.md#루프%20생성%20및%20제어)를 확인하세요.
 
 ## Visualization
 
-복잡한 그래프는 시각화가 도움이 됩니다. LangGraph는 여러 내장 시각화 방법을 제공하니, [시각화 가이드](../how-tos/graph-api.md#그래프%20시각화)를 참고해 보세요.
+복잡한 그래프는 시각화가 도움이 됩니다. LangGraph는 여러 내장 시각화 방법을 제공하니, [시각화 가이드](Graph%20API%20사용법.md#그래프%20시각화)를 참고해 보세요.
