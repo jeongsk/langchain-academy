@@ -1,28 +1,28 @@
 ---
-title: "\"Agents\""
+title: "에이전트"
 source: "https://langchain-ai.github.io/langgraph/reference/agents/"
 ---
-## Agents
+## 에이전트
 
-Classes:
+클래스:
 
-| Name                                                                                                                         | Description             |
+| 이름                                                                                                                         | 설명             |
 | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| [`AgentState`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.AgentState) | The state of the agent. |
+| [`AgentState`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.AgentState) | 에이전트의 상태입니다. |
 
-Functions:
+함수:
 
-| Name                                                                                                                                          | Description                                                                          |
+| 이름                                                                                                                                          | 설명                                                                          |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [`create_react_agent`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.create_react_agent ) | Creates an agent graph that calls tools in a loop until a stopping condition is met. |
+| [`create_react_agent`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.create_react_agent ) | 중지 조건이 충족될 때까지 루프에서 도구를 호출하는 에이전트 그래프를 생성합니다. |
 
 ## AgentState
 
-Bases: `TypedDict`
+상속: `TypedDict`
 
-The state of the agent.
+에이전트의 상태입니다.
 
-## create\_react\_agent
+## create_react_agent
 
 ```python
 create_react_agent(
@@ -74,83 +74,83 @@ create_react_agent(
 ) -> CompiledStateGraph
 ```
 
-Creates an agent graph that calls tools in a loop until a stopping condition is met.
+중지 조건이 충족될 때까지 루프에서 도구를 호출하는 에이전트 그래프를 생성합니다.
 
-For more details on using `create_react_agent`, visit [Agents](https://langchain-ai.github.io/langgraph/agents/overview/) documentation.
+`create_react_agent` 사용에 대한 자세한 내용은 [에이전트](https://langchain-ai.github.io/langgraph/agents/overview/) 문서를 참조하세요.
 
-Parameters:
+매개변수:
 
-| Name | Type | Description | Default |
+| 이름 | 타입 | 설명 | 기본값 |
 | --- | --- | --- | --- |
-| `model` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[str](https://docs.python.org/3/library/stdtypes.html#str), LanguageModelLike, [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")[[StateSchema, [Runtime](https://langchain-ai.github.io/langgraph/reference/runtime/#langgraph.runtime.Runtime "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">Runtime</span> <span class=\"doc doc-labels\"> <small class=\"doc doc-label doc-label-dataclass\"><code>dataclass</code></small> </span> (<code>langgraph.runtime.Runtime</code>)")[ContextT]], [BaseChatModel](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html#langchain_core.language_models.chat_models.BaseChatModel "<code>langchain_core.language_models.BaseChatModel</code>")], [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")[[StateSchema, [Runtime](https://langchain-ai.github.io/langgraph/reference/runtime/#langgraph.runtime.Runtime "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">Runtime</span> <span class=\"doc doc-labels\"> <small class=\"doc doc-label doc-label-dataclass\"><code>dataclass</code></small> </span> (<code>langgraph.runtime.Runtime</code>)")[ContextT]], [Awaitable](https://docs.python.org/3/library/typing.html#typing.Awaitable "<code>typing.Awaitable</code>")[[BaseChatModel](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html#langchain_core.language_models.chat_models.BaseChatModel "<code>langchain_core.language_models.BaseChatModel</code>")]], [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")[[StateSchema, [Runtime](https://langchain-ai.github.io/langgraph/reference/runtime/#langgraph.runtime.Runtime "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">Runtime</span> <span class=\"doc doc-labels\"> <small class=\"doc doc-label doc-label-dataclass\"><code>dataclass</code></small> </span> (<code>langgraph.runtime.Runtime</code>)")[ContextT]], [Runnable](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.Runnable.html#langchain_core.runnables.base.Runnable "<code>langchain_core.runnables.Runnable</code>")[LanguageModelInput, [BaseMessage](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.base.BaseMessage.html#langchain_core.messages.base.BaseMessage "<code>langchain_core.messages.BaseMessage</code>")]], [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")[[StateSchema, [Runtime](https://langchain-ai.github.io/langgraph/reference/runtime/#langgraph.runtime.Runtime "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">Runtime</span> <span class=\"doc doc-labels\"> <small class=\"doc doc-label doc-label-dataclass\"><code>dataclass</code></small> </span> (<code>langgraph.runtime.Runtime</code>)")[ContextT]], [Awaitable](https://docs.python.org/3/library/typing.html#typing.Awaitable "<code>typing.Awaitable</code>")[[Runnable](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.Runnable.html#langchain_core.runnables.base.Runnable "<code>langchain_core.runnables.Runnable</code>")[LanguageModelInput, [BaseMessage](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.base.BaseMessage.html#langchain_core.messages.base.BaseMessage "<code>langchain_core.messages.BaseMessage</code>")]]]]` | The language model for the agent. Supports static and dynamic model selection.  - **Static model**: A chat model instance (e.g., `ChatOpenAI()`) or string identifier (e.g., `"openai:gpt-4"`) - **Dynamic model**: A callable with signature `(state, runtime) -> BaseChatModel` that returns different models based on runtime context If the model has tools bound via `.bind_tools()` or other configurations, the return type should be a Runnable\[LanguageModelInput, BaseMessage\] Coroutines are also supported, allowing for asynchronous model selection.  Dynamic functions receive graph state and runtime, enabling context-dependent model selection. Must return a `BaseChatModel` instance. For tool calling, bind tools using `.bind_tools()`. Bound tools must be a subset of the `tools` parameter.  Dynamic model example:  ```python from dataclasses import dataclass  @dataclass class ModelContext:     model_name: str = "gpt-3.5-turbo"  # Instantiate models globally gpt4_model = ChatOpenAI(model="gpt-4") gpt35_model = ChatOpenAI(model="gpt-3.5-turbo")  def select_model(state: AgentState, runtime: Runtime[ModelContext]) -> ChatOpenAI:     model_name = runtime.context.model_name     model = gpt4_model if model_name == "gpt-4" else gpt35_model     return model.bind_tools(tools) ```  Dynamic Model Requirements  Ensure returned models have appropriate tools bound via`.bind_tools()` and support required functionality. Bound tools must be a subset of those specified in the `tools` parameter. | *required* |
-| `tools` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "<code>typing.Sequence</code>")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool "<code>langchain_core.tools.BaseTool</code>"), [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>"), [dict](https://docs.python.org/3/library/stdtypes.html#dict)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any "<code>typing.Any</code>")]]], [ToolNode](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">ToolNode</span> (<code>langgraph.prebuilt.tool_node.ToolNode</code>)")]` | A list of tools or a ToolNode instance. If an empty list is provided, the agent will consist of a single LLM node without tool calling. | *required* |
-| `prompt` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[Prompt]` | An optional prompt for the LLM. Can take a few different forms:  - str: This is converted to a SystemMessage and added to the beginning of the list of messages in state\["messages"\]. - SystemMessage: this is added to the beginning of the list of messages in state\["messages"\]. - Callable: This function should take in full graph state and the output is then passed to the language model. - Runnable: This runnable should take in full graph state and the output is then passed to the language model. | `None` |
-| `response_format` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[StructuredResponseSchema, [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[str](https://docs.python.org/3/library/stdtypes.html#str), StructuredResponseSchema]]]` | An optional schema for the final agent output.  If provided, output will be formatted to match the given schema and returned in the 'structured\_response' state key. If not provided, `structured_response` will not be present in the output state. Can be passed in as:  ```js - an OpenAI function/tool schema, - a JSON Schema, - a TypedDict class, - or a Pydantic class. - a tuple (prompt, schema), where schema is one of the above.     The prompt will be used together with the model that is being used to generate the structured response. ```  Important  `response_format` requires the model to support `.with_structured_output`  Note  The graph will make a separate call to the LLM to generate the structured response after the agent loop is finished. This is not the only strategy to get structured responses, see more options in [this guide](https://langchain-ai.github.io/langgraph/how-tos/react-agent-structured-output/). | `None` |
-| `pre_model_hook` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[RunnableLike]` | An optional node to add before the `agent` node (i.e., the node that calls the LLM). Useful for managing long message histories (e.g., message trimming, summarization, etc.). Pre-model hook must be a callable or a runnable that takes in current graph state and returns a state update in the form of  ```python # At least one of \`messages\` or \`llm_input_messages\` MUST be provided {     # If provided, will UPDATE the \`messages\` in the state     "messages": [RemoveMessage(id=REMOVE_ALL_MESSAGES), ...],     # If provided, will be used as the input to the LLM,     # and will NOT UPDATE \`messages\` in the state     "llm_input_messages": [...],     # Any other state keys that need to be propagated     ... } ```  Important  At least one of `messages` or `llm_input_messages` MUST be provided and will be used as an input to the `agent` node. The rest of the keys will be added to the graph state.  Warning  If you are returning `messages` in the pre-model hook, you should OVERWRITE the `messages` key by doing the following: | `None` |
-| `post_model_hook` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[RunnableLike]` | An optional node to add after the `agent` node (i.e., the node that calls the LLM). Useful for implementing human-in-the-loop, guardrails, validation, or other post-processing. Post-model hook must be a callable or a runnable that takes in current graph state and returns a state update.  Note  Only available with `version="v2"`. | `None` |
-| `state_schema` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[StateSchemaType]` | An optional state schema that defines graph state. Must have `messages` and `remaining_steps` keys. Defaults to `AgentState` that defines those two keys.  Note  `remaining_steps` is used to limit the number of steps the react agent can take. Calculated roughly as `recursion_limit` - `total_steps_taken`. If `remaining_steps` is less than 2 and tool calls are present in the response, the react agent will return a final AI Message with the content "Sorry, need more steps to process this request.". No `GraphRecusionError` will be raised in this case. | `None` |
-| `context_schema` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[Type](https://docs.python.org/3/library/typing.html#typing.Type "<code>typing.Type</code>")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "<code>typing.Any</code>")]]` | An optional schema for runtime context. | `None` |
-| `checkpointer` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[Checkpointer]` | An optional checkpoint saver object. This is used for persisting the state of the graph (e.g., as chat memory) for a single thread (e.g., a single conversation). | `None` |
-| `store` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[BaseStore](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.BaseStore "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">BaseStore</span> (<code>langgraph.store.base.BaseStore</code>)")]` | An optional store object. This is used for persisting data across multiple threads (e.g., multiple conversations / users). | `None` |
-| `interrupt_before` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | An optional list of node names to interrupt before. Should be one of the following: "agent", "tools". This is useful if you want to add a user confirmation or other interrupt before taking an action. | `None` |
-| `interrupt_after` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | An optional list of node names to interrupt after. Should be one of the following: "agent", "tools". This is useful if you want to return directly or run additional processing on an output. | `None` |
-| `debug` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | A flag indicating whether to enable debug mode. | `False` |
-| `version` | `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "<code>typing.Literal</code>")['v1', 'v2']` | Determines the version of the graph to create. Can be one of:  - `"v1"`: The tool node processes a single message. All tool calls in the message are executed in parallel within the tool node. - `"v2"`: The tool node processes a tool call. Tool calls are distributed across multiple instances of the tool node using the [Send](https://langchain-ai.github.io/langgraph/concepts/low_level/#send) API. | `'v2'` |
-| `name` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[str](https://docs.python.org/3/library/stdtypes.html#str)]` | An optional name for the CompiledStateGraph. This name will be automatically used when adding ReAct agent graph to another graph as a subgraph node - particularly useful for building multi-agent systems. | `None` |
+| `model` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[str](https://docs.python.org/3/library/stdtypes.html#str), LanguageModelLike, ...]` | 모델의 ID, 언어 모델과 유사한 객체, 또는 (상태, 런타임) -> 모델을 반환하는 호출 가능 객체입니다. | *필수* |
+| `tools` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "typing.Sequence")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool "langchain_core.tools.BaseTool"), [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "typing.Callable"), [dict](https://docs.python.org/3/library/stdtypes.html#dict)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any "typing.Any")]]], [ToolNode](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode "langgraph.prebuilt.tool_node.ToolNode")]` | 도구 목록 또는 ToolNode 인스턴스입니다. 빈 목록이 제공되면 에이전트는 도구 호출 없이 단일 LLM 노드로 구성됩니다. | *필수* |
+| `prompt` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[Prompt]` | LLM을 위한 선택적 프롬프트입니다. 몇 가지 다른 형태를 가질 수 있습니다: - str: SystemMessage로 변환되어 state["messages"] 목록의 시작 부분에 추가됩니다. - SystemMessage: state["messages"] 목록의 시작 부분에 추가됩니다. - Callable: 이 함수는 전체 그래프 상태를 입력으로 받고 그 출력이 언어 모델에 전달됩니다. - Runnable: 이 실행 가능 객체는 전체 그래프 상태를 입력으로 받고 그 출력이 언어 모델에 전달됩니다. | `None` |
+| `response_format` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[StructuredResponseSchema, [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[str](https://docs.python.org/3/library/stdtypes.html#str), StructuredResponseSchema]]]` | 최종 에이전트 출력을 위한 선택적 스키마입니다. 제공되면 출력은 주어진 스키마와 일치하도록 형식이 지정되고 'structured_response' 상태 키로 반환됩니다. 제공되지 않으면 `structured_response`는 출력 상태에 존재하지 않습니다. 다음과 같이 전달할 수 있습니다: ```js - OpenAI 함수/도구 스키마, - JSON 스키마, - TypedDict 클래스, - 또는 Pydantic 클래스. - (프롬프트, 스키마) 튜플, 여기서 스키마는 위 중 하나입니다. 프롬프트는 구조화된 응답을 생성하는 데 사용되는 모델과 함께 사용됩니다. ``` **중요** `response_format`은 모델이 `.with_structured_output`을 지원해야 합니다. **참고** 그래프는 에이전트 루프가 끝난 후 구조화된 응답을 생성하기 위해 LLM을 별도로 호출합니다. 이것이 구조화된 응답을 얻는 유일한 전략은 아니며, [이 가이드](https://langchain-ai.github.io/langgraph/how-tos/react-agent-structured-output/)에서 더 많은 옵션을 볼 수 있습니다. | `None` |
+| `pre_model_hook` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[RunnableLike]` | `agent` 노드(즉, LLM을 호출하는 노드) 앞에 추가할 선택적 노드입니다. 긴 메시지 기록을 관리하는 데 유용합니다(예: 메시지 트리밍, 요약 등). 사전 모델 훅은 현재 그래프 상태를 입력으로 받고 다음과 같은 형태의 상태 업데이트를 반환하는 호출 가능 객체 또는 실행 가능 객체여야 합니다: ```python # `messages` 또는 `llm_input_messages` 중 하나 이상을 제공해야 합니다 { # 제공되면 상태의 `messages`를 업데이트합니다 "messages": [RemoveMessage(id=REMOVE_ALL_MESSAGES), ...], # 제공되면 LLM의 입력으로 사용되며, # 상태의 `messages`를 업데이트하지 않습니다 "llm_input_messages": [...], # 전파해야 할 다른 모든 상태 키 ... } ``` **중요** `messages` 또는 `llm_input_messages` 중 하나 이상을 제공해야 하며 `agent` 노드의 입력으로 사용됩니다. 나머지 키는 그래프 상태에 추가됩니다. **경고** 사전 모델 훅에서 `messages`를 반환하는 경우, 다음을 수행하여 `messages` 키를 덮어써야 합니다: | `None` |
+| `post_model_hook` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[RunnableLike]` | `agent` 노드(즉, LLM을 호출하는 노드) 뒤에 추가할 선택적 노드입니다. 인간 참여(human-in-the-loop), 가드레일, 유효성 검사 또는 기타 후처리를 구현하는 데 유용합니다. 사후 모델 훅은 현재 그래프 상태를 입력으로 받고 상태 업데이트를 반환하는 호출 가능 객체 또는 실행 가능 객체여야 합니다. **참고** `version="v2"`에서만 사용할 수 있습니다. | `None` |
+| `state_schema` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[StateSchemaType]` | 그래프 상태를 정의하는 선택적 상태 스키마입니다. `messages`와 `remaining_steps` 키가 있어야 합니다. 기본값은 이 두 키를 정의하는 `AgentState`입니다. **참고** `remaining_steps`는 react 에이전트가 취할 수 있는 단계 수를 제한하는 데 사용됩니다. 대략 `recursion_limit` - `total_steps_taken`으로 계산됩니다. `remaining_steps`가 2보다 작고 응답에 도구 호출이 있는 경우, react 에이전트는 "죄송합니다, 이 요청을 처리하려면 더 많은 단계가 필요합니다."라는 내용의 최종 AI 메시지를 반환합니다. 이 경우 `GraphRecusionError`가 발생하지 않습니다. | `None` |
+| `context_schema` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[Type](https://docs.python.org/3/library/typing.html#typing.Type "typing.Type")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "typing.Any")]]` | 런타임 컨텍스트를 위한 선택적 스키마입니다. | `None` |
+| `checkpointer` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[Checkpointer]` | 선택적 체크포인트 저장 객체입니다. 단일 스레드(예: 단일 대화)에 대한 그래프 상태(예: 채팅 메모리)를 유지하는 데 사용됩니다. | `None` |
+| `store` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[BaseStore](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.BaseStore "langgraph.store.base.BaseStore")]` | 선택적 저장소 객체입니다. 여러 스레드(예: 여러 대화/사용자)에 걸쳐 데이터를 유지하는 데 사용됩니다. | `None` |
+| `interrupt_before` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | 이전에 중단할 노드 이름의 선택적 목록입니다. "agent", "tools" 중 하나여야 합니다. 조치를 취하기 전에 사용자 확인 또는 다른 중단을 추가하려는 경우 유용합니다. | `None` |
+| `interrupt_after` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | 이후에 중단할 노드 이름의 선택적 목록입니다. "agent", "tools" 중 하나여야 합니다. 직접 반환하거나 출력에 대한 추가 처리를 실행하려는 경우 유용합니다. | `None` |
+| `debug` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | 디버그 모드를 활성화할지 여부를 나타내는 플래그입니다. | `False` |
+| `version` | `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "typing.Literal")['v1', 'v2']` | 생성할 그래프의 버전을 결정합니다. 다음 중 하나일 수 있습니다: - `"v1"`: 도구 노드가 단일 메시지를 처리합니다. 메시지의 모든 도구 호출은 도구 노드 내에서 병렬로 실행됩니다. - `"v2"`: 도구 노드가 도구 호출을 처리합니다. 도구 호출은 [Send](https://langchain-ai.github.io/langgraph/concepts/low_level/#send) API를 사용하여 도구 노드의 여러 인스턴스에 분산됩니다. | `'v2'` |
+| `name` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[str](https://docs.python.org/3/library/stdtypes.html#str)]` | CompiledStateGraph의 선택적 이름입니다. 이 이름은 ReAct 에이전트 그래프를 다른 그래프에 하위 그래프 노드로 추가할 때 자동으로 사용되며, 특히 다중 에이전트 시스템을 구축하는 데 유용합니다. | `None` |
 
-`config_schema` Deprecated
+`config_schema` 사용 중단됨
 
-The `config_schema` parameter is deprecated in v0.6.0 and support will be removed in v2.0.0. Please use `context_schema` instead to specify the schema for run-scoped context.
+`config_schema` 매개변수는 v0.6.0에서 더 이상 사용되지 않으며 v2.0.0에서 지원이 제거될 예정입니다. 실행 범위 컨텍스트의 스키마를 지정하려면 대신 `context_schema`를 사용하세요.
 
-Returns:
+반환값:
 
-| Type | Description |
+| 타입 | 설명 |
 | --- | --- |
-| `[CompiledStateGraph](https://langchain-ai.github.io/langgraph/reference/graphs/#langgraph.graph.state.CompiledStateGraph "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">CompiledStateGraph</span> (<code>langgraph.graph.state.CompiledStateGraph</code>)")` | A compiled LangChain runnable that can be used for chat interactions. |
+| `[CompiledStateGraph](https://langchain-ai.github.io/langgraph/reference/graphs/#langgraph.graph.state.CompiledStateGraph "langgraph.graph.state.CompiledStateGraph")` | 채팅 상호 작용에 사용할 수 있는 컴파일된 LangChain 실행 가능 객체입니다. |
 
-The "agent" node calls the language model with the messages list (after applying the prompt). If the resulting AIMessage contains `tool_calls`, the graph will then call the ["tools"](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">ToolNode</span>"). The "tools" node executes the tools (1 tool per `tool_call`) and adds the responses to the messages list as `ToolMessage` objects. The agent node then calls the language model again. The process repeats until no more `tool_calls` are present in the response. The agent then returns the full list of messages as a dictionary containing the key "messages".
+"agent" 노드는 (프롬프트를 적용한 후) 메시지 목록으로 언어 모델을 호출합니다. 결과 AIMessage에 `tool_calls`가 포함되어 있으면 그래프는 ["tools"](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode "langgraph.prebuilt.tool_node.ToolNode")를 호출합니다. "tools" 노드는 도구(`tool_call`당 1개)를 실행하고 응답을 `ToolMessage` 객체로 메시지 목록에 추가합니다. 그런 다음 에이전트 노드는 언어 모델을 다시 호출합니다. 이 과정은 응답에 더 이상 `tool_calls`가 없을 때까지 반복됩니다. 그러면 에이전트는 "messages" 키를 포함하는 사전으로 전체 메시지 목록을 반환합니다.
 
-Example
+예시
 ```python
 from langgraph.prebuilt import create_react_agent
 
 def check_weather(location: str) -> str:
-    '''Return the weather forecast for the specified location.'''
-    return f"It's always sunny in {location}"
+    '''지정된 위치의 일기 예보를 반환합니다.'''
+    return f"{location}은 항상 맑습니다"
 
 graph = create_react_agent(
     "anthropic:claude-3-7-sonnet-latest",
     tools=[check_weather],
-    prompt="You are a helpful assistant",
+    prompt="당신은 도움이 되는 어시스턴트입니다",
 )
-inputs = {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
+inputs = {"messages": [{"role": "user", "content": "sf의 날씨는 어떤가요"}]}
 for chunk in graph.stream(inputs, stream_mode="updates"):
     print(chunk)
 ```
 
 ## ToolNode
 
-Bases: `RunnableCallable`
+상속: `RunnableCallable`
 
-A node that runs the tools called in the last AIMessage.
+마지막 AIMessage에서 호출된 도구를 실행하는 노드입니다.
 
-It can be used either in StateGraph with a "messages" state key (or a custom key passed via ToolNode's 'messages\_key'). If multiple tool calls are requested, they will be run in parallel. The output will be a list of ToolMessages, one for each tool call.
+"messages" 상태 키(또는 ToolNode의 'messages_key'를 통해 전달된 사용자 정의 키)와 함께 StateGraph에서 사용할 수 있습니다. 여러 도구 호출이 요청되면 병렬로 실행됩니다. 출력은 각 도구 호출에 대한 ToolMessage 목록이 됩니다.
 
-Tool calls can also be passed directly as a list of `ToolCall` dicts.
+도구 호출은 `ToolCall` 사전 목록으로 직접 전달할 수도 있습니다.
 
-Parameters:
+매개변수:
 
-| Name | Type | Description | Default |
+| 이름 | 타입 | 설명 | 기본값 |
 | --- | --- | --- | --- |
-| `tools` | `[Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "<code>typing.Sequence</code>")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool "<code>langchain_core.tools.BaseTool</code>"), [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")]]` | A sequence of tools that can be invoked by this node. Tools can be BaseTool instances or plain functions that will be converted to tools. | *required* |
-| `name` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | The name identifier for this node in the graph. Used for debugging and visualization. Defaults to "tools". | `'tools'` |
-| `tags` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | Optional metadata tags to associate with the node for filtering and organization. Defaults to None. | `None` |
-| `handle_tool_errors` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[bool](https://docs.python.org/3/library/functions.html#bool), [str](https://docs.python.org/3/library/stdtypes.html#str), [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")[..., [str](https://docs.python.org/3/library/stdtypes.html#str)], [tuple](https://docs.python.org/3/library/stdtypes.html#tuple)[[type](https://docs.python.org/3/library/functions.html#type)[[Exception](https://docs.python.org/3/library/exceptions.html#Exception)], ...]]` | Configuration for error handling during tool execution. Defaults to True. Supports multiple strategies:  - True: Catch all errors and return a ToolMessage with the default error template containing the exception details. - str: Catch all errors and return a ToolMessage with this custom error message string. - tuple\[type\[Exception\],...\]: Only catch exceptions of the specified types and return default error messages for them. - Callable\[..., str\]: Catch exceptions matching the callable's signature and return the string result of calling it with the exception. - False: Disable error handling entirely, allowing exceptions to propagate. | `True` |
-| `messages_key` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | The key in the state dictionary that contains the message list. This same key will be used for the output ToolMessages. Defaults to "messages". | `'messages'` |
+| `tools` | `[Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "typing.Sequence")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool "langchain_core.tools.BaseTool"), [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "typing.Callable")]]` | 이 노드에서 호출할 수 있는 도구의 시퀀스입니다. 도구는 BaseTool 인스턴스이거나 도구로 변환될 일반 함수일 수 있습니다. | *필수* |
+| `name` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | 그래프에서 이 노드의 이름 식별자입니다. 디버깅 및 시각화에 사용됩니다. 기본값은 "tools"입니다. | `'tools'` |
+| `tags` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | 필터링 및 구성을 위해 노드와 연결할 선택적 메타데이터 태그입니다. 기본값은 None입니다. | `None` |
+| `handle_tool_errors` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[bool](https://docs.python.org/3/library/functions.html#bool), [str](https://docs.python.org/3/library/stdtypes.html#str), ...]` | 도구 실행 중 오류 처리를 위한 구성입니다. 기본값은 True입니다. 여러 전략을 지원합니다: - True: 모든 오류를 포착하고 예외 세부 정보가 포함된 기본 오류 템플릿으로 ToolMessage를 반환합니다. - str: 모든 오류를 포착하고 이 사용자 정의 오류 메시지 문자열로 ToolMessage를 반환합니다. - tuple[type[Exception],...]: 지정된 유형의 예외만 포착하고 이에 대한 기본 오류 메시지를 반환합니다. - Callable[..., str]: 호출 가능 객체의 서명과 일치하는 예외를 포착하고 예외와 함께 호출한 결과 문자열을 반환합니다. - False: 오류 처리를 완전히 비활성화하여 예외가 전파되도록 합니다. | `True` |
+| `messages_key` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | 상태 사전에서 메시지 목록을 포함하는 키입니다. 이 동일한 키가 출력 ToolMessages에 사용됩니다. 기본값은 "messages"입니다. | `'messages'` |
 
-Example
+예시
 
-Basic usage with simple tools:
+간단한 도구를 사용한 기본 사용법:
 
 ```python
 from langgraph.prebuilt import ToolNode
@@ -158,126 +158,125 @@ from langchain_core.tools import tool
 
 @tool
 def calculator(a: int, b: int) -> int:
-    """Add two numbers."""
+    """두 숫자를 더합니다."""
     return a + b
 
 tool_node = ToolNode([calculator])
 ```
 
-Custom error handling:
+사용자 정의 오류 처리:
 
 ```python
 def handle_math_errors(e: ZeroDivisionError) -> str:
-    return "Cannot divide by zero!"
+    return "0으로 나눌 수 없습니다!"
 
 tool_node = ToolNode([calculator], handle_tool_errors=handle_math_errors)
 ```
 
-Direct tool call execution:
+직접 도구 호출 실행:
 
 ```python
 tool_calls = [{"name": "calculator", "args": {"a": 5, "b": 3}, "id": "1", "type": "tool_call"}]
 result = tool_node.invoke(tool_calls)
 ```
-Note
+참고
 
-The ToolNode expects input in one of three formats: 1. A dictionary with a messages key containing a list of messages 2. A list of messages directly 3. A list of tool call dictionaries
+ToolNode는 세 가지 형식 중 하나의 입력을 예상합니다: 1. 메시지 목록을 포함하는 messages 키가 있는 사전 2. 메시지 목록 직접 3. 도구 호출 사전 목록
 
-When using message formats, the last message must be an AIMessage with tool\_calls populated. The node automatically extracts and processes these tool calls concurrently.
+메시지 형식을 사용할 때 마지막 메시지는 tool_calls가 채워진 AIMessage여야 합니다. 노드는 이러한 도구 호출을 자동으로 추출하고 동시에 처리합니다.
 
-For advanced use cases involving state injection or store access, tools can be annotated with InjectedState or InjectedStore to receive graph context automatically.
+상태 주입 또는 저장소 액세스와 관련된 고급 사용 사례의 경우, 도구에 InjectedState 또는 InjectedStore로 주석을 달아 그래프 컨텍스트를 자동으로 받을 수 있습니다.
 
-Methods:
+메서드:
 
-| Name | Description |
+| 이름 | 설명 |
 | --- | --- |
-| `[inject_tool_args](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode.inject_tool_args "<code class=\"doc-symbol doc-symbol-heading doc-symbol-method\"></code>            <span class=\"doc doc-object-name doc-function-name\">inject_tool_args</span> (<code>langgraph.prebuilt.tool_node.ToolNode.inject_tool_args</code>)")` | Inject graph state and store into tool call arguments. |
+| `[inject_tool_args](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode.inject_tool_args "langgraph.prebuilt.tool_node.ToolNode.inject_tool_args")` | 그래프 상태와 저장소를 도구 호출 인수에 주입합니다. |
 
-### inject\_tool\_args
+### inject_tool_args
 
-Inject graph state and store into tool call arguments.
+그래프 상태와 저장소를 도구 호출 인수에 주입합니다.
 
-This method enables tools to access graph context that should not be controlled by the model. Tools can declare dependencies on graph state or persistent storage using InjectedState and InjectedStore annotations. This method automatically identifies these dependencies and injects the appropriate values.
+이 메서드를 사용하면 도구가 모델에 의해 제어되어서는 안 되는 그래프 컨텍스트에 액세스할 수 있습니다. 도구는 InjectedState 및 InjectedStore 주석을 사용하여 그래프 상태 또는 영구 저장소에 대한 종속성을 선언할 수 있습니다. 이 메서드는 이러한 종속성을 자동으로 식별하고 적절한 값을 주입합니다.
 
-The injection process preserves the original tool call structure while adding the necessary context arguments. This allows tools to be both model-callable and context-aware without exposing internal state management to the model.
+주입 프로세스는 필요한 컨텍스트 인수를 추가하면서 원래 도구 호출 구조를 유지합니다. 이를 통해 도구는 내부 상태 관리를 모델에 노출하지 않고도 모델 호출 가능하고 컨텍스트를 인식할 수 있습니다.
 
-Parameters:
+매개변수:
 
-| Name | Type | Description | Default |
+| 이름 | 타입 | 설명 | 기본값 |
 | --- | --- | --- | --- |
-| `tool_call` | `[ToolCall](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall "<code>langchain_core.messages.ToolCall</code>")` | The tool call dictionary to augment with injected arguments. Must contain 'name', 'args', 'id', and 'type' fields. | *required* |
-| `input` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[list](https://docs.python.org/3/library/stdtypes.html#list)[AnyMessage], [dict](https://docs.python.org/3/library/stdtypes.html#dict)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any "<code>typing.Any</code>")], BaseModel]` | The current graph state to inject into tools requiring state access. Can be a message list, state dictionary, or BaseModel instance. | *required* |
-| `store` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[BaseStore](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.BaseStore "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">BaseStore</span> (<code>langgraph.store.base.BaseStore</code>)")]` | The persistent store instance to inject into tools requiring storage. Will be None if no store is configured for the graph. | *required* |
+| `tool_call` | `[ToolCall](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall "langchain_core.messages.ToolCall")` | 주입된 인수로 보강할 도구 호출 사전입니다. 'name', 'args', 'id', 'type' 필드를 포함해야 합니다. | *필수* |
+| `input` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[list](https://docs.python.org/3/library/stdtypes.html#list)[AnyMessage], [dict](https://docs.python.org/3/library/stdtypes.html#dict)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any "typing.Any")], BaseModel]` | 상태 액세스가 필요한 도구에 주입할 현재 그래프 상태입니다. 메시지 목록, 상태 사전 또는 BaseModel 인스턴스일 수 있습니다. | *필수* |
+| `store` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[BaseStore](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.BaseStore "langgraph.store.base.BaseStore")]` | 저장소가 필요한 도구에 주입할 영구 저장소 인스턴스입니다. 그래프에 저장소가 구성되지 않은 경우 None이 됩니다. | *필수* |
 
-Returns:
+반환값:
 
-| Type | Description |
+| 타입 | 설명 |
 | --- | --- |
-| `[ToolCall](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall "<code>langchain_core.messages.ToolCall</code>")` | A new ToolCall dictionary with the same structure as the input but with |
-| `[ToolCall](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall "<code>langchain_core.messages.ToolCall</code>")` | additional arguments injected based on the tool's annotation requirements. |
+| `[ToolCall](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall "langchain_core.messages.ToolCall")` | 입력과 동일한 구조를 갖지만 도구의 주석 요구 사항에 따라 추가 인수가 주입된 새로운 ToolCall 사전입니다. |
 
-Raises:
+발생 오류:
 
-| Type | Description |
+| 타입 | 설명 |
 | --- | --- |
-| `[ValueError](https://docs.python.org/3/library/exceptions.html#ValueError)` | If a tool requires store injection but no store is provided, or if state injection requirements cannot be satisfied. |
+| `[ValueError](https://docs.python.org/3/library/exceptions.html#ValueError)` | 도구가 저장소 주입을 요구하지만 저장소가 제공되지 않았거나 상태 주입 요구 사항을 충족할 수 없는 경우. |
 
-Note
+참고
 
-This method is automatically called during tool execution but can also be used manually when working with the Send API or custom routing logic. The injection is performed on a copy of the tool call to avoid mutating the original.
+이 메서드는 도구 실행 중에 자동으로 호출되지만 Send API 또는 사용자 정의 라우팅 로직으로 작업할 때 수동으로 사용할 수도 있습니다. 주입은 원본을 변경하지 않도록 도구 호출의 복사본에서 수행됩니다.
 
-Tool execution node for LangGraph workflows.
+LangGraph 워크플로우를 위한 도구 실행 노드입니다.
 
-This module provides prebuilt functionality for executing tools in LangGraph.
+이 모듈은 LangGraph에서 도구를 실행하기 위한 사전 빌드된 기능을 제공합니다.
 
-Tools are functions that models can call to interact with external systems, APIs, databases, or perform computations.
+도구는 모델이 외부 시스템, API, 데이터베이스와 상호 작용하거나 계산을 수행하기 위해 호출할 수 있는 함수입니다.
 
-The module implements several key design patterns: - Parallel execution of multiple tool calls for efficiency - Robust error handling with customizable error messages - State injection for tools that need access to graph state - Store injection for tools that need persistent storage - Command-based state updates for advanced control flow
+이 모듈은 몇 가지 주요 디자인 패턴을 구현합니다: - 효율성을 위한 여러 도구 호출의 병렬 실행 - 사용자 정의 가능한 오류 메시지를 사용한 강력한 오류 처리 - 그래프 상태에 액세스해야 하는 도구를 위한 상태 주입 - 영구 저장소가 필요한 도구를 위한 저장소 주입 - 고급 제어 흐름을 위한 명령 기반 상태 업데이트
 
-Key Components
+주요 구성 요소
 
-ToolNode: Main class for executing tools in LangGraph workflows InjectedState: Annotation for injecting graph state into tools InjectedStore: Annotation for injecting persistent store into tools tools\_condition: Utility function for conditional routing based on tool calls
+ToolNode: LangGraph 워크플로우에서 도구를 실행하기 위한 기본 클래스 InjectedState: 그래프 상태를 도구에 주입하기 위한 주석 InjectedStore: 영구 저장소를 도구에 주입하기 위한 주석 tools_condition: 도구 호출에 기반한 조건부 라우팅을 위한 유틸리티 함수
 
-Typical Usage
+일반적인 사용법
 ```python
 from langchain_core.tools import tool
 from langgraph.prebuilt import ToolNode
 
 @tool
 def my_tool(x: int) -> str:
-    return f"Result: {x}"
+    return f"결과: {x}"
 
 tool_node = ToolNode([my_tool])
 ```
 
-Classes:
+클래스:
 
-| Name | Description |
+| 이름 | 설명 |
 | --- | --- |
-| `[InjectedState](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.InjectedState "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">InjectedState</span> (<code>langgraph.prebuilt.tool_node.InjectedState</code>)")` | Annotation for injecting graph state into tool arguments. |
-| `[InjectedStore](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.InjectedStore "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">InjectedStore</span> (<code>langgraph.prebuilt.tool_node.InjectedStore</code>)")` | Annotation for injecting persistent store into tool arguments. |
+| `[InjectedState](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.InjectedState "langgraph.prebuilt.tool_node.InjectedState")` | 그래프 상태를 도구 인수에 주입하기 위한 주석입니다. |
+| `[InjectedStore](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.InjectedStore "langgraph.prebuilt.tool_node.InjectedStore")` | 영구 저장소를 도구 인수에 주입하기 위한 주석입니다. |
 
-Functions:
+함수:
 
-| Name | Description |
+| 이름 | 설명 |
 | --- | --- |
-| `[tools_condition](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.tools_condition "<code class=\"doc-symbol doc-symbol-heading doc-symbol-function\"></code>            <span class=\"doc doc-object-name doc-function-name\">tools_condition</span> (<code>langgraph.prebuilt.tool_node.tools_condition</code>)")` | Conditional routing function for tool-calling workflows. |
+| `[tools_condition](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.tools_condition "langgraph.prebuilt.tool_node.tools_condition")` | 도구 호출 워크플로우를 위한 조건부 라우팅 함수입니다. |
 
 ## InjectedState
 
-Bases: `[InjectedToolArg](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.InjectedToolArg.html#langchain_core.tools.base.InjectedToolArg "<code>langchain_core.tools.InjectedToolArg</code>")`
+상속: `[InjectedToolArg](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.InjectedToolArg.html#langchain_core.tools.base.InjectedToolArg "langchain_core.tools.InjectedToolArg")`
 
-Annotation for injecting graph state into tool arguments.
+그래프 상태를 도구 인수에 주입하기 위한 주석입니다.
 
-This annotation enables tools to access graph state without exposing state management details to the language model. Tools annotated with InjectedState receive state data automatically during execution while remaining invisible to the model's tool-calling interface.
+이 주석을 사용하면 도구가 상태 관리 세부 정보를 언어 모델에 노출하지 않고도 그래프 상태에 액세스할 수 있습니다. InjectedState로 주석이 달린 도구는 모델의 도구 호출 인터페이스에 보이지 않으면서 실행 중에 상태 데이터를 자동으로 받습니다.
 
-Parameters:
+매개변수:
 
-| Name | Type | Description | Default |
+| 이름 | 타입 | 설명 | 기본값 |
 | --- | --- | --- | --- |
-| `field` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[str](https://docs.python.org/3/library/stdtypes.html#str)]` | Optional key to extract from the state dictionary. If None, the entire state is injected. If specified, only that field's value is injected. This allows tools to request specific state components rather than processing the full state structure. | `None` |
+| `field` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[str](https://docs.python.org/3/library/stdtypes.html#str)]` | 상태 사전에서 추출할 선택적 키입니다. None이면 전체 상태가 주입됩니다. 지정되면 해당 필드의 값만 주입됩니다. 이를 통해 도구는 전체 상태 구조를 처리하는 대신 특정 상태 구성 요소를 요청할 수 있습니다. | `None` |
 
-Example
+예시
 ```python
 from typing import List
 from typing_extensions import Annotated, TypedDict
@@ -293,15 +292,15 @@ class AgentState(TypedDict):
 
 @tool
 def state_tool(x: int, state: Annotated[dict, InjectedState]) -> str:
-    '''Do something with state.'''
+    '''상태로 무언가를 합니다.'''
     if len(state["messages"]) > 2:
         return state["foo"] + str(x)
     else:
-        return "not enough messages"
+        return "메시지가 충분하지 않습니다"
 
 @tool
 def foo_tool(x: int, foo: Annotated[str, InjectedState("foo")]) -> str:
-    '''Do something else with state.'''
+    '''상태로 다른 무언가를 합니다.'''
     return foo + str(x + 1)
 
 node = ToolNode([state_tool, foo_tool])
@@ -316,31 +315,31 @@ node.invoke(state)
 ```
 ```python
 [
-    ToolMessage(content='not enough messages', name='state_tool', tool_call_id='1'),
+    ToolMessage(content='메시지가 충분하지 않습니다', name='state_tool', tool_call_id='1'),
     ToolMessage(content='bar2', name='foo_tool', tool_call_id='2')
 ]
 ```
-Note
-- InjectedState arguments are automatically excluded from tool schemas presented to language models
-- ToolNode handles the injection process during execution
-- Tools can mix regular arguments (controlled by the model) with injected arguments (controlled by the system)
-- State injection occurs after the model generates tool calls but before tool execution
+참고
+- InjectedState 인수는 언어 모델에 제공되는 도구 스키마에서 자동으로 제외됩니다.
+- ToolNode는 실행 중에 주입 프로세스를 처리합니다.
+- 도구는 일반 인수(모델에 의해 제어됨)와 주입된 인수(시스템에 의해 제어됨)를 혼합할 수 있습니다.
+- 상태 주입은 모델이 도구 호출을 생성한 후, 도구 실행 전에 발생합니다.
 
 ## InjectedStore
 
-Bases: `[InjectedToolArg](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.InjectedToolArg.html#langchain_core.tools.base.InjectedToolArg "<code>langchain_core.tools.InjectedToolArg</code>")`
+상속: `[InjectedToolArg](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.InjectedToolArg.html#langchain_core.tools.base.InjectedToolArg "langchain_core.tools.InjectedToolArg")`
 
-Annotation for injecting persistent store into tool arguments.
+영구 저장소를 도구 인수에 주입하기 위한 주석입니다.
 
-This annotation enables tools to access LangGraph's persistent storage system without exposing storage details to the language model. Tools annotated with InjectedStore receive the store instance automatically during execution while remaining invisible to the model's tool-calling interface.
+이 주석을 사용하면 도구가 저장소 세부 정보를 언어 모델에 노출하지 않고도 LangGraph의 영구 저장소 시스템에 액세스할 수 있습니다. InjectedStore로 주석이 달린 도구는 모델의 도구 호출 인터페이스에 보이지 않으면서 실행 중에 저장소 인스턴스를 자동으로 받습니다.
 
-The store provides persistent, cross-session data storage that tools can use for maintaining context, user preferences, or any other data that needs to persist beyond individual workflow executions.
+저장소는 도구가 컨텍스트, 사용자 기본 설정 또는 개별 워크플로우 실행을 넘어 지속되어야 하는 기타 데이터를 유지하는 데 사용할 수 있는 영구적인 교차 세션 데이터 저장소를 제공합니다.
 
-Warning
+경고
 
-`InjectedStore` annotation requires `langchain-core >= 0.3.8`
+`InjectedStore` 주석은 `langchain-core >= 0.3.8`이 필요합니다.
 
-Example
+예시
 ```python
 from typing_extensions import Annotated
 from langchain_core.tools import tool
@@ -353,21 +352,21 @@ def save_preference(
     value: str,
     store: Annotated[Any, InjectedStore()]
 ) -> str:
-    """Save user preference to persistent storage."""
+    """사용자 기본 설정을 영구 저장소에 저장합니다."""
     store.put(("preferences",), key, value)
-    return f"Saved {key} = {value}"
+    return f"{key} = {value} 저장됨"
 
 @tool
 def get_preference(
     key: str,
     store: Annotated[Any, InjectedStore()]
 ) -> str:
-    """Retrieve user preference from persistent storage."""
+    """영구 저장소에서 사용자 기본 설정을 검색합니다."""
     result = store.get(("preferences",), key)
-    return result.value if result else "Not found"
+    return result.value if result else "찾을 수 없음"
 ```
 
-Usage with ToolNode and graph compilation:
+ToolNode 및 그래프 컴파일과 함께 사용:
 
 ```python
 from langgraph.graph import StateGraph
@@ -378,57 +377,55 @@ tool_node = ToolNode([save_preference, get_preference])
 
 graph = StateGraph(State)
 graph.add_node("tools", tool_node)
-compiled_graph = graph.compile(store=store)  # Store is injected automatically
+compiled_graph = graph.compile(store=store)  # 저장소가 자동으로 주입됩니다.
 ```
 
-Cross-session persistence:
+교차 세션 지속성:
 
 ```python
-# First session
-result1 = graph.invoke({"messages": [HumanMessage("Save my favorite color as blue")]})
+# 첫 번째 세션
+result1 = graph.invoke({"messages": [HumanMessage("내가 가장 좋아하는 색을 파란색으로 저장해")]})
 
-# Later session - data persists
-result2 = graph.invoke({"messages": [HumanMessage("What's my favorite color?")]})
+# 나중 세션 - 데이터가 지속됨
+result2 = graph.invoke({"messages": [HumanMessage("내가 가장 좋아하는 색은 무엇인가요?")]})
 ```
-Note
-- InjectedStore arguments are automatically excluded from tool schemas presented to language models
-- The store instance is automatically injected by ToolNode during execution
-- Tools can access namespaced storage using the store's get/put methods
-- Store injection requires the graph to be compiled with a store instance
-- Multiple tools can share the same store instance for data consistency
+참고
+- InjectedStore 인수는 언어 모델에 제공되는 도구 스키마에서 자동으로 제외됩니다.
+- 저장소 인스턴스는 실행 중에 ToolNode에 의해 자동으로 주입됩니다.
+- 도구는 저장소의 get/put 메서드를 사용하여 네임스페이스 저장소에 액세스할 수 있습니다.
+- 저장소 주입은 그래프가 저장소 인스턴스로 컴파일되어야 합니다.
+- 여러 도구가 데이터 일관성을 위해 동일한 저장소 인스턴스를 공유할 수 있습니다.
 
-## tools\_condition
+## tools_condition
 
-Conditional routing function for tool-calling workflows.
+도구 호출 워크플로우를 위한 조건부 라우팅 함수입니다.
 
-This utility function implements the standard conditional logic for ReAct-style agents: if the last AI message contains tool calls, route to the tool execution node; otherwise, end the workflow. This pattern is fundamental to most tool-calling agent architectures.
+이 유틸리티 함수는 ReAct 스타일 에이전트의 표준 조건부 로직을 구현합니다: 마지막 AI 메시지에 도구 호출이 포함되어 있으면 도구 실행 노드로 라우팅하고, 그렇지 않으면 워크플로우를 종료합니다. 이 패턴은 대부분의 도구 호출 에이전트 아키텍처의 기본입니다.
 
-The function handles multiple state formats commonly used in LangGraph applications, making it flexible for different graph designs while maintaining consistent behavior.
+이 함수는 LangGraph 애플리케이션에서 일반적으로 사용되는 여러 상태 형식을 처리하므로 일관된 동작을 유지하면서 다양한 그래프 설계에 유연하게 적용할 수 있습니다.
 
-Parameters:
+매개변수:
 
-| Name | Type | Description | Default |
+| 이름 | 타입 | 설명 | 기본값 |
 | --- | --- | --- | --- |
-| `state` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[list](https://docs.python.org/3/library/stdtypes.html#list)[AnyMessage], [dict](https://docs.python.org/3/library/stdtypes.html#dict)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any "<code>typing.Any</code>")], BaseModel]` | The current graph state to examine for tool calls. Supported formats: - Dictionary containing a messages key (for StateGraph) - BaseModel instance with a messages attribute | *required* |
-| `messages_key` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | The key or attribute name containing the message list in the state. This allows customization for graphs using different state schemas. Defaults to "messages". | `'messages'` |
+| `state` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[list](https://docs.python.org/3/library/stdtypes.html#list)[AnyMessage], [dict](https://docs.python.org/3/library/stdtypes.html#dict)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any "typing.Any")], BaseModel]` | 도구 호출을 검사할 현재 그래프 상태입니다. 지원되는 형식: - messages 키를 포함하는 사전 (StateGraph용) - messages 속성이 있는 BaseModel 인스턴스 | *필수* |
+| `messages_key` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | 상태에서 메시지 목록을 포함하는 키 또는 속성 이름입니다. 이를 통해 다른 상태 스키마를 사용하는 그래프에 대한 사용자 정의가 가능합니다. 기본값은 "messages"입니다. | `'messages'` |
 
-Returns:
+반환값:
 
-| Type | Description |
+| 타입 | 설명 |
 | --- | --- |
-| `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "<code>typing.Literal</code>")['tools', '__end__']` | Either "tools" if tool calls are present in the last AI message, or " **end** " |
-| `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "<code>typing.Literal</code>")['tools', '__end__']` | to terminate the workflow. These are the standard routing destinations for |
-| `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "<code>typing.Literal</code>")['tools', '__end__']` | tool-calling conditional edges. |
+| `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "typing.Literal")['tools', '__end__']` | 마지막 AI 메시지에 도구 호출이 있는 경우 "tools", 워크플로우를 종료하려면 "**end**"입니다. 이것들은 도구 호출 조건부 엣지의 표준 라우팅 대상입니다. |
 
-Raises:
+발생 오류:
 
-| Type | Description |
+| 타입 | 설명 |
 | --- | --- |
-| `[ValueError](https://docs.python.org/3/library/exceptions.html#ValueError)` | If no messages can be found in the provided state format. |
+| `[ValueError](https://docs.python.org/3/library/exceptions.html#ValueError)` | 제공된 상태 형식에서 메시지를 찾을 수 없는 경우. |
 
-Example
+예시
 
-Basic usage in a ReAct agent:
+ReAct 에이전트에서의 기본 사용법:
 
 ```python
 from langgraph.graph import StateGraph
@@ -443,51 +440,52 @@ graph.add_node("llm", call_model)
 graph.add_node("tools", ToolNode([my_tool]))
 graph.add_conditional_edges(
     "llm",
-    tools_condition,  # Routes to "tools" or "__end__"
+    tools_condition,  # "tools" 또는 "__end__"로 라우팅
     {"tools": "tools", "__end__": "__end__"}
 )
 ```
 
-Custom messages key:
+사용자 정의 messages 키:
 
 ```python
 def custom_condition(state):
     return tools_condition(state, messages_key="chat_history")
 ```
-Note
+참고
 
-This function is designed to work seamlessly with ToolNode and standard LangGraph patterns. It expects the last message to be an AIMessage when tool calls are present, which is the standard output format for tool-calling language models.
+이 함수는 ToolNode 및 표준 LangGraph 패턴과 원활하게 작동하도록 설계되었습니다. 도구 호출이 있을 때 마지막 메시지가 AIMessage일 것으로 예상하며, 이는 도구 호출 언어 모델의 표준 출력 형식입니다.
 
 ## ValidationNode
 
-Bases: `RunnableCallable`
+상속: `RunnableCallable`
 
-A node that validates all tools requests from the last AIMessage.
+마지막 AIMessage의 모든 도구 요청을 검증하는 노드입니다.
 
-It can be used either in StateGraph with a "messages" key.
+"messages" 키와 함께 StateGraph에서 사용할 수 있습니다.
 
-Note
+참고
 
-This node does not actually **run** the tools, it only validates the tool calls, which is useful for extraction and other use cases where you need to generate structured output that conforms to a complex schema without losing the original messages and tool IDs (for use in multi-turn conversations).
+이 노드는 실제로 도구를 **실행**하지 않고 도구 호출만 검증합니다. 이는 원본 메시지와 도구 ID를 잃지 않고 복잡한 스키마를 준수하는 구조화된 출력을 생성해야 하는 추출 및 기타 사용 사례에 유용합니다(다중 턴 대화에서 사용).
 
-Parameters:
+매개변수:
 
-| Name | Type | Description | Default |
+| 이름 | 타입 | 설명 | 기본값 |
 | --- | --- | --- | --- |
-| `schemas` | `[Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "<code>typing.Sequence</code>")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool "<code>langchain_core.tools.BaseTool</code>"), [Type](https://docs.python.org/3/library/typing.html#typing.Type "<code>typing.Type</code>")[BaseModel], [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")]]` | A list of schemas to validate the tool calls with. These can be any of the following: - A pydantic BaseModel class - A BaseTool instance (the args\_schema will be used) - A function (a schema will be created from the function signature) | *required* |
-| `format_error` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "<code>typing.Callable</code>")[[[BaseException](https://docs.python.org/3/library/exceptions.html#BaseException), [ToolCall](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall "<code>langchain_core.messages.ToolCall</code>"), [Type](https://docs.python.org/3/library/typing.html#typing.Type "<code>typing.Type</code>")[BaseModel]], [str](https://docs.python.org/3/library/stdtypes.html#str)]]` | A function that takes an exception, a ToolCall, and a schema and returns a formatted error string. By default, it returns the exception repr and a message to respond after fixing validation errors. | `None` |
-| `name` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | The name of the node. | `'validation'` |
-| `tags` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | A list of tags to add to the node. | `None` |
+| `schemas` | `[Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "typing.Sequence")[[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool "langchain_core.tools.BaseTool"), ...]]` | 도구 호출을 검증할 스키마 목록입니다. 다음 중 하나일 수 있습니다: - pydantic BaseModel 클래스 - BaseTool 인스턴스 (args_schema가 사용됨) - 함수 (함수 서명에서 스키마가 생성됨) | *필수* |
+| `format_error` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "typing.Callable")[[[BaseException](https://docs.python.org/3/library/exceptions.html#BaseException), ...], [str](https://docs.python.org/3/library/stdtypes.html#str)]]` | 예외, ToolCall 및 스키마를 받아 형식이 지정된 오류 문자열을 반환하는 함수입니다. 기본적으로 예외 repr과 유효성 검사 오류를 수정한 후 응답할 메시지를 반환합니다. | `None` |
+| `name` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | 노드의 이름입니다. | `'validation'` |
+| `tags` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[list](https://docs.python.org/3/library/stdtypes.html#list)[[str](https://docs.python.org/3/library/stdtypes.html#str)]]` | 노드에 추가할 태그 목록입니다. | `None` |
 
-Returns:
+반환값:
 
-| Type | Description |
+| 타입 | 설명 |
 | --- | --- |
-| `[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict "<code>typing.Dict</code>")[[str](https://docs.python.org/3/library/stdtypes.html#str), List[[ToolMessage](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage "<code>langchain_core.messages.ToolMessage</code>")]], [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "<code>typing.Sequence</code>")[[ToolMessage](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage "<code>langchain_core.messages.ToolMessage</code>")]]` | A list of ToolMessages with the validated content or error messages. |
+| `[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict "typing.Dict")[[str](https://docs.python.org/3/library/stdtypes.html#str), List[[ToolMessage](https://python.langchain.com/api_reference/core/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage "langchain_core.messages.tool.ToolMessage")]], ...]]` | 검증된 내용 또는 오류 메시지가 포함된 ToolMessage 목록입니다. |
 
-Example
+예시
 ```python
-Example usage for re-prompting the model to generate a valid response:from typing import Literal, Annotated
+# 모델이 유효한 응답을 생성하도록 다시 프롬프트하는 예시 사용법:
+from typing import Literal, Annotated
 from typing_extensions import TypedDict
 
 from langchain_anthropic import ChatAnthropic
@@ -503,7 +501,7 @@ class SelectNumber(BaseModel):
     @field_validator("a")
     def a_must_be_meaningful(cls, v):
         if v != 37:
-            raise ValueError("Only 37 is allowed")
+            raise ValueError("37만 허용됩니다")
         return v
 
 builder = StateGraph(Annotated[list, add_messages])
@@ -521,7 +519,7 @@ builder.add_conditional_edges("model", should_validate)
 
 def should_reprompt(state: list) -> Literal["model", "__end__"]:
     for msg in state[::-1]:
-        # None of the tool calls were errors
+        # 도구 호출 중 오류가 없었음
         if msg.type == "ai":
             return END
         if msg.additional_kwargs.get("is_error"):
@@ -531,98 +529,98 @@ def should_reprompt(state: list) -> Literal["model", "__end__"]:
 builder.add_conditional_edges("validation", should_reprompt)
 
 graph = builder.compile()
-res = graph.invoke(("user", "Select a number, any number"))
-# Show the retry logic
+res = graph.invoke(("user", "숫자를 선택하세요, 아무 숫자나"))
+# 재시도 로직 보기
 for msg in res:
     msg.pretty_print()
 ```
 
-Classes:
+클래스:
 
-| Name | Description |
+| 이름 | 설명 |
 | --- | --- |
-| `[HumanInterruptConfig](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanInterruptConfig "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">HumanInterruptConfig</span> (<code>langgraph.prebuilt.interrupt.HumanInterruptConfig</code>)")` | Configuration that defines what actions are allowed for a human interrupt. |
-| `[ActionRequest](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.ActionRequest "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">ActionRequest</span> (<code>langgraph.prebuilt.interrupt.ActionRequest</code>)")` | Represents a request for human action within the graph execution. |
-| `[HumanInterrupt](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanInterrupt "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">HumanInterrupt</span> (<code>langgraph.prebuilt.interrupt.HumanInterrupt</code>)")` | Represents an interrupt triggered by the graph that requires human intervention. |
-| `[HumanResponse](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanResponse "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">HumanResponse</span> (<code>langgraph.prebuilt.interrupt.HumanResponse</code>)")` | The response provided by a human to an interrupt, which is returned when graph execution resumes. |
+| `[HumanInterruptConfig](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanInterruptConfig "langgraph.prebuilt.interrupt.HumanInterruptConfig")` | 인간 인터럽트에 허용되는 작업을 정의하는 구성입니다. |
+| `[ActionRequest](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.ActionRequest "langgraph.prebuilt.interrupt.ActionRequest")` | 그래프 실행 내에서 인간의 조치를 요청하는 것을 나타냅니다. |
+| `[HumanInterrupt](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanInterrupt "langgraph.prebuilt.interrupt.HumanInterrupt")` | 인간의 개입이 필요한 그래프에 의해 트리거된 인터럽트를 나타냅니다. |
+| `[HumanResponse](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanResponse "langgraph.prebuilt.interrupt.HumanResponse")` | 인터럽트에 대한 인간의 응답으로, 그래프 실행이 재개될 때 반환됩니다. |
 
 ## HumanInterruptConfig
 
-Bases: `TypedDict`
+상속: `TypedDict`
 
-Configuration that defines what actions are allowed for a human interrupt.
+인간 인터럽트에 허용되는 작업을 정의하는 구성입니다.
 
-This controls the available interaction options when the graph is paused for human input.
+이는 그래프가 인간 입력을 위해 일시 중지되었을 때 사용 가능한 상호 작용 옵션을 제어합니다.
 
-Attributes:
+속성:
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| `allow_ignore` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | Whether the human can choose to ignore/skip the current step |
-| `allow_respond` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | Whether the human can provide a text response/feedback |
-| `allow_edit` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | Whether the human can edit the provided content/state |
-| `allow_accept` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | Whether the human can accept/approve the current state |
+| `allow_ignore` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | 인간이 현재 단계를 무시/건너뛸 수 있는지 여부 |
+| `allow_respond` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | 인간이 텍스트 응답/피드백을 제공할 수 있는지 여부 |
+| `allow_edit` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | 인간이 제공된 내용/상태를 편집할 수 있는지 여부 |
+| `allow_accept` | `[bool](https://docs.python.org/3/library/functions.html#bool)` | 인간이 현재 상태를 수락/승인할 수 있는지 여부 |
 
 ## ActionRequest
 
-Bases: `TypedDict`
+상속: `TypedDict`
 
-Represents a request for human action within the graph execution.
+그래프 실행 내에서 인간의 조치를 요청하는 것을 나타냅니다.
 
-Contains the action type and any associated arguments needed for the action.
+작업 유형과 작업에 필요한 모든 관련 인수를 포함합니다.
 
-Attributes:
+속성:
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| `action` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | The type or name of action being requested (e.g., "Approve XYZ action") |
-| `args` | `[dict](https://docs.python.org/3/library/stdtypes.html#dict)` | Key-value pairs of arguments needed for the action |
+| `action` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | 요청되는 작업의 유형 또는 이름 (예: "XYZ 작업 승인") |
+| `args` | `[dict](https://docs.python.org/3/library/stdtypes.html#dict)` | 작업에 필요한 인수의 키-값 쌍 |
 
 ## HumanInterrupt
 
-Bases: `TypedDict`
+상속: `TypedDict`
 
-Represents an interrupt triggered by the graph that requires human intervention.
+인간의 개입이 필요한 그래프에 의해 트리거된 인터럽트를 나타냅니다.
 
-This is passed to the `interrupt` function when execution is paused for human input.
+실행이 인간 입력을 위해 일시 중지될 때 `interrupt` 함수에 전달됩니다.
 
-Attributes:
+속성:
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| `action_request` | `[ActionRequest](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.ActionRequest "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">ActionRequest</span> (<code>langgraph.prebuilt.interrupt.ActionRequest</code>)")` | The specific action being requested from the human |
-| `config` | `[HumanInterruptConfig](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanInterruptConfig "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">HumanInterruptConfig</span> (<code>langgraph.prebuilt.interrupt.HumanInterruptConfig</code>)")` | Configuration defining what actions are allowed |
-| `description` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "<code>typing.Optional</code>")[[str](https://docs.python.org/3/library/stdtypes.html#str)]` | Optional detailed description of what input is needed |
+| `action_request` | `[ActionRequest](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.ActionRequest "langgraph.prebuilt.interrupt.ActionRequest")` | 인간에게 요청되는 특정 작업 |
+| `config` | `[HumanInterruptConfig](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.HumanInterruptConfig "langgraph.prebuilt.interrupt.HumanInterruptConfig")` | 허용되는 작업을 정의하는 구성 |
+| `description` | `[Optional](https://docs.python.org/3/library/typing.html#typing.Optional "typing.Optional")[[str](https://docs.python.org/3/library/stdtypes.html#str)]` | 필요한 입력에 대한 선택적 상세 설명 |
 
-Example
+예시
 ```python
-# Extract a tool call from the state and create an interrupt request
+# 상태에서 도구 호출을 추출하고 인터럽트 요청 생성
 request = HumanInterrupt(
     action_request=ActionRequest(
-        action="run_command",  # The action being requested
-        args={"command": "ls", "args": ["-l"]}  # Arguments for the action
+        action="run_command",  # 요청되는 작업
+        args={"command": "ls", "args": ["-l"]}  # 작업에 대한 인수
     ),
     config=HumanInterruptConfig(
-        allow_ignore=True,    # Allow skipping this step
-        allow_respond=True,   # Allow text feedback
-        allow_edit=False,     # Don't allow editing
-        allow_accept=True     # Allow direct acceptance
+        allow_ignore=True,    # 이 단계 건너뛰기 허용
+        allow_respond=True,   # 텍스트 피드백 허용
+        allow_edit=False,     # 편집 허용 안 함
+        allow_accept=True     # 직접 수락 허용
     ),
-    description="Please review the command before execution"
+    description="실행 전에 명령을 검토하십시오"
 )
-# Send the interrupt request and get the response
+# 인터럽트 요청을 보내고 응답 받기
 response = interrupt([request])[0]
 ```
 
 ## HumanResponse
 
-Bases: `TypedDict`
+상속: `TypedDict`
 
-The response provided by a human to an interrupt, which is returned when graph execution resumes.
+인터럽트에 대한 인간의 응답으로, 그래프 실행이 재개될 때 반환됩니다.
 
-Attributes:
+속성:
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | --- | --- | --- |
-| `type` | `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "<code>typing.Literal</code>")['accept', 'ignore', 'response', 'edit']` | The type of response: - "accept": Approves the current state without changes - "ignore": Skips/ignores the current step - "response": Provides text feedback or instructions - "edit": Modifies the current state/content |
-| `args` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "<code>typing.Union</code>")[None, [str](https://docs.python.org/3/library/stdtypes.html#str), [ActionRequest](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.ActionRequest "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">ActionRequest</span> (<code>langgraph.prebuilt.interrupt.ActionRequest</code>)")]` |  |
+| `type` | `[Literal](https://docs.python.org/3/library/typing.html#typing.Literal "typing.Literal")['accept', 'ignore', 'response', 'edit']` | 응답 유형: - "accept": 변경 없이 현재 상태를 승인합니다 - "ignore": 현재 단계를 건너뜁니다/무시합니다 - "response": 텍스트 피드백 또는 지침을 제공합니다 - "edit": 현재 상태/내용을 수정합니다 |
+| `args` | `[Union](https://docs.python.org/3/library/typing.html#typing.Union "typing.Union")[None, [str](https://docs.python.org/3/library/stdtypes.html#str), [ActionRequest](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.interrupt.ActionRequest "langgraph.prebuilt.interrupt.ActionRequest")]` | |
