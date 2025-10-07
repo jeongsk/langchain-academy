@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5c8bca8c1136071c",
+        "id": "5f0d8d2061f2118f",
         "type": "tabs",
         "children": [
           {
-            "id": "8b8b87055aa54a18",
+            "id": "b9adde71035e7461",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -88,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 393.5,
-    "collapsed": true
+    "width": 393.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -194,12 +193,13 @@
       "digitalgarden:Digital Garden Publication Center": false
     }
   },
-  "active": "8b8b87055aa54a18",
+  "active": "b9adde71035e7461",
   "lastOpenFiles": [
-    "docs/Home.md",
-    "docs/prompt",
-    "docs/prompt/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+    "docs/prompt-engineering/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+    "docs/langgraph/LangGraph 배포 가이드.md",
     "docs/langgraph/reference/prebuilt/Agents.md",
+    "docs/Home.md",
+    "docs/prompt-engineering",
     "docs/langgraph/reference/prebuilt/agents.md",
     "docs/langgraph/reference/prebuilt",
     "docs/langgraph/reference",
@@ -223,7 +223,6 @@
     "docs-langgraph/docs/how-tos/streaming.md",
     "docs-langgraph/docs/how-tos/memory/add-memory.md",
     "docs-langgraph/docs/how-tos/human_in_the_loop/add-human-in-the-loop.md",
-    "docs/langgraph/LangGraph 배포 가이드.md",
     "projects/11-langgraph-qa-rag-agent/studio/DEPLOYMENT.md",
     "projects/12-perflexity-clone/README.md",
     "projects/12-perflexity-clone",
