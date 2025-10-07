@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e8caca784c0b125a",
+        "id": "5c8bca8c1136071c",
         "type": "tabs",
         "children": [
           {
-            "id": "d72d8b4c003e8009",
+            "id": "8b8b87055aa54a18",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/Home.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "Home"
             }
           }
         ]
@@ -188,11 +192,11 @@
       "digitalgarden:Digital Garden Publication Center": false
     }
   },
-  "active": "b70f29c88e4c9cfe",
+  "active": "8b8b87055aa54a18",
   "lastOpenFiles": [
+    "docs/Home.md",
     "docs/prompt",
     "docs/prompt/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
-    "docs/Home.md",
     "docs/langgraph/reference/prebuilt/Agents.md",
     "docs/langgraph/reference/prebuilt/agents.md",
     "docs/langgraph/reference/prebuilt",
@@ -225,7 +229,6 @@
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffee92b2-b9b7-5375-bca9-e4c75987ae08",
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffe3d108-7e1a-53cb-9eeb-25e2bedb625e",
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffe1f10c-969b-5ba2-87cf-cd95a285da23",
-    "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffc8abc9-2e13-57d0-9bca-a81d2054aae2",
     "projects/11-langgraph-qa-rag-agent/studio/README.md",
     "docs-langgraph/site/tutorials/workflows/img/worker.png",
     "docs-langgraph/site/tutorials/workflows/img/routing.png",
