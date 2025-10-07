@@ -1,17 +1,14 @@
 # 프로젝트
 
-- **01-LangGraph-Agent-Simulation**: LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
-  - [📓 노트북 열기](./01-LangGraph-Agent-Simulation.ipynb)
-- **02-LangGraph-Prompt-Generation**: LangGraph를 활용한 프롬프트 생성 프로젝트
-  - [📓 노트북 열기](./02-LangGraph-Prompt-Generation.ipynb)
-- **11-LangGraph-QA-RAG-Agent**: Q&A와 RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 에이전트 프로젝트
-  - [📓 노트북 열기](./11-LangGraph-QA-RAG-Agent/11-LangGraph-QA-RAG-Agent.ipynb)
+- [**01-LangGraph-Agent-Simulation**](./01-LangGraph-Agent-Simulation.ipynb): LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
+- [**02-LangGraph-Prompt-Generation**](./02-LangGraph-Prompt-Generation.ipynb): LangGraph를 활용한 메타 프롬프트 생성 프로젝트
+- [**11-LangGraph-QA-RAG-Agent**](./11-LangGraph-QA-RAG-Agent/11-LangGraph-QA-RAG-Agent.ipynb): RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 문서 기반 Q&A 에이전트 프로젝트
 
 ## 참고 자료
 
 ### 테디노트
 
-- [👀 코드 기반 답변하는 💻 GitHub 소스코드 기반 Q&A 챗봇🤖 제작기](https://youtu.be/yB8b-lW_5HY)
+- [코드 기반 답변하는 GitHub 소스코드 기반 Q&A 챗봇 제작기](https://youtu.be/yB8b-lW_5HY)
 - [노코딩으로 쇼핑몰 리뷰 분석 (크롤링 + Q&A 챗봇)](https://youtu.be/r5YyftofuII)
 - [RAG 파이프라인 이해해보기 - 네이버 뉴스기사 기반 Q&A 챗봇 제작](https://youtu.be/1scMJH93v0M)
 - [LangChain Expression Language(LCEL) 원리 이해와 파이프라인 구축 가이드](https://teddylee777.github.io/langchain/langchain-lcel/)
