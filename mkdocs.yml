@@ -51,30 +51,30 @@ theme:
     repo: fontawesome/brands/github
 
 # Navigation Structure
-nav:
-  - 홈:
-    - index.md
-    - 설정: setup.md
-  - 모듈 1 - LangGraph 입문:
-    - module-1/index.md
-    - module-1/README.md
-  - 모듈 2 - 상태 관리와 메모리:
-    - module-2/index.md
-    - module-2/README.md
-  - 모듈 3 - Human-in-the-Loop:
-    - module-3/index.md
-    - module-3/README.md
-  - 모듈 4 - 고급 LangGraph 기술:
-    - module-4/index.md
-    - module-4/README.md
-  - 모듈 5 - LangGraph 메모리 심화:
-    - module-5/index.md
-    - module-5/README.md
-  - 모듈 6 - LangGraph 서버 배포 및 연결:
-    - module-6/index.md
-    - module-6/README.md
-  - 프롬프트 엔지니어링:
-    - prompt-engineering/index.md
+# nav:
+#   - 홈:
+#     - index.md
+#     - 설정: setup.md
+#   - 모듈 1 - LangGraph 입문:
+#     - module-1/index.md
+#     - module-1/README.md
+#   - 모듈 2 - 상태 관리와 메모리:
+#     - module-2/index.md
+#     - module-2/README.md
+#   - 모듈 3 - Human-in-the-Loop:
+#     - module-3/index.md
+#     - module-3/README.md
+#   - 모듈 4 - 고급 LangGraph 기술:
+#     - module-4/index.md
+#     - module-4/README.md
+#   - 모듈 5 - LangGraph 메모리 심화:
+#     - module-5/index.md
+#     - module-5/README.md
+#   - 모듈 6 - LangGraph 서버 배포 및 연결:
+#     - module-6/index.md
+#     - module-6/README.md
+#   - 프롬프트 엔지니어링:
+#     - prompt-engineering/index.md
 
 # Plugins
 plugins:
