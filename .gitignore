@@ -206,6 +206,19 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# Quartz
+.DS_Store
+.gitignore
+node_modules
+public
+prof
+tsconfig.tsbuildinfo
+.obsidian
+.quartz-cache
+private/
+.replit
+replit.nix
+
 # LangGraph
 .langgraph_api
 state_db
