@@ -16,13 +16,13 @@ source: "https://langchain-ai.github.io/langgraph/reference/agents/"
 | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [`create_react_agent`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.create_react_agent ) | 중지 조건이 충족될 때까지 루프에서 도구를 호출하는 에이전트 그래프를 생성합니다. |
 
-## AgentState
+## `class` AgentState
 
 상속: `TypedDict`
 
 에이전트의 상태입니다.
 
-## create_react_agent
+## `function` create_react_agent
 
 ```python
 create_react_agent(

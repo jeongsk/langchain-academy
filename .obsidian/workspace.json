@@ -88,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 393.5
+    "width": 393.5,
+    "collapsed": true
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -192,11 +193,12 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -208,9 +210,9 @@
       "command-palette:명령어 팔레트 열기": false,
       "bases:새 베이스 생성하기": false,
       "obsidian-git:Open Git source control": false,
-      "notebook-navigator:Notebook Navigator": true,
       "digitalgarden:Digital Garden Publication Center": false,
       "obsidian-shellcommands:Shell commands: Custom variables": true,
+      "cmdr:Shell commands: Execute: Jupyter": false,
       "cmdr:Shell commands: Execute: VSCode": false
     }
   },

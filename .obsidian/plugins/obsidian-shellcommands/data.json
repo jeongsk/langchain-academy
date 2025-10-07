@@ -31,7 +31,7 @@
       "shells": {
         "darwin": "/bin/zsh"
       },
-      "alias": "Notebook",
+      "alias": "Jupyter",
       "icon": "lucide-notebook",
       "confirm_execution": false,
       "ignore_error_codes": [],
