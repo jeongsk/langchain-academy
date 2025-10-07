@@ -1,15 +1,14 @@
 ---
 title: AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링
 source: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
-author:
-  - "[[@AnthropicAI]]"
+author: [[AnthropicAI]]
 published: 2025-09-29
 created: 2025-10-04
 description: Anthropic is an AI safety and research company that's working to build reliable, interpretable, and steerable AI systems.
-clippings: "[[2025-10-04]]"
-tags:
-  - LLM
+clippings: [[2025-10-04]]
+tags: LLM
 summary: AI 모델의 성능을 극대화하려면, 모델의 주의력 예산(attention budget) 제약을 고려하여 가장 효과적인 맥락(context)을 구성하는 '맥락 엔지니어링'이 중요합니다. 이는 단순히 프롬프트를 잘 작성하는 것을 넘어, 모델에 입력되는 모든 정보(시스템 프롬프트, 도구, 메시지 기록 등)를 최적화하는 과정입니다. 모델은 맥락이 길어질수록 정보 정확도가 떨어지므로, 유용하지만 간결한 정보 제공을 통해 원하는 결과를 지속적으로 얻는 것이 핵심입니다.
+dg-publish: "true"
 ---
 > [!summary]+ TL;DR
 > AI 모델의 성능은 고정된 맥락(context) 창에 제공되는 토큰의 양에 따라 점진적으로 저하되는 경향이 있습니다. 이는 트랜스포머 아키텍처의 n² 계산 복잡성과 학습 데이터 분포 때문이며, 모델이 긴 시퀀스보다 짧은 시퀀스에 더 익숙해져 장거리 의존성 파악 능력이 떨어지기 때문입니다. 따라서 LLM을 효과적으로 활용하기 위해서는 최대의 효과를 내는 최소한의 고신호 토큰 세트를 찾아내는 섬세한 맥락 엔지니어링이 필수적입니다.

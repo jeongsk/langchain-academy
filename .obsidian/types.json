@@ -3,6 +3,9 @@
     "aliases": "aliases",
     "cssclasses": "multitext",
     "tags": "tags",
-    "published": "date"
+    "published": "date",
+    "dg-publish": "checkbox",
+    "clippings": "multitext",
+    "author": "multitext"
   }
 }
