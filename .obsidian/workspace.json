@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Let the Model Write the Prompt.md",
+                "file": "docs/Let the Model Write the Prompt.ko.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Let the Model Write the Prompt"
+              "title": "Let the Model Write the Prompt.ko"
             }
           }
         ]
@@ -197,8 +197,9 @@
   },
   "active": "3844f952642cfc85",
   "lastOpenFiles": [
-    "README.md",
     "docs/Let the Model Write the Prompt.md",
+    "docs/Let the Model Write the Prompt.ko.md",
+    "README.md",
     "docs/setup.md",
     "docs/프롬프트 엔지니어링/index.md",
     "module-1/index.md",
@@ -241,7 +242,6 @@
     "content/Home.md",
     "docs/langgraph/reference/prebuilt/agents.md",
     "docs/langgraph/tutorials/auth/add_auth_server.md",
-    "docs-langgraph/docs/adopters.md",
-    "docs-langgraph/docs/llms-txt-overview.md"
+    "docs-langgraph/docs/adopters.md"
   ]
 }
