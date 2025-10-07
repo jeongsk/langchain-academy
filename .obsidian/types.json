@@ -6,6 +6,7 @@
     "published": "date",
     "dg-publish": "checkbox",
     "clippings": "multitext",
-    "author": "multitext"
+    "author": "multitext",
+    "dg-home": "checkbox"
   }
 }

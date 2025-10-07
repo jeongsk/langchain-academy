@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ebb8e2d6a1eda5ab",
+        "id": "e8caca784c0b125a",
         "type": "tabs",
         "children": [
           {
-            "id": "c1ff7a9c20e95d6b",
+            "id": "d72d8b4c003e8009",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링"
+              "title": "새 탭"
             }
           }
         ]
@@ -88,7 +84,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 285.5
+    "width": 393.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -192,8 +188,11 @@
       "digitalgarden:Digital Garden Publication Center": false
     }
   },
-  "active": "c1ff7a9c20e95d6b",
+  "active": "b70f29c88e4c9cfe",
   "lastOpenFiles": [
+    "docs/prompt",
+    "docs/prompt/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+    "docs/Home.md",
     "docs/langgraph/reference/prebuilt/Agents.md",
     "docs/langgraph/reference/prebuilt/agents.md",
     "docs/langgraph/reference/prebuilt",
@@ -203,7 +202,6 @@
     "docs/langgraph/how-tos/graph-api.md",
     "docs/langgraph/agents",
     "docs/langgraph/tutorials/auth/add_auth_server.md",
-    "docs/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/langgraph/assets/react_diagrams.png",
     "docs/langgraph/index.md",
     "docs/langgraph",
@@ -229,8 +227,6 @@
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffe1f10c-969b-5ba2-87cf-cd95a285da23",
     "projects/11-langgraph-qa-rag-agent/cache/text-embedding-3-smallffc8abc9-2e13-57d0-9bca-a81d2054aae2",
     "projects/11-langgraph-qa-rag-agent/studio/README.md",
-    "docs-langgraph/node_modules/openai/src/internal/qs/README.md",
-    "docs-langgraph/node_modules/openai/src/internal/qs/LICENSE.md",
     "docs-langgraph/site/tutorials/workflows/img/worker.png",
     "docs-langgraph/site/tutorials/workflows/img/routing.png",
     "docs-langgraph/site/tutorials/workflows/img/prompt_chain.png",
