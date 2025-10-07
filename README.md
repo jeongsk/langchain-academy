@@ -116,3 +116,9 @@ echo "TAVILY_API_KEY=\"$TAVILY_API_KEY\"" >> module-4/studio/.env
 ```
 
 
+## 리소스
+
+- [LangGraph 공식 문서](https://langchain-ai.github.io/langgraph/)
+- [LangChain 공식 문서](https://python.langchain.com/)
+- [LangSmith](https://smith.langchain.com/)
+- [GitHub 저장소](https://github.com/jeongsk/langchain-academy)

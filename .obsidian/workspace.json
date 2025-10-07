@@ -197,6 +197,9 @@
   },
   "active": "9efa15db135bdeac",
   "lastOpenFiles": [
+    "docs/setup.md",
+    "docs/프롬프트 엔지니어링/index.md",
+    "module-1/index.md",
     "site/search/search_index.json",
     "site/search",
     "site/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링/index.html",
@@ -207,7 +210,6 @@
     "site/랭그래프/에이전트/에이전트란 무엇인가요?",
     "site/랭그래프/에이전트/사전 구축된 에이전트(create_react_agent)로 빠르게 시작하기",
     "site/랭그래프/에이전트",
-    "site/랭그래프/Reference/Prebuilt/Agents/index.html",
     "site/assets/images/favicon.png",
     "site/랭그래프/assets/img/persistence/shared_state.png",
     "site/랭그래프/assets/img/persistence/re_play.png",
@@ -222,7 +224,6 @@
     "projects/12-Perflexity-Clone/README.md",
     "projects/12-Perflexity-Clone2/README.md",
     "docs/module-1/index.md",
-    "docs/setup.md",
     "docs/index.md",
     "projects/11-LangGraph-QA-RAG-Agent/studio/README.md",
     "CODE_OF_CONDUCT.md",
@@ -241,7 +242,6 @@
     "docs/langgraph/tutorials/auth/add_auth_server.md",
     "docs-langgraph/docs/adopters.md",
     "docs-langgraph/docs/llms-txt-overview.md",
-    "docs-langgraph/docs/index.md",
-    "docs-langgraph/docs/concepts/pregel.md"
+    "docs-langgraph/docs/index.md"
   ]
 }
