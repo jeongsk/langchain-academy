@@ -1,4 +1,4 @@
-# 설정
+# 환경 설정
 
 본 강좌를 시작하기 위한 권장 설정입니다. [여기](https://github.com/jeongsk/langchain-academy)에 위치한 노트북 세트를 사용할 예정입니다.
 

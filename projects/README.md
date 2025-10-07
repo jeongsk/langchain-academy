@@ -1,7 +1,11 @@
 # 프로젝트
 
-- 01-LangGraph-Agent-Simulation
-- 02-02-LangGraph-Prompt-Generation
+- **01-LangGraph-Agent-Simulation**: LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
+  - [📓 노트북 열기](./01-LangGraph-Agent-Simulation.ipynb)
+- **02-LangGraph-Prompt-Generation**: LangGraph를 활용한 프롬프트 생성 프로젝트
+  - [📓 노트북 열기](./02-LangGraph-Prompt-Generation.ipynb)
+- **11-LangGraph-QA-RAG-Agent**: Q&A와 RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 에이전트 프로젝트
+  - [📓 노트북 열기](./11-LangGraph-QA-RAG-Agent/11-LangGraph-QA-RAG-Agent.ipynb)
 
 ## 참고 자료
 
