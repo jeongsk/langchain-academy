@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/langgraph/agents/agents.md",
+                "file": "docs/langgraph/agents/agent overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "agents"
+              "title": "agent overview"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/langgraph/agents/Overview.md",
+                "file": "docs/langgraph/agents/agent overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Overview"
+              "title": "agent overview"
             }
           }
         ]
@@ -166,13 +166,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/langgraph/agents/agents.md",
+                "file": "docs/langgraph/agents/agent overview.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "agents 의 개요"
+              "title": "agent overview 의 개요"
             }
           },
           {
@@ -210,12 +210,12 @@
   },
   "active": "b9adde71035e7461",
   "lastOpenFiles": [
+    "docs/langgraph/agents/사전 구축된 에이전트(create_react_agent)로 빠르게 시작하기.md",
+    "docs/langgraph/agents/agent overview.md",
+    "docs/langgraph/reference/prebuilt/Agents.md",
     "docs/langgraph/index.md",
     "docs/langgraph/LangGraph 배포 가이드.md",
     "docs/prompt-engineering/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
-    "docs/langgraph/reference/prebuilt/Agents.md",
-    "docs/langgraph/agents/Overview.md",
-    "docs/langgraph/agents/agents.md",
     "README.md",
     "docs/Home.md",
     "docs/prompt-engineering",
