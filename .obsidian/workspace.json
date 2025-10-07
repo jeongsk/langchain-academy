@@ -172,7 +172,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -195,20 +195,21 @@
       "cmdr:Shell commands: Execute: VSCode": false
     }
   },
-  "active": "b70f29c88e4c9cfe",
+  "active": "9efa15db135bdeac",
   "lastOpenFiles": [
-    "tsconfig.json",
-    "quartz.layout.ts",
-    "quartz.config.ts",
-    "package-lock.json",
-    "package.json",
-    "LICENSE.txt",
-    "index.d.ts",
-    "globals.d.ts",
-    "Dockerfile",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallfff024c3-a250-5ca3-8a4f-03666f617d97",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffee92b2-b9b7-5375-bca9-e4c75987ae08",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffe3d108-7e1a-53cb-9eeb-25e2bedb625e",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffc8abc9-2e13-57d0-9bca-a81d2054aae2",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffe1f10c-969b-5ba2-87cf-cd95a285da23",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffc313aa-ed9b-5947-a906-722b99b54d9e",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffc0a4bc-8c64-57fd-9e54-85a578889574",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffb8e773-1bc8-5eec-ac3e-5911531e3941",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffa68382-9b54-58a5-b57b-1358e9f03f6a",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallffa06b26-4b03-590d-8bb5-0141e8843e88",
+    "projects/11-LangGraph-QA-RAG-Agent/cache/text-embedding-3-smallff8d16b8-32d8-53e3-ba03-001f6206d61c",
+    "projects/11-LangGraph-QA-RAG-Agent/studio/README.md",
     "CODE_OF_CONDUCT.md",
-    "quartz/build.ts",
-    "quartz/worker.ts",
     "quartz/static/og-image.png",
     "quartz/static/icon.png",
     "content/랭그래프/LangGraph APIs/Graph API 개념.md",
@@ -235,7 +236,6 @@
     "docs-langgraph/docs/agents/models.md",
     "docs-langgraph/docs/how-tos/use-remote-graph.md",
     "docs-langgraph/docs/how-tos/streaming.md",
-    "docs-langgraph/docs/how-tos/memory/add-memory.md",
     "docs-langgraph/site/tutorials/workflows/img/worker.png",
     "docs-langgraph/site/tutorials/workflows/img/routing.png",
     "docs-langgraph/site/tutorials/workflows/img/prompt_chain.png",
