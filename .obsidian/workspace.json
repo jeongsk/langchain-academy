@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "bf9061743f1e69ff",
+        "id": "46d048a4e153d4c3",
         "type": "tabs",
         "children": [
           {
-            "id": "3844f952642cfc85",
+            "id": "8b13da9ae44c576f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Let the Model Write the Prompt.ko.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Let the Model Write the Prompt.ko"
+              "title": "새 탭"
             }
           }
         ]
@@ -195,10 +191,11 @@
       "cmdr:Shell commands: Execute: VSCode": false
     }
   },
-  "active": "3844f952642cfc85",
+  "active": "8b13da9ae44c576f",
   "lastOpenFiles": [
+    "docs/프롬프트 엔지니어링/(번역) 모델이 프롬프트를 작성하게 하라.md",
+    "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/Let the Model Write the Prompt.md",
-    "docs/Let the Model Write the Prompt.ko.md",
     "README.md",
     "docs/setup.md",
     "docs/프롬프트 엔지니어링/index.md",
@@ -241,7 +238,6 @@
     "content/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "content/Home.md",
     "docs/langgraph/reference/prebuilt/agents.md",
-    "docs/langgraph/tutorials/auth/add_auth_server.md",
-    "docs-langgraph/docs/adopters.md"
+    "docs/langgraph/tutorials/auth/add_auth_server.md"
   ]
 }
