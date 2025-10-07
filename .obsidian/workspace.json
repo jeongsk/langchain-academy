@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/langgraph/reference/prebuilt/Agents.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Agents"
             }
           }
         ]
@@ -84,8 +84,7 @@
               "title": "Notebook Navigator"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -171,6 +170,26 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "7e977aa8a3b6de2e",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
+          },
+          {
+            "id": "1ba1c73b2515eb74",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
           }
         ],
         "currentTab": 4
@@ -189,12 +208,16 @@
       "command-palette:명령어 팔레트 열기": false,
       "bases:새 베이스 생성하기": false,
       "obsidian-git:Open Git source control": false,
-      "notebook-navigator:Notebook Navigator": false,
-      "digitalgarden:Digital Garden Publication Center": false
+      "notebook-navigator:Notebook Navigator": true,
+      "digitalgarden:Digital Garden Publication Center": false,
+      "obsidian-shellcommands:Shell commands: Custom variables": true,
+      "cmdr:Shell commands: Execute: VSCode": false
     }
   },
-  "active": "c7ce551f46a88094",
+  "active": "b9adde71035e7461",
   "lastOpenFiles": [
+    "docs/langgraph/agents/agents.md",
+    "README.md",
     "docs/Home.md",
     "docs/langgraph/reference/prebuilt/Agents.md",
     "docs/prompt-engineering/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
@@ -203,7 +226,6 @@
     "docs/langgraph/reference/prebuilt/agents.md",
     "docs/langgraph/reference/prebuilt",
     "docs/langgraph/reference",
-    "docs/langgraph/agents/agents.md",
     "docs/langgraph/concepts/low_level.md",
     "docs/langgraph/how-tos/graph-api.md",
     "docs/langgraph/agents",
