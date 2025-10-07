@@ -109,7 +109,21 @@ create_react_agent(
 
 "agent" 노드는 (프롬프트를 적용한 후) 메시지 목록으로 언어 모델을 호출합니다. 결과 AIMessage에 `tool_calls`가 포함되어 있으면 그래프는 [`tools`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.tool_node.ToolNode)를 호출합니다. "tools" 노드는 도구(`tool_call`당 1개)를 실행하고 응답을 `ToolMessage` 객체로 메시지 목록에 추가합니다. 그런 다음 에이전트 노드는 언어 모델을 다시 호출합니다. 이 과정은 응답에 더 이상 `tool_calls`가 없을 때까지 반복됩니다. 그러면 에이전트는 "messages" 키를 포함하는 사전으로 전체 메시지 목록을 반환합니다.
 
-예시
+```mermaid
+	sequenceDiagram
+		participant U as User
+		participant A as LLM
+		participant T as Tools
+		U->>A: Initial input
+		Note over A: Prompt + LLM
+		loop while tool_calls present
+			A->>T: Execute tools
+			T-->>A: ToolMessage for each tool_calls
+		end
+		A->>U: Return final state
+```
+
+### 예시
 ```python
 from langgraph.prebuilt import create_react_agent
 
@@ -139,15 +153,15 @@ for chunk in graph.stream(inputs, stream_mode="updates"):
 
 매개변수:
 
-| 이름 | 타입 | 설명 | 기본값 |
-| --- | --- | --- | --- |
-| `tools` | [`Sequence`](https://docs.python.org/3/library/typing.html#typing.Sequence)[[`Union`](https://docs.python.org/3/library/typing.html#typing.Union)[[`BaseTool`](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool), [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)]]` | 이 노드에서 호출할 수 있는 도구의 시퀀스입니다. 도구는 BaseTool 인스턴스이거나 도구로 변환될 일반 함수일 수 있습니다. | *필수* |
-| `name` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | 그래프에서 이 노드의 이름 식별자입니다. 디버깅 및 시각화에 사용됩니다. 기본값은 "tools"입니다. | `'tools'` |
-| `tags` | [`Optional`](https://docs.python.org/3/library/typing.html#typing.Optional)[[`list`](https://docs.python.org/3/library/stdtypes.html#list)[[`str`](https://docs.python.org/3/library/stdtypes.html#str)]]` | 필터링 및 구성을 위해 노드와 연결할 선택적 메타데이터 태그입니다. 기본값은 None입니다. | `None` |
-| `handle_tool_errors` | [`Union`](https://docs.python.org/3/library/typing.html#typing.Union)[[`bool`](https://docs.python.org/3/library/functions.html#bool), [str](https://docs.python.org/3/library/stdtypes.html#str), ...]` | 도구 실행 중 오류 처리를 위한 구성입니다. 기본값은 True입니다. 여러 전략을 지원합니다: - True: 모든 오류를 포착하고 예외 세부 정보가 포함된 기본 오류 템플릿으로 ToolMessage를 반환합니다. - str: 모든 오류를 포착하고 이 사용자 정의 오류 메시지 문자열로 ToolMessage를 반환합니다. - tuple[type[Exception],...]: 지정된 유형의 예외만 포착하고 이에 대한 기본 오류 메시지를 반환합니다. - Callable[..., str]: 호출 가능 객체의 서명과 일치하는 예외를 포착하고 예외와 함께 호출한 결과 문자열을 반환합니다. - False: 오류 처리를 완전히 비활성화하여 예외가 전파되도록 합니다. | `True` |
-| `messages_key` | `[str](https://docs.python.org/3/library/stdtypes.html#str)` | 상태 사전에서 메시지 목록을 포함하는 키입니다. 이 동일한 키가 출력 ToolMessages에 사용됩니다. 기본값은 "messages"입니다. | `'messages'` |
+| 이름                   | 설명                                                                                                                                                                                                                                                                                                                                                                                                  | 기본값          |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `tools`              | 이 노드에서 호출할 수 있는 도구의 시퀀스입니다. 도구는 BaseTool 인스턴스이거나 도구로 변환될 일반 함수일 수 있습니다.                                                                                                                                                                                                                                                                                                                             | *필수*         |
+| `name`               | 그래프에서 이 노드의 이름 식별자입니다. 디버깅 및 시각화에 사용됩니다. 기본값은 "tools"입니다.                                                                                                                                                                                                                                                                                                                                           | `'tools'`    |
+| `tags`               | 필터링 및 구성을 위해 노드와 연결할 선택적 메타데이터 태그입니다. 기본값은 None입니다.                                                                                                                                                                                                                                                                                                                                                 | `None`       |
+| `handle_tool_errors` | 도구 실행 중 오류 처리를 위한 구성입니다. 기본값은 True입니다. 여러 전략을 지원합니다: <br>- True: 모든 오류를 포착하고 예외 세부 정보가 포함된 기본 오류 템플릿으로 ToolMessage를 반환합니다. <br>- str: 모든 오류를 포착하고 이 사용자 정의 오류 메시지 문자열로 ToolMessage를 반환합니다. <br>- tuple[type[Exception],...]: 지정된 유형의 예외만 포착하고 이에 대한 기본 오류 메시지를 반환합니다. <br>- Callable[..., str]: 호출 가능 객체의 서명과 일치하는 예외를 포착하고 예외와 함께 호출한 결과 문자열을 반환합니다. <br>- False: 오류 처리를 완전히 비활성화하여 예외가 전파되도록 합니다. | `True`       |
+| `messages_key`       | 상태 사전에서 메시지 목록을 포함하는 키입니다. 이 동일한 키가 출력 ToolMessages에 사용됩니다. 기본값은 "messages"입니다.                                                                                                                                                                                                                                                                                                                     | `'messages'` |
 
-예시
+### 예시
 
 간단한 도구를 사용한 기본 사용법:
 
@@ -178,13 +192,13 @@ tool_node = ToolNode([calculator], handle_tool_errors=handle_math_errors)
 tool_calls = [{"name": "calculator", "args": {"a": 5, "b": 3}, "id": "1", "type": "tool_call"}]
 result = tool_node.invoke(tool_calls)
 ```
-참고
 
+> [!info] 참고
 ToolNode는 세 가지 형식 중 하나의 입력을 예상합니다: 1. 메시지 목록을 포함하는 messages 키가 있는 사전 2. 메시지 목록 직접 3. 도구 호출 사전 목록
-
-메시지 형식을 사용할 때 마지막 메시지는 tool_calls가 채워진 AIMessage여야 합니다. 노드는 이러한 도구 호출을 자동으로 추출하고 동시에 처리합니다.
-
-상태 주입 또는 저장소 액세스와 관련된 고급 사용 사례의 경우, 도구에 InjectedState 또는 InjectedStore로 주석을 달아 그래프 컨텍스트를 자동으로 받을 수 있습니다.
+>
+> 메시지 형식을 사용할 때 마지막 메시지는 tool_calls가 채워진 AIMessage여야 합니다. 노드는 이러한 도구 호출을 자동으로 추출하고 동시에 처리합니다.
+>
+> 상태 주입 또는 저장소 액세스와 관련된 고급 사용 사례의 경우, 도구에 InjectedState 또는 InjectedStore로 주석을 달아 그래프 컨텍스트를 자동으로 받을 수 있습니다.
 
 메서드:
 
