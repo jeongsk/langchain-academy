@@ -2,8 +2,6 @@
 title: "\"Agents\""
 source: "https://langchain-ai.github.io/langgraph/reference/agents/"
 ---
-[Skip to content](https://langchain-ai.github.io/langgraph/reference/agents/#agents)
-
 ## Agents
 
 Classes:
