@@ -1,0 +1,181 @@
+site_name: LangGraph Academy
+site_description: Foundation Introduction to LangGraph - 기초부터 시작하는 LangGraph 입문 과정
+site_author: LangChain Academy
+site_url: https://langchain-academy.github.io
+
+# Repository
+repo_name: langchain-academy
+repo_url: https://github.com/jeongsk/langchain-academy
+edit_uri: edit/main/docs/
+
+# Theme Configuration
+theme:
+  name: material
+  language: ko
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: indigo
+      accent: indigo
+    # Palette toggle for dark mode  
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+      primary: indigo
+      accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
+    - toc.follow
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
+
+# Navigation Structure
+nav:
+  - 홈:
+    - index.md
+    - 설정: setup.md
+  - 모듈 1 - LangGraph 입문:
+    - module-1/index.md
+    - module-1/README.md
+  - 모듈 2 - 상태 관리와 메모리:
+    - module-2/index.md
+    - module-2/README.md
+  - 모듈 3 - Human-in-the-Loop:
+    - module-3/index.md
+    - module-3/README.md
+  - 모듈 4 - 고급 LangGraph 기술:
+    - module-4/index.md
+    - module-4/README.md
+  - 모듈 5 - LangGraph 메모리 심화:
+    - module-5/index.md
+    - module-5/README.md
+  - 모듈 6 - LangGraph 서버 배포 및 연결:
+    - module-6/index.md
+    - module-6/README.md
+  - 프롬프트 엔지니어링:
+    - prompt-engineering/index.md
+
+# Plugins
+plugins:
+  - search:
+      lang: ko
+  - git-revision-date-localized:
+      type: datetime
+      timezone: Asia/Seoul
+      locale: ko
+      enable_creation_date: true
+  - minify:
+      minify_html: true
+  - awesome-pages
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: langchain-ai
+      repo: langgraph
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Extra CSS and JS
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Extra Configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jeongsk/langchain-academy
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/langgraph/
+  version:
+    provider: mike
+
+# Copyright
+copyright: Copyright &copy; 2024 LangChain Academy
+
+# Development server
+dev_addr: 127.0.0.1:8000
+
+# Watch additional directories
+watch:
+  - module-1/
+  - module-2/
+  - module-3/
+  - module-4/
+  - module-5/
+  - module-6/
+  - docs/
+
+# Site directory
+site_dir: site
+
+# Docs directory  
+docs_dir: docs
+
+# Strict mode (warnings as errors)
+strict: false
+
+# Use directory URLs
+use_directory_urls: true
