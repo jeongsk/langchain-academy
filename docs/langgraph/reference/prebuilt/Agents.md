@@ -208,6 +208,16 @@ ToolNode는 세 가지 형식 중 하나의 입력을 예상합니다: 1. 메시
 
 ### inject_tool_args
 
+```python
+inject_tool_args(
+    tool_call: ToolCall,
+    input: Union[
+        list[AnyMessage], dict[str, Any], BaseModel
+    ],
+    store: Optional[BaseStore],
+) -> ToolCall
+```
+
 그래프 상태와 저장소를 도구 호출 인수에 주입합니다.
 
 이 메서드를 사용하면 도구가 모델에 의해 제어되어서는 안 되는 그래프 컨텍스트에 액세스할 수 있습니다. 도구는 InjectedState 및 InjectedStore 주석을 사용하여 그래프 상태 또는 영구 저장소에 대한 종속성을 선언할 수 있습니다. 이 메서드는 이러한 종속성을 자동으로 식별하고 적절한 값을 주입합니다.
@@ -234,23 +244,21 @@ ToolNode는 세 가지 형식 중 하나의 입력을 예상합니다: 1. 메시
 | --- | --- |
 | [`ValueError`](https://docs.python.org/3/library/exceptions.html#ValueError) | 도구가 저장소 주입을 요구하지만 저장소가 제공되지 않았거나 상태 주입 요구 사항을 충족할 수 없는 경우. |
 
-참고
-
+> [!info] 참고
 이 메서드는 도구 실행 중에 자동으로 호출되지만 Send API 또는 사용자 정의 라우팅 로직으로 작업할 때 수동으로 사용할 수도 있습니다. 주입은 원본을 변경하지 않도록 도구 호출의 복사본에서 수행됩니다.
-
-LangGraph 워크플로우를 위한 도구 실행 노드입니다.
-
-이 모듈은 LangGraph에서 도구를 실행하기 위한 사전 빌드된 기능을 제공합니다.
+>
+> LangGraph 워크플로우를 위한 도구 실행 노드입니다.
+>
+> 이 모듈은 LangGraph에서 도구를 실행하기 위한 사전 빌드된 기능을 제공합니다.
 
 도구는 모델이 외부 시스템, API, 데이터베이스와 상호 작용하거나 계산을 수행하기 위해 호출할 수 있는 함수입니다.
 
 이 모듈은 몇 가지 주요 디자인 패턴을 구현합니다: - 효율성을 위한 여러 도구 호출의 병렬 실행 - 사용자 정의 가능한 오류 메시지를 사용한 강력한 오류 처리 - 그래프 상태에 액세스해야 하는 도구를 위한 상태 주입 - 영구 저장소가 필요한 도구를 위한 저장소 주입 - 고급 제어 흐름을 위한 명령 기반 상태 업데이트
 
-주요 구성 요소
-
+> [!info] 주요 구성 요소
 ToolNode: LangGraph 워크플로우에서 도구를 실행하기 위한 기본 클래스 InjectedState: 그래프 상태를 도구에 주입하기 위한 주석 InjectedStore: 영구 저장소를 도구에 주입하기 위한 주석 tools_condition: 도구 호출에 기반한 조건부 라우팅을 위한 유틸리티 함수
 
-일반적인 사용법
+### 일반적인 사용법
 ```python
 from langchain_core.tools import tool
 from langgraph.prebuilt import ToolNode
