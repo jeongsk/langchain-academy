@@ -6,15 +6,15 @@ source: "https://langchain-ai.github.io/langgraph/reference/agents/"
 
 Classes:
 
-| Name | Description |
-| --- | --- |
-| `[AgentState](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.AgentState "<code class=\"doc-symbol doc-symbol-heading doc-symbol-class\"></code>            <span class=\"doc doc-object-name doc-class-name\">AgentState</span> (<code>langgraph.prebuilt.chat_agent_executor.AgentState</code>)")` | The state of the agent. |
+| Name                                                                                                                         | Description             |
+| ---------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| [`AgentState`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.AgentState) | The state of the agent. |
 
 Functions:
 
-| Name | Description |
-| --- | --- |
-| `[create_react_agent](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.create_react_agent "<code class=\"doc-symbol doc-symbol-heading doc-symbol-function\"></code>            <span class=\"doc doc-object-name doc-function-name\">create_react_agent</span> (<code>langgraph.prebuilt.chat_agent_executor.create_react_agent</code>)")` | Creates an agent graph that calls tools in a loop until a stopping condition is met. |
+| Name                                                                                                                                          | Description                                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`create_react_agent`](https://langchain-ai.github.io/langgraph/reference/agents/#langgraph.prebuilt.chat_agent_executor.create_react_agent ) | Creates an agent graph that calls tools in a loop until a stopping condition is met. |
 
 ## AgentState
 
