@@ -1,6 +1,11 @@
-# Projects
+# 프로젝트
 
-## 테디노트
+- 01-LangGraph-Agent-Simulation
+- 02-02-LangGraph-Prompt-Generation
+
+## 참고 자료
+
+### 테디노트
 
 - [👀 코드 기반 답변하는 💻 GitHub 소스코드 기반 Q&A 챗봇🤖 제작기](https://youtu.be/yB8b-lW_5HY)
 - [노코딩으로 쇼핑몰 리뷰 분석 (크롤링 + Q&A 챗봇)](https://youtu.be/r5YyftofuII)
@@ -11,7 +16,7 @@
 - [에이전트(Agent)와 도구(tools)를 활용한 지능형 검색 시스템 구축 가이드](https://teddylee777.github.io/langchain/langchain-agent/)
 
 
-## 공원나연
+### 공원나연
 
 - [대화 중 사용자 메모리를 최신화하는 AI Agent | Graphiti 튜토리얼 | Langgraph](https://youtu.be/nhzJTY3Iu6Y)
 - [시간을 업데이트하는 지식그래프 Graph DB 구축하고 검색하기 | Graphiti 튜토리얼](https://youtu.be/y_s7T9GEfKg)
