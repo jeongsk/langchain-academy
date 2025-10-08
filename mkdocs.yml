@@ -87,6 +87,7 @@ plugins:
       enable_creation_date: true
   - minify:
       minify_html: true
+  - search
   - awesome-pages
 
 # Extensions
