@@ -11,10 +11,14 @@
             "id": "8b13da9ae44c576f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "에이전트란 무엇인가요?"
             }
           }
         ]
@@ -193,6 +197,12 @@
   },
   "active": "8b13da9ae44c576f",
   "lastOpenFiles": [
+    "docs/랭그래프/에이전트/사전 구축된 에이전트(create_react_agent)로 빠르게 시작하기.md",
+    "docs/랭그래프/Reference/Prebuilt/Agents.md",
+    "docs/랭그래프/LangGraph 배포 가이드.md",
+    "docs/랭그래프/index.md",
+    "docs/index.md",
+    "docs/setup.md",
     "venv/lib/python3.12/site-packages/pypdf/__pycache__/papersizes.cpython-312.pyc",
     "venv/lib/python3.12/site-packages/pypdf/__pycache__/pagerange.cpython-312.pyc",
     "venv/lib/python3.12/site-packages/pypdf/__pycache__/_writer.cpython-312.pyc",
@@ -203,7 +213,6 @@
     "venv/lib/python3.12/site-packages/pypdf/__pycache__/_page_labels.cpython-312.pyc",
     "venv/lib/python3.12/site-packages/pypdf/__pycache__/filters.cpython-312.pyc",
     "venv/lib/python3.12/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/_text_state_params.cpython-312.pyc",
-    "venv/lib/python3.12/site-packages/pypdf/_text_extraction/_layout_mode/__pycache__/_text_state_manager.cpython-312.pyc",
     "venv/lib/python3.12/site-packages/opentelemetry/sdk/metrics/_internal/exponential_histogram/mapping/ieee_754.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.svg",
     "venv/lib/python3.12/site-packages/debugpy/_vendored/pydevd/pydevd_plugins/extensions/README.md",
@@ -233,11 +242,6 @@
     "venv/lib/python3.12/site-packages/nltk-3.9.2.dist-info/licenses/README.md",
     "venv/lib/python3.12/site-packages/nltk-3.9.2.dist-info/licenses/AUTHORS.md",
     "venv/lib/python3.12/site-packages/nbconvert/templates/README.md",
-    "venv/lib/python3.12/site-packages/mkdocs_material_extensions-1.3.1.dist-info/licenses/LICENSE.md",
-    "venv/lib/python3.12/site-packages/mkdocs_get_deps-0.2.0.dist-info/licenses/LICENSE.md",
-    "venv/lib/python3.12/site-packages/markdown-3.9.dist-info/licenses/LICENSE.md",
-    "venv/lib/python3.12/site-packages/langsmith/cli/README.md",
-    "venv/lib/python3.12/site-packages/jupyterlab/static/be0a084962d8066884f7.svg",
-    "venv/lib/python3.12/site-packages/jupyter_server/i18n/README.md"
+    "venv/lib/python3.12/site-packages/jupyterlab/static/be0a084962d8066884f7.svg"
   ]
 }
