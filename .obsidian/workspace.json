@@ -193,6 +193,7 @@
   },
   "active": "8b13da9ae44c576f",
   "lastOpenFiles": [
+    "projects/temp/doc.pdf",
     "projects/temp/23735",
     "projects/temp",
     "download_file.py",
@@ -203,7 +204,6 @@
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/timeout.pyi",
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/ssl_.pyi",
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/retry.pyi",
-    "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/response.pyi",
     "venv/lib/python3.12/site-packages/opentelemetry/sdk/metrics/_internal/exponential_histogram/mapping/ieee_754.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.svg",
     "venv/lib/python3.12/site-packages/debugpy/_vendored/pydevd/pydevd_plugins/extensions/README.md",
