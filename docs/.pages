@@ -1,4 +1,5 @@
-title: 홈
-arrange:
-  - index.md
-  - setup.md
+nav:
+  - 홈:
+    - index.md
+    - setup.md
+  - ...
