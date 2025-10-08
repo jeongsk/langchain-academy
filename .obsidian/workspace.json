@@ -193,6 +193,7 @@
   },
   "active": "8b13da9ae44c576f",
   "lastOpenFiles": [
+    "projects/03-LangGraph-CRAG.ipynb",
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/packages/ssl_match_hostname/__init__.pyi",
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.pyi",
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/url.pyi",
@@ -203,7 +204,6 @@
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/request.pyi",
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/connection.pyi",
     "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/util/__init__.pyi",
-    "venv/lib/python3.12/site-packages/jedi/third_party/typeshed/third_party/2and3/requests/packages/urllib3/packages/ssl_match_hostname",
     "venv/lib/python3.12/site-packages/opentelemetry/sdk/metrics/_internal/exponential_histogram/mapping/ieee_754.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.svg",
     "venv/lib/python3.12/site-packages/debugpy/_vendored/pydevd/pydevd_plugins/extensions/README.md",
