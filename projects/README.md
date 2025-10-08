@@ -1,9 +1,9 @@
 # 프로젝트
 
-- [**01-LangGraph-Agent-Simulation**](./01-LangGraph-Agent-Simulation.ipynb): LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
-- [**02-LangGraph-Prompt-Generation**](./02-LangGraph-Prompt-Generation.ipynb): LangGraph를 활용한 메타 프롬프트 생성 프로젝트
-- [**03-LangGraph-CRAG**](./03-LangGraph-CRAG.ipynb): LangGraph를 활용한 Corrective RAG(CRAG) 프로젝트
-- [**11-LangGraph-QA-RAG-Agent**](./11-LangGraph-QA-RAG-Agent/11-LangGraph-QA-RAG-Agent.ipynb): RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 문서 기반 Q&A 에이전트 프로젝트
+- [**01-Agent-Simulation**](./01-Agent-Simulation.ipynb): LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
+- [**02-Meta-Prompt-Generation**](./02-Meta-Prompt-Generation.ipynb): LangGraph를 활용한 메타 프롬프트 생성 프로젝트
+- [**03-CRAG**](./03-CRAG.ipynb): LangGraph를 활용한 Corrective RAG(CRAG) 프로젝트
+- [**11-QA-RAG-Agent**](./11-QA-RAG-Agent/11-QA-RAG-Agent.ipynb): RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 문서 기반 Q&A 에이전트 프로젝트
 
 ## 참고 자료
 
