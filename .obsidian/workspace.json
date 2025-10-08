@@ -193,6 +193,7 @@
   },
   "active": "4e7ba8f4b7a8ce41",
   "lastOpenFiles": [
+    "무제.md",
     "projects/04-Self-RAG.ipynb",
     "projects/03-CRAG.ipynb",
     "projects/02-Meta-Prompt-Generation.ipynb",
@@ -203,7 +204,6 @@
     "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffe3d108-7e1a-53cb-9eeb-25e2bedb625e",
     "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffe1f10c-969b-5ba2-87cf-cd95a285da23",
     "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffc8abc9-2e13-57d0-9bca-a81d2054aae2",
-    "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffc313aa-ed9b-5947-a906-722b99b54d9e",
     "projects/11-QA-RAG-Agent/studio/README.md",
     "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
     "docs/랭그래프/에이전트/사전 구축된 에이전트(create_react_agent)로 빠르게 시작하기.md",
