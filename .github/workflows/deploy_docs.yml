@@ -29,7 +29,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Get Quartz latest commit
+        id: quartz-version
+        run: |
+          QUARTZ_COMMIT=$(git ls-remote https://github.com/jackyzha0/quartz.git HEAD | awk '{print $1}')
+          echo "commit=$QUARTZ_COMMIT" >> $GITHUB_OUTPUT
+          echo "Quartz HEAD commit: $QUARTZ_COMMIT"
+
+      - name: Cache Quartz repository
+        id: cache-quartz
+        uses: actions/cache@v4
+        with:
+          path: quartz-build
+          key: quartz-repo-${{ steps.quartz-version.outputs.commit }}
+          restore-keys: |
+            quartz-repo-
+
       - name: Clone Quartz
+        if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
           git clone --depth 1 --single-branch https://github.com/jackyzha0/quartz.git quartz-build
 
@@ -45,6 +62,24 @@ jobs:
           cd quartz-build
           npm ci
 
+      - name: Generate docs hash
+        id: docs-hash
+        run: |
+          DOCS_HASH=$(find docs -type f -exec sha256sum {} \; | sort | sha256sum | awk '{print $1}')
+          echo "hash=$DOCS_HASH" >> $GITHUB_OUTPUT
+          echo "Docs content hash: $DOCS_HASH"
+
+      - name: Cache Quartz build
+        id: cache-build
+        uses: actions/cache@v4
+        with:
+          path: |
+            quartz-build/.quartz-cache
+            quartz-build/public
+          key: quartz-build-${{ steps.quartz-version.outputs.commit }}-${{ steps.docs-hash.outputs.hash }}
+          restore-keys: |
+            quartz-build-${{ steps.quartz-version.outputs.commit }}-
+
       - name: Copy docs to Quartz content
         run: |
           # Remove default content
@@ -57,6 +92,7 @@ jobs:
           find quartz-build/content -name '.DS_Store' -delete
 
       - name: Build Quartz site
+        if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           cd quartz-build
           npx quartz build
