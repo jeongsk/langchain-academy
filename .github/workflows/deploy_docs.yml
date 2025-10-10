@@ -1,6 +1,16 @@
 name: Deploy Docs to Cloudflare Pages
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
   workflow_dispatch:
 
 permissions:
