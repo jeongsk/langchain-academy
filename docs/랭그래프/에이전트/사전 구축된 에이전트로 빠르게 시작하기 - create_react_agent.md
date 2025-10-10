@@ -1,7 +1,8 @@
 ---
 source: https://langchain-ai.github.io/langgraph/agents/agents/
 title: "사전 구축된 에이전트로 빠르게 시작하기: create_react_agent"
-created: 2025-10-10T21:55:00
+created: 2025-10-06 01:27:52
+updated: 2025-10-10 21:58:34
 ---
 
 ## LangGraph 빠른 시작

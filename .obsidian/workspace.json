@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/랭그래프/에이전트/사전 구축된 에이전트로 빠르게 시작하기 - create_react_agent.md",
+                "file": "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "사전 구축된 에이전트로 빠르게 시작하기 - create_react_agent"
+              "title": "에이전트란 무엇인가요?"
             }
           }
         ]
@@ -197,8 +197,8 @@
   },
   "active": "4e7ba8f4b7a8ce41",
   "lastOpenFiles": [
-    "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
     "docs/랭그래프/에이전트/사전 구축된 에이전트로 빠르게 시작하기 - create_react_agent.md",
+    "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
     "docs/index.md",
     "docs/환경 설정.md",
     "docs/Foundation Introduction to LangGraph.md",

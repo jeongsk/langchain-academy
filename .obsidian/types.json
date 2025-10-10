@@ -8,6 +8,7 @@
     "clippings": "multitext",
     "author": "multitext",
     "dg-home": "checkbox",
-    "created": "datetime"
+    "created": "datetime",
+    "updated": "datetime"
   }
 }
