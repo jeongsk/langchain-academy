@@ -81,6 +81,7 @@ jobs:
             quartz-build-${{ steps.quartz-version.outputs.commit }}-
 
       - name: Copy docs to Quartz content
+        if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           # Remove default content
           rm -rf quartz-build/content/*
@@ -96,6 +97,14 @@ jobs:
         run: |
           cd quartz-build
           npx quartz build
+
+      - name: Show cache status
+        run: |
+          if [ "${{ steps.cache-build.outputs.cache-hit }}" == "true" ]; then
+            echo "✅ Build cache hit! Skipping build step."
+          else
+            echo "🔨 Cache miss. Build completed."
+          fi
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
