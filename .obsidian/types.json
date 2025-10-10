@@ -7,6 +7,7 @@
     "dg-publish": "checkbox",
     "clippings": "multitext",
     "author": "multitext",
-    "dg-home": "checkbox"
+    "dg-home": "checkbox",
+    "created": "datetime"
   }
 }
