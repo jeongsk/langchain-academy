@@ -42,6 +42,7 @@
    - GitHub 또는 Google 계정으로 가입
 
 2. **LangGraph CLI 설치**
+
    ```bash
    pip install langgraph-cli
    ```
@@ -74,6 +75,7 @@
 2. **환경 변수 설정**
 
    배포할 환경 변수를 미리 준비하세요 (.env 파일):
+
    ```bash
    OPENAI_API_KEY=sk-...
    COHERE_API_KEY=...
@@ -84,23 +86,27 @@
 ### 1.3 배포하기
 
 1. **LangSmith 로그인**
+
    ```bash
    export LANGSMITH_API_KEY=<your-api-key>
    ```
 
 2. **배포 명령 실행**
+
    ```bash
    langgraph deploy
    ```
 
    또는 특정 이름으로 배포:
+
    ```bash
    langgraph deploy --name my-rag-agent
    ```
 
 3. **배포 확인**
-   
+
    명령이 성공하면 다음과 같은 URL이 표시됩니다:
+
    ```
    ✓ Deployment created successfully!
    URL: https://my-rag-agent-abc123.langchain.app
@@ -177,6 +183,7 @@ langgraph deploy
    - [Docker Desktop](https://www.docker.com/products/docker-desktop/) 다운로드 및 설치
 
 2. **LangGraph CLI 설치**
+
    ```bash
    pip install langgraph-cli
    ```
@@ -214,6 +221,7 @@ docker run -p 8000:8000 \
 #### AWS ECS에 배포
 
 1. **ECR에 이미지 푸시**
+
    ```bash
    # ECR 로그인
    aws ecr get-login-password --region ap-northeast-2 | \
@@ -291,6 +299,7 @@ services:
 ```
 
 실행:
+
 ```bash
 docker-compose up -d
 ```
@@ -361,6 +370,7 @@ if __name__ == "__main__":
 ### 3.2 의존성 추가
 
 `requirements.txt`에 추가:
+
 ```
 fastapi
 uvicorn[standard]
@@ -377,6 +387,7 @@ python server.py
 일반적인 Python 웹 앱처럼 배포하면 됩니다:
 
 - **Gunicorn + Nginx**
+
   ```bash
   gunicorn server:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
   ```
@@ -384,6 +395,7 @@ python server.py
 - **systemd 서비스로 등록** (Linux)
   
   `/etc/systemd/system/langgraph-rag.service`:
+
 ```ini
 [Unit]
 Description=LangGraph RAG Agent
@@ -412,6 +424,7 @@ sudo systemctl start langgraph-rag
 ### 보안 모범 사례
 
 ❌ **절대 하지 말아야 할 것:**
+
 - 코드에 API 키 하드코딩
 - `.env` 파일을 Git에 커밋
 - 로그에 시크릿 출력
@@ -419,6 +432,7 @@ sudo systemctl start langgraph-rag
 ✅ **권장 사항:**
 
 1. **로컬 개발**: `.env` 파일 사용
+
    ```bash
    # .gitignore에 추가
    .env
@@ -427,6 +441,7 @@ sudo systemctl start langgraph-rag
 2. **LangGraph Cloud**: 대시보드에서 환경 변수 설정
 
 3. **AWS**: Secrets Manager 또는 Parameter Store 사용
+
    ```python
    import boto3
    
@@ -439,6 +454,7 @@ sudo systemctl start langgraph-rag
    ```
 
 4. **GCP**: Secret Manager 사용
+
    ```python
    from google.cloud import secretmanager
    
@@ -450,6 +466,7 @@ sudo systemctl start langgraph-rag
    ```
 
 5. **Docker**: 환경 변수 파일 사용
+
    ```bash
    docker run --env-file .env langgraph-rag-agent
    ```
@@ -470,6 +487,7 @@ os.environ["LANGSMITH_API_KEY"] = "lsv2_..."
 ```
 
 LangSmith 대시보드에서:
+
 - 모든 요청/응답 확인
 - 실행 시간, 토큰 사용량 추적
 - 에러 로그 확인
@@ -518,10 +536,12 @@ start_http_server(9090)
 ### Q1: 비용은 얼마나 드나요?
 
 **LangGraph Cloud:**
+
 - 무료 티어: 월 100만 토큰
 - Pro: 사용량 기반 ($0.30/1M 토큰)
 
 **Self-Hosted:**
+
 - 서버 비용만 (AWS t3.medium: 월 ~$30)
 - LLM API 비용은 동일
 
@@ -530,6 +550,7 @@ start_http_server(9090)
 **LangGraph Cloud:** 자동 스케일링
 
 **Docker:**
+
 - AWS ECS/EKS: Auto Scaling Group 설정
 - GCP Cloud Run: 자동 스케일링
 - Kubernetes: HPA (Horizontal Pod Autoscaler)
@@ -539,6 +560,7 @@ start_http_server(9090)
 **LangGraph Cloud:** 자동 제공
 
 **Self-Hosted:**
+
 - AWS: ALB (Application Load Balancer)
 - GCP: Cloud Load Balancer
 - Nginx + Let's Encrypt (Certbot)
@@ -548,24 +570,27 @@ start_http_server(9090)
 현재 프로젝트는 로컬 FAISS 인덱스를 사용합니다. 프로덕션에서는:
 
 1. **Pinecone** (관리형, 추천)
+
    ```python
    from langchain_pinecone import PineconeVectorStore
    vector_store = PineconeVectorStore(index_name="my-index")
    ```
 
 2. **Weaviate** (오픈소스, Self-Hosted)
+
    ```python
    from langchain_weaviate import WeaviateVectorStore
    vector_store = WeaviateVectorStore(url="http://weaviate:8080")
    ```
 
 3. **PostgreSQL + pgvector** (기존 DB 활용)
+
    ```python
    from langchain_postgres import PGVector
    vector_store = PGVector(connection_string="postgresql://...")
    ```
 
-### Q5: 배포 후 디버깅이 어렵습니다.
+### Q5: 배포 후 디버깅이 어렵습니다
 
 1. **LangSmith 추적 활성화**가 가장 중요합니다.
 2. 구조화된 로깅 사용 (JSON 형식)
@@ -575,6 +600,7 @@ start_http_server(9090)
 ### Q6: 동시 요청이 많을 때 대처 방법은?
 
 1. **Rate Limiting** 추가:
+
    ```python
    from fastapi_limiter import FastAPILimiter
    from fastapi_limiter.depends import RateLimiter
@@ -583,6 +609,7 @@ start_http_server(9090)
    ```
 
 2. **Async 처리**:
+
    ```python
    async def invoke_graph_async(input_data):
        return await asyncio.to_thread(graph.invoke, input_data)

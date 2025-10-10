@@ -105,10 +105,11 @@ agent.invoke(
     config={"configurable": {"user_name": "John Smith"}}
 )
 ```
+
 1. 동적 프롬프트를 사용하면 LLM에 대한 입력을 구성할 때 메시지가 아닌 [컨텍스트](https://langchain-ai.github.io/langgraph/agents/context/)를 포함할 수 있습니다:
-	- `user_id`나 API 자격 증명과 같이 런타임에 전달되는 정보(`config` 사용).
-	- 다단계 추론 프로세스 중에 업데이트되는 내부 에이전트 상태(`state` 사용).
-	동적 프롬프트는 `state`와 `config`를 받아 LLM에 보낼 메시지 목록을 반환하는 함수로 정의할 수 있습니다.
+ - `user_id`나 API 자격 증명과 같이 런타임에 전달되는 정보(`config` 사용).
+ - 다단계 추론 프로세스 중에 업데이트되는 내부 에이전트 상태(`state` 사용).
+ 동적 프롬프트는 `state`와 `config`를 받아 LLM에 보낼 메시지 목록을 반환하는 함수로 정의할 수 있습니다.
 
 자세한 내용은 [Context](https://langchain-ai.github.io/langgraph/agents/context/)를 참조하세요.
 
