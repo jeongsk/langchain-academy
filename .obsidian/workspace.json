@@ -11,10 +11,14 @@
             "id": "4e7ba8f4b7a8ce41",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/setup.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "setup"
             }
           }
         ]
@@ -76,8 +80,8 @@
             "state": {
               "type": "notebook-navigator",
               "state": {},
-              "icon": "notebook",
-              "title": "Notebook Navigator"
+              "icon": "lucide-ghost",
+              "title": "notebook-navigator"
             }
           }
         ]
@@ -166,6 +170,20 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "3b7672be6a64b762",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "모든 속성"
+            }
           }
         ],
         "currentTab": 4
@@ -176,19 +194,19 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "notebook-navigator:Notebook Navigator": false,
       "switcher:빠른 전환기 열기": false,
       "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 일일 노트 열기": false,
-      "templates:템플릿 삽입": false,
+      "canvas:새 캔버스 만들기": true,
+      "daily-notes:오늘의 일일 노트 열기": true,
+      "templates:템플릿 삽입": true,
       "command-palette:명령어 팔레트 열기": false,
-      "bases:새 베이스 생성하기": false,
+      "bases:새 베이스 생성하기": true,
       "obsidian-git:Open Git source control": false,
-      "digitalgarden:Digital Garden Publication Center": false,
+      "notebook-navigator:Notebook Navigator": true,
+      "digitalgarden:Digital Garden Publication Center": true,
       "obsidian-shellcommands:Shell commands: Custom variables": true,
-      "cmdr:Shell commands: Execute: Jupyter": false,
-      "cmdr:Shell commands: Execute: VSCode": false
+      "cmdr:Shell commands: Execute: VSCode": false,
+      "cmdr:Shell commands: Execute: Jupyter": false
     }
   },
   "active": "4e7ba8f4b7a8ce41",
