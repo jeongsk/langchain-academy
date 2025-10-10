@@ -1,5 +1,8 @@
-# 프롬프트 엔지니어링
-
+---
+created: 2025-10-07 22:06:23
+updated: 2025-10-10 23:46:42
+title: 프롬프트 엔지니어링
+---
 AI 에이전트를 위한 효과적인 프롬프트 엔지니어링 기법을 학습하는 섹션입니다.
 
 ## 개요
@@ -13,14 +16,8 @@ AI 에이전트를 위한 효과적인 프롬프트 엔지니어링 기법을 �
 - 성능 최적화를 위한 프롬프트 튜닝
 - 실무에서 활용할 수 있는 프롬프트 패턴
 
-## 학습 자료
-
-- [(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링](효과적인-컨텍스트-엔지니어링.md)
-
 ## 추가 리소스
 
 - [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
 - [Anthropic Prompt Engineering](https://docs.anthropic.com/claude/docs/prompt-engineering)
 
-!!! note "참고"
-    이 섹션의 내용은 지속적으로 업데이트됩니다. 새로운 기법과 모범 사례가 추가될 예정입니다.

@@ -1,6 +1,7 @@
-
-# LangGraph
-
+---
+created: 2025-10-04 18:15:39
+updated: 2025-10-10 23:47:02
+---
 [![버전](https://img.shields.io/pypi/v/langgraph.svg)](https://pypi.org/project/langgraph/)
 [![다운로드](https://static.pepy.tech/badge/langgraph/month)](https://pepy.tech/project/langgraph)
 [![오픈 이슈](https://img.shields.io/github/issues-raw/langchain-ai/langgraph)](https://github.com/langchain-ai/langgraph/issues)
