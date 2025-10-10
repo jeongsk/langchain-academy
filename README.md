@@ -1,3 +1,7 @@
+---
+created: 2025-09-29 13:59:32
+updated: 2025-10-10 23:48:35
+---
 # Foundation Introduction to LangGraph
 
 ### 소개
@@ -121,4 +125,4 @@ echo "TAVILY_API_KEY=\"$TAVILY_API_KEY\"" >> module-4/studio/.env
 - [LangGraph 공식 문서](https://langchain-ai.github.io/langgraph/)
 - [LangChain 공식 문서](https://python.langchain.com/)
 - [LangSmith](https://smith.langchain.com/)
-- [GitHub 저장소](https://github.com/jeongsk/langchain-academy)
+- [GitHub 저장소](https://github.com/langchain-ai)
