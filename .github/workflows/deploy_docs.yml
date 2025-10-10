@@ -17,8 +17,7 @@ jobs:
 
       - name: Clone Quartz
         run: |
-          git clone https://github.com/jackyzha0/quartz.git quartz-build
-          cd quartz-build
+          git clone --depth 1 --single-branch https://github.com/jackyzha0/quartz.git quartz-build
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
