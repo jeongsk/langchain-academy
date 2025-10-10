@@ -197,6 +197,7 @@
   },
   "active": "fc90116b04fa95b0",
   "lastOpenFiles": [
+    "CLAUDE.md",
     "pyrightconfig.json",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/index.md",
@@ -219,7 +220,6 @@
     "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffee92b2-b9b7-5375-bca9-e4c75987ae08",
     "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffe3d108-7e1a-53cb-9eeb-25e2bedb625e",
     "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffe1f10c-969b-5ba2-87cf-cd95a285da23",
-    "projects/11-QA-RAG-Agent/cache/text-embedding-3-smallffc8abc9-2e13-57d0-9bca-a81d2054aae2",
     "projects/11-QA-RAG-Agent/studio/README.md",
     "venv/lib/python3.12/site-packages/opentelemetry/sdk/metrics/_internal/exponential_histogram/mapping/ieee_754.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.svg",
