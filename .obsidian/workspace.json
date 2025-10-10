@@ -11,14 +11,10 @@
             "id": "4e7ba8f4b7a8ce41",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/setup.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "setup"
+              "title": "새 탭"
             }
           }
         ]
@@ -80,8 +76,8 @@
             "state": {
               "type": "notebook-navigator",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "notebook-navigator"
+              "icon": "notebook",
+              "title": "Notebook Navigator"
             }
           }
         ]
@@ -170,20 +166,6 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
-          },
-          {
-            "id": "3b7672be6a64b762",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-archive",
-              "title": "모든 속성"
-            }
           }
         ],
         "currentTab": 4
@@ -194,23 +176,24 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "notebook-navigator:Notebook Navigator": false,
       "switcher:빠른 전환기 열기": false,
       "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": true,
-      "daily-notes:오늘의 일일 노트 열기": true,
-      "templates:템플릿 삽입": true,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
-      "bases:새 베이스 생성하기": true,
+      "bases:새 베이스 생성하기": false,
       "obsidian-git:Open Git source control": false,
-      "notebook-navigator:Notebook Navigator": true,
-      "digitalgarden:Digital Garden Publication Center": true,
+      "digitalgarden:Digital Garden Publication Center": false,
       "obsidian-shellcommands:Shell commands: Custom variables": true,
-      "cmdr:Shell commands: Execute: VSCode": false,
-      "cmdr:Shell commands: Execute: Jupyter": false
+      "cmdr:Shell commands: Execute: Jupyter": false,
+      "cmdr:Shell commands: Execute: VSCode": false
     }
   },
   "active": "4e7ba8f4b7a8ce41",
   "lastOpenFiles": [
+    "docs/Foundation Introduction to LangGraph.md",
     "무제.md",
     "projects/04-Self-RAG.ipynb",
     "projects/03-CRAG.ipynb",
@@ -252,7 +235,6 @@
     "venv/lib/python3.12/site-packages/olefile/doc/Home.md",
     "venv/lib/python3.12/site-packages/olefile/doc/Contribute.md",
     "venv/lib/python3.12/site-packages/olefile/doc/API.md",
-    "venv/lib/python3.12/site-packages/numpy/random/LICENSE.md",
     "venv/lib/python3.12/site-packages/notebook/static/be0a084962d8066884f7.svg",
     "venv/lib/python3.12/site-packages/notebook/static/a3b9817780214caf01e8.svg",
     "venv/lib/python3.12/site-packages/notebook/static/9674eb1bd55047179038.svg",
