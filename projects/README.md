@@ -3,7 +3,10 @@
 - [**01-Agent-Simulation**](./01-Agent-Simulation.ipynb): LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
 - [**02-Meta-Prompt-Generation**](./02-Meta-Prompt-Generation.ipynb): LangGraph를 활용한 메타 프롬프트 생성 프로젝트
 - [**03-CRAG**](./03-CRAG.ipynb): LangGraph를 활용한 Corrective RAG(CRAG) 프로젝트
+- [**04-Self-RAG**](./04-Self-RAG.ipynb): Self-Reflective Retrieval-Augmented Generation - 검색 필요성을 자체 판단하고 답변 품질을 평가하는 Self-RAG 프로젝트
+- [**05-Plan-and-Execute**](./05-Plan-and-Execute.ipynb): Plan-and-Execute 패턴 - 목표를 단계별로 계획하고 순차 실행하며 피드백을 반영하여 동적으로 조정하는 에이전트 프로젝트
 - [**11-QA-RAG-Agent**](./11-QA-RAG-Agent/11-QA-RAG-Agent.ipynb): RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 문서 기반 Q&A 에이전트 프로젝트
+- [**12-Perflexity-Clone**](./12-Perflexity-Clone/README.md): 퍼플렉시티 클론 코딩 프로젝트
 
 ## 참고 자료
 
