@@ -16,6 +16,19 @@ LangGraph로 구축한 그래프를 원격 서버로 배포하고, 클라이언�
 - 클라이언트 입장에서 서버의 그래프를 호출하고 스트리밍 응답을 처리하는 방법
 - 원격 실행을 통해 분산된 환경에서 LangGraph를 활용하는 사례
 
+### [3. 더블 텍스팅 처리 (3-double-texting.ipynb)](3-double-texting.ipynb)
+
+- 사용자가 연속으로 메시지를 보낼 때 발생하는 더블 텍스팅(Double Texting) 상황 처리 방법
+- 동시 실행 관리 전략: Reject(거부), Enqueue(큐에 추가), Interrupt(중단), Rollback(롤백)
+- 각 전략의 특징과 실제 채팅 애플리케이션에서의 활용 방법
+
+### [4. 어시스턴트 활용 (4-assistant.ipynb)](4-assistant.ipynb)
+
+- LangGraph의 어시스턴트(Assistants) 개념과 설정 방법
+- 그래프에 설정(configuration)을 제공하여 다양한 버전의 어시스턴트 생성하기
+- 개인용/업무용 등 용도별로 구분된 어시스턴트를 만들고 관리하는 방법
+- SDK를 사용한 어시스턴트 검색, 업데이트, 삭제 작업
+
 ## 🎯 학습 목표
 
 이 모듈을 완료하면 다음을 할 수 있습니다:
