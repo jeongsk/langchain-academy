@@ -10,29 +10,29 @@ LangGraph 입문 과정에 오신 것을 환영합니다! 본 과정은 기초�
 
 LangGraph의 기본 개념과 핵심 구성 요소를 학습하는 모듈입니다. 그래프, 노드, 에지의 기초부터 시작하여 메모리를 가진 에이전트 구축까지 단계별로 진행합니다.
 
-### [모듈 2: 상태 관리와 메모리](module-2/README.md)
+### [모듈 2: 상태 관리와 메모리](https://github.com/jeongsk/langchain-academy/blob/main/module-2/README.md)
 
 LangGraph의 고급 상태 관리 기법과 메모리 시스템을 학습하는 모듈입니다. 상태 스키마 커스터마이징부터 시작하여 외부 데이터베이스를 활용한 지속적 메모리까지 단계별로 진행합니다.
 
-### [모듈 3: Human-in-the-Loop](module-3/README.md)
+### [모듈 3: Human-in-the-Loop](https://github.com/jeongsk/langchain-academy/blob/main/module-3/README.md)
 
 LangGraph에서 사람이 개입할 수 있는 워크플로우를 구현하는 방법을 학습하는 모듈입니다. 스트리밍부터 시작하여 중단점, 상태 편집, 동적 중단점, 시간 여행까지 단계별로 진행합니다.
 
-### [모듈 4: 고급 LangGraph 기술](module-4/README.md)
+### [모듈 4: 고급 LangGraph 기술](https://github.com/jeongsk/langchain-academy/blob/main/module-4/README.md)
 
 LangGraph의 병렬 처리, 서브그래프, 맵리듀스 등 고급 기능을 학습하고, 이를 활용하여 리서치 어시스턴트를 구축합니다.
 
-### [모듈 5: LangGraph 메모리 심화](module-5/README.md)
+### [모듈 5: LangGraph 메모리 심화](https://github.com/jeongsk/langchain-academy/blob/main/module-5/README.md)
 
 LangGraph의 고급 메모리 관리 기법을 학습하는 모듈입니다. `BaseStore`를 활용한 메모리 저장소 커스터마이징부터 `StateSchema`를 이용한 복잡한 상태 관리까지 다룹니다.
 
-### [모듈 6: LangGraph 서버 배포 및 연결](module-6/README.md)
+### [모듈 6: LangGraph 서버 배포 및 연결](https://github.com/jeongsk/langchain-academy/blob/main/module-6/README.md)
 
 LangGraph로 구축한 그래프를 원격 서버로 배포하고, 클라이언트에서 해당 서버에 연결하여 사용하는 방법을 학습합니다.
 
 ## 시작하기
 
-본 강좌를 시작하기 전에 [설정](setup.md) 페이지를 참조하여 필요한 환경을 구성해주세요.
+본 강좌를 시작하기 전에 [환경 설정](환경%20설정.md) 페이지를 참조하여 필요한 환경을 구성해주세요.
 
 ## 학습 방법
 
@@ -41,8 +41,8 @@ LangGraph로 구축한 그래프를 원격 서버로 배포하고, 클라이언�
 3. LangGraph Studio를 활용하여 시각적으로 그래프를 확인하고 테스트해보세요
 4. 각 모듈의 프로젝트를 직접 구현해보며 이해를 깊게 하세요
 
-!!! tip "팁"
-    LangSmith를 함께 사용하면 에이전트의 실행 과정을 더 자세히 관찰하고 디버깅할 수 있습니다.
+> [!tip] "팁"
+> LangSmith를 함께 사용하면 에이전트의 실행 과정을 더 자세히 관찰하고 디버깅할 수 있습니다.
 
 ## 리소스
 

@@ -11,10 +11,14 @@
             "id": "4e7ba8f4b7a8ce41",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/환경 설정.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "환경 설정"
             }
           }
         ]
@@ -194,6 +198,7 @@
   "active": "4e7ba8f4b7a8ce41",
   "lastOpenFiles": [
     "docs/Foundation Introduction to LangGraph.md",
+    "docs/환경 설정.md",
     "무제.md",
     "projects/04-Self-RAG.ipynb",
     "projects/03-CRAG.ipynb",
@@ -212,7 +217,6 @@
     "docs/랭그래프/LangGraph 배포 가이드.md",
     "docs/랭그래프/index.md",
     "docs/index.md",
-    "docs/setup.md",
     "venv/lib/python3.12/site-packages/opentelemetry/sdk/metrics/_internal/exponential_histogram/mapping/ieee_754.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.svg",
     "venv/lib/python3.12/site-packages/debugpy/_vendored/pydevd/pydevd_plugins/extensions/README.md",
