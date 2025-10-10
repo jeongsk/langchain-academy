@@ -1,0 +1,18 @@
+{
+  "include": [
+    "projects",
+    "module-1",
+    "module-2",
+    "module-3",
+    "module-4"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    ".git"
+  ],
+  "typeCheckingMode": "basic",
+  "reportAttributeAccessIssue": false,
+  "reportOptionalMemberAccess": false,
+  "pythonVersion": "3.12"
+}

@@ -197,6 +197,7 @@
   },
   "active": "fc90116b04fa95b0",
   "lastOpenFiles": [
+    "pyrightconfig.json",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/index.md",
     "docs/랭그래프/LangGraph 배포 가이드.md",
@@ -238,7 +239,6 @@
     "venv/lib/python3.12/site-packages/olefile/doc/OLE_VBA_sample.png",
     "venv/lib/python3.12/site-packages/olefile/doc/OLE_Overview.md",
     "venv/lib/python3.12/site-packages/olefile/doc/License.md",
-    "venv/lib/python3.12/site-packages/olefile/doc/Install.md",
     "venv/lib/python3.12/site-packages/notebook/static/be0a084962d8066884f7.svg",
     "venv/lib/python3.12/site-packages/notebook/static/a3b9817780214caf01e8.svg",
     "venv/lib/python3.12/site-packages/notebook/static/9674eb1bd55047179038.svg",
