@@ -204,6 +204,7 @@
   },
   "active": "3a7f901aa32fb202",
   "lastOpenFiles": [
+    "projects/07-Multi-Agent-Supervisor.ipynb",
     "projects/06-Multi-Agent-Collaboration.ipynb",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md.tmp.14728.1760143710558",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md.tmp.14728.1760143708027",
@@ -230,7 +231,6 @@
     "무제.md",
     "projects/04-Self-RAG.ipynb",
     "projects/03-CRAG.ipynb",
-    "projects/02-Meta-Prompt-Generation.ipynb",
     "projects/11-QA-RAG-Agent/studio/README.md",
     "venv/lib/python3.12/site-packages/opentelemetry/sdk/metrics/_internal/exponential_histogram/mapping/ieee_754.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.svg",
