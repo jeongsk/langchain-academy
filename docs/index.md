@@ -24,4 +24,5 @@ LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. �
 ## 참고 자료
 
 - [랭그래프](랭그래프/LangGraph.md) - 공식 문서를 보면서 정리한 내용입니다
+- [랭그래프 공식 문서 1.0 한국어 번역](https://jeongsk.mintlify.app/ko/oss/langgraph/overview) - 한국어로 번역된 공식 문서입니다
 - [프롬프트 엔지니어링](프롬프트%20엔지니어링/index.md) - 프롬프트를 잘 작성하는 것이 생각보다 중요합니다
