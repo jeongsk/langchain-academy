@@ -1,5 +1,7 @@
 ---
 source: https://langchain-ai.github.io/langgraph/concepts/low_level/
+created: 2025-10-04 18:10:07
+updated: 2025-10-12 11:02:59
 ---
 
 ## 그래프
@@ -418,7 +420,7 @@ def my_node(state: State) -> Command[Literal["other_subgraph"]]:
 
 부모 그래프에 있는 키를 업데이트하려면 해당 키에 대한 **reducer**를 부모 그래프의 State에 정의해야 합니다.
 
-이는 특히 [다중 에이전트 핸드오프](multi_agent.md#handoffs)를 구현할 때 유용합니다.
+이는 특히 [다중 에이전트 핸드오프](docs/랭그래프/멀티%20에이전트/멀티%20에이전트%20시스템.md#핸드오프)를 구현할 때 유용합니다.
 
 자세한 내용은 [이 가이드](Graph%20API%20사용법.md#navigate-to-a-node-in-a-parent-graph)를 참조하세요.
 
