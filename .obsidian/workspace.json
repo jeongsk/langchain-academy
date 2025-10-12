@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/랭그래프/Reference/Prebuilt/Agents.md",
+                "file": "docs/랭그래프/멀티 에이전트 시스템.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Agents"
+              "title": "멀티 에이전트 시스템"
             }
           }
         ]
@@ -208,6 +208,7 @@
   },
   "active": "3a7f901aa32fb202",
   "lastOpenFiles": [
+    "docs/랭그래프/Reference/Prebuilt/Agents.md",
     "docs/랭그래프/멀티 에이전트 시스템.md",
     "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
     "docs/랭그래프/에이전트/사전 구축된 에이전트로 빠르게 시작하기 - create_react_agent.md",
@@ -230,7 +231,6 @@
     "CLAUDE.md",
     "pyrightconfig.json",
     "docs/랭그래프/LangGraph 배포 가이드.md",
-    "docs/랭그래프/Reference/Prebuilt/Agents.md",
     "docs/랭그래프/LangGraph APIs/Graph API 사용법.md",
     "docs/환경 설정.md",
     "docs/Foundation Introduction to LangGraph.md",
