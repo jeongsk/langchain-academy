@@ -883,9 +883,8 @@ builder.add_node(node_c)
 graph = builder.compile()
 ```
 
-중요
-
-`Command[Literal["node_b", "node_c"]]`처럼 `Command`를 반환 타입 주석으로 사용했다는 점에 유의할 수 있습니다. 이는 그래프 렌더링에 필요하며 `node_a`가 `node_b`와 `node_c`로 이동할 수 있음을 LangGraph에 알려줍니다.
+> [!important] 중요
+> `Command[Literal["node_b", "node_c"]]`처럼 `Command`를 반환 타입 주석으로 사용했다는 점에 유의할 수 있습니다. 이는 그래프 렌더링에 필요하며 `node_a`가 `node_b`와 `node_c`로 이동할 수 있음을 LangGraph에 알려줍니다.
 
 ```python
 from IPython.display import display, Image
