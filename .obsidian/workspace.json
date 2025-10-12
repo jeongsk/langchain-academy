@@ -248,6 +248,7 @@
   },
   "active": "0119090761bfe0f0",
   "lastOpenFiles": [
+    "projects/tmp",
     "그래프 설계 베스트 프랙티스.md",
     "docs/랭그래프/LangGraph 노드 추가 패턴.md",
     "docs/랭그래프/LangGraph 배포 가이드.md",
@@ -286,7 +287,6 @@
     "venv/lib/python3.12/site-packages/debugpy/_vendored/pydevd/pydevd_plugins/extensions/README.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/mkdocs/img/grid.png",
     "venv/lib/python3.12/site-packages/material/templates/assets/images/favicon.png",
-    "venv/lib/python3.12/site-packages/zmq/backend/cffi/README.md",
     "venv/lib/python3.12/site-packages/langsmith/evaluation/integrations/test.excalidraw.png",
     "venv/lib/python3.12/site-packages/jupyter_server/static/logo/logo.png",
     "venv/lib/python3.12/site-packages/olefile/doc/OLE_VBA_sample.png",
