@@ -1,11 +1,8 @@
 ---
-title: LLM 에이전트 아키텍처 패턴
-created: 2025-10-12
-tags: [에이전트, 아키텍처, ReAct, Plan-and-Execute, Supervisor]
+created: 2025-10-12 00:00:00
+tags: [아키텍처, 에이전트, Plan-and-Execute, ReAct, Supervisor]
+updated: 2025-10-12 12:21:44
 ---
-
-# LLM 에이전트 아키텍처 패턴
-
 ## 개요
 
 LLM 에이전트 시스템을 구축할 때 선택할 수 있는 여러 아키텍처 패턴이 있습니다. 각 패턴은 고유한 장점과 한계를 가지고 있으며, 사용 사례에 따라 적절한 패턴을 선택하는 것이 중요합니다.

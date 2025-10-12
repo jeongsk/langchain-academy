@@ -1,9 +1,9 @@
 ---
 title: "Agents"
 source: "https://langchain-ai.github.io/langgraph/reference/agents/"
+created: 2025-10-07 12:47:13
+updated: 2025-10-12 12:22:15
 ---
-# Agents
-
 ## `class` AgentState
 
 상속: `TypedDict`

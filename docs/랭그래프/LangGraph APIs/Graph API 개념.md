@@ -3,7 +3,6 @@ source: https://langchain-ai.github.io/langgraph/concepts/low_level/
 created: 2025-10-04 18:10:07
 updated: 2025-10-12 11:02:59
 ---
-
 ## 그래프
 
 LangGraph는 에이전트 워크플로우를 그래프로 모델링합니다. 에이전트의 동작은 세 가지 핵심 구성 요소로 정의됩니다:
