@@ -19,7 +19,7 @@ LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. �
 ## 시작하기
 
 - [Foundation Introduction to LangGraph](Foundation%20Introduction%20to%20LangGraph.md) - 여기서부터 시작했습니다
-- [환경 설정](환경%20설정.md) - 처음에 환경 설정하면서 헤맸던 부분들을 정리했습니다
+- [개발 환경 설정](개발%20환경%20설정.md) - 처음에 환경 설정하면서 헤맸던 부분들을 정리했습니다
 
 ## 참고 자료
 
