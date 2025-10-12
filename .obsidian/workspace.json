@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/랭그래프/멀티 에이전트/멀티 에이전트 시스템.md",
+                "file": "docs/랭그래프/에이전트/LLM 에이전트 아키텍처 패턴.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "멀티 에이전트 시스템"
+              "title": "LLM 에이전트 아키텍처 패턴"
             }
           }
         ]
@@ -152,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/랭그래프/멀티 에이전트/멀티 에이전트 시스템.md",
+                "file": "docs/랭그래프/에이전트/LLM 에이전트 아키텍처 패턴.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "멀티 에이전트 시스템 의 개요"
+              "title": "LLM 에이전트 아키텍처 패턴 의 개요"
             }
           },
           {
@@ -248,8 +248,10 @@
   },
   "active": "0119090761bfe0f0",
   "lastOpenFiles": [
-    "docs/랭그래프/멀티 에이전트/멀티 에이전트 구현.md",
+    "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
+    "docs/랭그래프/에이전트/사전 구축된 에이전트로 빠르게 시작하기 - create_react_agent.md",
     "docs/랭그래프/멀티 에이전트/멀티 에이전트 시스템.md",
+    "docs/랭그래프/멀티 에이전트/멀티 에이전트 구현.md",
     "docs/랭그래프/멀티 에이전트/멀티 에이전트 시스템 구축 가이드.md",
     "docs/개발 환경 설정.md",
     "docs/랭그래프/LangGraph 배포 가이드.md",
@@ -264,8 +266,6 @@
     "projects/07-2-Multi-Agent-Supervisor.ipynb",
     "projects/07-Multi-Agent-Supervisor 복사본.ipynb",
     "docs/랭그래프/Reference/Prebuilt/Agents.md",
-    "docs/랭그래프/에이전트/에이전트란 무엇인가요?.md",
-    "docs/랭그래프/에이전트/사전 구축된 에이전트로 빠르게 시작하기 - create_react_agent.md",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/랭그래프/에이전트/LLM 에이전트 아키텍처 패턴.md",
     "projects/06-Multi-Agent-Collaboration.ipynb",
