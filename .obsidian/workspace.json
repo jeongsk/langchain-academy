@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/랭그래프/LangGraph 노드 추가 패턴.md",
+                "file": "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LangGraph 노드 추가 패턴"
+              "title": "(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링"
             }
           }
         ]
@@ -88,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 310.5
+    "width": 309.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -152,13 +152,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/랭그래프/LangGraph 노드 추가 패턴.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "LangGraph 노드 추가 패턴 의 개요"
+              "title": "개요"
             }
           },
           {
@@ -221,11 +220,11 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "터미널: claude --permission-mode bypassPermissions"
+              "title": "터미널: anpigon@anpigonui-MacBookPro:~/Workspace/Wantedlab/langchain-academy"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -246,8 +245,11 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "0119090761bfe0f0",
+  "active": "88a3ea6b1138026b",
   "lastOpenFiles": [
+    "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+    "docs/랭그래프/LangGraph 노드 추가 패턴.md",
+    "docs/프롬프트 엔지니어링/무제.md",
     "projects/transformer_core_components_chart.png",
     "projects/tmp/transformer_full_paper.txt",
     "projects/tmp/section_7_conclusion.txt",
@@ -260,7 +262,6 @@
     "projects/tmp/transformer_paper_outline.txt",
     "projects/tmp",
     "그래프 설계 베스트 프랙티스.md",
-    "docs/랭그래프/LangGraph 노드 추가 패턴.md",
     "docs/랭그래프/LangGraph 배포 가이드.md",
     "docs/랭그래프/LangGraph.md",
     "docs/랭그래프/Reference/Prebuilt/Agents.md",
@@ -273,7 +274,6 @@
     "docs/랭그래프/멀티 에이전트/멀티 에이전트 구현.md",
     "docs/랭그래프/멀티 에이전트/멀티 에이전트 시스템 구축 가이드.md",
     "docs/개발 환경 설정.md",
-    "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/index.md",
     "docs/프롬프트 엔지니어링/index.md",
     "README.md",
@@ -292,7 +292,6 @@
     "venv/lib/python3.12/site-packages/olefile/doc/OLE_VBA_sample.png",
     "venv/lib/python3.12/site-packages/notebook/static/be0a084962d8066884f7.svg",
     "venv/lib/python3.12/site-packages/notebook/static/a3b9817780214caf01e8.svg",
-    "venv/lib/python3.12/site-packages/notebook/static/9674eb1bd55047179038.svg",
-    "venv/lib/python3.12/site-packages/jupyterlab/static/be0a084962d8066884f7.svg"
+    "venv/lib/python3.12/site-packages/notebook/static/9674eb1bd55047179038.svg"
   ]
 }
