@@ -247,6 +247,7 @@
   },
   "active": "88a3ea6b1138026b",
   "lastOpenFiles": [
+    "projects/temp/Chinook.db",
     "projects/09-SQL-Agent.ipynb",
     "projects/temp/transformer_paper_outline.txt",
     "projects/temp/transformer_full_paper.txt",
@@ -261,7 +262,6 @@
     "docs/랭그래프/LangGraph 노드 추가 패턴.md",
     "docs/프롬프트 엔지니어링/무제.md",
     "projects/transformer_core_components_chart.png",
-    "projects/tmp/transformer_full_paper.txt",
     "그래프 설계 베스트 프랙티스.md",
     "docs/랭그래프/LangGraph 배포 가이드.md",
     "docs/랭그래프/LangGraph.md",
