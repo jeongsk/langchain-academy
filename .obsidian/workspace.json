@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/랭그래프/Add human intervention.md",
+                "file": "docs/랭그래프/Human-in-the-loop Overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Add human intervention"
+              "title": "Human-in-the-loop Overview"
             }
           }
         ]
@@ -220,7 +220,7 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "터미널: ✳ LangGraph Studio"
+              "title": "터미널: ✳ 문서 번역"
             }
           }
         ],
@@ -247,7 +247,8 @@
   },
   "active": "88a3ea6b1138026b",
   "lastOpenFiles": [
-    "docs/랭그래프/Add human intervention.md",
+    "docs/랭그래프/Human-in-the-loop Overview.md",
+    "docs/랭그래프/휴먼-인-더-루프 사용하기.md",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455958539",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455951189",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455943150",
