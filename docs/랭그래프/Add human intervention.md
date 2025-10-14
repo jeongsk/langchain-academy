@@ -872,30 +872,30 @@ You can use [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts
 
 LangGraph Studio is free with [locally deployed applications](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/) using `langgraph dev`.
 
-## Considerations
+## 고려사항
 
-When using human-in-the-loop, there are some considerations to keep in mind.
+휴먼-인-더-루프를 사용할 때 유의해야 할 몇 가지 고려사항이 있습니다.
 
-### Using with code with side-effects
+### 부작용이 있는 코드와 함께 사용하기
 
-Place code with side effects, such as API calls, after the `interrupt` or in a separate node to avoid duplication, as these are re-triggered every time the node is resumed.
+API 호출과 같이 부작용이 있는 코드는 `interrupt` 뒤에 배치하거나 별도의 노드에 배치하여 중복을 방지합니다. 노드가 재개될 때마다 이러한 코드가 다시 트리거되기 때문입니다.
 
 ```python
 from langgraph.types import interrupt
 
 def human_node(state: State):
-    """Human node with validation."""
+    """유효성 검사가 포함된 사람 노드."""
 
     answer = interrupt(question)
 
-    api_call(answer) # OK as it's after the interrupt
+    api_call(answer) # 인터럽트 뒤에 있으므로 OK
 ```
 
 ```python
 from langgraph.types import interrupt
 
 def human_node(state: State):
-    """Human node with validation."""
+    """유효성 검사가 포함된 사람 노드."""
 
     answer = interrupt(question)
 
@@ -904,40 +904,40 @@ def human_node(state: State):
     }
 
 def api_call_node(state: State):
-    api_call(...) # OK as it's in a separate node
+    api_call(...) # 별도의 노드에 있으므로 OK
 ```
 
-### Using with subgraphs called as functions
+### 함수로 호출되는 서브그래프와 함께 사용하기
 
-When invoking a subgraph as a function, the parent graph will resume execution from the **beginning of the node** where the subgraph was invoked where the `interrupt` was triggered. Similarly, the **subgraph** will resume from the **beginning of the node** where the `interrupt()` function was called.
+서브그래프를 함수로 호출할 때, 부모 그래프는 `interrupt`가 트리거된 서브그래프가 호출된 **노드의 시작 부분**부터 실행을 재개합니다. 마찬가지로 **서브그래프**는 `interrupt()` 함수가 호출된 **노드의 시작 부분**부터 재개됩니다.
 
 ```python
 def node_in_parent_graph(state: State):
-    some_code()  # <-- This will re-execute when the subgraph is resumed.
-    # Invoke a subgraph as a function.
-    # The subgraph contains an \`interrupt\` call.
+    some_code()  # <-- 서브그래프가 재개될 때 다시 실행됩니다.
+    # 함수로 서브그래프를 호출합니다.
+    # 서브그래프에 `interrupt` 호출이 포함되어 있습니다.
     subgraph_result = subgraph.invoke(some_input)
     ...
 ```
-Extended example: parent and subgraph execution flow
+확장 예제: 부모 그래프와 서브그래프 실행 흐름
 
-Say we have a parent graph with 3 nodes:
+3개의 노드가 있는 부모 그래프가 있다고 가정합니다:
 
-**Parent Graph**: `node_1` → `node_2` (subgraph call) → `node_3`
+**부모 그래프**: `node_1` → `node_2` (서브그래프 호출) → `node_3`
 
-And the subgraph has 3 nodes, where the second node contains an `interrupt`:
+그리고 서브그래프에는 3개의 노드가 있으며, 두 번째 노드에 `interrupt`가 포함되어 있습니다:
 
-**Subgraph**: `sub_node_1` → `sub_node_2` (`interrupt`) → `sub_node_3`
+**서브그래프**: `sub_node_1` → `sub_node_2` (`interrupt`) → `sub_node_3`
 
-When resuming the graph, the execution will proceed as follows:
+그래프를 재개할 때 실행은 다음과 같이 진행됩니다:
 
-1. **Skip `node_1`** in the parent graph (already executed, graph state was saved in snapshot).
-2. **Re-execute `node_2`** in the parent graph from the start.
-3. **Skip `sub_node_1`** in the subgraph (already executed, graph state was saved in snapshot).
-4. **Re-execute `sub_node_2`** in the subgraph from the beginning.
-5. Continue with `sub_node_3` and subsequent nodes.
+1. 부모 그래프에서 **`node_1` 건너뛰기** (이미 실행됨, 그래프 상태가 스냅샷에 저장됨).
+2. 부모 그래프에서 **`node_2`를 처음부터 다시 실행**.
+3. 서브그래프에서 **`sub_node_1` 건너뛰기** (이미 실행됨, 그래프 상태가 스냅샷에 저장됨).
+4. 서브그래프에서 **`sub_node_2`를 처음부터 다시 실행**.
+5. `sub_node_3` 및 후속 노드 계속 진행.
 
-Here is abbreviated example code that you can use to understand how subgraphs work with interrupts. It counts the number of times each node is entered and prints the count.
+다음은 인터럽트와 함께 서브그래프가 작동하는 방식을 이해하는 데 사용할 수 있는 간략한 예제 코드입니다. 각 노드가 입력된 횟수를 세고 출력합니다.
 
 ```python
 import uuid
@@ -949,22 +949,22 @@ from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 
 class State(TypedDict):
-    """The graph state."""
+    """그래프 상태."""
     state_counter: int
 
 counter_node_in_subgraph = 0
 
 def node_in_subgraph(state: State):
-    """A node in the sub-graph."""
+    """서브그래프의 노드."""
     global counter_node_in_subgraph
-    counter_node_in_subgraph += 1  # This code will **NOT** run again!
+    counter_node_in_subgraph += 1  # 이 코드는 다시 실행되지 **않습니다**!
     print(f"Entered \`node_in_subgraph\` a total of {counter_node_in_subgraph} times")
 
 counter_human_node = 0
 
 def human_node(state: State):
     global counter_human_node
-    counter_human_node += 1 # This code will run again!
+    counter_human_node += 1 # 이 코드는 다시 실행됩니다!
     print(f"Entered human_node in sub-graph a total of {counter_human_node} times")
     answer = interrupt("what is your name?")
     print(f"Got an answer of {answer}")
@@ -981,15 +981,15 @@ subgraph = subgraph_builder.compile(checkpointer=checkpointer)
 counter_parent_node = 0
 
 def parent_node(state: State):
-    """This parent node will invoke the subgraph."""
+    """이 부모 노드는 서브그래프를 호출합니다."""
     global counter_parent_node
 
-    counter_parent_node += 1 # This code will run again on resuming!
+    counter_parent_node += 1 # 이 코드는 재개 시 다시 실행됩니다!
     print(f"Entered \`parent_node\` a total of {counter_parent_node} times")
 
-    # Please note that we're intentionally incrementing the state counter
-    # in the graph state as well to demonstrate that the subgraph update
-    # of the same key will not conflict with the parent graph (until
+    # 동일한 키의 서브그래프 업데이트가 부모 그래프와
+    # 충돌하지 않는다는 것을 보여주기 위해
+    # 그래프 상태의 상태 카운터를 의도적으로 증가시킵니다
     subgraph_state = subgraph.invoke(state)
     return subgraph_state
 
@@ -997,7 +997,7 @@ builder = StateGraph(State)
 builder.add_node("parent_node", parent_node)
 builder.add_edge(START, "parent_node")
 
-# A checkpointer must be enabled for interrupts to work!
+# 인터럽트가 작동하려면 체크포인터가 활성화되어야 합니다!
 checkpointer = InMemorySaver()
 graph = builder.compile(checkpointer=checkpointer)
 
@@ -1016,7 +1016,7 @@ for chunk in graph.stream(Command(resume="35"), config):
     print(chunk)
 ```
 
-This will print out
+다음과 같이 출력됩니다
 
 ```js
 Entered \`parent_node\` a total of 1 times
@@ -1030,15 +1030,15 @@ Got an answer of 35
 {'parent_node': {'state_counter': 1}}
 ```
 
-### Using multiple interrupts in a single node
+### 단일 노드에서 여러 인터럽트 사용하기
 
-Using multiple interrupts within a **single** node can be helpful for patterns like [validating human input](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#validate-human-input). However, using multiple interrupts in the same node can lead to unexpected behavior if not handled carefully.
+**단일** 노드 내에서 여러 인터럽트를 사용하는 것은 [사람 입력 유효성 검사](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#validate-human-input)와 같은 패턴에 유용할 수 있습니다. 그러나 동일한 노드에서 여러 인터럽트를 사용하면 신중하게 처리하지 않으면 예기치 않은 동작이 발생할 수 있습니다.
 
-When a node contains multiple interrupt calls, LangGraph keeps a list of resume values specific to the task executing the node. Whenever execution resumes, it starts at the beginning of the node. For each interrupt encountered, LangGraph checks if a matching value exists in the task's resume list. Matching is **strictly index-based**, so the order of interrupt calls within the node is critical.
+노드에 여러 인터럽트 호출이 포함되어 있으면 LangGraph는 노드를 실행하는 작업에 특정한 재개 값 목록을 유지합니다. 실행이 재개될 때마다 노드의 시작 부분에서 시작됩니다. 각 인터럽트가 발생할 때마다 LangGraph는 작업의 재개 목록에 일치하는 값이 있는지 확인합니다. 일치는 **엄격하게 인덱스 기반**이므로 노드 내 인터럽트 호출의 순서가 중요합니다.
 
-To avoid issues, refrain from dynamically changing the node's structure between executions. This includes adding, removing, or reordering interrupt calls, as such changes can result in mismatched indices. These problems often arise from unconventional patterns, such as mutating state via `Command(resume=..., update=SOME_STATE_MUTATION)` or relying on global variables to modify the node's structure dynamically.
+문제를 피하려면 실행 사이에 노드 구조를 동적으로 변경하지 마세요. 여기에는 인터럽트 호출을 추가, 제거 또는 재정렬하는 것이 포함되며, 이러한 변경은 인덱스 불일치를 초래할 수 있습니다. 이러한 문제는 `Command(resume=..., update=SOME_STATE_MUTATION)`를 통해 상태를 변경하거나 전역 변수에 의존하여 노드 구조를 동적으로 수정하는 것과 같은 비정형적인 패턴에서 자주 발생합니다.
 
-Extended example: incorrect code that introduces non-determinism
+확장 예제: 비결정성을 도입하는 잘못된 코드
 ```python
 import uuid
 from typing import TypedDict, Optional
@@ -1049,7 +1049,7 @@ from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 
 class State(TypedDict):
-    """The graph state."""
+    """그래프 상태."""
 
     age: Optional[str]
     name: Optional[str]
@@ -1076,7 +1076,7 @@ builder = StateGraph(State)
 builder.add_node("human_node", human_node)
 builder.add_edge(START, "human_node")
 
-# A checkpointer must be enabled for interrupts to work!
+# 인터럽트가 작동하려면 체크포인터가 활성화되어야 합니다!
 checkpointer = InMemorySaver()
 graph = builder.compile(checkpointer=checkpointer)
 

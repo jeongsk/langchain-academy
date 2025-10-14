@@ -84,7 +84,8 @@
               "title": "Notebook Navigator"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -247,21 +248,20 @@
   },
   "active": "88a3ea6b1138026b",
   "lastOpenFiles": [
-    "projects/10-Research-Assistant.ipynb",
     "docs/랭그래프/Add human intervention.md",
+    "docs/랭그래프/Add human intervention.md.tmp.16468.1760455958539",
+    "docs/랭그래프/Add human intervention.md.tmp.16468.1760455951189",
+    "docs/랭그래프/Add human intervention.md.tmp.16468.1760455943150",
+    "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+    "docs/랭그래프/Add human intervention.md.tmp.16468.1760455917622",
+    "docs/랭그래프/Add human intervention.md.tmp.16468.1760455902396",
+    "projects/10-Research-Assistant.ipynb",
     "docs/index.md",
     "docs/assets/smith.langchain.com_o_92657a09-ac43-48a7-9363-ed8025ba42d7_datasets_79ad9b12-0f1f-41ab-a5ca-01fdd2fb1984_tab=1(iPad Mini).png",
     "docs/assets",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760453710177",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760453681238",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760453593329",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453572575",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453558847",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453546839",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453526287",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453506649",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453476917",
-    "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/랭그래프/LangGraph 노드 추가 패턴.md",
     "docs/프롬프트 엔지니어링/무제.md",
     "projects/transformer_core_components_chart.png",
