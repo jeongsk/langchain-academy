@@ -1,7 +1,7 @@
 ---
 title: LangGraph Academy
 created: 2025-10-10 22:00:53
-updated: 2025-10-10 23:59:03
+updated: 2025-10-15 00:07:48
 ---
 # LangGraph Academy 학습 기록
 
