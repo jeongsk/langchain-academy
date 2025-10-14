@@ -778,13 +778,13 @@ for event in graph.stream(None, thread, stream_mode="values"):
     print(event)
 ```
 
-### Use static interrupts in LangGraph Studio
+### LangGraph Studio에서 정적 인터럽트 사용하기
 
-You can use [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/) to debug your graph. You can set static breakpoints in the UI and then run the graph. You can also use the UI to inspect the graph state at any point in the execution.
+[LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/)를 사용하여 그래프를 디버그할 수 있습니다. UI에서 정적 중단점을 설정한 다음 그래프를 실행할 수 있습니다. 또한 UI를 사용하여 실행 중 언제든지 그래프 상태를 검사할 수 있습니다.
 
 ![image](https://langchain-ai.github.io/langgraph/concepts/img/human_in_the_loop/static-interrupt.png)
 
-LangGraph Studio is free with [locally deployed applications](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/) using `langgraph dev`.
+LangGraph Studio는 `langgraph dev`를 사용하는 [로컬 배포 애플리케이션](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/)에서 무료로 사용할 수 있습니다.
 
 ## Debug with interrupts
 
@@ -864,13 +864,13 @@ for event in graph.stream(None, thread, stream_mode="values"):
     print(event)
 ```
 
-### Use static interrupts in LangGraph Studio
+### LangGraph Studio에서 정적 인터럽트 사용하기
 
-You can use [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/) to debug your graph. You can set static breakpoints in the UI and then run the graph. You can also use the UI to inspect the graph state at any point in the execution.
+[LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/)를 사용하여 그래프를 디버그할 수 있습니다. UI에서 정적 중단점을 설정한 다음 그래프를 실행할 수 있습니다. 또한 UI를 사용하여 실행 중 언제든지 그래프 상태를 검사할 수 있습니다.
 
 ![image](https://langchain-ai.github.io/langgraph/concepts/img/human_in_the_loop/static-interrupt.png)
 
-LangGraph Studio is free with [locally deployed applications](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/) using `langgraph dev`.
+LangGraph Studio는 `langgraph dev`를 사용하는 [로컬 배포 애플리케이션](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/)에서 무료로 사용할 수 있습니다.
 
 ## 고려사항
 

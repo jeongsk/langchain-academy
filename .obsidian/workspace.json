@@ -84,8 +84,7 @@
               "title": "Notebook Navigator"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -221,7 +220,7 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "터미널: ✳ 문서 번역"
+              "title": "터미널: ✳ LangGraph Studio"
             }
           }
         ],
