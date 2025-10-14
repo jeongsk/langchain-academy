@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/랭그래프/Human-in-the-loop Overview.md",
+                "file": "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Human-in-the-loop Overview"
+              "title": "Server API를 활용한 휴먼-인-더-루프"
             }
           }
         ]
@@ -152,12 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "개요"
+              "title": "Server API를 활용한 휴먼-인-더-루프 의 개요"
             }
           },
           {
@@ -220,7 +221,7 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "터미널: ✳ 문서 번역"
+              "title": "터미널: ✳ 코드 포맷팅"
             }
           }
         ],
@@ -245,23 +246,24 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "88a3ea6b1138026b",
+  "active": "0119090761bfe0f0",
   "lastOpenFiles": [
-    "docs/랭그래프/Human-in-the-loop Overview.md",
-    "docs/랭그래프/휴먼-인-더-루프 사용하기.md",
+    "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md",
+    "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456717915",
+    "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456706316",
+    "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456696542",
+    "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456687415",
+    "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456677004",
+    "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요.md",
+    "docs/랭그래프/휴먼-인-더-루프",
+    "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 사용하기.md",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455958539",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455951189",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455943150",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455917622",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760455902396",
-    "projects/10-Research-Assistant.ipynb",
     "docs/index.md",
     "docs/assets/smith.langchain.com_o_92657a09-ac43-48a7-9363-ed8025ba42d7_datasets_79ad9b12-0f1f-41ab-a5ca-01fdd2fb1984_tab=1(iPad Mini).png",
-    "docs/assets",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453710177",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453681238",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760453593329",
     "docs/랭그래프/LangGraph 노드 추가 패턴.md",
     "docs/프롬프트 엔지니어링/무제.md",
     "projects/transformer_core_components_chart.png",
@@ -283,8 +285,6 @@
     "docs/프롬프트 엔지니어링/(번역) 모델이 프롬프트를 작성하게 하라.md",
     "CLAUDE.md",
     "docs/Foundation Introduction to LangGraph.md",
-    "무제.md",
-    "projects/11-QA-RAG-Agent/studio/README.md",
     "venv/lib/python3.12/site-packages/mkdocs/themes/readthedocs/css/fonts/fontawesome-webfont.svg",
     "venv/lib/python3.12/site-packages/mkdocs/themes/mkdocs/img/grid.png",
     "venv/lib/python3.12/site-packages/material/templates/assets/images/favicon.png",
