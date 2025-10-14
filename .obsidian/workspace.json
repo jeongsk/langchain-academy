@@ -8,6 +8,26 @@
         "type": "tabs",
         "children": [
           {
+            "id": "ecd761556414ba9a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "휴먼-인-더-루프 개요"
+            }
+          }
+        ]
+      },
+      {
+        "id": "645e8bfb350b3b26",
+        "type": "tabs",
+        "children": [
+          {
             "id": "0119090761bfe0f0",
             "type": "leaf",
             "state": {
@@ -152,13 +172,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md",
+                "file": "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Server API를 활용한 휴먼-인-더-루프 의 개요"
+              "title": "휴먼-인-더-루프 개요 의 개요"
             }
           },
           {
@@ -229,7 +249,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 873.5
+    "width": 873.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -246,22 +267,22 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "0119090761bfe0f0",
+  "active": "ecd761556414ba9a",
   "lastOpenFiles": [
     "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md",
+    "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 사용하기.md",
+    "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요.md",
+    "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456848446",
     "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456717915",
     "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456706316",
     "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456696542",
     "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456687415",
     "docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md.tmp.16468.1760456677004",
-    "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요.md",
     "docs/랭그래프/휴먼-인-더-루프",
-    "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 사용하기.md",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455958539",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455951189",
     "docs/랭그래프/Add human intervention.md.tmp.16468.1760455943150",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
-    "docs/랭그래프/Add human intervention.md.tmp.16468.1760455917622",
     "docs/index.md",
     "docs/assets/smith.langchain.com_o_92657a09-ac43-48a7-9363-ed8025ba42d7_datasets_79ad9b12-0f1f-41ab-a5ca-01fdd2fb1984_tab=1(iPad Mini).png",
     "docs/랭그래프/LangGraph 노드 추가 패턴.md",
