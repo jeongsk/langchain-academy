@@ -3,26 +3,26 @@ created: 2025-10-14 23:42:52
 updated: 2025-10-14 23:45:40
 source: https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/
 ---
-## Enable human intervention
+## 사람 개입 활성화하기
 
-To review, edit, and approve tool calls in an agent or workflow, use interrupts to pause a graph and wait for human input. Interrupts use LangGraph's [persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/) layer, which saves the graph state, to indefinitely pause graph execution until you resume.
+에이전트나 워크플로우에서 도구 호출을 검토하고 편집하며 승인하려면, 인터럽트를 사용하여 그래프를 일시 중지하고 사람의 입력을 기다리도록 합니다. 인터럽트는 LangGraph의 [지속성](https://langchain-ai.github.io/langgraph/concepts/persistence/) 레이어를 사용하여 그래프 상태를 저장하고, 재개할 때까지 그래프 실행을 무기한 일시 중지합니다.
 
 > [!Info]
-> For more information about human-in-the-loop workflows, see the [Human-in-the-Loop](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/) conceptual guide.
+> 휴먼-인-더-루프 워크플로우에 대한 자세한 내용은 [휴먼-인-더-루프](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/) 개념 가이드를 참조하세요.
 
-## Pause using interrupt
+## interrupt를 사용한 일시 중지
 
-[Dynamic interrupts](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/#key-capabilities) (also known as dynamic breakpoints) are triggered based on the current state of the graph. You can set dynamic interrupts by calling [`interrupt` function](https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Interrupt) in the appropriate place. The graph will pause, which allows for human intervention, and then resumes the graph with their input. It's useful for tasks like approvals, edits, or gathering additional context.
+[동적 인터럽트](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/#key-capabilities)(동적 중단점이라고도 함)는 그래프의 현재 상태에 따라 트리거됩니다. 적절한 위치에서 [`interrupt` 함수](https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Interrupt)를 호출하여 동적 인터럽트를 설정할 수 있습니다. 그래프가 일시 중지되어 사람의 개입을 허용하고, 입력을 받은 후 그래프를 재개합니다. 이는 승인, 편집 또는 추가 컨텍스트 수집과 같은 작업에 유용합니다.
 
 > [!Note]
-> As of v1.0, `interrupt` is the recommended way to pause a graph. `NodeInterrupt` is deprecated and will be removed in v2.0.
+> v1.0부터 `interrupt`가 그래프를 일시 중지하는 권장 방법입니다. `NodeInterrupt`는 더 이상 사용되지 않으며 v2.0에서 제거될 예정입니다.
 
-To use `interrupt` in your graph, you need to:
+그래프에서 `interrupt`를 사용하려면 다음이 필요합니다:
 
-1. [**Specify a checkpointer**](https://langchain-ai.github.io/langgraph/concepts/persistence/#checkpoints) to save the graph state after each step.
-2. **Call `interrupt()`** in the appropriate place. See the [Common Patterns](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#common-patterns) section for examples.
-3. **Run the graph** with a [**thread ID**](https://langchain-ai.github.io/langgraph/concepts/persistence/#threads) until the `interrupt` is hit.
-4. **Resume execution** using `invoke` / `stream` (see [**The `Command` primitive**](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#resume-using-the-command-primitive)).
+1. [**체크포인터 지정**](https://langchain-ai.github.io/langgraph/concepts/persistence/#checkpoints) - 각 단계 후 그래프 상태를 저장합니다.
+2. **`interrupt()` 호출** - 적절한 위치에서 호출합니다. 예제는 [일반적인 패턴](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#common-patterns) 섹션을 참조하세요.
+3. **그래프 실행** - [**스레드 ID**](https://langchain-ai.github.io/langgraph/concepts/persistence/#threads)와 함께 `interrupt`에 도달할 때까지 실행합니다.
+4. **실행 재개** - `invoke` / `stream`을 사용합니다([**`Command` 프리미티브**](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#resume-using-the-command-primitive) 참조).
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.interrupt">interrupt</a> | <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Command">Command</a></i></sup>
 
@@ -30,21 +30,21 @@ To use `interrupt` in your graph, you need to:
 from langgraph.types import interrupt, Command
 
 def human_node(state: State):
-    value = interrupt( 
+    value = interrupt(
         {
-            "text_to_revise": state["some_text"] 
+            "text_to_revise": state["some_text"]  # 검토할 텍스트를 사람에게 표시
         }
     )
     return {
-        "some_text": value 
+        "some_text": value  # 편집된 텍스트로 상태 업데이트
     }
 
-graph = graph_builder.compile(checkpointer=checkpointer) 
+graph = graph_builder.compile(checkpointer=checkpointer)  # 체크포인터로 그래프 컴파일
 
-# Run the graph until the interrupt is hit.
+# 인터럽트에 도달할 때까지 그래프 실행
 config = {"configurable": {"thread_id": "some_id"}}
-result = graph.invoke({"some_text": "original text"}, config=config) 
-print(result['__interrupt__']) 
+result = graph.invoke({"some_text": "original text"}, config=config)
+print(result['__interrupt__'])
 # > [
 # >    Interrupt(
 # >       value={'text_to_revise': 'original text'},
@@ -53,10 +53,10 @@ print(result['__interrupt__'])
 # >    )
 # > ]
 
-print(graph.invoke(Command(resume="Edited text"), config=config)) 
+print(graph.invoke(Command(resume="Edited text"), config=config))  # 편집된 텍스트로 재개
 # > {'some_text': 'Edited text'}
 ```
-Extended example: using `interrupt`
+확장 예제: `interrupt` 사용하기
 ```python
 from typing import TypedDict
 import uuid
@@ -70,27 +70,27 @@ class State(TypedDict):
     some_text: str
 
 def human_node(state: State):
-    value = interrupt(  
+    value = interrupt(
         {
-            "text_to_revise": state["some_text"]  
+            "text_to_revise": state["some_text"]  # 검토할 텍스트를 사람에게 표시
         }
     )
     return {
-        "some_text": value  
+        "some_text": value  # 편집된 텍스트로 상태 업데이트
     }
 
-# Build the graph
+# 그래프 구축
 graph_builder = StateGraph(State)
 graph_builder.add_node("human_node", human_node)
 graph_builder.add_edge(START, "human_node")
-checkpointer = InMemorySaver()  
+checkpointer = InMemorySaver()  # 메모리 내 체크포인터 생성
 graph = graph_builder.compile(checkpointer=checkpointer)
-# Pass a thread ID to the graph to run it.
+# 그래프를 실행하기 위해 스레드 ID 전달
 config = {"configurable": {"thread_id": uuid.uuid4()}}
-# Run the graph until the interrupt is hit.
-result = graph.invoke({"some_text": "original text"}, config=config)  
+# 인터럽트에 도달할 때까지 그래프 실행
+result = graph.invoke({"some_text": "original text"}, config=config)
 
-print(result['__interrupt__']) 
+print(result['__interrupt__'])
 # > [
 # >    Interrupt(
 # >       value={'text_to_revise': 'original text'},
@@ -98,40 +98,40 @@ print(result['__interrupt__'])
 # >       ns=['human_node:6ce9e64f-edef-fe5d-f7dc-511fa9526960']
 # >    )
 # > ]
-print(result["__interrupt__"])  
+print(result["__interrupt__"])  # 인터럽트 정보 출력
 # > [Interrupt(value={'text_to_revise': 'original text'}, id='6d7c4048049254c83195429a3659661d')]
 
-print(graph.invoke(Command(resume="Edited text"), config=config)) 
+print(graph.invoke(Command(resume="Edited text"), config=config))  # 편집된 텍스트로 재개
 # > {'some_text': 'Edited text'}
 ```
 
-> [!info] New in 0.4.0
-> `__interrupt__` is a special key that will be returned when running the graph if the graph is interrupted. Support for `__interrupt__` in `invoke` and `ainvoke` has been added in version 0.4.0. If you're on an older version, you will only see `__interrupt__` in the result if you use `stream` or `astream`. You can also use `graph.get_state(thread_id)` to get the interrupt value(s).
+> [!info] 0.4.0의 새로운 기능
+> `__interrupt__`는 그래프가 중단되었을 때 반환되는 특수 키입니다. `invoke` 및 `ainvoke`에서 `__interrupt__` 지원이 버전 0.4.0에 추가되었습니다. 이전 버전을 사용하는 경우 `stream` 또는 `astream`을 사용할 때만 결과에서 `__interrupt__`를 볼 수 있습니다. `graph.get_state(thread_id)`를 사용하여 인터럽트 값을 가져올 수도 있습니다.
 
 > [!Warning]
-> Interrupts resemble Python's input() function in terms of developer experience, but they do not automatically resume execution from the interruption point. Instead, they rerun the entire node where the interrupt was used. For this reason, interrupts are typically best placed at the start of a node or in a dedicated node.
+> 인터럽트는 개발자 경험 측면에서 Python의 input() 함수와 유사하지만, 중단 지점에서 자동으로 실행을 재개하지 않습니다. 대신 인터럽트가 사용된 노드 전체를 다시 실행합니다. 이러한 이유로 인터럽트는 일반적으로 노드의 시작 부분이나 전용 노드에 배치하는 것이 가장 좋습니다.
 
-## Resume using the Command primitive
+## Command 프리미티브를 사용한 재개
 
 > [!Warning]
-> Resuming from an `interrupt` is different from Python's `input()` function, where execution resumes from the exact point where the `input()` function was called.
+> `interrupt`에서 재개하는 것은 Python의 `input()` 함수와 다릅니다. `input()` 함수는 호출된 정확한 지점에서 실행을 재개하지만, `interrupt`는 그렇지 않습니다.
 
-When the `interrupt` function is used within a graph, execution pauses at that point and awaits user input.
+그래프 내에서 `interrupt` 함수를 사용하면 해당 지점에서 실행이 일시 중지되고 사용자 입력을 기다립니다.
 
-To resume execution, use the [`Command`](https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Command) primitive, which can be supplied via the `invoke` or `stream` methods. The graph resumes execution from the beginning of the node where `interrupt(...)` was initially called. This time, the `interrupt` function will return the value provided in `Command(resume=value)` rather than pausing again. All code from the beginning of the node to the `interrupt` will be re-executed.
+실행을 재개하려면 `invoke` 또는 `stream` 메서드를 통해 제공할 수 있는 [`Command`](https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Command) 프리미티브를 사용합니다. 그래프는 `interrupt(...)`가 처음 호출된 노드의 시작 부분부터 실행을 재개합니다. 이번에는 `interrupt` 함수가 다시 일시 중지하지 않고 `Command(resume=value)`에 제공된 값을 반환합니다. 노드 시작 부분부터 `interrupt`까지의 모든 코드가 다시 실행됩니다.
 
 ```python
-# Resume graph execution by providing the user's input.
+# 사용자 입력을 제공하여 그래프 실행 재개
 graph.invoke(Command(resume={"age": "25"}), thread_config)
 ```
 
-### Resume multiple interrupts with one invocation
+### 한 번의 호출로 여러 인터럽트 재개하기
 
-When nodes with interrupt conditions are run in parallel, it's possible to have multiple interrupts in the task queue. For example, the following graph has two nodes run in parallel that require human input:
+인터럽트 조건이 있는 노드들이 병렬로 실행될 때 작업 큐에 여러 인터럽트가 발생할 수 있습니다. 예를 들어, 다음 그래프에는 사람의 입력이 필요한 두 개의 노드가 병렬로 실행됩니다:
 
 ![image](https://langchain-ai.github.io/langgraph/how-tos/assets/human_in_loop_parallel.png)
 
-Once your graph has been interrupted and is stalled, you can resume all the interrupts at once with `Command.resume`, passing a dictionary mapping of interrupt ids to resume values.
+그래프가 중단되어 정지된 후에는 `Command.resume`을 사용하여 인터럽트 ID와 재개 값의 딕셔너리 매핑을 전달함으로써 모든 인터럽트를 한 번에 재개할 수 있습니다.
 
 <sup><i>API Reference: <a href="https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.config.RunnableConfig.html">RunnableConfig</a> | <a href="https://langchain-ai.github.io/langgraph/reference/checkpoints/#langgraph.checkpoint.memory.InMemorySaver">InMemorySaver</a> | <a href="https://langchain-ai.github.io/langgraph/reference/constants/#langgraph.constants.START">START</a> | <a href="https://langchain-ai.github.io/langgraph/reference/graphs/#langgraph.graph.state.StateGraph">StateGraph</a> | <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.interrupt">interrupt</a> | <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Command">Command</a></i></sup>
 
@@ -160,7 +160,7 @@ graph_builder = StateGraph(State)
 graph_builder.add_node("human_node_1", human_node_1)
 graph_builder.add_node("human_node_2", human_node_2)
 
-# Add both nodes in parallel from START
+# START에서 두 노드를 병렬로 추가
 graph_builder.add_edge(START, "human_node_1")
 graph_builder.add_edge(START, "human_node_2")
 
@@ -173,7 +173,7 @@ result = graph.invoke(
     {"text_1": "original text 1", "text_2": "original text 2"}, config=config
 )
 
-# Resume with mapping of interrupt IDs to values
+# 인터럽트 ID와 값의 매핑으로 재개
 resume_map = {
     i.id: f"edited text for {i.value['text_to_revise']}"
     for i in graph.get_state(config).interrupts
@@ -182,17 +182,17 @@ print(graph.invoke(Command(resume=resume_map), config=config))
 # > {'text_1': 'edited text for original text 1', 'text_2': 'edited text for original text 2'}
 ```
 
-## Common patterns
+## 일반적인 패턴
 
-Below we show different design patterns that can be implemented using `interrupt` and `Command`.
+다음은 `interrupt`와 `Command`를 사용하여 구현할 수 있는 다양한 디자인 패턴입니다.
 
-### Approve or reject
+### 승인 또는 거부
 
 ![image](https://langchain-ai.github.io/langgraph/concepts/img/human_in_the_loop/approve-or-reject.png)
 
-Depending on the human's approval or rejection, the graph can proceed with the action or take an alternative path.
+사람의 승인 또는 거부에 따라 그래프는 작업을 진행하거나 대체 경로를 취할 수 있습니다.
 
-Pause the graph before a critical step, such as an API call, to review and approve the action. If the action is rejected, you can prevent the graph from executing the step, and potentially take an alternative action.
+API 호출과 같은 중요한 단계 전에 그래프를 일시 중지하여 작업을 검토하고 승인합니다. 작업이 거부되면 그래프가 해당 단계를 실행하지 못하도록 방지하고 잠재적으로 대체 작업을 수행할 수 있습니다.
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.interrupt">interrupt</a> | <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Command">Command</a></i></sup>
 
@@ -204,8 +204,8 @@ def human_approval(state: State) -> Command[Literal["some_node", "another_node"]
     is_approved = interrupt(
         {
             "question": "Is this correct?",
-            # Surface the output that should be
-            # reviewed and approved by the human.
+            # 사람이 검토하고 승인해야 하는
+            # 출력을 표시합니다.
             "llm_output": state["llm_output"]
         }
     )
@@ -215,17 +215,17 @@ def human_approval(state: State) -> Command[Literal["some_node", "another_node"]
     else:
         return Command(goto="another_node")
 
-# Add the node to the graph in an appropriate location
-# and connect it to the relevant nodes.
+# 적절한 위치에 노드를 그래프에 추가하고
+# 관련 노드에 연결합니다.
 graph_builder.add_node("human_approval", human_approval)
 graph = graph_builder.compile(checkpointer=checkpointer)
 
-# After running the graph and hitting the interrupt, the graph will pause.
-# Resume it with either an approval or rejection.
+# 그래프를 실행하여 인터럽트에 도달하면 그래프가 일시 중지됩니다.
+# 승인 또는 거부로 재개합니다.
 thread_config = {"configurable": {"thread_id": "some_id"}}
 graph.invoke(Command(resume=True), config=thread_config)
 ```
-Extended example: approve or reject with interrupt
+확장 예제: interrupt를 사용한 승인 또는 거부
 ```python
 from typing import Literal, TypedDict
 import uuid
@@ -235,16 +235,16 @@ from langgraph.graph import StateGraph
 from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 
-# Define the shared graph state
+# 공유 그래프 상태 정의
 class State(TypedDict):
     llm_output: str
     decision: str
 
-# Simulate an LLM output node
+# LLM 출력 노드 시뮬레이션
 def generate_llm_output(state: State) -> State:
     return {"llm_output": "This is the generated output."}
 
-# Human approval node
+# 사람 승인 노드
 def human_approval(state: State) -> Command[Literal["approved_path", "rejected_path"]]:
     decision = interrupt({
         "question": "Do you approve the following output?",
@@ -256,17 +256,17 @@ def human_approval(state: State) -> Command[Literal["approved_path", "rejected_p
     else:
         return Command(goto="rejected_path", update={"decision": "rejected"})
 
-# Next steps after approval
+# 승인 후 다음 단계
 def approved_node(state: State) -> State:
     print("✅ Approved path taken.")
     return state
 
-# Alternative path after rejection
+# 거부 후 대체 경로
 def rejected_node(state: State) -> State:
     print("❌ Rejected path taken.")
     return state
 
-# Build the graph
+# 그래프 구축
 builder = StateGraph(State)
 builder.add_node("generate_llm_output", generate_llm_output)
 builder.add_node("human_approval", human_approval)
@@ -281,24 +281,24 @@ builder.add_edge("rejected_path", END)
 checkpointer = InMemorySaver()
 graph = builder.compile(checkpointer=checkpointer)
 
-# Run until interrupt
+# 인터럽트까지 실행
 config = {"configurable": {"thread_id": uuid.uuid4()}}
 result = graph.invoke({}, config=config)
 print(result["__interrupt__"])
-# Output:
+# 출력:
 # Interrupt(value={'question': 'Do you approve the following output?', 'llm_output': 'This is the generated output.'}, ...)
 
-# Simulate resuming with human input
-# To test rejection, replace resume="approve" with resume="reject"
+# 사람 입력으로 재개 시뮬레이션
+# 거부를 테스트하려면 resume="approve"를 resume="reject"로 변경
 final_result = graph.invoke(Command(resume="approve"), config=config)
 print(final_result)
 ```
 
-### Review and edit state
+### 상태 검토 및 편집
 
 ![image](https://langchain-ai.github.io/langgraph/concepts/img/human_in_the_loop/edit-graph-state-simple.png)
 
-A human can review and edit the state of the graph. This is useful for correcting mistakes or updating the state with additional information.
+사람이 그래프의 상태를 검토하고 편집할 수 있습니다. 이는 실수를 수정하거나 추가 정보로 상태를 업데이트하는 데 유용합니다.
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.interrupt">interrupt</a></i></sup>
 
@@ -308,35 +308,35 @@ from langgraph.types import interrupt
 def human_editing(state: State):
     ...
     result = interrupt(
-        # Interrupt information to surface to the client.
-        # Can be any JSON serializable value.
+        # 클라이언트에 표시할 인터럽트 정보.
+        # JSON 직렬화 가능한 모든 값이 될 수 있습니다.
         {
             "task": "Review the output from the LLM and make any necessary edits.",
             "llm_generated_summary": state["llm_generated_summary"]
         }
     )
 
-    # Update the state with the edited text
+    # 편집된 텍스트로 상태 업데이트
     return {
         "llm_generated_summary": result["edited_text"]
     }
 
-# Add the node to the graph in an appropriate location
-# and connect it to the relevant nodes.
+# 적절한 위치에 노드를 그래프에 추가하고
+# 관련 노드에 연결합니다.
 graph_builder.add_node("human_editing", human_editing)
 graph = graph_builder.compile(checkpointer=checkpointer)
 
 ...
 
-# After running the graph and hitting the interrupt, the graph will pause.
-# Resume it with the edited text.
+# 그래프를 실행하여 인터럽트에 도달하면 그래프가 일시 중지됩니다.
+# 편집된 텍스트로 재개합니다.
 thread_config = {"configurable": {"thread_id": "some_id"}}
 graph.invoke(
     Command(resume={"edited_text": "The edited text"}),
     config=thread_config
 )
 ```
-Extended example: edit state with interrupt
+확장 예제: interrupt를 사용한 상태 편집
 ```python
 from typing import TypedDict
 import uuid
@@ -346,17 +346,17 @@ from langgraph.graph import StateGraph
 from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 
-# Define the graph state
+# 그래프 상태 정의
 class State(TypedDict):
     summary: str
 
-# Simulate an LLM summary generation
+# LLM 요약 생성 시뮬레이션
 def generate_summary(state: State) -> State:
     return {
         "summary": "The cat sat on the mat and looked at the stars."
     }
 
-# Human editing node
+# 사람 편집 노드
 def human_review_edit(state: State) -> State:
     result = interrupt({
         "task": "Please review and edit the generated summary if necessary.",
@@ -366,12 +366,12 @@ def human_review_edit(state: State) -> State:
         "summary": result["edited_summary"]
     }
 
-# Simulate downstream use of the edited summary
+# 편집된 요약의 다운스트림 사용 시뮬레이션
 def downstream_use(state: State) -> State:
     print(f"✅ Using edited summary: {state['summary']}")
     return state
 
-# Build the graph
+# 그래프 구축
 builder = StateGraph(State)
 builder.add_node("generate_summary", generate_summary)
 builder.add_node("human_review_edit", human_review_edit)
@@ -382,17 +382,17 @@ builder.add_edge("generate_summary", "human_review_edit")
 builder.add_edge("human_review_edit", "downstream_use")
 builder.add_edge("downstream_use", END)
 
-# Set up in-memory checkpointing for interrupt support
+# 인터럽트 지원을 위한 인메모리 체크포인팅 설정
 checkpointer = InMemorySaver()
 graph = builder.compile(checkpointer=checkpointer)
 
-# Invoke the graph until it hits the interrupt
+# 인터럽트에 도달할 때까지 그래프 호출
 config = {"configurable": {"thread_id": uuid.uuid4()}}
 result = graph.invoke({}, config=config)
 
-# Output interrupt payload
+# 인터럽트 페이로드 출력
 print(result["__interrupt__"])
-# Example output:
+# 예제 출력:
 # > [
 # >     Interrupt(
 # >         value={
@@ -403,7 +403,7 @@ print(result["__interrupt__"])
 # >     )
 # > ]
 
-# Resume the graph with human-edited input
+# 사람이 편집한 입력으로 그래프 재개
 edited_summary = "The cat lay on the rug, gazing peacefully at the night sky."
 resumed_result = graph.invoke(
     Command(resume={"edited_summary": edited_summary}),
@@ -412,16 +412,16 @@ resumed_result = graph.invoke(
 print(resumed_result)
 ```
 
-### Review tool calls
+### 도구 호출 검토
 
 ![image](https://langchain-ai.github.io/langgraph/concepts/img/human_in_the_loop/tool-call-review.png)
 
-A human can review and edit the output from the LLM before proceeding. This is particularly critical in applications where the tool calls requested by the LLM may be sensitive or require human oversight.
+사람이 LLM의 출력을 진행하기 전에 검토하고 편집할 수 있습니다. 이는 LLM이 요청한 도구 호출이 민감하거나 사람의 감독이 필요한 애플리케이션에서 특히 중요합니다.
 
-To add a human approval step to a tool:
+도구에 사람 승인 단계를 추가하려면:
 
-1. Use `interrupt()` in the tool to pause execution.
-2. Resume with a `Command` to continue based on human input.
+1. 도구 내에서 `interrupt()`를 사용하여 실행을 일시 중지합니다.
+2. 사람 입력을 기반으로 계속하려면 `Command`로 재개합니다.
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/checkpoints/#langgraph.checkpoint.memory.InMemorySaver">InMemorySaver</a> | <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.interrupt">interrupt</a> | <a href="https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a></i></sup>
 
@@ -430,10 +430,10 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.types import interrupt
 from langgraph.prebuilt import create_react_agent
 
-# An example of a sensitive tool that requires human review / approval
+# 사람의 검토/승인이 필요한 민감한 도구의 예
 def book_hotel(hotel_name: str):
-    """Book a hotel"""
-    response = interrupt(  
+    """호텔 예약"""
+    response = interrupt(
         f"Trying to call \`book_hotel\` with args {{'hotel_name': {hotel_name}}}. "
         "Please approve or suggest edits."
     )
@@ -445,16 +445,16 @@ def book_hotel(hotel_name: str):
         raise ValueError(f"Unknown response type: {response['type']}")
     return f"Successfully booked a stay at {hotel_name}."
 
-checkpointer = InMemorySaver() 
+checkpointer = InMemorySaver()  # 인메모리 체크포인터 생성
 
 agent = create_react_agent(
     model="anthropic:claude-3-5-sonnet-latest",
     tools=[book_hotel],
-    checkpointer=checkpointer, 
+    checkpointer=checkpointer,  # 체크포인터 전달
 )
 ```
 
-Run the agent with the `stream()` method, passing the `config` object to specify the thread ID. This allows the agent to resume the same conversation on future invocations.
+스레드 ID를 지정하기 위해 `config` 객체를 전달하여 `stream()` 메서드로 에이전트를 실행합니다. 이를 통해 에이전트가 향후 호출에서 동일한 대화를 재개할 수 있습니다.
 
 ```python
 config = {
@@ -471,9 +471,9 @@ for chunk in agent.stream(
     print("\n")
 ```
 
-> You should see that the agent runs until it reaches the `interrupt()` call, at which point it pauses and waits for human input.
+> 에이전트가 `interrupt()` 호출에 도달할 때까지 실행되고, 그 지점에서 일시 중지되어 사람의 입력을 기다리는 것을 볼 수 있습니다.
 
-Resume the agent with a `Command` to continue based on human input.
+사람 입력을 기반으로 계속하려면 `Command`로 에이전트를 재개합니다.
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Command">Command</a></i></sup>
 
@@ -481,20 +481,21 @@ Resume the agent with a `Command` to continue based on human input.
 from langgraph.types import Command
 
 for chunk in agent.stream(
-    Command(resume={"type": "accept"}),  
-    # Command(resume={"type": "edit", "args": {"hotel_name": "McKittrick Hotel"}}),
+    Command(resume={"type": "accept"}),  # 승인으로 재개
+    # Command(resume={"type": "edit", "args": {"hotel_name": "McKittrick Hotel"}}),  # 또는 편집으로 재개
     config
 ):
     print(chunk)
     print("\n")
 ```
 
-### Add interrupts to any tool
+### 모든 도구에 인터럽트 추가하기
 
-You can create a wrapper to add interrupts to *any* tool. The example below provides a reference implementation compatible with [Agent Inbox UI](https://github.com/langchain-ai/agent-inbox) and [Agent Chat UI](https://github.com/langchain-ai/agent-chat-ui).
+*모든* 도구에 인터럽트를 추가하는 래퍼를 만들 수 있습니다. 아래 예제는 [Agent Inbox UI](https://github.com/langchain-ai/agent-inbox) 및 [Agent Chat UI](https://github.com/langchain-ai/agent-chat-ui)와 호환되는 참조 구현을 제공합니다.
 
 ```python
-Wrapper that adds human-in-the-loop to any toolfrom typing import Callable
+# 모든 도구에 휴먼-인-더-루프를 추가하는 래퍼
+from typing import Callable
 from langchain_core.tools import BaseTool, tool as create_tool
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import interrupt
@@ -505,7 +506,7 @@ def add_human_in_the_loop(
     *,
     interrupt_config: HumanInterruptConfig = None,
 ) -> BaseTool:
-    """Wrap a tool to support human-in-the-loop review."""
+    """휴먼-인-더-루프 검토를 지원하도록 도구를 래핑합니다."""
     if not isinstance(tool, BaseTool):
         tool = create_tool(tool)
 
@@ -516,7 +517,7 @@ def add_human_in_the_loop(
             "allow_respond": True,
         }
 
-    @create_tool(  
+    @create_tool(
         tool.name,
         description=tool.description,
         args_schema=tool.args_schema
@@ -530,15 +531,15 @@ def add_human_in_the_loop(
             "config": interrupt_config,
             "description": "Please review the tool call"
         }
-        response = interrupt([request])[0]  
-        # approve the tool call
+        response = interrupt([request])[0]
+        # 도구 호출 승인
         if response["type"] == "accept":
             tool_response = tool.invoke(tool_input, config)
-        # update tool call args
+        # 도구 호출 인자 업데이트
         elif response["type"] == "edit":
             tool_input = response["args"]["args"]
             tool_response = tool.invoke(tool_input, config)
-        # respond to the LLM with user feedback
+        # 사용자 피드백으로 LLM에 응답
         elif response["type"] == "response":
             user_feedback = response["args"]
             tool_response = user_feedback
@@ -550,7 +551,7 @@ def add_human_in_the_loop(
     return call_tool_with_interrupt
 ```
 
-You can use the wrapper to add `interrupt()` to any tool without having to add it *inside* the tool:
+도구 *내부*에 추가하지 않고도 래퍼를 사용하여 모든 도구에 `interrupt()`를 추가할 수 있습니다:
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/checkpoints/#langgraph.checkpoint.memory.InMemorySaver">InMemorySaver</a> | <a href="https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a></i></sup>
 
@@ -561,20 +562,20 @@ from langgraph.prebuilt import create_react_agent
 checkpointer = InMemorySaver()
 
 def book_hotel(hotel_name: str):
-   """Book a hotel"""
+   """호텔 예약"""
    return f"Successfully booked a stay at {hotel_name}."
 
 agent = create_react_agent(
     model="anthropic:claude-3-5-sonnet-latest",
     tools=[
-        add_human_in_the_loop(book_hotel), 
+        add_human_in_the_loop(book_hotel),  # 래퍼로 도구를 감쌉니다
     ],
     checkpointer=checkpointer,
 )
 
 config = {"configurable": {"thread_id": "1"}}
 
-# Run the agent
+# 에이전트 실행
 for chunk in agent.stream(
     {"messages": [{"role": "user", "content": "book a stay at McKittrick hotel"}]},
     config
@@ -583,9 +584,9 @@ for chunk in agent.stream(
     print("\n")
 ```
 
-> You should see that the agent runs until it reaches the `interrupt()` call, at which point it pauses and waits for human input.
+> 에이전트가 `interrupt()` 호출에 도달할 때까지 실행되고, 그 지점에서 일시 중지되어 사람의 입력을 기다리는 것을 볼 수 있습니다.
 
-Resume the agent with a `Command` to continue based on human input.
+사람 입력을 기반으로 계속하려면 `Command`로 에이전트를 재개합니다.
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.Command">Command</a></i></sup>
 
@@ -593,17 +594,17 @@ Resume the agent with a `Command` to continue based on human input.
 from langgraph.types import Command
 
 for chunk in agent.stream(
-    Command(resume=[{"type": "accept"}]),
-    # Command(resume=[{"type": "edit", "args": {"args": {"hotel_name": "McKittrick Hotel"}}}]),
+    Command(resume=[{"type": "accept"}]),  # 승인으로 재개
+    # Command(resume=[{"type": "edit", "args": {"args": {"hotel_name": "McKittrick Hotel"}}}]),  # 또는 편집으로 재개
     config
 ):
     print(chunk)
     print("\n")
 ```
 
-### Validate human input
+### 사람 입력 유효성 검사
 
-If you need to validate the input provided by the human within the graph itself (rather than on the client side), you can achieve this by using multiple interrupt calls within a single node.
+클라이언트 측이 아닌 그래프 자체 내에서 사람이 제공한 입력의 유효성을 검사해야 하는 경우, 단일 노드 내에서 여러 인터럽트 호출을 사용하여 이를 수행할 수 있습니다.
 
 <sup><i>API Reference: <a href="https://langchain-ai.github.io/langgraph/reference/types/#langgraph.types.interrupt">interrupt</a></i></sup>
 
@@ -611,19 +612,19 @@ If you need to validate the input provided by the human within the graph itself 
 from langgraph.types import interrupt
 
 def human_node(state: State):
-    """Human node with validation."""
+    """유효성 검사가 포함된 사람 노드."""
     question = "What is your age?"
 
     while True:
         answer = interrupt(question)
 
-        # Validate answer, if the answer isn't valid ask for input again.
+        # 답변 유효성 검사, 답변이 유효하지 않으면 다시 입력 요청.
         if not isinstance(answer, int) or answer < 0:
             question = f"'{answer} is not a valid age. What is your age?"
             answer = None
             continue
         else:
-            # If the answer is valid, we can proceed.
+            # 답변이 유효하면 계속 진행할 수 있습니다.
             break
 
     print(f"The human in the loop is {answer} years old.")
@@ -631,7 +632,7 @@ def human_node(state: State):
         "age": answer
     }
 ```
-Extended example: validating user input
+확장 예제: 사용자 입력 유효성 검사
 ```python
 from typing import TypedDict
 import uuid
@@ -641,34 +642,34 @@ from langgraph.graph import StateGraph
 from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 
-# Define graph state
+# 그래프 상태 정의
 class State(TypedDict):
     age: int
 
-# Node that asks for human input and validates it
+# 사람 입력을 요청하고 유효성을 검사하는 노드
 def get_valid_age(state: State) -> State:
     prompt = "Please enter your age (must be a non-negative integer)."
 
     while True:
         user_input = interrupt(prompt)
 
-        # Validate the input
+        # 입력 유효성 검사
         try:
             age = int(user_input)
             if age < 0:
                 raise ValueError("Age must be non-negative.")
-            break  # Valid input received
+            break  # 유효한 입력 수신
         except (ValueError, TypeError):
             prompt = f"'{user_input}' is not valid. Please enter a non-negative integer for age."
 
     return {"age": age}
 
-# Node that uses the valid input
+# 유효한 입력을 사용하는 노드
 def report_age(state: State) -> State:
     print(f"✅ Human is {state['age']} years old.")
     return state
 
-# Build the graph
+# 그래프 구축
 builder = StateGraph(State)
 builder.add_node("get_valid_age", get_valid_age)
 builder.add_node("report_age", report_age)
@@ -677,43 +678,43 @@ builder.set_entry_point("get_valid_age")
 builder.add_edge("get_valid_age", "report_age")
 builder.add_edge("report_age", END)
 
-# Create the graph with a memory checkpointer
+# 메모리 체크포인터로 그래프 생성
 checkpointer = InMemorySaver()
 graph = builder.compile(checkpointer=checkpointer)
 
-# Run the graph until the first interrupt
+# 첫 번째 인터럽트까지 그래프 실행
 config = {"configurable": {"thread_id": uuid.uuid4()}}
 result = graph.invoke({}, config=config)
-print(result["__interrupt__"])  # First prompt: "Please enter your age..."
+print(result["__interrupt__"])  # 첫 번째 프롬프트: "Please enter your age..."
 
-# Simulate an invalid input (e.g., string instead of integer)
+# 유효하지 않은 입력 시뮬레이션 (예: 정수 대신 문자열)
 result = graph.invoke(Command(resume="not a number"), config=config)
-print(result["__interrupt__"])  # Follow-up prompt with validation message
+print(result["__interrupt__"])  # 유효성 검사 메시지가 포함된 후속 프롬프트
 
-# Simulate a second invalid input (e.g., negative number)
+# 두 번째 유효하지 않은 입력 시뮬레이션 (예: 음수)
 result = graph.invoke(Command(resume="-10"), config=config)
-print(result["__interrupt__"])  # Another retry
+print(result["__interrupt__"])  # 또 다른 재시도
 
-# Provide valid input
+# 유효한 입력 제공
 final_result = graph.invoke(Command(resume="25"), config=config)
-print(final_result)  # Should include the valid age
+print(final_result)  # 유효한 나이가 포함되어야 함
 ```
 
-## Debug with interrupts
+## 인터럽트로 디버깅하기
 
-To debug and test a graph, use [static interrupts](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/#key-capabilities) (also known as static breakpoints) to step through the graph execution one node at a time or to pause the graph execution at specific nodes. Static interrupts are triggered at defined points either before or after a node executes. You can set static interrupts by specifying `interrupt_before` and `interrupt_after` at compile time or run time.
+그래프를 디버그하고 테스트하려면 [정적 인터럽트](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/#key-capabilities)(정적 중단점이라고도 함)를 사용하여 그래프 실행을 한 번에 한 노드씩 단계별로 진행하거나 특정 노드에서 그래프 실행을 일시 중지합니다. 정적 인터럽트는 노드가 실행되기 전 또는 후의 정의된 지점에서 트리거됩니다. 컴파일 시간 또는 런타임에 `interrupt_before` 및 `interrupt_after`를 지정하여 정적 인터럽트를 설정할 수 있습니다.
 
 > [!Warning]
-> Static interrupts are **not** recommended for human-in-the-loop workflows. Use [dynamic interrupts](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#pause-using-interrupt) instead.
+> 정적 인터럽트는 휴먼-인-더-루프 워크플로우에 권장되지 **않습니다**. 대신 [동적 인터럽트](https://langchain-ai.github.io/langgraph/how-tos/human_in_the_loop/add-human-in-the-loop/#pause-using-interrupt)를 사용하세요.
 
-1. `graph.invoke` is called with the `interrupt_before` and `interrupt_after` parameters. This is a run-time configuration and can be changed for every invocation.
-2. `interrupt_before` specifies the nodes where execution should pause before the node is executed.
-3. `interrupt_after` specifies the nodes where execution should pause after the node is executed.
-4. The graph is run until the first breakpoint is hit.
-5. The graph is resumed by passing in `None` for the input. This will run the graph until the next breakpoint is hit.
+1. `graph.invoke`는 `interrupt_before` 및 `interrupt_after` 매개변수와 함께 호출됩니다. 이것은 런타임 구성이며 모든 호출에 대해 변경할 수 있습니다.
+2. `interrupt_before`는 노드가 실행되기 전에 실행을 일시 중지해야 하는 노드를 지정합니다.
+3. `interrupt_after`는 노드가 실행된 후에 실행을 일시 중지해야 하는 노드를 지정합니다.
+4. 그래프는 첫 번째 중단점에 도달할 때까지 실행됩니다.
+5. 입력에 `None`을 전달하여 그래프를 재개합니다. 이렇게 하면 다음 중단점에 도달할 때까지 그래프가 실행됩니다.
 
 > [!Note]
->You cannot set static breakpoints at runtime for **sub-graphs**. If you have a sub-graph, you must set the breakpoints at compilation time.
+> **서브그래프**의 경우 런타임에 정적 중단점을 설정할 수 없습니다. 서브그래프가 있는 경우 컴파일 시간에 중단점을 설정해야 합니다.
 
 Setting static breakpoints
 ```python
