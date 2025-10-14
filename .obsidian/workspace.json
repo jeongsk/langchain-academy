@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
+                "file": "docs/랭그래프/Add human intervention.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링"
+              "title": "Add human intervention"
             }
           }
         ]
@@ -220,7 +220,7 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "터미널: anpigon@anpigonui-MacBookPro:~/Workspace/Wantedlab/langchain-academy"
+              "title": "터미널: claude --permission-mode bypassPermissions"
             }
           }
         ],
@@ -228,7 +228,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 452.5
+    "width": 873.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -247,6 +247,8 @@
   },
   "active": "88a3ea6b1138026b",
   "lastOpenFiles": [
+    "docs/랭그래프/Add human intervention.md",
+    "docs/langgraph",
     "projects/temp/Chinook.db",
     "projects/09-SQL-Agent.ipynb",
     "projects/temp/transformer_paper_outline.txt",
@@ -256,8 +258,6 @@
     "projects/temp/section_5_training_optimization.txt",
     "projects/temp/section_4_encoder_decoder_structure.txt",
     "projects/temp/section_3_core_components.txt",
-    "projects/temp/section_2_basic_concept.txt",
-    "projects/temp/section_1_introduction.txt",
     "docs/프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md",
     "docs/랭그래프/LangGraph 노드 추가 패턴.md",
     "docs/프롬프트 엔지니어링/무제.md",
