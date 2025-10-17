@@ -1,5 +1,7 @@
-# LangGraph: Command와 Send의 차이점
-
+---
+created: 2025-10-18 00:11:58
+updated: 2025-10-18 00:21:27
+---
 ## 개요
 
 LangGraph에서 `Command`와 `Send`는 그래프 내에서 제어 흐름(control flow)을 관리하는 핵심 메커니즘입니다. 두 개념 모두 동적 라우팅을 가능하게 하지만, 사용 목적과 기능 범위에서 차이가 있습니다.

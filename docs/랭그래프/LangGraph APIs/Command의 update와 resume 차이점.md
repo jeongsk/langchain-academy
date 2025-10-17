@@ -1,9 +1,7 @@
 ---
-created: 2025-10-18
-updated: 2025-10-18
+created: 2025-10-18 00:00:00
+updated: 2025-10-18 00:21:40
 ---
-
-# LangGraph Command의 update와 resume 차이점
 
 ## 개요
 
