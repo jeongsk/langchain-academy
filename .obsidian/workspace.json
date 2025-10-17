@@ -240,12 +240,11 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 873.5,
-    "collapsed": true
+    "width": 873.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -262,7 +261,7 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "d0d1f51ef19d24d9",
+  "active": "9efa15db135bdeac",
   "lastOpenFiles": [
     "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요.md",
     "docs/랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 사용하기.md",
