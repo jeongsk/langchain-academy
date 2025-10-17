@@ -227,3 +227,9 @@ state_db
 temp
 projects/**/faiss_index
 projects/**/cache
+
+# Claude
+!.claude/**/*
+
+# Obsidian
+.obsidian/workspace.json
