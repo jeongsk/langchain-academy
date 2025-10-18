@@ -1,8 +1,9 @@
-# LangGraph Issue #4748: 부모 그래프 상태 업데이트 시 서브그래프 상태 손실
+# LangGraph 서브그래프 상태 관리 완벽 가이드
 
-**출처**: https://github.com/langchain-ai/langgraph/issues/4748
+**원본 이슈**: https://github.com/langchain-ai/langgraph/issues/4748
 **작성일**: 2025-10-18
 **최종 수정**: 2025-10-18 (v2)
+**문서 유형**: 문제 해결 가이드 & 베스트 프랙티스
 
 ## 목차
 - [문제 요약](#문제-요약)
@@ -1148,6 +1149,7 @@ def call_child_graph(state: ParentState) -> ParentState:
 
 ## 업데이트 이력
 
-- **2025-10-18 (초기)**: 문제 정의 및 기본 재현 예제
+- **2025-10-18 (초기)**: 문제 정의 및 기본 재현 예제 (`langgraph-issue-4748-subgraph-state-loss.md`)
 - **2025-10-18 (v1)**: 상세 해결 방법 추가 - 3가지 해결 방법 및 코드 예제, 베스트 프랙티스
 - **2025-10-18 (v2)**: 방법 4 추가 - `input_schema`와 `output_schema` 활용 방법, 비교 표 업데이트, 하이브리드 접근법 확장
+- **2025-10-18 (v2.1)**: 파일명 및 제목 변경 - 포괄적인 가이드로 재구성 (`langgraph-subgraph-state-management-guide.md`)
