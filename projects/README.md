@@ -1,5 +1,7 @@
 # 프로젝트
 
+## MOC
+
 - [**01-Agent-Simulation**](./01-Agent-Simulation.ipynb): LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
 - [**02-Meta-Prompt-Generation**](./02-Meta-Prompt-Generation.ipynb): LangGraph를 활용한 메타 프롬프트 생성 프로젝트
 - [**03-CRAG**](./03-CRAG.ipynb): LangGraph를 활용한 Corrective RAG(CRAG) 프로젝트
@@ -19,7 +21,6 @@
 - [네이버 뉴스 기반 Q&A 애플리케이션 구축하기 - 기본편](https://teddylee777.github.io/langchain/rag-naver-news-qa/)
 - [RAG 파헤치기: 문서 기반 QA 시스템 설계 방법 - 심화편](https://teddylee777.github.io/langchain/rag-tutorial/)
 - [에이전트(Agent)와 도구(tools)를 활용한 지능형 검색 시스템 구축 가이드](https://teddylee777.github.io/langchain/langchain-agent/)
-
 
 ### 공원나연
 
