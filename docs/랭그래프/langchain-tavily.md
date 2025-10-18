@@ -1,16 +1,16 @@
-> **Warning**: The [`langchain_community.tools.tavily_search.tool`](https://python.langchain.com/docs/integrations/tools/tavily_search/) is deprecated. While it remains functional for now, we strongly recommend migrating to the new `langchain-tavily` Python package which supports both [Search](https://docs.tavily.com/documentation/integrations/#tavily-search) and [Extract](https://docs.tavily.com/documentation/integrations/#tavily-extract) functionality and receives continuous updates with the latest features.
+> **경고**: [`langchain_community.tools.tavily_search.tool`](https://python.langchain.com/docs/integrations/tools/tavily_search/)은 더 이상 권장되지 않습니다. 현재는 여전히 작동하지만, [Search](https://docs.tavily.com/documentation/integrations/#tavily-search)와 [Extract](https://docs.tavily.com/documentation/integrations/#tavily-extract) 기능을 모두 지원하고 최신 기능으로 지속적으로 업데이트되는 새로운 `langchain-tavily` Python 패키지로 마이그레이션할 것을 강력히 권장합니다.
 
-The [langchain-tavily](https://pypi.org/project/langchain-tavily/) Python package is the offical LangChain integration of Tavily, inlcuding both [TavilySearch](https://docs.tavily.com/documentation/integrations/#tavily-search) and [TavilyExtract](https://docs.tavily.com/documentation/integrations/#tavily-extract)
+[langchain-tavily](https://pypi.org/project/langchain-tavily/) Python 패키지는 [TavilySearch](https://docs.tavily.com/documentation/integrations/#tavily-search)와 [TavilyExtract](https://docs.tavily.com/documentation/integrations/#tavily-extract)를 모두 포함하는 Tavily의 공식 LangChain 통합 패키지입니다.
 
-## Installation
+## 설치
 
 ```
 pip install -U langchain-tavily
 ```
 
-### Credentials
+### 인증 정보
 
-We also need to set our Tavily API key. You can get an API key by visiting [this site](https://app.tavily.com/sign-in) and creating an account.
+Tavily API 키를 설정해야 합니다. [이 사이트](https://app.tavily.com/sign-in)를 방문하여 계정을 생성하면 API 키를 받을 수 있습니다.
 
 ```
 import getpass
@@ -22,25 +22,26 @@ if not os.environ.get("TAVILY_API_KEY"):
     os.environ["TAVILY_API_KEY"] = getpass.getpass("Tavily API key:\n")
 ```
 
-Here we show how to instantiate an instance of the Tavily search tool. The tool accepts various parameters to customize the search. After instantiation we invoke the tool with a simple query. This tool allows you to complete search queries using Tavily’s Search API endpoint.
+여기서는 Tavily 검색 도구의 인스턴스를 생성하는 방법을 보여줍니다. 이 도구는 검색을 커스터마이징할 수 있는 다양한 매개변수를 받습니다. 인스턴스를 생성한 후 간단한 쿼리로 도구를 호출합니다. 이 도구를 사용하면 Tavily의 Search API 엔드포인트를 통해 검색 쿼리를 수행할 수 있습니다.
 
-### Instantiation
+### 인스턴스 생성
 
-The tool accepts various parameters during instantiation:
+도구는 인스턴스 생성 시 다양한 매개변수를 받습니다:
 
-- `max_results` (optional, int): Maximum number of search results to return. Default is 5.
-- `topic` (optional, str): Category of the search. Can be “general”, “news”, or “finance”. Default is “general”.
-- `include_answer` (optional, bool): Include an answer to original query in results. Default is False.
-- `include_raw_content` (optional, bool): Include cleaned and parsed HTML of each search result. Default is False.
-- `include_images` (optional, bool): Include a list of query related images in the response. Default is False.
-- `include_image_descriptions` (optional, bool): Include descriptive text for each image. Default is False.
-- `search_depth` (optional, str): Depth of the search, either “basic” or “advanced”. Default is “basic”.
-- `time_range` (optional, str): The time range back from the current date ( publish date ) to filter results - “day”, “week”, “month”, or “year”. Default is None.
-- `start_date` (optional, str): Will return all results after the specified start date ( publish date ). Required to be written in the format YYYY-MM-DD. Default is None.
-- `end_date` (optional, str): Will return all results before the specified end date. Required to be written in the format YYYY-MM-DD. Default is None.
-- `include_domains` (optional, List\[str\]): List of domains to specifically include. Maximum 300 domains. Default is None.
-- `exclude_domains` (optional, List\[str\]): List of domains to specifically exclude. Maximum 150 domains. Default is None.
-For a comprehensive overview of the available parameters, refer to the [Tavily Search API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/search)
+- `max_results` (선택, int): 반환할 검색 결과의 최대 개수. 기본값은 5입니다.
+- `topic` (선택, str): 검색 카테고리. "general", "news", "finance" 중 하나를 선택할 수 있습니다. 기본값은 "general"입니다.
+- `include_answer` (선택, bool): 결과에 원본 쿼리에 대한 답변을 포함합니다. 기본값은 False입니다.
+- `include_raw_content` (선택, bool): 각 검색 결과의 정제되고 파싱된 HTML을 포함합니다. 기본값은 False입니다.
+- `include_images` (선택, bool): 응답에 쿼리 관련 이미지 목록을 포함합니다. 기본값은 False입니다.
+- `include_image_descriptions` (선택, bool): 각 이미지에 대한 설명 텍스트를 포함합니다. 기본값은 False입니다.
+- `search_depth` (선택, str): 검색의 깊이. "basic" 또는 "advanced" 중 하나입니다. 기본값은 "basic"입니다.
+- `time_range` (선택, str): 현재 날짜로부터 거슬러 올라가는 시간 범위(게시 날짜 기준)로 결과를 필터링합니다 - "day", "week", "month", "year" 중 하나입니다. 기본값은 None입니다.
+- `start_date` (선택, str): 지정된 시작 날짜(게시 날짜) 이후의 모든 결과를 반환합니다. YYYY-MM-DD 형식으로 작성해야 합니다. 기본값은 None입니다.
+- `end_date` (선택, str): 지정된 종료 날짜 이전의 모든 결과를 반환합니다. YYYY-MM-DD 형식으로 작성해야 합니다. 기본값은 None입니다.
+- `include_domains` (선택, List\[str\]): 특정 도메인만 포함하는 도메인 목록. 최대 300개 도메인. 기본값은 None입니다.
+- `exclude_domains` (선택, List\[str\]): 특정 도메인을 제외하는 도메인 목록. 최대 150개 도메인. 기본값은 None입니다.
+
+사용 가능한 매개변수에 대한 포괄적인 개요는 [Tavily Search API 문서](https://docs.tavily.com/documentation/api-reference/endpoint/search)를 참조하세요.
 
 ```
 from langchain_tavily import TavilySearch
@@ -74,22 +75,23 @@ tool = TavilySearch(
 )
 ```
 
-### Invoke directly with args
+### 인자를 전달하여 직접 호출하기
 
-The Tavily search tool accepts the following arguments during invocation:
+Tavily 검색 도구는 호출 시 다음 인자를 받습니다:
 
-- `query` (required): A natural language search query
-- The following arguments can also be set during invokation: `include_images`, `search_depth`, `time_range`, `include_domains`, `exclude_domains`, `include_images`, `start_date`, `end_date`
-- For reliability and performance reasons, certain parameters that affect response size cannot be modified during invocation: `include_answer` and `include_raw_content`. These limitations prevent unexpected context window issues and ensure consistent results.
-NOTE: The optional arguments are available for agents to dynamically set, if you set a argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invokation.
+- `query` (필수): 자연어 검색 쿼리
+- 다음 인자들도 호출 시 설정할 수 있습니다: `include_images`, `search_depth`, `time_range`, `include_domains`, `exclude_domains`, `include_images`, `start_date`, `end_date`
+- 신뢰성과 성능 상의 이유로, 응답 크기에 영향을 미치는 특정 매개변수는 호출 시 수정할 수 없습니다: `include_answer`와 `include_raw_content`. 이러한 제한은 예기치 않은 컨텍스트 윈도우 문제를 방지하고 일관된 결과를 보장합니다.
+
+참고: 선택적 인자는 에이전트가 동적으로 설정할 수 있습니다. 인스턴스 생성 시 인자를 설정한 후 다른 값으로 도구를 호출하면, 도구는 호출 시 전달한 값을 사용합니다.
 
 ```
-# Basic query
+# 기본 쿼리
 
 tool.invoke({"query": "What happened at the last wimbledon"})
 ```
 
-output:
+출력:
 
 ```
 {
@@ -131,9 +133,9 @@ output:
 }
 ```
 
-### Agent Tool Calling
+### 에이전트 도구 호출
 
-We can use our tools directly with an agent executor by binding the tool to the agent. This gives the agent the ability to dynamically set the available arguments to the Tavily search tool.In the below example when we ask the agent to find “What is the most popular sport in the world? include only wikipedia sources” the agent will dynamically set the argments and invoke Tavily search tool: Invoking `tavily_search` with `{'query': 'most popular sport in the world', 'include_domains': ['wikipedia.org'], 'search_depth': 'basic'}`
+도구를 에이전트에 바인딩하여 에이전트 실행기와 함께 직접 사용할 수 있습니다. 이를 통해 에이전트는 Tavily 검색 도구에 사용 가능한 인자를 동적으로 설정할 수 있습니다. 아래 예제에서 에이전트에게 "세계에서 가장 인기 있는 스포츠는 무엇입니까? 위키피디아 소스만 포함하세요"라고 요청하면, 에이전트는 동적으로 인자를 설정하고 Tavily 검색 도구를 호출합니다: `tavily_search`를 `{'query': 'most popular sport in the world', 'include_domains': ['wikipedia.org'], 'search_depth': 'basic'}`로 호출
 
 ```
 # !pip install -qU langchain langchain-openai langchain-tavily
@@ -154,11 +156,11 @@ from langchain_tavily import TavilySearch
 
 from langchain.schema import HumanMessage, SystemMessage
 
-# Initialize LLM
+# LLM 초기화
 
 llm = init_chat_model(model="gpt-4o", model_provider="openai", temperature=0)
 
-# Initialize Tavily Search Tool
+# Tavily Search 도구 초기화
 
 tavily_search_tool = TavilySearch(
 
@@ -168,7 +170,7 @@ tavily_search_tool = TavilySearch(
 
 )
 
-# Set up Prompt with 'agent_scratchpad'
+# 'agent_scratchpad'를 포함한 프롬프트 설정
 
 today = datetime.datetime.today().strftime("%D")
 
@@ -180,11 +182,11 @@ prompt = ChatPromptTemplate.from_messages([
 
     MessagesPlaceholder(variable_name="messages"),
 
-    MessagesPlaceholder(variable_name="agent_scratchpad"),  # Required for tool calls
+    MessagesPlaceholder(variable_name="agent_scratchpad"),  # 도구 호출에 필요
 
 ])
 
-# Create an agent that can use tools
+# 도구를 사용할 수 있는 에이전트 생성
 
 agent = create_openai_tools_agent(
 
@@ -196,28 +198,29 @@ agent = create_openai_tools_agent(
 
 )
 
-# Create an Agent Executor to handle tool execution
+# 도구 실행을 처리할 에이전트 실행기 생성
 
 agent_executor = AgentExecutor(agent=agent, tools=[tavily_search_tool], verbose=True)
 
 user_input =  "What is the most popular sport in the world? include only wikipedia sources"
 
-# Construct input properly as a dictionary
+# 입력을 딕셔너리로 올바르게 구성
 
 response = agent_executor.invoke({"messages": [HumanMessage(content=user_input)]})
 ```
 
 ## Tavily Extract
 
-Here we show how to instantiate an instance of the Tavily extract tool. After instantiation we invoke the tool with a list of URLs. This tool allows you to extract content from URLs using Tavily’s Extract API endpoint.
+여기서는 Tavily 추출 도구의 인스턴스를 생성하는 방법을 보여줍니다. 인스턴스를 생성한 후 URL 목록으로 도구를 호출합니다. 이 도구를 사용하면 Tavily의 Extract API 엔드포인트를 통해 URL에서 콘텐츠를 추출할 수 있습니다.
 
-### Instantiation
+### 인스턴스 생성
 
-The tool accepts various parameters during instantiation:
+도구는 인스턴스 생성 시 다양한 매개변수를 받습니다:
 
-- `extract_depth` (optional, str): The depth of the extraction, either “basic” or “advanced”. Default is “basic ”.
-- `include_images` (optional, bool): Whether to include images in the extraction. Default is False.
-For a comprehensive overview of the available parameters, refer to the [Tavily Extract API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/extract)
+- `extract_depth` (선택, str): 추출의 깊이. "basic" 또는 "advanced" 중 하나입니다. 기본값은 "basic"입니다.
+- `include_images` (선택, bool): 추출에 이미지를 포함할지 여부. 기본값은 False입니다.
+
+사용 가능한 매개변수에 대한 포괄적인 개요는 [Tavily Extract API 문서](https://docs.tavily.com/documentation/api-reference/endpoint/extract)를 참조하세요.
 
 ```
 from langchain_tavily import TavilyExtract
@@ -231,16 +234,17 @@ tool = TavilyExtract(
 )
 ```
 
-### Invoke directly with args
+### 인자를 전달하여 직접 호출하기
 
-The Tavily extract tool accepts the following arguments during invocation:
+Tavily 추출 도구는 호출 시 다음 인자를 받습니다:
 
-- `urls` (required): A list of URLs to extract content from.
-- Both `extract_depth` and `include_images` can also be set during invokation
-NOTE: The optional arguments are available for agents to dynamically set, if you set a argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invokation.
+- `urls` (필수): 콘텐츠를 추출할 URL 목록.
+- `extract_depth`와 `include_images` 모두 호출 시 설정할 수 있습니다.
+
+참고: 선택적 인자는 에이전트가 동적으로 설정할 수 있습니다. 인스턴스 생성 시 인자를 설정한 후 다른 값으로 도구를 호출하면, 도구는 호출 시 전달한 값을 사용합니다.
 
 ```
-# Extract content from a URL
+# URL에서 콘텐츠 추출
 
 result = tool.invoke({
 
@@ -249,7 +253,7 @@ result = tool.invoke({
 })
 ```
 
-output:
+출력:
 
 ```
 {
@@ -271,15 +275,15 @@ output:
 }
 ```
 
-## Tavily Research Agent
+## Tavily 연구 에이전트
 
-This example demonstrates how to build a powerful web research agent using Tavily’s search and extract Langchain tools.
+이 예제는 Tavily의 검색 및 추출 Langchain 도구를 사용하여 강력한 웹 연구 에이전트를 구축하는 방법을 보여줍니다.
 
-### Features
+### 기능
 
-- Internet Search: Query the web for up-to-date information using Tavily’s search API
-- Content Extraction: Extract and analyze specific content from web pages
-- Seamless Integration: Works with OpenAI’s function calling capability for reliable tool use
+- 인터넷 검색: Tavily의 검색 API를 사용하여 웹에서 최신 정보를 쿼리합니다
+- 콘텐츠 추출: 웹 페이지에서 특정 콘텐츠를 추출하고 분석합니다
+- 원활한 통합: OpenAI의 함수 호출 기능과 함께 작동하여 신뢰할 수 있는 도구 사용을 제공합니다
 
 ```
 # !pip install -qU langchain langchain-openai langchain-tavily
@@ -300,11 +304,11 @@ from langchain_tavily import TavilySearch, TavilyExtract
 
 from langchain.schema import HumanMessage, SystemMessage
 
-# Initialize LLM
+# LLM 초기화
 
 llm = ChatOpenAI(temperature=0, model="gpt-4o")
 
-# Initialize Tavily Search Tool
+# Tavily Search 도구 초기화
 
 tavily_search_tool = TavilySearch(
 
@@ -314,13 +318,13 @@ tavily_search_tool = TavilySearch(
 
 )
 
-# Initialize Tavily Extract Tool
+# Tavily Extract 도구 초기화
 
 tavily_extract_tool = TavilyExtract()
 
 tools = [tavily_search_tool, tavily_extract_tool]
 
-# Set up Prompt with 'agent_scratchpad'
+# 'agent_scratchpad'를 포함한 프롬프트 설정
 
 today = datetime.datetime.today().strftime("%D")
 
@@ -332,11 +336,11 @@ prompt = ChatPromptTemplate.from_messages([
 
     MessagesPlaceholder(variable_name="messages"),
 
-    MessagesPlaceholder(variable_name="agent_scratchpad"),  # Required for tool calls
+    MessagesPlaceholder(variable_name="agent_scratchpad"),  # 도구 호출에 필요
 
 ])
 
-# Create an agent that can use tools
+# 도구를 사용할 수 있는 에이전트 생성
 
 agent = create_openai_tools_agent(
 
@@ -348,15 +352,18 @@ agent = create_openai_tools_agent(
 
 )
 
-# Create an Agent Executor to handle tool execution
+# 도구 실행을 처리할 에이전트 실행기 생성
 
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
 user_input =  "Research the latest developments in quantum computing and provide a detailed summary of how it might impact cybersecurity in the next decade."
 
-# Construct input properly as a dictionary
+# 입력을 딕셔너리로 올바르게 구성
 
 response = agent_executor.invoke({"messages": [HumanMessage(content=user_input)]})
 ```
 
-[IBM](https://docs.tavily.com/documentation/partnerships/IBM) [LlamaIndex](https://docs.tavily.com/documentation/integrations/llamaindex)
+## 관련 링크
+
+- [IBM 파트너십](https://docs.tavily.com/documentation/partnerships/IBM)
+- [LlamaIndex 통합](https://docs.tavily.com/documentation/integrations/llamaindex)

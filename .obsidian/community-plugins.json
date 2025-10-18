@@ -8,5 +8,7 @@
   "obsidian-shellcommands",
   "cmdr",
   "obsidian-linter",
-  "terminal"
+  "terminal",
+  "ai-providers",
+  "templater-obsidian"
 ]
