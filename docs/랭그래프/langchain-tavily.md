@@ -1,6 +1,20 @@
 ---
+title: Tavily Search & Extract - LangChain 통합 가이드
 created: 2025-10-18 09:04:21
 updated: 2025-10-18 09:08:03
+tags:
+  - LangChain
+  - LangChain/도구
+  - LangChain/통합
+  - Tavily
+  - 웹검색
+  - API
+  - 에이전트
+  - 에이전트/연구
+  - 도구/검색
+  - 도구/추출
+  - Python
+  - 튜토리얼
 ---
 > [!warning] **경고**
 > [`langchain_community.tools.tavily_search.tool`](https://python.langchain.com/docs/integrations/tools/tavily_search/)은 더 이상 권장되지 않습니다. 현재는 여전히 작동하지만, [Search](https://docs.tavily.com/documentation/integrations/#tavily-search)와 [Extract](https://docs.tavily.com/documentation/integrations/#tavily-extract) 기능을 모두 지원하고 최신 기능으로 지속적으로 업데이트되는 새로운 `langchain-tavily` Python 패키지로 마이그레이션할 것을 강력히 권장합니다.
