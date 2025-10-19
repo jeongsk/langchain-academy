@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "ask_for_obsidian_plugin_dev"
+  ],
+  "enableAllProjectMcpServers": true
+}

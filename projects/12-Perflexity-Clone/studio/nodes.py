@@ -6,7 +6,7 @@ Perplexity Clone - Graph Nodes
 from typing import Literal
 from langchain_core.messages import AIMessage, ToolMessage
 from langchain_openai import ChatOpenAI
-from .states import PerplexityState
+from states import PerplexityState
 
 
 def create_agent_node(model: ChatOpenAI, system_prompt: str):
