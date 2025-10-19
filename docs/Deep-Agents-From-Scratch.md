@@ -7,8 +7,8 @@ Deep Agents는 기존의 툴 호출 순환(Loop) 방식 에이전트보다 뛰�
 ### 오픈소스 및 설치 방법
 
 - 주요 오픈소스:
-  - deep_agents_from_scratch (LangChain)
-  - deepagents (LangChain)
+  - [deep_agents_from_scratch (LangChain)](https://github.com/langchain-ai/deep_research_from_scratch)
+  - [deepagents (LangChain)](https://github.com/langchain-ai/deepagents)
 
 - 설치 예시(Python 3.11+, `uv`, `.env` 사용):
 
