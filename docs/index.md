@@ -41,5 +41,5 @@ LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. �
 
 ### 사례 연구 및 데모
 
-- [Anthropic의 다중 에이전트 연구 시스템](https://www.anthropic.com/engineering/multi-agent-research-system) - Anthropic의 다중 에이전트 연구 시스템에 대한 기술 블로그입니다.
+- [Anthropic의 멀티 에이전트 연구 시스템](https://www.anthropic.com/engineering/multi-agent-research-system) - Anthropic의 멀티 에이전트 연구 시스템에 대한 기술 블로그입니다.
 - [OpenAI Agents SDK 고객 서비스 데모](https://github.com/openai/openai-cs-agents-demo) - OpenAI Agents SDK로 구현된 고객 서비스 사용 사례 데모입니다.
