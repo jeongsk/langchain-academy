@@ -145,41 +145,31 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                 full_response = ""
                 tool_calls_made = []
 
-                # async generator를 sync로 변환하여 실행
-                async def process_stream():
-                    nonlocal full_response, tool_calls_made
-                    async for chunk in st.session_state.client.runs.stream(
-                        st.session_state.thread_id,
-                        graph_name,
-                        input=input_data,
-                        stream_mode="values",
-                    ):
-                        # 메시지 이벤트 처리
-                        if "messages" in chunk:
-                            last_message = chunk["messages"][-1]
+                for chunk in st.session_state.client.runs.stream(
+                    st.session_state.thread_id,
+                    graph_name,
+                    input=input_data,
+                    stream_mode="values",
+                ):
+                    # 메시지 이벤트 처리
+                    if "messages" in chunk:
+                        last_message = chunk["messages"][-1]
 
-                            # AI 메시지인 경우
-                            if last_message.get("type") == "ai":
-                                # 도구 호출 확인
-                                if "tool_calls" in last_message and last_message["tool_calls"]:
-                                    for tool_call in last_message["tool_calls"]:
-                                        tool_id = tool_call.get("id")
-                                        if tool_id not in tool_calls_made:
-                                            tool_calls_made.append(tool_id)
-                                            with search_status_container:
-                                                st.info(f"🔍 웹 검색 실행 중: `{tool_call.get('name')}`")
+                        # AI 메시지인 경우
+                        if last_message.get("type") == "ai":
+                            # 도구 호출 확인
+                            if "tool_calls" in last_message and last_message["tool_calls"]:
+                                for tool_call in last_message["tool_calls"]:
+                                    tool_id = tool_call.get("id")
+                                    if tool_id not in tool_calls_made:
+                                        tool_calls_made.append(tool_id)
+                                        with search_status_container:
+                                            st.info(f"🔍 웹 검색 실행 중: `{tool_call.get('name')}`")
 
-                                # 최종 응답
-                                if last_message.get("content"):
-                                    full_response = last_message["content"]
-                                    response_container.markdown(full_response)
-                
-                # asyncio 이벤트 루프에서 실행
-                loop = asyncio.new_event_loop()
-                asyncio.set_event_loop(loop)
-                loop.run_until_complete(process_stream())
-                loop.close()
-
+                            # 최종 응답
+                            if last_message.get("content"):
+                                full_response = last_message["content"]
+                                response_container.markdown(full_response)
 
                 # 대화 기록에 추가
                 st.session_state.messages.append({
