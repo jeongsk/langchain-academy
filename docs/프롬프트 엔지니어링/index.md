@@ -1,12 +1,8 @@
 ---
 created: 2025-10-07 22:06:23
-updated: 2025-10-10 23:46:42
+updated: 2025-10-19 17:45:20
 title: 프롬프트 엔지니어링
-tags:
-  - 프롬프트_엔지니어링
-  - MOC
-  - AI_에이전트
-  - 컨텍스트_엔지니어링
+tags: [컨텍스트_엔지니어링, 프롬프트_엔지니어링, AI_에이전트, MOC]
 ---
 [[랭그래프/에이전트/에이전트란 무엇인가요?|AI 에이전트]]를 위한 효과적인 프롬프트 엔지니어링 기법을 학습하는 섹션입니다.
 
@@ -25,4 +21,4 @@ tags:
 ## 추가 리소스
 
 - [OpenAI Prompt Engineering Guide](https://platform.openai.com/guides/prompt-engineering)
-- [Anthropic Prompt Engineering](https://docs.anthropic.com/claude/prompt-engineering)
+- [Anthropic Prompt Engineering](https://docs.claude.com/ko/docs/build-with-claude/prompt-engineering/overview)
