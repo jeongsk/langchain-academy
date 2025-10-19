@@ -38,9 +38,9 @@ LangGraph 기반 Perplexity 스타일 검색 Agent 구현 프로젝트
 
 ## 아키텍처
 
-## 모델 정보 (2025년 4월 업데이트)
+## 모델 정보
 
-이 프로젝트는 OpenAI의 최신 GPT-4.1 시리즈 모델을 사용합니다.
+이 프로젝트는 OpenAI의 GPT-4.1 시리즈 모델을 사용합니다.
 
 ### 사용 가능한 모델
 
@@ -56,13 +56,13 @@ LangGraph 기반 Perplexity 스타일 검색 Agent 구현 프로젝트
 사이드바의 '🤖 모델 설정'에서 원하는 모델을 선택하세요.
 
 **Python 코드에서:**
+
 ```python
 graph = create_perplexity_graph(
     model_name="gpt-4.1",  # 또는 "gpt-4.1-mini", "gpt-4.1-nano"
     max_results=3
 )
 ```
-
 
 ### 상태 스키마 (states.py)
 
@@ -98,6 +98,7 @@ cp studio/.env.example .env
 ```
 
 `.env` 파일에 API 키를 입력하세요:
+
 ```bash
 OPENAI_API_KEY=your-openai-api-key
 TAVILY_API_KEY=your-tavily-api-key
@@ -119,14 +120,16 @@ uv pip install -r requirements.txt
 uv run streamlit run app.py
 ```
 
-브라우저에서 http://localhost:8501 열기
+브라우저에서 <http://localhost:8501> 열기
 
 **특징:**
+
 - 올인원 방식 (UI + 그래프)
 - 설정 변경 즉시 반영
 - 로컬 개발에 최적
 
 **사용 방법:**
+
 1. 사이드바에서 모델, 검색 설정, 도메인 필터링 구성
 2. '✅ 설정 적용' 버튼 클릭
 3. 하단 입력창에 질문 입력
@@ -137,18 +140,21 @@ uv run streamlit run app.py
 LangGraph Studio 서버와 통신하는 방식입니다.
 
 **1단계: LangGraph Studio 서버 실행**
+
 ```bash
 cd studio
 langgraph dev
 ```
 
 **2단계: Streamlit UI 실행 (새 터미널)**
+
 ```bash
 cd ..  # 프로젝트 루트로
 uv run streamlit run app_remote.py
 ```
 
 **특징:**
+
 - UI와 그래프 로직 분리
 - LangGraph Studio에서 디버깅 가능
 - 프로덕션 환경에 적합
@@ -164,10 +170,12 @@ langgraph dev
 ```
 
 Studio UI에서 그래프를 시각화하고 테스트:
-- API: http://127.0.0.1:2024
-- Studio UI: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
+
+- API: <http://127.0.0.1:2024>
+- Studio UI: <https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024>
 
 **특징:**
+
 - 그래프 구조 시각화
 - 단계별 실행 및 디버깅
 - 상태 검사 가능
@@ -242,14 +250,18 @@ AI: [차이점 설명...]
 ## 핵심 개념
 
 ### 1. ReAct 패턴
+
 Agent가 추론(Reasoning)과 행동(Acting)을 반복하며 문제를 해결합니다:
+
 - **추론**: "이 질문에 답하려면 최신 정보가 필요하다"
 - **행동**: 웹 검색 도구 실행
 - **관찰**: 검색 결과 확인
 - **답변**: 수집한 정보를 바탕으로 응답 생성
 
 ### 2. 도구 호출 (Tool Calling)
+
 LLM이 함수 호출 형식으로 도구 사용을 결정:
+
 ```json
 {
   "name": "web_search",
@@ -260,13 +272,16 @@ LLM이 함수 호출 형식으로 도구 사용을 결정:
 ```
 
 ### 3. 체크포인팅 (Checkpointing)
+
 SQLite를 사용한 대화 상태 저장으로 멀티턴 대화 지원:
+
 - 각 `thread_id`별로 대화 히스토리 유지
 - 이전 대화 컨텍스트를 활용한 연속 질문 가능
 
 ## Streamlit UI 특징
 
 ### 로컬 모드 (app.py)
+
 - **설정 UI**: 사이드바에서 모델, 검색 설정, 도메인 필터링 구성
 - **실시간 적용**: 설정 변경 시 즉시 그래프 재생성
 - **대화 기록**: 세션 상태로 대화 히스토리 관리
@@ -274,6 +289,7 @@ SQLite를 사용한 대화 상태 저장으로 멀티턴 대화 지원:
 - **커스텀 테마**: Perplexity 스타일 색상 테마
 
 ### 원격 모드 (app_remote.py)
+
 - **서버 연결**: LangGraph Studio 서버 URL 설정
 - **그래프 조회**: 사용 가능한 그래프 목록 확인
 - **스레드 관리**: Thread ID 기반 세션 관리
@@ -282,12 +298,14 @@ SQLite를 사용한 대화 상태 저장으로 멀티턴 대화 지원:
 ## 원본 프로젝트와의 차이점
 
 ### 원본 (Streamlit 기반)
+
 - `create_react_agent` 사용 (추상화된 Agent)
 - Streamlit UI로 실시간 스트리밍
 - 커스텀 핸들러로 UI 업데이트
 - 단일 파일 구조
 
 ### 재구성 (LangGraph 기반)
+
 - 명시적 그래프 구조 (`StateGraph`)
 - 각 노드와 엣지를 직접 정의
 - LangGraph Studio로 시각화 및 디버깅
@@ -308,24 +326,29 @@ SQLite를 사용한 대화 상태 저장으로 멀티턴 대화 지원:
 ## 트러블슈팅
 
 ### API 키 오류
+
 ```
 Error: Invalid API key
 ```
+
 → `.env` 파일에 올바른 API 키가 입력되었는지 확인
 
 ### 그래프 초기화 오류
+
 ```
 Warning: 먼저 사이드바에서 설정을 완료해주세요
 ```
+
 → 사이드바에서 '✅ 설정 적용' 버튼 클릭
 
 ### 원격 모드 연결 오류
+
 ```
 Error: 서버 연결 실패
 ```
-→ `langgraph dev` 명령으로 서버가 실행 중인지 확인
-→ 서버 URL이 올바른지 확인 (기본: http://127.0.0.1:2024)
 
+→ `langgraph dev` 명령으로 서버가 실행 중인지 확인
+→ 서버 URL이 올바른지 확인 (기본: <http://127.0.0.1:2024>)
 
 ## Tavily 검색 도구 업데이트 (2025년 10월)
 
@@ -337,7 +360,7 @@ Error: 서버 연결 실패
 
 1. **최신 기능 지원**: Search와 Extract API 모두 지원
 2. **지속적인 업데이트**: 공식 Tavily 통합 패키지
-3. **향상된 파라미터**: 
+3. **향상된 파라미터**:
    - `search_depth`: "basic" 또는 "advanced"
    - `time_range`: "day", "week", "month", "year"
    - `start_date`, `end_date`: 날짜 범위 필터링
@@ -348,6 +371,7 @@ Error: 서버 연결 실패
 ### 마이그레이션 방법
 
 **이전 (deprecated):**
+
 ```python
 from langchain_community.tools.tavily_search import TavilySearchResults
 
@@ -358,6 +382,7 @@ tool = TavilySearchResults(
 ```
 
 **현재 (권장):**
+
 ```python
 from langchain_tavily import TavilySearch
 
