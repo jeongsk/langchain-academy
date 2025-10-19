@@ -17,6 +17,7 @@
         "nomic-embed-text:latest",
         "qwen3:14b",
         "qwen3:30b-a3b",
+        "gemma3:latest",
         "bge-m3:latest"
       ]
     },
@@ -34,6 +35,25 @@
         "nomic-embed-text:latest",
         "qwen3:14b",
         "qwen3:30b-a3b",
+        "gemma3:latest",
+        "bge-m3:latest"
+      ]
+    },
+    {
+      "id": "id-1760866420903",
+      "name": "ollama:gemma3",
+      "apiKey": "",
+      "url": "http://localhost:11434",
+      "type": "ollama",
+      "model": "gemma3:latest",
+      "availableModels": [
+        "qwen3:latest",
+        "qwen3-coder:latest",
+        "gpt-oss:latest",
+        "nomic-embed-text:latest",
+        "qwen3:14b",
+        "qwen3:30b-a3b",
+        "gemma3:latest",
         "bge-m3:latest"
       ]
     }
