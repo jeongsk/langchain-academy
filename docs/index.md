@@ -25,3 +25,4 @@ LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. �
 - [랭그래프](랭그래프/LangGraph.md) - 공식 문서를 보면서 정리한 내용입니다
 - [랭그래프 공식 문서 1.0 한국어 번역](https://langchain-docs.jeongsk.work/oss/python/langgraph/overview) - 한국어로 번역된 공식 문서입니다
 - [프롬프트 엔지니어링](프롬프트%20엔지니어링/index.md) - 프롬프트를 잘 작성하는 것이 생각보다 중요합니다
+- [Kaggle 에이전트 백서](https://www.kaggle.com/whitepaper-agents?utm_source=pytorchkr&ref=pytorchkr) - Kaggle에서 발행한 에이전트 관련 백서입니다.
