@@ -58,7 +58,7 @@ SYSTEM_PROMPT = """당신은 Perplexity와 같은 유용한 AI 어시스턴트�
 
 
 def create_perplexity_graph(
-    model_name: str = "gpt-4o",
+    model_name: str = "gpt-4.1-mini",
     max_results: int = 3,
     topic: str = "general",
     include_domains: list = None,
@@ -69,7 +69,10 @@ def create_perplexity_graph(
     Perplexity 스타일의 검색 Agent 그래프 생성
 
     Args:
-        model_name: OpenAI 모델 이름
+        model_name: OpenAI 모델 이름 (기본값: gpt-4.1-mini)
+            - gpt-4.1: 가장 강력한 모델
+            - gpt-4.1-mini: 빠르고 비용 효율적 (기본값)
+            - gpt-4.1-nano: 초경량, 초고속 모델
         max_results: 최대 검색 결과 수
         topic: 검색 주제 ("general" 또는 "news")
         include_domains: 포함할 도메인 리스트

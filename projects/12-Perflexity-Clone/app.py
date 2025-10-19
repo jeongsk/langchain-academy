@@ -41,7 +41,7 @@ if "graph" not in st.session_state:
 
 if "graph_config" not in st.session_state:
     st.session_state.graph_config = {
-        "model_name": "gpt-4o",
+        "model_name": "gpt-4.1-mini",
         "max_results": 3,
         "topic": "general",
         "include_domains": [],
@@ -64,8 +64,8 @@ with st.sidebar:
     st.subheader("🤖 모델 설정")
     model_name = st.selectbox(
         "LLM 모델",
-        ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"],
-        index=0,
+        ["gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano"],
+        index=1,
         key="model_select"
     )
 

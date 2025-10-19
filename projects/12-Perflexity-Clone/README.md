@@ -153,7 +153,7 @@ from studio.graph import create_perplexity_graph
 
 # 그래프 생성
 graph = create_perplexity_graph(
-    model_name="gpt-4o",
+    model_name="gpt-4.1-mini",
     max_results=3,
     topic="general"
 )
