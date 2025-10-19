@@ -10,13 +10,74 @@ import uuid
 import os
 from dotenv import load_dotenv
 import asyncio
-import nest_asyncio
 
-# Allow nested event loops (required for Streamlit + async SDK)
-nest_asyncio.apply()
 
 # 환경 변수 로드
 load_dotenv()
+
+# AsyncRunner: async 함수를 별도 스레드에서 실행하는 헬퍼
+from concurrent.futures import ThreadPoolExecutor
+
+class AsyncRunner:
+    """
+    Streamlit 환경에서 async 함수를 안전하게 실행하기 위한 헬퍼 클래스
+    각 async 호출을 별도 스레드의 독립적인 event loop에서 실행하여
+    event loop 충돌을 방지합니다.
+    """
+    
+    def __init__(self):
+        self.executor = ThreadPoolExecutor(max_workers=1)
+    
+    def run(self, async_func, *args, **kwargs):
+        """
+        async 함수를 별도 스레드의 새 event loop에서 실행
+        
+        Args:
+            async_func: 실행할 async 함수
+            *args, **kwargs: async 함수에 전달할 인자
+        
+        Returns:
+            async 함수의 실행 결과
+        """
+        def _run():
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            try:
+                return loop.run_until_complete(async_func(*args, **kwargs))
+            finally:
+                loop.close()
+        
+        future = self.executor.submit(_run)
+        return future.result()
+    
+    def run_generator(self, async_gen_func, *args, **kwargs):
+        """
+        async generator를 동기 리스트로 변환
+        
+        Args:
+            async_gen_func: 실행할 async generator 함수
+            *args, **kwargs: async generator 함수에 전달할 인자
+        
+        Returns:
+            generator에서 yield된 모든 항목의 리스트
+        """
+        def _run():
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            try:
+                async def collect():
+                    results = []
+                    async for item in async_gen_func(*args, **kwargs):
+                        results.append(item)
+                    return results
+                return loop.run_until_complete(collect())
+            finally:
+                loop.close()
+        
+        future = self.executor.submit(_run)
+        return future.result()
+
+
 
 # 페이지 설정
 st.set_page_config(
@@ -46,6 +107,9 @@ if "client" not in st.session_state:
 
 if "server_url" not in st.session_state:
     st.session_state.server_url = os.getenv("LANGGRAPH_API_URL", "http://127.0.0.1:2024")
+
+if "async_runner" not in st.session_state:
+    st.session_state.async_runner = AsyncRunner()
 
 # 사이드바 설정
 with st.sidebar:
