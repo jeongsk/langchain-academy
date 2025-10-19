@@ -1,0 +1,1177 @@
+---
+created: 2025-10-18 12:16:50
+updated: 2025-10-19 09:13:09
+title: LangGraph 서브그래프 상태 관리 완벽 가이드
+tags:
+  - LangGraph
+  - 서브그래프_Subgraph
+  - 상태_관리
+  - 체크포인트_Checkpoint
+  - 디버깅_Debugging
+  - 가이드
+  - 아키텍처
+---
+이 문서는 [[랭그래프/LangGraph|LangGraph]]의 고급 기능인 서브그래프(Subgraph) 사용 시 발생하는 상태 손실 문제를 해결하는 다양한 방법을 심층적으로 다루는 가이드입니다.
+
+## 문제 요약
+
+부모 그래프의 상태를 업데이트하면 서브그래프의 상태가 손실되고, 서브그래프가 중단된 지점부터 재개되지 않고 처음부터 다시 시작되는 이슈
+입니다.
+> **원본 이슈**: <https://github.com/langchain-ai/langgraph/issues/4748>
+
+## 상세 설명
+
+### 발생 조건
+
+- 중단(interrupt) 기능을 사용하는 그래프와 서브그래프
+- 서브그래프의 노드가 중단된 후, 부모 그래프의 상태를 `update_state()`로 업데이트하는 경우
+- **부모와 자식 그래프가 동일한 상태 스키마(State TypedDict)를 공유**하는 경우
+
+### 문제점
+
+1. **상태 손실**: 서브그래프 노드에서 실행된 결과가 부모 그래프의 상태에 반영되지 않음
+2. **실행 흐름 손실**: 서브그래프가 중단된 지점부터 계속되지 않고 처음부터 재실행됨
+3. **상태 덮어쓰기**: 한쪽의 업데이트가 다른 쪽의 상태를 의도치 않게 덮어씀
+
+### 영향 범위
+
+이 버그는 다음과 같은 사용 사례에 영향을 미칩니다:
+
+- **[[랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요|Human-in-the-loop]] 패턴**: 서브그래프 실행 중 사용자 입력으로 상태를 수정하는 경우
+- **동적 상태 관리**: 서브그래프 실행 중간에 외부 이벤트나 조건에 따라 상태를 업데이트해야 하는 경우
+- **복잡한 워크플로우**: 여러 서브그래프가 중첩되어 있고 상태를 공유하는 경우
+- **[[랭그래프/멀티 에이전트/멀티 에이전트 시스템|멀티 에이전트 시스템]]**: 각 에이전트(서브그래프)가 독립적인 대화 기록을 유지해야 하는 경우
+
+---
+
+## 예제 코드 구조
+
+### 서브그래프 구성
+
+```python
+from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+
+class State(TypedDict):
+    foo: bool
+    bar: bool
+
+def subgraph_node_1(state: State) -> State:
+    state["foo"] = True
+    print("Executing `subgraph_node_1`")
+    return state
+
+def subgraph_node_2(state: State) -> State:
+    print("Executing `subgraph_node_2`")
+    return state
+
+# 서브그래프
+subgraph_builder = StateGraph(State)
+subgraph_builder.add_node("subgraph_node_1", subgraph_node_1)
+subgraph_builder.add_node("subgraph_node_2", subgraph_node_2)
+subgraph_builder.add_edge(START, "subgraph_node_1")
+subgraph_builder.add_edge("subgraph_node_1", "subgraph_node_2")
+subgraph_builder.add_edge("subgraph_node_2", END)
+
+subgraph = subgraph_builder.compile(
+    interrupt_after=["subgraph_node_1", "subgraph_node_2"]
+)
+```
+
+### 부모 그래프 구성
+
+```python
+from langgraph.checkpoint.memory import MemorySaver
+from langchain_core.runnables import RunnableConfig
+
+builder = StateGraph(State)
+
+def node1(state: State) -> State:
+    print("Executing `node1`")
+    return state
+
+def node3(state: State) -> State:
+    print("Executing `node3`")
+    return state
+
+builder.add_node("node1", node1)
+builder.add_node("node2", subgraph)  # 서브그래프를 노드로 추가
+builder.add_node("node3", node3)
+
+builder.add_edge(START, "node1")
+builder.add_edge("node1", "node2")
+builder.add_edge("node2", "node3")
+builder.add_edge("node3", END)
+
+checkpointer = MemorySaver()
+config = RunnableConfig(configurable={"thread_id": "1"})
+
+graph = builder.compile(
+    checkpointer=checkpointer,
+    interrupt_after=["node1", "node3"]
+)
+```
+
+### 문제 재현 시나리오
+
+```python
+# 1. 초기 실행 - subgraph_node_1에서 중단됨
+for event in graph.stream({"foo": False, "bar": False}, config, stream_mode="updates", subgraphs=True):
+    print(event)
+
+# 2. 계속 실행 (None 전달)
+for event in graph.stream(None, config, subgraphs=True):
+    print(event)
+
+# 3. 부모 그래프 상태 업데이트 ⚠️ 여기서 문제 발생!
+new_config = graph.update_state(config, {"bar": True})
+
+# 4. 다시 계속 실행
+for event in graph.stream(None, new_config, subgraphs=True):
+    print(event)  # subgraph_node_1이 다시 실행됨!
+
+# 5. 최종 상태 확인
+final_state = graph.get_state(config)
+print("graph_state.value =", final_state.values)
+```
+
+---
+
+## 예상 vs 실제 동작
+
+### 예상 동작 ✓
+
+1. `node1` 실행
+2. `subgraph_node_1` 실행 → `foo = True`로 설정
+3. **[상태 업데이트: `bar = True`]**
+4. `subgraph_node_2` 실행 (중단된 지점부터 계속)
+5. `node3` 실행
+6. 최종 상태: `{'foo': True, 'bar': True}`
+
+### 실제 동작 ✗
+
+1. `node1` 실행
+2. `subgraph_node_1` 실행 → `foo = True`로 설정
+3. **[상태 업데이트: `bar = True`]**
+4. `subgraph_node_1` 실행 (처음부터 다시 시작! 초기 상태로 덮어씀)
+5. `subgraph_node_2` 실행
+6. `node3` 실행
+7. 최종 상태: `{'foo': False, 'bar': True}` ⚠️ **`foo`가 `False`로 되돌아감!**
+
+---
+
+## 근본 원인 분석
+
+이 문제의 근본 원인은 **부모와 자식 그래프가 동일한 상태 스키마를 공유**할 때, 한쪽의 업데이트가 다른 쪽에 영향을 미치기 때문입니다.
+
+### 상태 충돌 메커니즘
+
+1. **상태 공유**: 부모와 서브그래프가 같은 `State` TypedDict 사용
+2. **체크포인트 갱신**: `update_state()`가 호출되면 부모 그래프의 체크포인트가 갱신됨
+3. **실행 포인터 손실**: 서브그래프의 중단 지점 정보가 새로운 체크포인트에 제대로 보존되지 않음
+4. **재시작**: 서브그래프가 이전 실행 컨텍스트를 잃고 처음부터 다시 실행됨
+
+### LangGraph의 체크포인팅 한계
+
+LangGraph의 현재 체크포인팅 메커니즘은 부모 그래프의 상태를 업데이트할 때 서브그래프의 실행 포인터를 제대로 보존하지 못합니다. 이는 설계상의 제약이며, 공식 해결책이 나올 때까지 개발자가 직접 우회 방법을 적용해야 합니다.
+
+---
+
+## 해결 방법
+
+부모와 자식 그래프 간의 상태 충돌을 방지하는 세 가지 주요 해결 방법이 있습니다.
+
+### 방법 1: 상태 키(Key) 분리
+
+**핵심 아이디어**: 부모와 자식 그래프가 사용하는 상태의 키 이름을 다르게 지정하여 각 그래프가 독립적인 데이터 공간을 갖도록 합니다.
+
+#### 구현 방법
+
+```python
+from typing import TypedDict, Annotated
+from langgraph.graph.message import add_messages
+
+# ❌ 수정 전: 동일한 키 이름 사용 (충돌 발생)
+class SharedState(TypedDict):
+    messages: Annotated[list, add_messages]
+    data: dict
+
+# ✅ 수정 후: 키 이름 분리
+class ParentState(TypedDict):
+    parent_messages: Annotated[list, add_messages]
+    parent_data: dict
+
+class ChildState(TypedDict):
+    child_messages: Annotated[list, add_messages]
+    child_data: dict
+```
+
+#### 장점
+
+- **구현이 간단함**: 단순히 변수 이름을 변경하는 것만으로 해결
+- **명확한 구분**: 각 그래프의 상태가 명확히 구분되어 디버깅이 쉬움
+- **부작용 없음**: 한쪽의 변경이 다른 쪽에 영향을 주지 않음
+
+#### 단점
+
+- **데이터 공유 제한**: 부모와 자식 간 데이터를 직접 공유하기 어려움
+- **코드 중복 가능성**: 유사한 상태 필드를 중복해서 정의해야 할 수 있음
+
+#### 사용 시나리오
+
+- 부모와 자식 간 데이터 공유가 거의 필요 없을 때
+- 각 그래프가 완전히 독립적인 작업을 수행할 때
+- 단순하고 명확한 구조를 원할 때
+
+---
+
+### 방법 2: 입출력 매핑(Mapping)을 위한 어댑터 사용
+
+**핵심 아이디어**: 서브그래프를 직접 노드로 추가하는 대신, 상태를 변환해 주는 '어댑터' 함수를 노드로 추가하여 데이터를 안전하게 교환합니다.
+
+#### 구현 방법
+
+```python
+from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+
+# 각 그래프의 독립적인 상태 정의
+class ParentState(TypedDict):
+    my_key: str
+    parent_data: int
+
+class ChildState(TypedDict):
+    my_child_key: str
+    child_result: str
+
+# 자식 그래프 정의
+child_builder = StateGraph(ChildState)
+
+def child_node(state: ChildState) -> ChildState:
+    result = f"Processed: {state['my_child_key']}"
+    return {"child_result": result}
+
+child_builder.add_node("process", child_node)
+child_builder.add_edge(START, "process")
+child_builder.add_edge("process", END)
+
+child_graph = child_builder.compile()
+
+# 어댑터 함수 정의
+def call_child_graph(state: ParentState) -> ParentState:
+    """
+    부모 상태 → 자식 입력 변환 → 자식 실행 → 자식 출력 → 부모 상태 변환
+    """
+    # 1. 부모 상태를 자식 입력 형식으로 매핑
+    child_input = {
+        "my_child_key": state["my_key"]
+    }
+
+    # 2. 자식 그래프 실행
+    child_output = child_graph.invoke(child_input)
+
+    # 3. 자식 출력을 부모 상태 형식으로 매핑
+    return {
+        "my_key": child_output["child_result"]
+    }
+
+# 부모 그래프에 어댑터 함수를 노드로 추가
+parent_builder = StateGraph(ParentState)
+parent_builder.add_node("child_adapter", call_child_graph)  # ✅ 서브그래프 대신 어댑터
+parent_builder.add_edge(START, "child_adapter")
+parent_builder.add_edge("child_adapter", END)
+
+parent_graph = parent_builder.compile()
+
+# 실행
+result = parent_graph.invoke({"my_key": "test", "parent_data": 42})
+print(result)
+# {'my_key': 'Processed: test', 'parent_data': 42}
+```
+
+#### 고급 예제: 중단점이 있는 어댑터
+
+```python
+from langgraph.checkpoint.memory import MemorySaver
+
+# 중단 기능이 있는 자식 그래프
+child_graph_with_interrupt = child_builder.compile(
+    interrupt_before=["process"]
+)
+
+def call_child_with_config(state: ParentState) -> ParentState:
+    """체크포인터를 활용한 어댑터"""
+    child_input = {"my_child_key": state["my_key"]}
+
+    # 부모의 thread_id를 기반으로 자식용 thread_id 생성
+    parent_thread_id = state.get("thread_id", "default")
+    child_thread_id = f"child_{parent_thread_id}"
+
+    child_config = {"configurable": {"thread_id": child_thread_id}}
+    child_output = child_graph_with_interrupt.invoke(child_input, child_config)
+
+    return {"my_key": child_output["child_result"]}
+```
+
+#### 장점
+
+- **유연한 데이터 변환**: 서로 다른 상태 구조를 가진 그래프 간에도 데이터 교환 가능
+- **명확한 인터페이스**: 어댑터가 명시적인 입출력 계약을 제공
+- **독립성 유지**: 각 그래프가 자신의 상태 스키마를 독립적으로 유지
+- **재사용성**: 어댑터를 여러 곳에서 재사용 가능
+
+#### 단점
+
+- **추가 코드 필요**: 어댑터 함수를 별도로 작성해야 함
+- **복잡도 증가**: 간단한 경우에도 어댑터 레이어가 추가됨
+- **디버깅 어려움**: 매핑 과정에서 발생하는 오류를 추적하기 어려울 수 있음
+
+#### 사용 시나리오
+
+- 부모와 자식의 상태 구조가 다를 때
+- 부모와 자식 간 선택적 데이터 교환이 필요할 때
+- 인터페이스 어댑터 패턴을 선호할 때
+- 서브그래프를 재사용 가능한 컴포넌트로 만들고 싶을 때
+
+---
+
+### 방법 3: 서브그래프에 독립적인 메모리 부여
+
+**핵심 아이디어**: 각 서브그래프가 자신만의 독립적인 실행 기록(메모리/체크포인터)을 갖도록 설정하여, 부모 그래프의 상태 변경과 무관하게 자신의 상태를 유지합니다.
+
+#### 구현 방법
+
+```python
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import StateGraph, START, END
+from typing import TypedDict
+
+class State(TypedDict):
+    messages: list
+    data: dict
+
+# 서브그래프 빌더 정의
+subgraph_builder = StateGraph(State)
+
+def subgraph_node(state: State) -> State:
+    print("Executing subgraph node")
+    return {"data": {"processed": True}}
+
+subgraph_builder.add_node("process", subgraph_node)
+subgraph_builder.add_edge(START, "process")
+subgraph_builder.add_edge("process", END)
+
+# ✅ checkpointer=True로 독립적인 메모리 부여
+subgraph = subgraph_builder.compile(
+    checkpointer=True,  # 부모와 독립적인 체크포인터 사용
+    interrupt_before=["process"]
+)
+
+# 부모 그래프 구성
+parent_builder = StateGraph(State)
+
+def parent_node(state: State) -> State:
+    print("Executing parent node")
+    return state
+
+parent_builder.add_node("parent", parent_node)
+parent_builder.add_node("subgraph", subgraph)  # 독립적인 메모리를 가진 서브그래프
+parent_builder.add_edge(START, "parent")
+parent_builder.add_edge("parent", "subgraph")
+parent_builder.add_edge("subgraph", END)
+
+# 부모는 전체 흐름을 위한 Checkpointer를 가짐
+parent_graph = parent_builder.compile(
+    checkpointer=MemorySaver()
+)
+
+# 실행
+config = {"configurable": {"thread_id": "1"}}
+result = parent_graph.invoke({"messages": [], "data": {}}, config)
+```
+
+#### 멀티 에이전트 시스템 예제
+
+```python
+from typing import Annotated
+from langgraph.graph.message import add_messages
+
+class AgentState(TypedDict):
+    messages: Annotated[list, add_messages]
+    agent_name: str
+
+# 에이전트 1: 연구 담당
+research_agent_builder = StateGraph(AgentState)
+
+def research_node(state: AgentState) -> AgentState:
+    return {
+        "messages": [{"role": "assistant", "content": "Research completed"}]
+    }
+
+research_agent_builder.add_node("research", research_node)
+research_agent_builder.add_edge(START, "research")
+research_agent_builder.add_edge("research", END)
+
+research_agent = research_agent_builder.compile(
+    checkpointer=True  # 독립적인 대화 기록 유지
+)
+
+# 에이전트 2: 작성 담당
+writing_agent_builder = StateGraph(AgentState)
+
+def writing_node(state: AgentState) -> AgentState:
+    return {
+        "messages": [{"role": "assistant", "content": "Writing completed"}]
+    }
+
+writing_agent_builder.add_node("write", writing_node)
+writing_agent_builder.add_edge(START, "write")
+writing_agent_builder.add_edge("write", END)
+
+writing_agent = writing_agent_builder.compile(
+    checkpointer=True  # 독립적인 대화 기록 유지
+)
+
+# 오케스트레이터 그래프
+class OrchestratorState(TypedDict):
+    task: str
+    results: list
+
+orchestrator_builder = StateGraph(OrchestratorState)
+
+def route_to_research(state: OrchestratorState) -> OrchestratorState:
+    agent_result = research_agent.invoke(
+        {"messages": [], "agent_name": "researcher"}
+    )
+    return {"results": [agent_result]}
+
+def route_to_writing(state: OrchestratorState) -> OrchestratorState:
+    agent_result = writing_agent.invoke(
+        {"messages": [], "agent_name": "writer"}
+    )
+    return {"results": state["results"] + [agent_result]}
+
+orchestrator_builder.add_node("research", route_to_research)
+orchestrator_builder.add_node("write", route_to_writing)
+orchestrator_builder.add_edge(START, "research")
+orchestrator_builder.add_edge("research", "write")
+orchestrator_builder.add_edge("write", END)
+
+orchestrator = orchestrator_builder.compile(
+    checkpointer=MemorySaver()
+)
+```
+
+#### 장점
+
+- **완벽한 격리**: 각 서브그래프가 완전히 독립적인 상태 지속성 보유
+- **대화 기록 보존**: 멀티 에이전트 시스템에서 각 에이전트의 대화 기록 유지
+- **재사용성**: 동일한 서브그래프를 여러 컨텍스트에서 독립적으로 사용 가능
+- **상태 충돌 완벽 방지**: 부모의 상태 업데이트가 서브그래프에 영향 없음
+
+#### 단점
+
+- **메모리 오버헤드**: 각 서브그래프마다 별도의 체크포인터 유지
+- **복잡도 증가**: 여러 레벨의 체크포인팅 관리 필요
+- **디버깅 복잡성**: 여러 독립적인 상태를 추적해야 함
+
+#### 사용 시나리오
+
+- 멀티 에이전트 시스템 (각 에이전트가 독립적인 대화 기록 필요)
+- 각 서브그래프가 자체적인 상태 지속성이 필요할 때
+- 서브그래프를 완전히 독립적인 워크플로우로 실행하고 싶을 때
+- Human-in-the-loop에서 각 서브워크플로우의 상태를 개별적으로 관리할 때
+
+---
+
+### 방법 4: input_schema와 output_schema 활용
+
+**핵심 아이디어**: StateGraph 초기화 시 `input_schema`와 `output_schema`를 명시하여 그래프의 입력과 출력 인터페이스를 명확히 정의하고, 내부적으로는 더 많은 상태 키를 사용하면서도 외부에는 필요한 것만 노출합니다.
+
+#### 개념 이해
+
+`input_schema`와 `output_schema`를 사용하면:
+
+- **공개 인터페이스와 내부 상태를 분리**할 수 있습니다
+- 그래프 내부에서는 많은 상태 키를 사용하지만, 외부에는 필요한 것만 노출
+- **Private 상태 채널**을 사용하여 내부 노드 간 통신에만 사용되는 데이터 관리
+- API나 서브그래프로 사용될 때 명확한 계약(contract) 제공
+
+#### 작동 원리
+
+1. **Overall State**: 그래프 내부에서 사용하는 전체 상태 (모든 키 포함)
+2. **Input Schema**: 그래프 실행 시 받을 수 있는 입력 키만 정의
+3. **Output Schema**: 그래프 실행 결과로 반환할 출력 키만 정의
+4. **Private State**: 내부 노드 간 통신용 상태 (입출력에 노출되지 않음)
+
+#### 구현 방법
+
+```python
+from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+
+# 1. Input Schema: 그래프가 받을 입력 정의
+class InputState(TypedDict):
+    user_input: str
+
+# 2. Output Schema: 그래프가 반환할 출력 정의
+class OutputState(TypedDict):
+    graph_output: str
+
+# 3. Overall State: 내부에서 사용하는 전체 상태
+class OverallState(TypedDict):
+    user_input: str      # 입력에서 받음
+    graph_output: str    # 출력으로 반환
+    foo: str             # 내부 처리용
+    bar: int             # 내부 처리용
+
+# 4. Private State: 내부 노드 간 통신 전용
+class PrivateState(TypedDict):
+    internal_data: str
+    temp_result: list
+
+# 노드 정의
+def node_1(state: InputState) -> OverallState:
+    """입력을 받아서 내부 상태로 변환"""
+    # InputState만 받지만 OverallState의 모든 키에 쓸 수 있음
+    return {"foo": state["user_input"] + " processed"}
+
+def node_2(state: OverallState) -> PrivateState:
+    """OverallState를 읽고 PrivateState에 씀"""
+    # 내부 처리를 위한 임시 데이터 생성
+    return {
+        "internal_data": state["foo"],
+        "temp_result": state["foo"].split()
+    }
+
+def node_3(state: PrivateState) -> OutputState:
+    """PrivateState를 읽고 최종 출력 생성"""
+    # 내부 데이터를 가공하여 출력 형식으로 변환
+    result = " ".join(state["temp_result"]).upper()
+    return {"graph_output": result}
+
+# ✅ input_schema와 output_schema를 명시한 그래프 생성
+builder = StateGraph(
+    OverallState,
+    input_schema=InputState,
+    output_schema=OutputState
+)
+
+builder.add_node("node_1", node_1)
+builder.add_node("node_2", node_2)
+builder.add_node("node_3", node_3)
+
+builder.add_edge(START, "node_1")
+builder.add_edge("node_1", "node_2")
+builder.add_edge("node_2", "node_3")
+builder.add_edge("node_3", END)
+
+graph = builder.compile()
+
+# 실행 - 입력은 InputState 형식, 출력은 OutputState 형식
+result = graph.invoke({"user_input": "hello world"})
+print(result)
+# {'graph_output': 'HELLO WORLD PROCESSED'}
+```
+
+#### 서브그래프에 적용하기
+
+부모-자식 그래프 간 상태 충돌 문제를 해결하는 강력한 방법입니다:
+
+```python
+from typing import TypedDict, Annotated
+from langgraph.graph import StateGraph, START, END
+from langgraph.graph.message import add_messages
+
+# === 서브그래프 정의 ===
+
+# 서브그래프 입력: 부모로부터 받을 데이터
+class SubgraphInput(TypedDict):
+    task_description: str
+
+# 서브그래프 출력: 부모에게 반환할 데이터
+class SubgraphOutput(TypedDict):
+    task_result: str
+
+# 서브그래프 내부 상태: 내부 처리용
+class SubgraphOverallState(TypedDict):
+    task_description: str
+    task_result: str
+    # 내부 처리용 필드들
+    intermediate_steps: list
+    processing_status: str
+    internal_counter: int
+
+# 서브그래프 Private 상태
+class SubgraphPrivateState(TypedDict):
+    temp_calculations: dict
+    debug_info: str
+
+def subgraph_node_1(state: SubgraphInput) -> SubgraphOverallState:
+    """입력 처리"""
+    return {
+        "intermediate_steps": ["started"],
+        "processing_status": "processing",
+        "internal_counter": 1
+    }
+
+def subgraph_node_2(state: SubgraphOverallState) -> SubgraphPrivateState:
+    """내부 계산"""
+    return {
+        "temp_calculations": {"step": state["internal_counter"]},
+        "debug_info": f"Processed {state['internal_counter']} items"
+    }
+
+def subgraph_node_3(state: SubgraphOverallState) -> SubgraphOutput:
+    """최종 결과 생성"""
+    return {
+        "task_result": f"Completed: {state['task_description']}"
+    }
+
+# ✅ 서브그래프: 명확한 입출력 인터페이스
+subgraph_builder = StateGraph(
+    SubgraphOverallState,
+    input_schema=SubgraphInput,
+    output_schema=SubgraphOutput
+)
+
+subgraph_builder.add_node("process_input", subgraph_node_1)
+subgraph_builder.add_node("internal_calc", subgraph_node_2)
+subgraph_builder.add_node("generate_output", subgraph_node_3)
+
+subgraph_builder.add_edge(START, "process_input")
+subgraph_builder.add_edge("process_input", "internal_calc")
+subgraph_builder.add_edge("internal_calc", "generate_output")
+subgraph_builder.add_edge("generate_output", END)
+
+subgraph = subgraph_builder.compile()
+
+# === 부모 그래프 정의 ===
+
+class ParentState(TypedDict):
+    user_query: str
+    final_answer: str
+    subgraph_results: list
+
+def parent_node_1(state: ParentState) -> ParentState:
+    """사용자 쿼리 전처리"""
+    return {"user_query": state["user_query"].strip()}
+
+def call_subgraph_node(state: ParentState) -> ParentState:
+    """서브그래프 호출 (어댑터 패턴 결합)"""
+    # 부모 상태 → 서브그래프 입력 변환
+    subgraph_input = {"task_description": state["user_query"]}
+
+    # 서브그래프 실행 (input_schema/output_schema가 자동으로 검증)
+    subgraph_output = subgraph.invoke(subgraph_input)
+
+    # 서브그래프 출력 → 부모 상태 변환
+    return {
+        "subgraph_results": [subgraph_output["task_result"]]
+    }
+
+def parent_node_2(state: ParentState) -> ParentState:
+    """최종 답변 생성"""
+    return {
+        "final_answer": f"Answer: {state['subgraph_results'][0]}"
+    }
+
+parent_builder = StateGraph(ParentState)
+parent_builder.add_node("preprocess", parent_node_1)
+parent_builder.add_node("call_subgraph", call_subgraph_node)
+parent_builder.add_node("finalize", parent_node_2)
+
+parent_builder.add_edge(START, "preprocess")
+parent_builder.add_edge("preprocess", "call_subgraph")
+parent_builder.add_edge("call_subgraph", "finalize")
+parent_builder.add_edge("finalize", END)
+
+parent_graph = parent_builder.compile()
+
+# 실행
+result = parent_graph.invoke({"user_query": "  analyze data  "})
+print(result)
+# {'user_query': 'analyze data',
+#  'final_answer': 'Answer: Completed: analyze data',
+#  'subgraph_results': ['Completed: analyze data']}
+```
+
+#### 중요한 특성
+
+**1. 노드는 입력 스키마에 없는 키에도 쓸 수 있음**
+
+```python
+def node(state: InputState) -> OverallState:
+    # InputState에는 user_input만 있지만
+    # OverallState의 모든 키에 쓸 수 있음
+    return {
+        "foo": "value",      # OverallState에만 있는 키
+        "bar": 123,          # OverallState에만 있는 키
+        "graph_output": "result"  # OutputState에 있는 키
+    }
+```
+
+**2. 노드는 런타임에 새로운 상태 채널 선언 가능**
+
+```python
+# 그래프 초기화 시 PrivateState를 전달하지 않아도
+# 노드에서 PrivateState를 반환하면 자동으로 추가됨
+def node(state: OverallState) -> PrivateState:
+    return {"internal_data": "secret"}  # 새로운 채널 생성
+```
+
+**3. 그래프 상태는 모든 스키마의 합집합**
+
+```python
+# 실제 그래프 상태 = OverallState ∪ InputState ∪ OutputState ∪ PrivateState
+# (중복 키는 OverallState 기준)
+```
+
+#### 중단점이 있는 서브그래프 예제
+
+```python
+from langgraph.checkpoint.memory import MemorySaver
+
+# 서브그래프를 중단 기능과 함께 컴파일
+subgraph_with_interrupt = subgraph_builder.compile(
+    interrupt_before=["internal_calc"],
+    checkpointer=True  # 독립적인 메모리
+)
+
+# 부모 그래프 어댑터 수정
+def call_subgraph_with_interrupt(state: ParentState) -> ParentState:
+    subgraph_input = {"task_description": state["user_query"]}
+
+    # 부모의 thread_id 기반 서브그래프 thread_id 생성
+    parent_thread_id = state.get("thread_id", "default")
+    subgraph_config = {
+        "configurable": {"thread_id": f"sub_{parent_thread_id}"}
+    }
+
+    # 중단 기능이 있는 서브그래프 실행
+    subgraph_output = subgraph_with_interrupt.invoke(
+        subgraph_input,
+        config=subgraph_config
+    )
+
+    return {"subgraph_results": [subgraph_output["task_result"]]}
+
+# 부모 그래프 컴파일
+parent_graph = parent_builder.compile(
+    checkpointer=MemorySaver()
+)
+```
+
+#### 장점
+
+- **명확한 인터페이스**: 그래프의 입출력이 명시적으로 정의됨
+- **캡슐화**: 내부 구현 세부사항을 숨기고 필요한 것만 노출
+- **API 친화적**: LangGraph API로 배포 시 자동으로 입출력 스키마 적용
+- **타입 안정성**: 입출력 타입이 명확하여 오류 감소
+- **유지보수성**: 인터페이스를 유지하면서 내부 구현 변경 가능
+- **상태 충돌 방지**: 서브그래프가 독립적인 입출력을 가져 부모와 충돌 없음
+
+#### 단점
+
+- **초기 설계 복잡도**: 여러 스키마를 설계해야 함
+- **문서화 필요**: 각 스키마의 역할을 명확히 문서화해야 함
+- **디버깅 복잡성**: 여러 상태 레이어를 추적해야 함
+- **학습 곡선**: 초보자에게는 개념 이해가 어려울 수 있음
+
+#### 사용 시나리오
+
+- **API 배포**: LangGraph Cloud/Server로 배포할 때 명확한 API 스펙 필요
+- **대규모 시스템**: 여러 팀이 협업하며 명확한 인터페이스 계약 필요
+- **재사용 가능한 컴포넌트**: 서브그래프를 라이브러리처럼 재사용
+- **복잡한 내부 로직**: 많은 내부 상태가 필요하지만 외부에는 단순한 인터페이스 제공
+- **보안/프라이버시**: 민감한 내부 데이터를 외부에 노출하지 않아야 할 때
+
+#### 방법 2(어댑터)와의 비교
+
+| 측면 | 방법 2: 어댑터 패턴 | 방법 4: input/output_schema |
+|:---|:---|:---|
+| **적용 위치** | 노드 함수 레벨 | 그래프 초기화 레벨 |
+| **변환 로직** | 수동으로 어댑터 함수 작성 | 자동으로 스키마 검증 |
+| **타입 체크** | 런타임에만 | 컴파일 타임 + 런타임 |
+| **코드 위치** | 어댑터 함수에 분산 | 스키마 정의에 집중 |
+| **유연성** | 매우 높음 (임의 변환 가능) | 중간 (스키마 기반) |
+| **추천 용도** | 간단한 변환, 빠른 프로토타이핑 | 프로덕션, API 배포 |
+
+#### 실전 팁
+
+**1. 스키마 계층 설계 원칙**
+
+```python
+# ✅ Good: 명확한 계층 구조
+class PublicInput(TypedDict):
+    """API로 받는 공개 입력"""
+    query: str
+
+class PublicOutput(TypedDict):
+    """API로 반환하는 공개 출력"""
+    answer: str
+    confidence: float
+
+class InternalState(TypedDict):
+    """내부 처리용 전체 상태"""
+    query: str
+    answer: str
+    confidence: float
+    # 내부 전용
+    search_results: list
+    reasoning_steps: list
+    api_calls_made: int
+
+# ❌ Bad: 모호한 구조
+class State(TypedDict):
+    data: dict  # 무엇이 들어있는지 불명확
+    result: Any  # 타입이 불명확
+```
+
+**2. Private State 활용**
+
+```python
+# Private State는 로깅, 디버깅, 임시 계산에 활용
+class DebugState(TypedDict):
+    execution_time_ms: int
+    api_call_logs: list
+    intermediate_results: dict
+
+def debug_node(state: InternalState) -> DebugState:
+    return {
+        "execution_time_ms": 150,
+        "api_call_logs": ["call_1", "call_2"],
+        "intermediate_results": {"step_1": "done"}
+    }
+```
+
+**3. 서브그래프 인터페이스 문서화**
+
+```python
+class ResearchAgentInput(TypedDict):
+    """
+    연구 에이전트 입력 스키마
+
+    Fields:
+        research_topic: 조사할 주제 (필수)
+        max_results: 최대 검색 결과 수 (기본값: 5)
+    """
+    research_topic: str
+    max_results: int
+
+class ResearchAgentOutput(TypedDict):
+    """
+    연구 에이전트 출력 스키마
+
+    Fields:
+        summary: 연구 요약
+        sources: 참고 자료 목록
+        confidence_score: 신뢰도 점수 (0-1)
+    """
+    summary: str
+    sources: list[str]
+    confidence_score: float
+```
+
+---
+
+## 방법별 비교 및 선택 가이드
+
+### 비교 표
+
+| 방법 | 복잡도 | 격리 수준 | 데이터 공유 | 메모리 오버헤드 | 타입 안정성 | 추천 사용 사례 |
+|:---|:---:|:---:|:---:|:---:|:---:|:---|
+| **1. 상태 키 분리** | ⭐ 낮음 | ⭐⭐⭐ 높음 | ❌ 어려움 | ⭐ 낮음 | ⭐⭐ 중간 | 독립적인 워크플로우, 간단한 구조 |
+| **2. 어댑터 패턴** | ⭐⭐ 중간 | ⭐⭐ 중간 | ✅ 유연함 | ⭐ 낮음 | ⭐ 낮음 | 다른 상태 구조, 선택적 데이터 교환 |
+| **3. 독립 메모리** | ⭐⭐⭐ 높음 | ⭐⭐⭐ 높음 | ⭐⭐ 제한적 | ⭐⭐⭐ 높음 | ⭐⭐ 중간 | 멀티 에이전트, 복잡한 상태 관리 |
+| **4. input/output_schema** | ⭐⭐⭐ 높음 | ⭐⭐⭐ 높음 | ✅ 명시적 | ⭐ 낮음 | ⭐⭐⭐ 높음 | API 배포, 프로덕션, 명확한 인터페이스 |
+
+### 선택 기준
+
+#### 방법 1을 선택하는 경우
+
+```
+✅ 부모와 자식이 완전히 다른 데이터를 다룸
+✅ 데이터 공유 필요성이 거의 없음
+✅ 구조가 단순하고 명확함을 선호
+❌ 부모-자식 간 복잡한 데이터 교환 불필요
+```
+
+#### 방법 2를 선택하는 경우
+
+```
+✅ 부모와 자식의 상태 구조가 다름
+✅ 선택적/변환된 데이터 교환이 필요
+✅ 서브그래프를 재사용 가능한 컴포넌트로 만들고 싶음
+✅ 명확한 인터페이스 계약을 원함
+```
+
+#### 방법 3을 선택하는 경우
+
+```
+✅ 멀티 에이전트 시스템 구축
+✅ 각 서브그래프가 독립적인 대화 기록/상태 필요
+✅ 복잡한 Human-in-the-loop 워크플로우
+✅ 서브그래프의 상태를 완벽히 격리해야 함
+```
+
+#### 방법 4를 선택하는 경우
+
+```
+✅ LangGraph API/Cloud로 배포 예정
+✅ 여러 팀이 협업하며 명확한 계약 필요
+✅ 서브그래프를 라이브러리처럼 재사용
+✅ 내부 복잡도는 높지만 외부 인터페이스는 단순하게
+✅ 타입 안정성과 자동 검증이 중요
+```
+
+### 하이브리드 접근법
+
+실전에서는 여러 방법을 조합하여 사용하는 것이 효과적입니다:
+
+#### 예제 1: 방법 1 + 방법 3 조합
+
+```python
+from typing import TypedDict, Annotated
+from langgraph.graph.message import add_messages
+
+class ParentState(TypedDict):
+    parent_messages: Annotated[list, add_messages]
+    results: list
+
+class AgentState(TypedDict):
+    agent_messages: Annotated[list, add_messages]
+    agent_data: dict
+
+# 독립 메모리를 가진 에이전트 (방법 3)
+agent = agent_builder.compile(checkpointer=True)
+
+# 부모는 명확히 분리된 키 사용 (방법 1)
+parent_builder = StateGraph(ParentState)
+parent_builder.add_node("agent", agent)
+```
+
+#### 예제 2: 방법 2 + 방법 4 조합 (추천 ⭐)
+
+```python
+# 서브그래프는 input/output_schema로 명확한 인터페이스 정의 (방법 4)
+subgraph_builder = StateGraph(
+    SubgraphOverallState,
+    input_schema=SubgraphInput,
+    output_schema=SubgraphOutput
+)
+subgraph = subgraph_builder.compile(checkpointer=True)
+
+# 부모 그래프는 어댑터 패턴으로 유연하게 연결 (방법 2)
+def adapter_node(state: ParentState) -> ParentState:
+    # 복잡한 변환 로직
+    subgraph_input = transform_to_subgraph_input(state)
+    subgraph_output = subgraph.invoke(subgraph_input)
+    return transform_to_parent_state(state, subgraph_output)
+
+parent_builder = StateGraph(ParentState)
+parent_builder.add_node("subgraph_adapter", adapter_node)
+```
+
+#### 예제 3: 방법 1 + 방법 4 조합 (대규모 시스템)
+
+```python
+# 부모: 상태 키 분리 (방법 1)
+class ParentState(TypedDict):
+    parent_query: str
+    parent_results: list
+
+# 서브그래프: 명확한 인터페이스 (방법 4)
+class SubInput(TypedDict):
+    query: str
+
+class SubOutput(TypedDict):
+    result: str
+
+class SubOverall(TypedDict):
+    query: str
+    result: str
+    internal_state: dict
+
+subgraph = StateGraph(
+    SubOverall,
+    input_schema=SubInput,
+    output_schema=SubOutput
+).compile()
+
+# 어댑터로 연결
+def call_sub(state: ParentState) -> ParentState:
+    output = subgraph.invoke({"query": state["parent_query"]})
+    return {"parent_results": [output["result"]]}
+```
+
+---
+
+## 베스트 프랙티스
+
+### 1. 상태 스키마 설계 원칙
+
+```python
+# ✅ Good: 명확한 네이밍과 역할 분리
+class ParentState(TypedDict):
+    user_input: str
+    orchestration_data: dict
+    agent_results: list
+
+class ResearchAgentState(TypedDict):
+    research_messages: Annotated[list, add_messages]
+    search_results: list
+    research_summary: str
+
+# ❌ Bad: 모호한 이름과 중복
+class State(TypedDict):
+    messages: list  # 어떤 메시지?
+    data: dict      # 무슨 데이터?
+    result: str     # 누구의 결과?
+```
+
+### 2. 체크포인터 설정 패턴
+
+```python
+# 전체 시스템 설계
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.sqlite import SqliteSaver
+
+# 개발 환경: 메모리 기반
+development_checkpointer = MemorySaver()
+
+# 프로덕션: 영구 저장
+production_checkpointer = SqliteSaver.from_conn_string("checkpoints.db")
+
+# 서브그래프는 독립적인 메모리
+subgraph = subgraph_builder.compile(checkpointer=True)
+
+# 메인 그래프는 환경에 따른 체크포인터
+graph = builder.compile(
+    checkpointer=production_checkpointer if is_production else development_checkpointer
+)
+```
+
+### 3. 어댑터 함수 템플릿
+
+```python
+from typing import TypedDict, Any
+
+def create_subgraph_adapter(
+    subgraph: Any,
+    input_mapper: callable,
+    output_mapper: callable
+):
+    """재사용 가능한 어댑터 팩토리"""
+    def adapter(state: dict) -> dict:
+        # 입력 변환
+        subgraph_input = input_mapper(state)
+
+        # 서브그래프 실행
+        subgraph_output = subgraph.invoke(subgraph_input)
+
+        # 출력 변환
+        return output_mapper(state, subgraph_output)
+
+    return adapter
+
+# 사용 예
+research_adapter = create_subgraph_adapter(
+    subgraph=research_agent,
+    input_mapper=lambda s: {"agent_messages": s["user_input"]},
+    output_mapper=lambda s, out: {"research_result": out["agent_messages"][-1]}
+)
+```
+
+### 4. 디버깅 전략
+
+```python
+# 상태 변화 추적
+def debug_node(name: str):
+    def decorator(func):
+        def wrapper(state):
+            print(f"[{name}] Input:", state)
+            result = func(state)
+            print(f"[{name}] Output:", result)
+            return result
+        return wrapper
+    return decorator
+
+# 사용
+@debug_node("research_agent")
+def research_node(state: AgentState) -> AgentState:
+    return {"agent_messages": ["research done"]}
+```
+
+### 5. 에러 처리
+
+```python
+def safe_subgraph_call(subgraph, state, fallback_value):
+    """안전한 서브그래프 호출"""
+    try:
+        return subgraph.invoke(state)
+    except Exception as e:
+        print(f"Subgraph error: {e}")
+        return fallback_value
+
+# 어댑터에서 사용
+def call_child_graph(state: ParentState) -> ParentState:
+    child_input = {"my_child_key": state["my_key"]}
+    child_output = safe_subgraph_call(
+        child_graph,
+        child_input,
+        fallback_value={"child_result": "Error occurred"}
+    )
+    return {"my_key": child_output["child_result"]}
+```
+
+---
+
+## 관련 학습 모듈
+
+- **Module 2**: 상태 스키마, 리듀서, 메시지 트리밍, SQLite 외부 메모리
+- **Module 3**: Human-in-the-loop (중단점, 상태 편집, 타임 트래블)
+- **Module 4**: 병렬화, 서브그래프, Map-Reduce 패턴
+- **Module 5**: 고급 메모리 - BaseStore 인터페이스, StateSchema, Redis 통합
+
+---
+
+## 참고 자료
+
+### 공식 문서
+
+- [LangGraph Subgraph How-to](https://langchain-ai.github.io/langgraph/how-tos/subgraph/)
+- [LangGraph Use Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs)
+
+### GitHub Issues
+
+- [Issue #4748: State loss in subgraphs](https://github.com/langchain-ai/langgraph/issues/4748)
+- [Issue #4182: Related subgraph state issues](https://github.com/langchain-ai/langgraph/issues/4182)
+
+### Community Discussions
+
+- [Stack Overflow: Subgraph memory persistence](https://stackoverflow.com/questions/79607143/how-to-implement-subgraph-memory-persistence-in-langgraph-when-parent-and-subgra)
+- [Reddit: Graph within a graph experiences](https://www.reddit.com/r/LangChain/comments/1dpqltj/any_experiences_with_graph_within_a_graph_in/)
+
+### 한국어 블로그
+
+- [LangGraph Subgraph 이해하기](https://sean-j.tistory.com/entry/LangGraph-Subgraph-1)
+
+---
+
+## 시스템 정보
+
+- **OS**: Linux (Ubuntu 22.04)
+- **Python**: 3.12.7
+- **langchain_core**: 0.3.60
+- **langgraph_sdk**: 0.1.69
+- **langsmith**: 0.3.42
+
+---
+
+## 업데이트 이력
+
+- **2025-10-18 (초기)**: 문제 정의 및 기본 재현 예제 (`langgraph-issue-4748-subgraph-state-loss.md`)
+- **2025-10-18 (v1)**: 상세 해결 방법 추가 - 3가지 해결 방법 및 코드 예제, 베스트 프랙티스
+- **2025-10-18 (v2)**: 방법 4 추가 - `input_schema`와 `output_schema` 활용 방법, 비교 표 업데이트, 하이브리드 접근법 확장
+- **2025-10-18 (v2.1)**: 파일명 및 제목 변경 - 포괄적인 가이드로 재구성 (`langgraph-subgraph-state-management-guide.md`)

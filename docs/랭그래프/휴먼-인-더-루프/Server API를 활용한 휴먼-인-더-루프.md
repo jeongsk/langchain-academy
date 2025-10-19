@@ -2,9 +2,15 @@
 created: 2025-10-15 00:40:29
 updated: 2025-10-15 00:48:22
 source: https://docs.langchain.com/langsmith/add-human-in-the-loop
-tags: []
+tags:
+  - LangGraph
+  - 휴먼_인_더_루프
+  - Server_API
+  - SDK
+  - 튜토리얼
+  - 중단_Interrupt
 ---
-에이전트나 워크플로우에서 도구 호출을 검토하고 편집하며 승인하려면, LangGraph의 [휴먼-인-더-루프](https://docs.langchain.com/oss/python/langgraph/interrupts) 기능을 사용하세요.
+[[랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]]나 워크플로우에서 도구 호출을 검토하고 편집하며 승인하려면, [[랭그래프/LangGraph|LangGraph]]의 [[랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요|휴먼-인-더-루프]] 기능을 사용하세요. 이 문서는 특히 [[랭그래프/LangGraph 배포 가이드|배포된 LangGraph 서버]]와 상호작용하는 방법을 다룹니다.
 
 ## 동적 인터럽트
 
@@ -200,7 +206,7 @@ await client.runs.wait(
 
 ---
 
-[GitHub에서 이 페이지의 소스 편집하기](https://github.com/langchain-ai/docs/edit/main/src/langsmith/add-human-in-the-loop.mdx)
+[GitHub에서 이 페이지의 소스 편집하기](https://github.com/langchain-ai/edit/main/src/langsmith/add-human-in-the-loop.mdx)
 
 [이전: Streaming API](https://docs.langchain.com/langsmith/streaming)
 

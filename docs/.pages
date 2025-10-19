@@ -1,5 +1,40 @@
 nav:
   - 홈:
-    - index.md
-    - setup.md
-  - ...
+      - index.md
+      - 개발 환경 설정.md
+  - 랭그래프:
+      - 랭그래프/LangGraph.md
+      - 랭그래프/LangGraph 노드 추가 패턴.md
+      - 랭그래프/Pydantic Field 사용법.md
+      - 랭그래프/LangGraph 배포 가이드.md
+      - 랭그래프/LangGraph 서브그래프 상태 관리 완벽 가이드.md
+      - 에이전트:
+          - 랭그래프/에이전트/에이전트란 무엇인가요?.md
+          - 랭그래프/에이전트/LLM 에이전트 아키텍처 패턴.md
+          - 랭그래프/에이전트/사전 구축된 에이전트로 빠르게 시작하기 - create_react_agent.md
+      - 멀티 에이전트:
+          - 랭그래프/멀티 에이전트/멀티 에이전트 시스템.md
+          - 랭그래프/멀티 에이전트/멀티 에이전트 시스템 구축 가이드.md
+          - 랭그래프/멀티 에이전트/멀티 에이전트 구현.md
+      - 휴먼-인-더-루프:
+          - 랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요.md
+          - 랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 사용하기.md
+          - 랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프.md
+      - 도구:
+          - 랭그래프/도구/Tavily 검색 및 추출 도구.md
+      - LangGraph APIs:
+          - 랭그래프/LangGraph APIs/Graph API 개념.md
+          - 랭그래프/LangGraph APIs/Graph API 사용법.md
+          - 랭그래프/LangGraph APIs/Command와 Send의 차이점.md
+          - 랭그래프/LangGraph APIs/Command의 update와 resume 차이점.md
+          - 랭그래프/InjectedState-사용법.md
+      - Reference:
+          - Prebuilt:
+              - 랭그래프/Reference/Prebuilt/Agents.md
+  - 프롬프트 엔지니어링:
+      - 프롬프트 엔지니어링/index.md
+      - 프롬프트 엔지니어링/(번역) 모델이 프롬프트를 작성하게 하라.md
+      - 프롬프트 엔지니어링/(번역) 컨텍스트 엔지니어링의 부상.md
+      - 프롬프트 엔지니어링/(번역) AI 에이전트를 위한 효과적인 컨텍스트 엔지니어링.md
+  - Deep-Agents-From-Scratch.md
+  - Foundation Introduction to LangGraph.md

@@ -4,9 +4,13 @@
   "notebook-navigator",
   "remove-empty-folders",
   "file-explorer-note-count",
-  "digitalgarden",
   "obsidian-shellcommands",
   "cmdr",
   "obsidian-linter",
-  "terminal"
+  "terminal",
+  "ai-providers",
+  "templater-obsidian",
+  "local-gpt",
+  "infio-copilot",
+  "obsidian-style-settings"
 ]

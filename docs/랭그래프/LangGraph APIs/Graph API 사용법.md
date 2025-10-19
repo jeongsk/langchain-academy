@@ -43,7 +43,7 @@ class State(TypedDict):
     extra_field: int
 ```
 
-이 상태는 [메시지](https://python.langchain.com/docs/concepts/messages/) 객체 목록과 추가 정수 필드를 추적합니다.
+이 상태는 [메시지](https://python.langchain.com/concepts/messages/) 객체 목록과 추가 정수 필드를 추적합니다.
 
 ### 상태 업데이트
 
@@ -109,7 +109,7 @@ result
 - 호출을 시작할 때 상태의 단일 키를 업데이트했습니다.
 - 호출 결과에서 전체 상태를 받습니다.
 
-편의를 위해 [메시지 객체](https://python.langchain.com/docs/concepts/messages/)의 내용을 예쁘게 출력으로 자주 검사합니다:
+편의를 위해 [메시지 객체](https://python.langchain.com/concepts/messages/)의 내용을 예쁘게 출력으로 자주 검사합니다:
 
 ```python
 for message in result["messages"]:
@@ -162,7 +162,7 @@ for message in result["messages"]:
 메시지 목록을 업데이트할 때 추가적인 고려사항이 있습니다:
 
 - 상태의 기존 메시지를 업데이트할 수 있습니다.
-- [메시지 형식](https://langchain-ai.github.io/langgraph/concepts/low_level/#using-messages-in-your-graph)에 대한 약칭(예: [OpenAI 형식](https://python.langchain.com/docs/concepts/messages/#openai-format))을 허용할 수 있습니다.
+- [메시지 형식](https://langchain-ai.github.io/langgraph/concepts/low_level/#using-messages-in-your-graph)에 대한 약칭(예: [OpenAI 형식](https://python.langchain.com/concepts/messages/#openai-format))을 허용할 수 있습니다.
 
 LangGraph에는 이러한 고려사항을 처리하는 기본 제공 리듀서 `add_messages`가 포함되어 있습니다:
 
@@ -191,7 +191,7 @@ for message in result["messages"]:
     message.pretty_print()
 ```
 
-이는 [채팅 모델](https://python.langchain.com/docs/concepts/chat_models/)과 관련된 애플리케이션에서 상태를 표현하는 다용도 방식입니다. 편의를 위해 LangGraph에는 사전 구축된 `MessagesState`가 포함되어 있어 다음과 같이 사용할 수 있습니다:
+이는 [채팅 모델](https://python.langchain.com/concepts/chat_models/)과 관련된 애플리케이션에서 상태를 표현하는 다용도 방식입니다. 편의를 위해 LangGraph에는 사전 구축된 `MessagesState`가 포함되어 있어 다음과 같이 사용할 수 있습니다:
 
 ```python
 from langgraph.graph import MessagesState
@@ -790,7 +790,7 @@ graph.invoke({"aggregate": []})
 2. 적절히 `await`를 사용하도록 내부 코드 업데이트합니다.
 3. `.ainvoke` 또는 `.astream`으로 그래프를 호출합니다.
 
-많은 LangChain 객체가 모든 `sync` 메서드의 `async` 변형을 포함하는 [Runnable Protocol](https://python.langchain.com/docs/expression_language/interface/)을 구현하므로 일반적으로 `sync` 그래프를 `async` 그래프로 업그레이드하는 데 상당히 빠릅니다.
+많은 LangChain 객체가 모든 `sync` 메서드의 `async` 변형을 포함하는 [Runnable Protocol](https://python.langchain.com/expression_language/interface/)을 구현하므로 일반적으로 `sync` 그래프를 `async` 그래프로 업그레이드하는 데 상당히 빠릅니다.
 
 아래 예제를 참조하세요. 기본 LLM의 비동기 호출을 시연하기 위해 채팅 모델을 포함하겠습니다:
 

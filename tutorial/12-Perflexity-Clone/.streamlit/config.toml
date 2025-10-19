@@ -1,0 +1,29 @@
+[theme]
+# 기본 테마 (light 또는 dark)
+base = "light"
+
+# 강조 색상 (버튼, 링크 등)
+primaryColor = "#027373"
+
+# 메인 콘텐츠 배경색
+backgroundColor = "#F2E7DC"
+
+# 사이드바 배경색
+secondaryBackgroundColor = "#A9D9D0"
+
+# 텍스트 색상
+textColor = "#0D0D0D"
+
+# 폰트 패밀리 (sans serif, serif, monospace)
+font = "sans serif"
+
+[server]
+# 파일 변경 시 자동 재실행
+runOnSave = true
+
+# 헤더 숨기기
+headless = false
+
+[browser]
+# 브라우저 자동 열기
+gatherUsageStats = false

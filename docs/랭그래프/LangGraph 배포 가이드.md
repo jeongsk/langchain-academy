@@ -1,8 +1,15 @@
 ---
 created: 2025-10-06 01:05:27
 updated: 2025-10-12 12:22:42
+tags:
+  - LangGraph
+  - 배포_Deployment
+  - Docker
+  - FastAPI
+  - 클라우드_Cloud
+  - 가이드
 ---
-이 문서는 LangGraph 애플리케이션을 배포하는 다양한 방법을 자세히 설명합니다.
+이 문서는 [[랭그래프/LangGraph|LangGraph]] 애플리케이션을 배포하는 다양한 방법을 자세히 설명합니다.
 
 ## 목차
 
@@ -464,7 +471,7 @@ sudo systemctl start langgraph-rag
    
    def get_secret(project_id, secret_id):
        client = secretmanager.SecretManagerServiceClient()
-       name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
+       name = f"tutorial/{project_id}/secrets/{secret_id}/versions/latest"
        response = client.access_secret_version(request={"name": name})
        return response.payload.data.decode("UTF-8")
    ```
