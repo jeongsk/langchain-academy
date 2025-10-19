@@ -74,7 +74,7 @@ def create_perplexity_graph(
             - gpt-4.1-mini: 빠르고 비용 효율적 (기본값)
             - gpt-4.1-nano: 초경량, 초고속 모델
         max_results: 최대 검색 결과 수
-        topic: 검색 주제 ("general" 또는 "news")
+        topic: 검색 주제 ("general", "news", "finance" 중 하나)
         include_domains: 포함할 도메인 리스트
         exclude_domains: 제외할 도메인 리스트
         checkpointer: 체크포인터 (메모리 저장용)
