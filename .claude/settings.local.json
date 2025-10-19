@@ -1,12 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:quartz.jzhao.xyz)",
-      "WebFetch(domain:developers.cloudflare.com)",
-      "Bash(python3 -m py_compile projects/12-Perflexity-Clone/app_remote.py)",
-      "Bash(cat projects/12-Perflexity-Clone/requirements.txt)",
-      "Bash(uv pip install nest-asyncio==1.6.0)"
+      "WebFetch",
+      "Bash"
     ],
     "deny": [],
     "ask": []
