@@ -1,5 +1,7 @@
-# Pydantic Field 사용법
-
+---
+created: 2025-10-18 17:56:55
+updated: 2025-10-19 09:12:54
+---
 Pydantic의 `Field` 사용법에 대한 차이점을 자세히 설명합니다.
 
 ## 1️⃣ `Field(description="설명")`
