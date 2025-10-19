@@ -10,7 +10,7 @@ tags:
 ---
 # InjectedState: 도구(Tool)에서 그래프 상태(State)에 접근하기
 
-`InjectedState`는 [[docs/랭그래프/LangGraph|LangGraph]]에서 [[docs/랭그래프/도구/Tavily 검색 및 추출 도구|도구(Tool)]]를 정의할 때, 해당 도구가 현재 그래프의 전체 상태(state)에 접근할 수 있도록 해주는 특별한 타입 어노테이션입니다.
+`InjectedState`는 [[랭그래프/LangGraph|LangGraph]]에서 [[랭그래프/도구/Tavily 검색 및 추출 도구|도구(Tool)]]를 정의할 때, 해당 도구가 현재 그래프의 전체 상태(state)에 접근할 수 있도록 해주는 특별한 타입 어노테이션입니다.
 
 일반적으로 도구는 특정 입력값만 받아서 처리하지만, 때로는 도구가 작업을 수행하기 위해 현재까지 진행된 그래프의 전체적인 맥락이나 정보(즉, 상태)가 필요한 경우가 있습니다. 이때 `InjectedState`를 사용하면, LangGraph가 도구를 호출할 때 현재 그래프의 상태 객체를 해당 인자에 자동으로 주입해줍니다.
 

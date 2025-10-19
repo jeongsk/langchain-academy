@@ -8,11 +8,11 @@ tags:
   - AI_에이전트
   - 컨텍스트_엔지니어링
 ---
-[[docs/랭그래프/에이전트/에이전트란 무엇인가요?|AI 에이전트]]를 위한 효과적인 프롬프트 엔지니어링 기법을 학습하는 섹션입니다. 이 문서는 [[docs/index|LangGraph Academy]]의 일부입니다.
+[[랭그래프/에이전트/에이전트란 무엇인가요?|AI 에이전트]]를 위한 효과적인 프롬프트 엔지니어링 기법을 학습하는 섹션입니다.
 
 ## 개요
 
-프롬프트 엔지니어링은 AI 모델과 효과적으로 소통하기 위한 핵심 기술입니다. 특히 [[docs/랭그래프/LangGraph|LangGraph]]와 같은 에이전트 시스템에서는 더욱 중요한 역할을 합니다.
+프롬프트 엔지니어링은 AI 모델과 효과적으로 소통하기 위한 핵심 기술입니다. 특히 [[랭그래프/LangGraph|LangGraph]]와 같은 에이전트 시스템에서는 더욱 중요한 역할을 합니다.
 
 ## 주요 내용
 
@@ -24,5 +24,5 @@ tags:
 
 ## 추가 리소스
 
-- [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
-- [Anthropic Prompt Engineering](https://docs.anthropic.com/claude/docs/prompt-engineering)
+- [OpenAI Prompt Engineering Guide](https://platform.openai.com/guides/prompt-engineering)
+- [Anthropic Prompt Engineering](https://docs.anthropic.com/claude/prompt-engineering)

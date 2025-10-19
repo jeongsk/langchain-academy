@@ -9,7 +9,7 @@ tags:
   - 클라우드_Cloud
   - 가이드
 ---
-이 문서는 [[docs/랭그래프/LangGraph|LangGraph]] 애플리케이션을 배포하는 다양한 방법을 자세히 설명합니다.
+이 문서는 [[랭그래프/LangGraph|LangGraph]] 애플리케이션을 배포하는 다양한 방법을 자세히 설명합니다.
 
 ## 목차
 

@@ -13,9 +13,9 @@ tags:
 [![오픈 이슈](https://img.shields.io/github/issues-raw/langchain-ai/langgraph)](https://github.com/langchain-ai/langgraph/issues)
 [![문서](https://img.shields.io/badge/docs-latest-blue)](https://langchain-ai.github.io/langgraph/)
 
-Klarna, Replit, Elastic 등 에이전트의 미래를 만들어가는 기업들의 신뢰를 받는 LangGraph는 오래 실행되는 상태 저장 [[docs/랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]]를 구축, 관리, 배포하기 위한 로우-레벨 오케스트레이션 프레임워크입니다.
+Klarna, Replit, Elastic 등 에이전트의 미래를 만들어가는 기업들의 신뢰를 받는 LangGraph는 오래 실행되는 상태 저장 [[랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]]를 구축, 관리, 배포하기 위한 로우-레벨 오케스트레이션 프레임워크입니다.
 
-이 문서는 [[docs/index|LangGraph Academy]]의 일부입니다.
+이 문서는 [[index|LangGraph Academy]]의 일부입니다.
 
 ## 시작하기
 
@@ -66,7 +66,7 @@ LangGraph는 단독으로 사용할 수도 있지만, 모든 LangChain 제품과
 
 - [LangSmith](http.www.langchain.com/langsmith) — 에이전트 평가 및 관찰 기능에 유용합니다. 성능이 저하된 LLM 앱 실행을 디버깅하고, 에이전트 궤적을 평가하며, 프로덕션 환경에서 가시성을 확보하고, 시간이 지남에 따라 성능을 개선합니다.
 - [LangGraph 플랫폼](https://langchain-ai.github.io/langgraph/concepts/langgraph_platform/) — 오래 실행되는 상태 저장 워크플로우를 위해 특별히 제작된 배포 플랫폼을 사용하여 에이전트를 손쉽게 배포하고 확장할 수 있습니다. 팀 간에 에이전트를 발견, 재사용, 구성 및 공유하고, [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/)의 시각적 프로토타이핑을 통해 빠르게 반복 작업을 수행할 수 있습니다.
-- [LangChain](https://python.langchain.com/docs/introduction/) – LLM 애플리케이션 개발을 간소화하기 위한 통합 및 구성 가능한 컴포넌트를 제공합니다.
+- [LangChain](https://python.langchain.com/introduction/) – LLM 애플리케이션 개발을 간소화하기 위한 통합 및 구성 가능한 컴포넌트를 제공합니다.
 
 > [!NOTE]
 > LangGraph의 JS 버전을 찾고 계신가요? [JS 리포지토리](https://github.com/langchain-ai/langgraphjs)와 [JS 문서](https://langchain-ai.github.io/langgraphjs/)를 참조하세요.

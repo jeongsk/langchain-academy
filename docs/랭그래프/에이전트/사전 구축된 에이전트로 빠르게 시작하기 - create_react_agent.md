@@ -13,7 +13,7 @@ tags:
 ---
 ## LangGraph 빠른 시작
 
-이 가이드는 [[docs/랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]] 시스템을 빠르고 안정적으로 구축할 수 있도록 설계된 [[docs/랭그래프/LangGraph|LangGraph]]의 **사전 구축된**, **재사용 가능한** 컴포넌트를 설정하고 사용하는 방법을 보여줍니다.
+이 가이드는 [[랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]] 시스템을 빠르고 안정적으로 구축할 수 있도록 설계된 [[랭그래프/LangGraph|LangGraph]]의 **사전 구축된**, **재사용 가능한** 컴포넌트를 설정하고 사용하는 방법을 보여줍니다.
 
 ## 사전 요구 사항
 
@@ -31,7 +31,7 @@ pip install -U langgraph "langchain[anthropic]"
 
 정보
 
-`langchain[anthropic]`는 에이전트가 [모델](https://python.langchain.com/docs/integrations/chat/)을 호출할 수 있도록 설치됩니다.
+`langchain[anthropic]`는 에이전트가 [모델](https://python.langchain.com/integrations/chat/)을 호출할 수 있도록 설치됩니다.
 
 ## 2\. 에이전트 생성
 

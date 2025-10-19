@@ -140,7 +140,7 @@ class State(TypedDict):
 
 #### 왜 메시지를 사용하나요?
 
-대부분의 최신 LLM 제공자는 리스트 형태의 메시지를 입력으로 받는 챗 모델 인터페이스를 제공합니다. LangChain의 `ChatModel`은 특히 `Message` 객체 리스트를 입력으로 받습니다. 이러한 메시지는 `HumanMessage`(사용자 입력)나 `AIMessage`(LLM 응답) 등 다양한 형태가 있습니다. 자세한 내용은 해당 [가이드](https://python.langchain.com/docs/concepts/#messages)를 참고하세요.
+대부분의 최신 LLM 제공자는 리스트 형태의 메시지를 입력으로 받는 챗 모델 인터페이스를 제공합니다. LangChain의 `ChatModel`은 특히 `Message` 객체 리스트를 입력으로 받습니다. 이러한 메시지는 `HumanMessage`(사용자 입력)나 `AIMessage`(LLM 응답) 등 다양한 형태가 있습니다. 자세한 내용은 해당 [가이드](https://python.langchain.com/concepts/#messages)를 참고하세요.
 
 #### 그래프에 메시지 저장하기
 
@@ -150,7 +150,7 @@ class State(TypedDict):
 
 #### Serialization
 
-메시지 ID를 추적하는 것 외에도, `add_messages` 함수는 `messages` 채널에서 상태 업데이트를 수신할 때마다 메시지를 LangChain의 `Message` 객체로 역직렬화하려고 시도합니다. LangChain 직렬화/역직렬화에 대한 자세한 내용은 [여기](https://python.langchain.com/docs/how_to/serialization/)를 참조하세요. 이를 통해 그래프 입력/상태 업데이트를 다음과 같은 형식으로 전송할 수 있습니다:
+메시지 ID를 추적하는 것 외에도, `add_messages` 함수는 `messages` 채널에서 상태 업데이트를 수신할 때마다 메시지를 LangChain의 `Message` 객체로 역직렬화하려고 시도합니다. LangChain 직렬화/역직렬화에 대한 자세한 내용은 [여기](https://python.langchain.com/how_to/serialization/)를 참조하세요. 이를 통해 그래프 입력/상태 업데이트를 다음과 같은 형식으로 전송할 수 있습니다:
 
 ```python
 # 지원되는 형태
@@ -419,7 +419,7 @@ def my_node(state: State) -> Command[Literal["other_subgraph"]]:
 
 부모 그래프에 있는 키를 업데이트하려면 해당 키에 대한 **reducer**를 부모 그래프의 State에 정의해야 합니다.
 
-이는 특히 [다중 에이전트 핸드오프](docs/랭그래프/멀티%20에이전트/멀티%20에이전트%20시스템.md#핸드오프)를 구현할 때 유용합니다.
+이는 특히 [다중 에이전트 핸드오프](랭그래프/멀티%20에이전트/멀티%20에이전트%20시스템.md#핸드오프)를 구현할 때 유용합니다.
 
 자세한 내용은 [이 가이드](Graph%20API%20사용법.md#navigate-to-a-node-in-a-parent-graph)를 참조하세요.
 
