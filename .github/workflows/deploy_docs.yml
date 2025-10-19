@@ -46,12 +46,16 @@ jobs:
             quartz-repo-
 
       - name: Clone Quartz
-        # if: steps.cache-quartz.outputs.cache-hit != 'true'
+        if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
           if [ -d quartz-build ]; then
-            rm -rf quartz-build
+            cd quartz-build
+            git fetch origin
+            git reset --hard origin/main
+            cd ..
+          else
+            git clone --depth 1 --single-branch https://github.com/jackyzha0/quartz.git quartz-build
           fi
-          git clone --depth 1 --single-branch https://github.com/jackyzha0/quartz.git quartz-build
 
       - name: Configure Quartz
         # if: steps.cache-quartz.outputs.cache-hit != 'true'
