@@ -3,14 +3,13 @@ Perplexity Clone - Streamlit UI (Remote Graph)
 LangGraph Studio 서버와 통신하는 버전
 """
 
-import streamlit as st
-from langchain_core.messages import HumanMessage, AIMessage
-from langgraph_sdk import get_client
-import uuid
-import os
-from dotenv import load_dotenv
 import asyncio
+import os
+import uuid
 
+import streamlit as st
+from dotenv import load_dotenv
+from langgraph_sdk import get_client
 
 # 환경 변수 로드
 load_dotenv()
@@ -18,27 +17,29 @@ load_dotenv()
 # AsyncRunner: async 함수를 별도 스레드에서 실행하는 헬퍼
 from concurrent.futures import ThreadPoolExecutor
 
+
 class AsyncRunner:
     """
     Streamlit 환경에서 async 함수를 안전하게 실행하기 위한 헬퍼 클래스
     각 async 호출을 별도 스레드의 독립적인 event loop에서 실행하여
     event loop 충돌을 방지합니다.
     """
-    
+
     def __init__(self):
         self.executor = ThreadPoolExecutor(max_workers=1)
-    
+
     def run(self, async_func, *args, **kwargs):
         """
         async 함수를 별도 스레드의 새 event loop에서 실행
-        
+
         Args:
             async_func: 실행할 async 함수
             *args, **kwargs: async 함수에 전달할 인자
-        
+
         Returns:
             async 함수의 실행 결과
         """
+
         def _run():
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
@@ -46,37 +47,39 @@ class AsyncRunner:
                 return loop.run_until_complete(async_func(*args, **kwargs))
             finally:
                 loop.close()
-        
+
         future = self.executor.submit(_run)
         return future.result()
-    
+
     def run_generator(self, async_gen_func, *args, **kwargs):
         """
         async generator를 동기 리스트로 변환
-        
+
         Args:
             async_gen_func: 실행할 async generator 함수
             *args, **kwargs: async generator 함수에 전달할 인자
-        
+
         Returns:
             generator에서 yield된 모든 항목의 리스트
         """
+
         def _run():
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             try:
+
                 async def collect():
                     results = []
                     async for item in async_gen_func(*args, **kwargs):
                         results.append(item)
                     return results
+
                 return loop.run_until_complete(collect())
             finally:
                 loop.close()
-        
+
         future = self.executor.submit(_run)
         return future.result()
-
 
 
 # 페이지 설정
@@ -106,7 +109,9 @@ if "client" not in st.session_state:
     st.session_state.client = None
 
 if "server_url" not in st.session_state:
-    st.session_state.server_url = os.getenv("LANGGRAPH_API_URL", "http://127.0.0.1:2024")
+    st.session_state.server_url = os.getenv(
+        "LANGGRAPH_API_URL", "http://127.0.0.1:2024"
+    )
 
 if "async_runner" not in st.session_state:
     st.session_state.async_runner = AsyncRunner()
@@ -120,7 +125,7 @@ with st.sidebar:
     server_url = st.text_input(
         "LangGraph Studio URL",
         value=st.session_state.server_url,
-        help="LangGraph Studio 서버 주소 (예: http://127.0.0.1:2024)"
+        help="LangGraph Studio 서버 주소 (예: http://127.0.0.1:2024)",
     )
 
     if st.button("🔌 연결", use_container_width=True):
@@ -137,7 +142,7 @@ with st.sidebar:
                     )
                     if assistants:
                         st.info(f"사용 가능한 그래프: {len(assistants)}개")
-                except Exception as search_error:
+                except Exception:
                     # 검색 실패는 무시 (연결은 성공)
                     pass
         except Exception as e:
@@ -185,10 +190,7 @@ if user_input := st.chat_input("질문을 입력하세요..."):
         st.markdown(user_input)
 
     # 대화 기록에 추가
-    st.session_state.messages.append({
-        "role": "user",
-        "content": user_input
-    })
+    st.session_state.messages.append({"role": "user", "content": user_input})
 
     # AI 응답 생성
     with st.chat_message("assistant"):
@@ -199,11 +201,7 @@ if user_input := st.chat_input("질문을 입력하세요..."):
 
             try:
                 # 입력 메시지
-                input_data = {
-                    "messages": [
-                        {"role": "user", "content": user_input}
-                    ]
-                }
+                input_data = {"messages": [{"role": "user", "content": user_input}]}
 
                 # 그래프 이름 (langgraph.json에 정의된 이름)
                 graph_name = "perplexity_agent"
@@ -218,7 +216,7 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                     st.session_state.thread_id,
                     graph_name,
                     input=input_data,
-                    stream_mode="values"
+                    stream_mode="values",
                 )
 
                 # 수집된 chunk들을 순회하며 처리
@@ -230,25 +228,28 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                         # AI 메시지인 경우
                         if last_message.get("type") == "ai":
                             # 도구 호출 확인
-                            if "tool_calls" in last_message and last_message["tool_calls"]:
+                            if (
+                                "tool_calls" in last_message
+                                and last_message["tool_calls"]
+                            ):
                                 for tool_call in last_message["tool_calls"]:
                                     tool_id = tool_call.get("id")
                                     if tool_id not in tool_calls_made:
                                         tool_calls_made.append(tool_id)
                                         with search_status_container:
-                                            st.info(f"🔍 웹 검색 실행 중: `{tool_call.get('name')}`")
+                                            st.info(
+                                                f"🔍 웹 검색 실행 중: `{tool_call.get('name')}`"
+                                            )
 
                             # 최종 응답
                             if last_message.get("content"):
                                 full_response = last_message["content"]
                                 response_container.markdown(full_response)
 
-
                 # 대화 기록에 추가
-                st.session_state.messages.append({
-                    "role": "assistant",
-                    "content": full_response
-                })
+                st.session_state.messages.append(
+                    {"role": "assistant", "content": full_response}
+                )
 
             except Exception as e:
                 st.error(f"❌ 오류가 발생했습니다: {str(e)}")
@@ -289,6 +290,8 @@ with st.expander("🔧 서버 정보"):
                 assistants = st.session_state.async_runner.run(
                     st.session_state.client.assistants.search
                 )
-                st.json([{"name": a["name"], "graph_id": a["graph_id"]} for a in assistants])
+                st.json(
+                    [{"name": a["name"], "graph_id": a["graph_id"]} for a in assistants]
+                )
             except Exception as e:
                 st.error(f"조회 실패: {str(e)}")
