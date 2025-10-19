@@ -9,6 +9,7 @@ from langgraph_sdk import get_client
 import uuid
 import os
 from dotenv import load_dotenv
+import asyncio
 
 # 환경 변수 로드
 load_dotenv()
@@ -61,10 +62,17 @@ with st.sidebar:
                 st.session_state.server_url = server_url
                 st.success("✅ 서버에 연결되었습니다!")
 
-                # 사용 가능한 그래프 목록 조회
-                assistants = st.session_state.client.assistants.search()
-                if assistants:
-                    st.info(f"사용 가능한 그래프: {len(assistants)}개")
+                # 사용 가능한 그래프 목록 조회 (동기 방식)
+                try:
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+                    assistants = loop.run_until_complete(st.session_state.client.assistants.search())
+                    loop.close()
+                    if assistants:
+                        st.info(f"사용 가능한 그래프: {len(assistants)}개")
+                except Exception as search_error:
+                    # 검색 실패는 무시 (연결은 성공)
+                    pass
         except Exception as e:
             st.error(f"❌ 연결 실패: {str(e)}")
 
@@ -210,7 +218,10 @@ with st.expander("🔧 서버 정보"):
 
         if st.button("🔍 사용 가능한 그래프 조회"):
             try:
-                assistants = st.session_state.client.assistants.search()
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                assistants = loop.run_until_complete(st.session_state.client.assistants.search())
+                loop.close()
                 st.json([{"name": a["name"], "graph_id": a["graph_id"]} for a in assistants])
             except Exception as e:
                 st.error(f"조회 실패: {str(e)}")
