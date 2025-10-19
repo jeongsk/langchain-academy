@@ -3,6 +3,7 @@ Perplexity Clone - Streamlit UI
 LangGraph 기반 웹 검색 Agent UI
 """
 
+import sqlite3
 import uuid
 
 import streamlit as st
@@ -165,7 +166,9 @@ with st.sidebar:
                 or None,
                 exclude_domains=st.session_state.graph_config["exclude_domains"]
                 or None,
-                checkpointer=SqliteSaver.from_conn_string(":memory:"),
+                checkpointer=SqliteSaver(
+                    sqlite3.connect("checkpoints.db", check_same_thread=False)
+                ),
             )
             st.success("✅ 설정이 적용되었습니다!")
 
