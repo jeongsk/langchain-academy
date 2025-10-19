@@ -25,16 +25,23 @@ nest_asyncio.apply()
 class AsyncRunner:
     """
     Streamlit 환경에서 async 함수를 안전하게 실행하기 위한 헬퍼 클래스
-    각 async 호출을 별도 스레드의 독립적인 event loop에서 실행하여
-    event loop 충돌을 방지합니다.
+    기존 event loop를 재사용하여 event loop 충돌을 방지합니다.
     """
 
     def __init__(self):
+        self.loop = None
         self.executor = ThreadPoolExecutor(max_workers=1)
+
+    def _get_or_create_loop(self):
+        """기존 event loop를 재사용하거나 새로 생성"""
+        if self.loop is None or self.loop.is_closed():
+            self.loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(self.loop)
+        return self.loop
 
     def run(self, async_func, *args, **kwargs):
         """
-        async 함수를 별도 스레드의 새 event loop에서 실행
+        async 함수를 기존 event loop에서 실행
 
         Args:
             async_func: 실행할 async 함수
@@ -45,12 +52,8 @@ class AsyncRunner:
         """
 
         def _run():
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            try:
-                return loop.run_until_complete(async_func(*args, **kwargs))
-            finally:
-                loop.close()
+            loop = self._get_or_create_loop()
+            return loop.run_until_complete(async_func(*args, **kwargs))
 
         future = self.executor.submit(_run)
         return future.result()
@@ -68,19 +71,15 @@ class AsyncRunner:
         """
 
         def _run():
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            try:
+            loop = self._get_or_create_loop()
 
-                async def collect():
-                    results = []
-                    async for item in async_gen_func(*args, **kwargs):
-                        results.append(item)
-                    return results
+            async def collect():
+                results = []
+                async for item in async_gen_func(*args, **kwargs):
+                    results.append(item)
+                return results
 
-                return loop.run_until_complete(collect())
-            finally:
-                loop.close()
+            return loop.run_until_complete(collect())
 
         future = self.executor.submit(_run)
         return future.result()
