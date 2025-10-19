@@ -14,7 +14,6 @@ from langgraph_sdk import get_client
 # 환경 변수 로드
 load_dotenv()
 
-# AsyncRunner: async 함수를 별도 스레드에서 실행하는 헬퍼
 from concurrent.futures import ThreadPoolExecutor
 
 
