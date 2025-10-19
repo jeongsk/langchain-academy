@@ -336,7 +336,7 @@
   "removeDuplicateMathBlockIndicator": true,
   "removeDuplicateCodeBlockIndicator": true,
   "ignoredFilePatterns": "**/secret/**\n*\n!docs/**",
-  "ignoredTags": "",
+  "ignoredTags": "secret",
   "cacheSuggestions": true,
   "debugMode": false
 }
