@@ -24,7 +24,7 @@ Deep Agents는 기존의 툴 호출 순환(Loop) 방식 에이전트보다 뛰�
 
 - 설치 예시(Python 3.11+, `uv`, `.env` 사용):
 
-  ```
+  ```shell
   git clone https://github.com/langchain-ai/deep_agents_from_scratch
   cd deep_agents_from_scratch
   uv sync
@@ -33,7 +33,7 @@ Deep Agents는 기존의 툴 호출 순환(Loop) 방식 에이전트보다 뛰�
 
 - 주요 패키지: pip로 설치 가능
 
-  ```
+  ```shell
   pip install deepagents
   ```
 
