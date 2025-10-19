@@ -3,7 +3,6 @@ Perplexity Clone - Tools
 웹 검색 도구 정의
 """
 
-from typing import List
 from langchain_core.tools import tool
 from langchain_community.tools.tavily_search import TavilySearchResults
 
@@ -11,8 +10,8 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 def create_search_tool(
     max_results: int = 3,
     topic: str = "general",
-    include_domains: List[str] = None,
-    exclude_domains: List[str] = None,
+    include_domains: list[str] | None = None,
+    exclude_domains: list[str] | None = None,
 ) -> TavilySearchResults:
     """
     웹 검색 도구 생성
@@ -49,7 +48,7 @@ def create_search_tool(
 
 
 @tool
-def format_sources(search_results: List[dict]) -> str:
+def format_sources(search_results: list[dict]) -> str:
     """
     검색 결과를 출처 형식으로 포맷팅
 
