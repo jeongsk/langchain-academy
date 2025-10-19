@@ -3,6 +3,7 @@ Perplexity Clone - Main Graph
 메인 LangGraph 구성
 """
 
+import sqlite3
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.prebuilt import ToolNode
@@ -123,7 +124,9 @@ def create_perplexity_graph(
 
     # 체크포인터 설정 (메모리)
     if checkpointer is None:
-        checkpointer = SqliteSaver.from_conn_string(":memory:")
+        # SqliteSaver를 올바르게 초기화 (context manager 사용 안 함)
+        conn = sqlite3.connect(":memory:", check_same_thread=False)
+        checkpointer = SqliteSaver(conn)
 
     # 그래프 컴파일
     graph = builder.compile(checkpointer=checkpointer)
@@ -132,4 +135,7 @@ def create_perplexity_graph(
 
 
 # 기본 그래프 인스턴스 (LangGraph Studio용)
-graph = create_perplexity_graph()
+# Studio용으로는 파일 기반 DB 사용
+_conn = sqlite3.connect("checkpoints.db", check_same_thread=False)
+_checkpointer = SqliteSaver(_conn)
+graph = create_perplexity_graph(checkpointer=_checkpointer)
