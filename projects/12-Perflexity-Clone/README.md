@@ -326,6 +326,75 @@ Error: 서버 연결 실패
 → `langgraph dev` 명령으로 서버가 실행 중인지 확인
 → 서버 URL이 올바른지 확인 (기본: http://127.0.0.1:2024)
 
+
+## Tavily 검색 도구 업데이트 (2025년 10월)
+
+### 변경 사항
+
+`langchain_community.tools.tavily_search` (deprecated) → `langchain-tavily` (권장)
+
+### 주요 개선 사항
+
+1. **최신 기능 지원**: Search와 Extract API 모두 지원
+2. **지속적인 업데이트**: 공식 Tavily 통합 패키지
+3. **향상된 파라미터**: 
+   - `search_depth`: "basic" 또는 "advanced"
+   - `time_range`: "day", "week", "month", "year"
+   - `start_date`, `end_date`: 날짜 범위 필터링
+   - `include_answer`: 즉시 답변 제공
+   - `include_raw_content`: 원본 HTML 포함
+   - `include_images`: 이미지 검색 결과 포함
+
+### 마이그레이션 방법
+
+**이전 (deprecated):**
+```python
+from langchain_community.tools.tavily_search import TavilySearchResults
+
+tool = TavilySearchResults(
+    max_results=3,
+    include_domains=["github.com"]
+)
+```
+
+**현재 (권장):**
+```python
+from langchain_tavily import TavilySearch
+
+tool = TavilySearch(
+    max_results=3,
+    include_domains=["github.com"],
+    search_depth="basic",  # 새로운 옵션
+    include_answer=False,  # 새로운 옵션
+)
+```
+
+### 동적 파라미터 조정
+
+호출 시 파라미터를 동적으로 변경할 수 있습니다:
+
+```python
+# 도구 생성
+tool = TavilySearch(max_results=3, topic="general")
+
+# 호출 시 파라미터 변경
+result = tool.invoke({
+    "query": "LangGraph tutorial",
+    "include_domains": ["github.com"],  # 동적 설정
+    "search_depth": "advanced"           # 동적 설정
+})
+```
+
+### 패키지 설치
+
+```bash
+# 이전 패키지 제거 (선택사항)
+pip uninstall tavily-python
+
+# 새 패키지 설치
+pip install -U langchain-tavily
+```
+
 ## 참고 자료
 
 - [LangGraph 공식 문서](https://langchain-ai.github.io/langgraph/)
