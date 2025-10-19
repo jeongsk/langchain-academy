@@ -5,11 +5,28 @@
   "providers": [
     {
       "id": "id-1760745579999",
-      "name": "Ollama",
+      "name": "ollama:gpt-oss",
       "apiKey": "",
       "url": "http://localhost:11434",
       "type": "ollama",
       "model": "gpt-oss:latest",
+      "availableModels": [
+        "qwen3:latest",
+        "qwen3-coder:latest",
+        "gpt-oss:latest",
+        "nomic-embed-text:latest",
+        "qwen3:14b",
+        "qwen3:30b-a3b",
+        "bge-m3:latest"
+      ]
+    },
+    {
+      "id": "id-1760866246311",
+      "name": "ollama:bge-m3",
+      "apiKey": "",
+      "url": "http://localhost:11434",
+      "type": "ollama",
+      "model": "bge-m3:latest",
       "availableModels": [
         "qwen3:latest",
         "qwen3-coder:latest",

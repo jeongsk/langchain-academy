@@ -10,5 +10,6 @@
   "obsidian-linter",
   "terminal",
   "ai-providers",
-  "templater-obsidian"
+  "templater-obsidian",
+  "local-gpt"
 ]
