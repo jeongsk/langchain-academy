@@ -7,7 +7,6 @@ tags:
   - AI_에이전트
   - 시작하기
 ---
-# LangGraph
 
 [![버전](https://img.shields.io/pypi/v/langgraph.svg)](https://pypi.org/project/langgraph/)
 [![다운로드](https://static.pepy.tech/badge/langgraph/month)](https://pepy.tech/project/langgraph)
