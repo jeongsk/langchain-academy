@@ -1,8 +1,14 @@
 ---
 created: 2025-10-18 17:56:55
 updated: 2025-10-19 11:14:35
+tags:
+  - Pydantic
+  - Field
+  - Python
+  - 데이터_모델링
+  - 타입_힌팅
 ---
-Pydantic의 `Field` 사용법에 대한 차이점을 자세히 설명합니다.
+Pydantic의 `Field` 사용법에 대한 차이점을 자세히 설명합니다. 이 내용은 [[docs/랭그래프/LangGraph|LangGraph]]의 상태(State)를 정의할 때 유용하게 사용됩니다.
 
 ## 1. `Field(description="설명")`
 

@@ -3,10 +3,17 @@ source: https://langchain-ai.github.io/langgraph/agents/agents/
 title: "사전 구축된 에이전트로 빠르게 시작하기: create_react_agent"
 created: 2025-10-06 01:27:52
 updated: 2025-10-10 21:58:34
+tags:
+  - LangGraph
+  - 에이전트
+  - create_react_agent
+  - ReAct
+  - 빠른_시작
+  - 튜토리얼
 ---
 ## LangGraph 빠른 시작
 
-이 가이드는 에이전트 시스템을 빠르고 안정적으로 구축할 수 있도록 설계된 LangGraph의 **사전 구축된**, **재사용 가능한** 컴포넌트를 설정하고 사용하는 방법을 보여줍니다.
+이 가이드는 [[docs/랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]] 시스템을 빠르고 안정적으로 구축할 수 있도록 설계된 [[docs/랭그래프/LangGraph|LangGraph]]의 **사전 구축된**, **재사용 가능한** 컴포넌트를 설정하고 사용하는 방법을 보여줍니다.
 
 ## 사전 요구 사항
 
@@ -109,8 +116,9 @@ agent.invoke(
 ```
 
 1. 동적 프롬프트를 사용하면 LLM에 대한 입력을 구성할 때 메시지가 아닌 [컨텍스트](https://langchain-ai.github.io/langgraph/agents/context/)를 포함할 수 있습니다:
- - `user_id`나 API 자격 증명과 같이 런타임에 전달되는 정보(`config` 사용).
- - 다단계 추론 프로세스 중에 업데이트되는 내부 에이전트 상태(`state` 사용).
+
+- `user_id`나 API 자격 증명과 같이 런타임에 전달되는 정보(`config` 사용).
+- 다단계 추론 프로세스 중에 업데이트되는 내부 에이전트 상태(`state` 사용).
  동적 프롬프트는 `state`와 `config`를 받아 LLM에 보낼 메시지 목록을 반환하는 함수로 정의할 수 있습니다.
 
 자세한 내용은 [Context](https://langchain-ai.github.io/langgraph/agents/context/)를 참조하세요.
