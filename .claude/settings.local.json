@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:github.com)",
       "WebFetch(domain:quartz.jzhao.xyz)",
-      "WebFetch(domain:developers.cloudflare.com)"
+      "WebFetch(domain:developers.cloudflare.com)",
+      "Bash(python3 -m py_compile projects/12-Perflexity-Clone/app_remote.py)"
     ],
     "deny": [],
     "ask": []

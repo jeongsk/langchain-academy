@@ -147,7 +147,9 @@ if user_input := st.chat_input("질문을 입력하세요..."):
 
                 # async generator를 sync로 변환하여 실행
                 async def process_stream():
-                    nonlocal full_response, tool_calls_made
+                    full_response = ""
+                    tool_calls_made = []
+                    
                     async for chunk in st.session_state.client.runs.stream(
                         st.session_state.thread_id,
                         graph_name,
@@ -173,11 +175,13 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                                 if last_message.get("content"):
                                     full_response = last_message["content"]
                                     response_container.markdown(full_response)
+                    
+                    return full_response
                 
                 # asyncio 이벤트 루프에서 실행
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
-                loop.run_until_complete(process_stream())
+                full_response = loop.run_until_complete(process_stream())
                 loop.close()
 
 
