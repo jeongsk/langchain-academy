@@ -232,4 +232,5 @@ projects/**/cache
 !.claude/**/*
 
 # Obsidian
+!.obsidian
 .obsidian/workspace.json

@@ -1,0 +1,24 @@
+{
+  "_version": 1,
+  "debugLogging": true,
+  "useNativeFetch": true,
+  "providers": [
+    {
+      "id": "id-1760745579999",
+      "name": "Ollama",
+      "apiKey": "",
+      "url": "http://localhost:11434",
+      "type": "ollama",
+      "model": "gpt-oss:latest",
+      "availableModels": [
+        "qwen3:latest",
+        "qwen3-coder:latest",
+        "gpt-oss:latest",
+        "nomic-embed-text:latest",
+        "qwen3:14b",
+        "qwen3:30b-a3b",
+        "bge-m3:latest"
+      ]
+    }
+  ]
+}
