@@ -163,8 +163,8 @@
   "systemPrompt": "",
   "ragOptions": {
     "filesystem": "opfs",
-    "batchSize": 32,
     "chunkSize": 500,
+    "batchSize": 32,
     "thresholdTokens": 8192,
     "minSimilarity": 0,
     "limit": 10,
