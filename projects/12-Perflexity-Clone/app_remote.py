@@ -138,11 +138,6 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                     ]
                 }
 
-                # 스레드 생성 또는 가져오기
-                thread = st.session_state.client.threads.get_or_create(
-                    st.session_state.thread_id
-                )
-
                 # 그래프 이름 (langgraph.json에 정의된 이름)
                 graph_name = "perplexity_agent"
 
@@ -151,7 +146,7 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                 tool_calls_made = []
 
                 for chunk in st.session_state.client.runs.stream(
-                    thread["thread_id"],
+                    st.session_state.thread_id,
                     graph_name,
                     input=input_data,
                     stream_mode="values",
