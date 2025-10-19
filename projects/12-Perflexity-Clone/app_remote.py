@@ -132,7 +132,9 @@ with st.sidebar:
 
                 # 사용 가능한 그래프 목록 조회 (동기 방식)
                 try:
-                    assistants = asyncio.run(st.session_state.client.assistants.search())
+                    assistants = st.session_state.async_runner.run(
+                        st.session_state.client.assistants.search
+                    )
                     if assistants:
                         st.info(f"사용 가능한 그래프: {len(assistants)}개")
                 except Exception as search_error:
@@ -206,45 +208,40 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                 # 그래프 이름 (langgraph.json에 정의된 이름)
                 graph_name = "perplexity_agent"
 
-                # 스트리밍 실행
+                # 스트리밍 실행 (AsyncRunner 사용)
                 full_response = ""
                 tool_calls_made = []
 
-                # async generator를 sync로 변환하여 실행
-                async def process_stream():
-                    full_response = ""
-                    tool_calls_made = []
-                    
-                    async for chunk in st.session_state.client.runs.stream(
-                        st.session_state.thread_id,
-                        graph_name,
-                        input=input_data,
-                        stream_mode="values",
-                    ):
-                        # 메시지 이벤트 처리
-                        if "messages" in chunk:
-                            last_message = chunk["messages"][-1]
+                # async generator를 동기 리스트로 변환
+                chunks = st.session_state.async_runner.run_generator(
+                    st.session_state.client.runs.stream,
+                    st.session_state.thread_id,
+                    graph_name,
+                    input=input_data,
+                    stream_mode="values"
+                )
 
-                            # AI 메시지인 경우
-                            if last_message.get("type") == "ai":
-                                # 도구 호출 확인
-                                if "tool_calls" in last_message and last_message["tool_calls"]:
-                                    for tool_call in last_message["tool_calls"]:
-                                        tool_id = tool_call.get("id")
-                                        if tool_id not in tool_calls_made:
-                                            tool_calls_made.append(tool_id)
-                                            with search_status_container:
-                                                st.info(f"🔍 웹 검색 실행 중: `{tool_call.get('name')}`")
+                # 수집된 chunk들을 순회하며 처리
+                for chunk in chunks:
+                    # 메시지 이벤트 처리
+                    if "messages" in chunk:
+                        last_message = chunk["messages"][-1]
 
-                                # 최종 응답
-                                if last_message.get("content"):
-                                    full_response = last_message["content"]
-                                    response_container.markdown(full_response)
-                    
-                    return full_response
-                
-                # asyncio로 실행 (nest_asyncio 덕분에 가능)
-                full_response = asyncio.run(process_stream())
+                        # AI 메시지인 경우
+                        if last_message.get("type") == "ai":
+                            # 도구 호출 확인
+                            if "tool_calls" in last_message and last_message["tool_calls"]:
+                                for tool_call in last_message["tool_calls"]:
+                                    tool_id = tool_call.get("id")
+                                    if tool_id not in tool_calls_made:
+                                        tool_calls_made.append(tool_id)
+                                        with search_status_container:
+                                            st.info(f"🔍 웹 검색 실행 중: `{tool_call.get('name')}`")
+
+                            # 최종 응답
+                            if last_message.get("content"):
+                                full_response = last_message["content"]
+                                response_container.markdown(full_response)
 
 
                 # 대화 기록에 추가
@@ -289,7 +286,9 @@ with st.expander("🔧 서버 정보"):
 
         if st.button("🔍 사용 가능한 그래프 조회"):
             try:
-                assistants = asyncio.run(st.session_state.client.assistants.search())
+                assistants = st.session_state.async_runner.run(
+                    st.session_state.client.assistants.search
+                )
                 st.json([{"name": a["name"], "graph_id": a["graph_id"]} for a in assistants])
             except Exception as e:
                 st.error(f"조회 실패: {str(e)}")
