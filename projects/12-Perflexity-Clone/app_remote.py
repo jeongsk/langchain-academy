@@ -16,6 +16,11 @@ load_dotenv()
 
 from concurrent.futures import ThreadPoolExecutor
 
+import nest_asyncio
+
+# nest_asyncio 적용 - Jupyter/Streamlit 환경에서 asyncio 중첩 허용
+nest_asyncio.apply()
+
 
 class AsyncRunner:
     """
