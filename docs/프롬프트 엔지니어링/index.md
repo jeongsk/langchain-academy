@@ -20,5 +20,5 @@ tags: [컨텍스트_엔지니어링, 프롬프트_엔지니어링, AI_에이전�
 
 ## 추가 리소스
 
-- [OpenAI Prompt Engineering Guide](https://platform.openai.com/guides/prompt-engineering)
+- [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
 - [Anthropic Prompt Engineering](https://docs.claude.com/ko/docs/build-with-claude/prompt-engineering/overview)
