@@ -103,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 309.5
+    "width": 294.5
   },
   "right": {
     "id": "1dd93b62045dd2b2",
@@ -235,17 +235,16 @@
                 }
               },
               "pinned": true,
-              "icon": "terminal",
-              "title": "터미널: ✳ 코드 포맷팅"
+              "icon": "lucide-ghost",
+              "title": "terminal:terminal"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 873.5,
-    "collapsed": true
+    "width": 497.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -258,8 +257,7 @@
       "digitalgarden:Digital Garden Publication Center": false,
       "obsidian-shellcommands:Shell commands: Custom variables": true,
       "cmdr:Shell commands: Execute: Jupyter": false,
-      "cmdr:Shell commands: Execute: VSCode": false,
-      "terminal:Open terminal": false
+      "cmdr:Shell commands: Execute: VSCode": false
     }
   },
   "active": "b70f29c88e4c9cfe",
