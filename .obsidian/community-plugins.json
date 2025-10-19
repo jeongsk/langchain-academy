@@ -11,5 +11,6 @@
   "terminal",
   "ai-providers",
   "templater-obsidian",
-  "local-gpt"
+  "local-gpt",
+  "infio-copilot"
 ]

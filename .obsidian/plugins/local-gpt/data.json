@@ -2,7 +2,7 @@
   "aiProviders": {
     "main": "id-1760745579999",
     "embedding": "id-1760866246311",
-    "vision": null
+    "vision": "id-1760866420903"
   },
   "defaults": {
     "creativity": "low",

@@ -1,0 +1,61 @@
+{
+  "id": "0411e41d-1a1a-4a60-8006-b85117b00dd0",
+  "title": "hi",
+  "messages": [
+    {
+      "role": "user",
+      "applyStatus": 0,
+      "content": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "hi",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1,
+              "textFormat": 0,
+              "textStyle": ""
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      },
+      "promptContent": [
+        {
+          "type": "text",
+          "text": "<task>\nhi\n</task>\n\n<environment_details>\n# Current File\n(No current file active)\n\n# Current Workspace\nlangchain-academy (entire vault)\n\n# Assistant & User State\n## Current Time\n2025. 10. 19. 오후 6:46:58 (Asia/Seoul, UTC+9:00)\n\n## Current Mode\n<slug>ask</slug>\n<name>Ask</name>\n</environment_details>"
+        }
+      ],
+      "id": "b94a9e9a-773f-48ff-9162-10b13bd02469",
+      "mentionables": []
+    },
+    {
+      "role": "assistant",
+      "applyStatus": 0,
+      "content": "",
+      "reasoningContent": "",
+      "id": "125dc86a-0220-4348-8d15-f97c2a0296c8",
+      "metadata": {}
+    }
+  ],
+  "createdAt": 1760867219006,
+  "updatedAt": 1760867219006,
+  "schemaVersion": 2,
+  "workspace": "vault"
+}
