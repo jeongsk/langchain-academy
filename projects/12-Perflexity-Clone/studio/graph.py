@@ -4,15 +4,15 @@ Perplexity Clone - Main Graph
 """
 
 import sqlite3
-from langgraph.graph import StateGraph, START, END
-from langgraph.checkpoint.sqlite import SqliteSaver
-from langgraph.prebuilt import ToolNode
+
 from langchain_openai import ChatOpenAI
+from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.graph import END, START, StateGraph
+from langgraph.prebuilt import ToolNode
 
-from .states import PerplexityState
 from .nodes import create_agent_node, should_continue
+from .states import PerplexityState
 from .tools import create_search_tool
-
 
 # 시스템 프롬프트 정의
 SYSTEM_PROMPT = """당신은 Perplexity와 같은 유용한 AI 어시스턴트입니다. 사용자의 질문에 답변하는 것이 당신의 임무입니다.
@@ -124,7 +124,6 @@ def create_perplexity_graph(
 
     # 체크포인터 설정 (메모리)
     if checkpointer is None:
-        # SqliteSaver를 올바르게 초기화 (context manager 사용 안 함)
         conn = sqlite3.connect(":memory:", check_same_thread=False)
         checkpointer = SqliteSaver(conn)
 
