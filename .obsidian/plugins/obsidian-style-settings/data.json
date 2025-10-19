@@ -1,13 +1,6 @@
 {
-  "cupertino@@sidedock-glass-tint-off": false,
   "cupertino@@sidedock-glass-off": true,
-  "cupertino@@hover-sidedock-off": false,
   "cupertino@@compact-actions-off": false,
-  "cupertino@@hide-status-off": true,
-  "cupertino@@image-zoom-off": false,
-  "cupertino@@accented-frame-opacity": 0,
-  "cupertino@@empty-state-off": false,
-  "cupertino@@full-width-off": false,
-  "cupertino@@clean-link-off": false,
-  "cupertino@@hide-frontmatter-off": false
+  "cupertino@@hover-sidedock-off": false,
+  "cupertino@@hide-status-off": true
 }

@@ -25,7 +25,10 @@
   "macros": [],
   "explorer": [],
   "hide": {
-    "statusbar": [],
+    "statusbar": [
+      "infio-copilot",
+      "word-count"
+    ],
     "leftRibbon": []
   },
   "spacing": 8,
