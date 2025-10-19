@@ -15,6 +15,15 @@ This is a Korean-language LangGraph academy course repository with 6 learning mo
 - **Checkpointing**: SQLite-based persistence
 - **Documentation**: MkDocs with Material theme (Korean language)
 
+## Official Documentation References
+
+When implementing code or solving problems, always refer to these official documentation sources:
+
+- **LangGraph Python**: https://langchain-ai.github.io/langgraph/llms.txt
+- **LangChain Python**: https://python.langchain.com/llms.txt
+
+These LLM-optimized documentation files contain the most up-to-date API references, best practices, and implementation patterns.
+
 ## Development Environment Setup
 
 ### Environment Management
