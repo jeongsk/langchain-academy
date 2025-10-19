@@ -10,6 +10,10 @@ import uuid
 import os
 from dotenv import load_dotenv
 import asyncio
+import nest_asyncio
+
+# Allow nested event loops (required for Streamlit + async SDK)
+nest_asyncio.apply()
 
 # 환경 변수 로드
 load_dotenv()
@@ -64,16 +68,7 @@ with st.sidebar:
 
                 # 사용 가능한 그래프 목록 조회 (동기 방식)
                 try:
-                    try:
-                        loop = asyncio.get_event_loop()
-                        if loop.is_closed():
-                            loop = asyncio.new_event_loop()
-                            asyncio.set_event_loop(loop)
-                    except RuntimeError:
-                        loop = asyncio.new_event_loop()
-                        asyncio.set_event_loop(loop)
-                    
-                    assistants = loop.run_until_complete(st.session_state.client.assistants.search())
+                    assistants = asyncio.run(st.session_state.client.assistants.search())
                     if assistants:
                         st.info(f"사용 가능한 그래프: {len(assistants)}개")
                 except Exception as search_error:
@@ -184,19 +179,8 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                     
                     return full_response
                 
-                # asyncio 이벤트 루프에서 실행
-                try:
-                    # 기존 이벤트 루프가 있으면 사용
-                    loop = asyncio.get_event_loop()
-                    if loop.is_closed():
-                        loop = asyncio.new_event_loop()
-                        asyncio.set_event_loop(loop)
-                except RuntimeError:
-                    # 이벤트 루프가 없으면 새로 생성
-                    loop = asyncio.new_event_loop()
-                    asyncio.set_event_loop(loop)
-                
-                full_response = loop.run_until_complete(process_stream())
+                # asyncio로 실행 (nest_asyncio 덕분에 가능)
+                full_response = asyncio.run(process_stream())
 
 
                 # 대화 기록에 추가
@@ -241,16 +225,7 @@ with st.expander("🔧 서버 정보"):
 
         if st.button("🔍 사용 가능한 그래프 조회"):
             try:
-                try:
-                    loop = asyncio.get_event_loop()
-                    if loop.is_closed():
-                        loop = asyncio.new_event_loop()
-                        asyncio.set_event_loop(loop)
-                except RuntimeError:
-                    loop = asyncio.new_event_loop()
-                    asyncio.set_event_loop(loop)
-                
-                assistants = loop.run_until_complete(st.session_state.client.assistants.search())
+                assistants = asyncio.run(st.session_state.client.assistants.search())
                 st.json([{"name": a["name"], "graph_id": a["graph_id"]} for a in assistants])
             except Exception as e:
                 st.error(f"조회 실패: {str(e)}")
