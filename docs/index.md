@@ -27,3 +27,4 @@ LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. �
 - [프롬프트 엔지니어링](프롬프트%20엔지니어링/index.md) - 프롬프트를 잘 작성하는 것이 생각보다 중요합니다
 - [Google 생성형 AI 기반 에이전트 가이드](https://www.kaggle.com/whitepaper-agents?utm_source=pytorchkr&ref=pytorchkr) - Google이 공개한 생성형 AI 기반 Agents 개요 및 구현 가이드입니다. (PDF, 영문 42p)
 - [OpenAI, 에이전트 제작을 위한 실전 가이드](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf) - OpenAI가 공개한 에이전트 제작 가이드입니다. (PDF, 영문 34p)
+- [Anthropic의 다중 에이전트 연구 시스템](https://www.anthropic.com/engineering/multi-agent-research-system) - Anthropic의 다중 에이전트 연구 시스템에 대한 기술 블로그입니다.
