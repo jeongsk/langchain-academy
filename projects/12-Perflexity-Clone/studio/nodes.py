@@ -4,9 +4,11 @@ Perplexity Clone - Graph Nodes
 """
 
 from typing import Literal
+
 from langchain_core.messages import AIMessage, ToolMessage
 from langchain_openai import ChatOpenAI
-from states import PerplexityState
+
+from .states import PerplexityState
 
 
 def create_agent_node(model: ChatOpenAI, system_prompt: str):
@@ -116,7 +118,7 @@ def format_final_response(state: PerplexityState) -> dict:
     last_message = messages[-1]
     if isinstance(last_message, AIMessage) and sources:
         formatted_sources = "\n\n**출처**\n\n" + "\n".join(
-            f"[{i+1}] {source}" for i, source in enumerate(sources)
+            f"[{i + 1}] {source}" for i, source in enumerate(sources)
         )
         updated_content = last_message.content + formatted_sources
         updated_message = AIMessage(content=updated_content)
