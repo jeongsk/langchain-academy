@@ -3,11 +3,12 @@ Perplexity Clone - Streamlit UI
 LangGraph 기반 웹 검색 Agent UI
 """
 
-import streamlit as st
-from langchain_core.messages import HumanMessage, AIMessage
-from dotenv import load_dotenv
 import uuid
 
+import streamlit as st
+from dotenv import load_dotenv
+from langchain_core.messages import AIMessage, HumanMessage
+from langgraph.checkpoint.sqlite import SqliteSaver
 from studio.graph import create_perplexity_graph
 
 # 환경 변수 로드
@@ -66,7 +67,7 @@ with st.sidebar:
         "LLM 모델",
         ["gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano"],
         index=1,
-        key="model_select"
+        key="model_select",
     )
 
     # 검색 설정
@@ -76,15 +77,10 @@ with st.sidebar:
         min_value=1,
         max_value=10,
         value=3,
-        key="max_results_slider"
+        key="max_results_slider",
     )
 
-    topic = st.selectbox(
-        "검색 주제",
-        ["general", "news"],
-        index=0,
-        key="topic_select"
-    )
+    topic = st.selectbox("검색 주제", ["general", "news"], index=0, key="topic_select")
 
     # 도메인 필터링
     st.subheader("🌐 도메인 필터링")
@@ -94,11 +90,15 @@ with st.sidebar:
     new_include_domain = st.text_input(
         "도메인 추가 (예: github.com)",
         key="new_include_domain",
-        placeholder="github.com"
+        placeholder="github.com",
     )
 
     if st.button("➕ 추가", key="add_include_domain"):
-        if new_include_domain and new_include_domain not in st.session_state.graph_config["include_domains"]:
+        if (
+            new_include_domain
+            and new_include_domain
+            not in st.session_state.graph_config["include_domains"]
+        ):
             st.session_state.graph_config["include_domains"].append(new_include_domain)
             st.rerun()
 
@@ -120,11 +120,15 @@ with st.sidebar:
     new_exclude_domain = st.text_input(
         "도메인 추가 (예: wikipedia.org)",
         key="new_exclude_domain",
-        placeholder="wikipedia.org"
+        placeholder="wikipedia.org",
     )
 
     if st.button("➕ 추가", key="add_exclude_domain"):
-        if new_exclude_domain and new_exclude_domain not in st.session_state.graph_config["exclude_domains"]:
+        if (
+            new_exclude_domain
+            and new_exclude_domain
+            not in st.session_state.graph_config["exclude_domains"]
+        ):
             st.session_state.graph_config["exclude_domains"].append(new_exclude_domain)
             st.rerun()
 
@@ -144,19 +148,24 @@ with st.sidebar:
     # 그래프 생성/업데이트 버튼
     if st.button("✅ 설정 적용", type="primary", use_container_width=True):
         with st.spinner("그래프 생성 중..."):
-            st.session_state.graph_config.update({
-                "model_name": model_name,
-                "max_results": max_results,
-                "topic": topic,
-            })
+            st.session_state.graph_config.update(
+                {
+                    "model_name": model_name,
+                    "max_results": max_results,
+                    "topic": topic,
+                }
+            )
 
             # 그래프 생성
             st.session_state.graph = create_perplexity_graph(
                 model_name=st.session_state.graph_config["model_name"],
                 max_results=st.session_state.graph_config["max_results"],
                 topic=st.session_state.graph_config["topic"],
-                include_domains=st.session_state.graph_config["include_domains"] or None,
-                exclude_domains=st.session_state.graph_config["exclude_domains"] or None,
+                include_domains=st.session_state.graph_config["include_domains"]
+                or None,
+                exclude_domains=st.session_state.graph_config["exclude_domains"]
+                or None,
+                checkpointer=SqliteSaver.from_conn_string(":memory:"),
             )
             st.success("✅ 설정이 적용되었습니다!")
 
@@ -181,10 +190,7 @@ if user_input := st.chat_input("질문을 입력하세요..."):
             st.markdown(user_input)
 
         # 대화 기록에 추가
-        st.session_state.messages.append({
-            "role": "user",
-            "content": user_input
-        })
+        st.session_state.messages.append({"role": "user", "content": user_input})
 
         # AI 응답 생성
         with st.chat_message("assistant"):
@@ -194,16 +200,10 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                 search_status_container = st.container()
 
                 # 그래프 실행 설정
-                config = {
-                    "configurable": {
-                        "thread_id": st.session_state.thread_id
-                    }
-                }
+                config = {"configurable": {"thread_id": st.session_state.thread_id}}
 
                 # 입력 메시지
-                input_messages = {
-                    "messages": [HumanMessage(content=user_input)]
-                }
+                input_messages = {"messages": [HumanMessage(content=user_input)]}
 
                 try:
                     # 스트리밍 실행
@@ -211,9 +211,7 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                     tool_calls_made = []
 
                     for event in st.session_state.graph.stream(
-                        input_messages,
-                        config,
-                        stream_mode="values"
+                        input_messages, config, stream_mode="values"
                     ):
                         # 마지막 메시지 추출
                         if "messages" in event:
@@ -222,12 +220,17 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                             # AI 메시지인 경우
                             if isinstance(last_message, AIMessage):
                                 # 도구 호출이 있는 경우
-                                if hasattr(last_message, "tool_calls") and last_message.tool_calls:
+                                if (
+                                    hasattr(last_message, "tool_calls")
+                                    and last_message.tool_calls
+                                ):
                                     for tool_call in last_message.tool_calls:
                                         if tool_call not in tool_calls_made:
                                             tool_calls_made.append(tool_call)
                                             with search_status_container:
-                                                st.info(f"🔍 웹 검색 실행 중: `{tool_call['name']}`")
+                                                st.info(
+                                                    f"🔍 웹 검색 실행 중: `{tool_call['name']}`"
+                                                )
 
                                 # 최종 응답
                                 if last_message.content:
@@ -235,10 +238,9 @@ if user_input := st.chat_input("질문을 입력하세요..."):
                                     response_container.markdown(full_response)
 
                     # 대화 기록에 추가
-                    st.session_state.messages.append({
-                        "role": "assistant",
-                        "content": full_response
-                    })
+                    st.session_state.messages.append(
+                        {"role": "assistant", "content": full_response}
+                    )
 
                 except Exception as e:
                     st.error(f"❌ 오류가 발생했습니다: {str(e)}")
