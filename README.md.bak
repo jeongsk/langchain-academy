@@ -136,21 +136,12 @@ langgraph dev
 - Studio를 사용하려면 관련 API 키가 포함된 .env 파일을 생성해야 합니다
 - 예를 들어 모듈 1부터 6까지의 파일을 생성하려면 명령줄에서 다음을 실행하세요:
 
-```bash
-# Foundation 모듈 .env 설정
+```python
 for i in {1..6}; do
-  cp foundation/module-$i/studio/.env.example foundation/module-$i/studio/.env
-  echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > foundation/module-$i/studio/.env
+  cp module-$i/studio/.env.example module-$i/studio/.env
+  echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > module-$i/studio/.env
 done
-echo "TAVILY_API_KEY=\"$TAVILY_API_KEY\"" >> foundation/module-4/studio/.env
-
-# Ambient Agents 프로젝트 .env 설정 (프로젝트 생성 후)
-for i in {1..6}; do
-  if [ -d "ambient-agents/project-$i/studio" ]; then
-    cp ambient-agents/project-$i/studio/.env.example ambient-agents/project-$i/studio/.env
-    echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > ambient-agents/project-$i/studio/.env
-  fi
-done
+echo "TAVILY_API_KEY=\"$TAVILY_API_KEY\"" >> module-4/studio/.env
 ```
 
 ## 리소스

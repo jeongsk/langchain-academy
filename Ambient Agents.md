@@ -18,4 +18,4 @@ LangChain Academy는 LangGraph를 활용한 앰비언트 에이전트 구축 과
 
 더 나아가, 에이전트가 시간이 지남에 따라 피드백을 기억하고 적응할 수 있도록 **메모리를 통합하는 방법도 배웁니다.** 마지막으로, LangGraph 플랫폼을 사용하여 이 에이전트를 배포하는 방법을 배우게 됩니다. 이 과정을 마치면 작동하는 이메일 에이전트를 갖게 되며, 광범위한 실제 작업에 대한 앰비언트 에이전트를 구축하고 배포할 수 있는 역량을 갖추게 될 것입니다.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JGpjwG_quw0?si=o0x83GWyqc9WcwL_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[강의실 링크](https://academy.langchain.com/courses/take/ambient-agents/lessons/66147171-course-overview)
