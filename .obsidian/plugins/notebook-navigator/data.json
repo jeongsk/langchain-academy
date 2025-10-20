@@ -39,6 +39,7 @@
   "showAllTagsFolder": true,
   "showUntagged": false,
   "showUntaggedInFavorites": false,
+  "tagSortOrder": "alpha-asc",
   "favoriteTags": [],
   "hiddenTags": [],
   "defaultFolderSort": "modified-desc",
@@ -78,6 +79,7 @@
     "featureResized",
     "feature"
   ],
+  "forceSquareFeatureImage": true,
   "useEmbeddedImageFallback": true,
   "externalIconProviders": {},
   "searchProvider": "internal",

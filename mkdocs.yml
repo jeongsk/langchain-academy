@@ -1,5 +1,5 @@
 site_name: LangGraph Academy
-site_description: Foundation Introduction to LangGraph - 기초부터 시작하는 LangGraph 입문 과정
+site_description: LangGraph Academy - 기초부터 실전 프로젝트까지 체계적인 LangGraph 학습 과정
 site_author: LangChain Academy
 site_url: https://langchain-academy.github.io
 
@@ -50,31 +50,23 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-# Navigation Structure
+# Navigation Structure (managed by awesome-pages plugin)
+# Uncomment and customize if needed:
 # nav:
-#   - 홈:
-#     - index.md
-#     - 설정: setup.md
-#   - 모듈 1 - LangGraph 입문:
-#     - module-1/index.md
-#     - module-1/README.md
-#   - 모듈 2 - 상태 관리와 메모리:
-#     - module-2/index.md
-#     - module-2/README.md
-#   - 모듈 3 - Human-in-the-Loop:
-#     - module-3/index.md
-#     - module-3/README.md
-#   - 모듈 4 - 고급 LangGraph 기술:
-#     - module-4/index.md
-#     - module-4/README.md
-#   - 모듈 5 - LangGraph 메모리 심화:
-#     - module-5/index.md
-#     - module-5/README.md
-#   - 모듈 6 - LangGraph 서버 배포 및 연결:
-#     - module-6/index.md
-#     - module-6/README.md
-#   - 프롬프트 엔지니어링:
-#     - prompt-engineering/index.md
+#   - 홈: index.md
+#   - Foundation:
+#     - foundation/README.md
+#     - 모듈 1: foundation/module-1/README.md
+#     - 모듈 2: foundation/module-2/README.md
+#     - 모듈 3: foundation/module-3/README.md
+#     - 모듈 4: foundation/module-4/README.md
+#     - 모듈 5: foundation/module-5/README.md
+#     - 모듈 6: foundation/module-6/README.md
+#   - Ambient Agents:
+#     - ambient-agents/README.md
+#     - 프로젝트 1: ambient-agents/project-1/README.md
+#   - Tutorial:
+#     - tutorial/README.md
 
 # Plugins
 plugins:
@@ -161,12 +153,9 @@ dev_addr: 127.0.0.1:8000
 
 # Watch additional directories
 watch:
-  - module-1/
-  - module-2/
-  - module-3/
-  - module-4/
-  - module-5/
-  - module-6/
+  - foundation/
+  - ambient-agents/
+  - tutorial/
   - docs/
 
 # Site directory

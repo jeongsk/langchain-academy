@@ -4,7 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a Korean-language LangGraph academy course repository with 6 learning modules plus project implementations. It uses Jupyter notebooks for interactive learning and includes LangGraph Studio integration for visual graph development.
+This is a Korean-language LangGraph academy course repository organized into three main tracks:
+- **Foundation** (6 modules): Core LangGraph concepts from basics to deployment
+- **Ambient Agents** (project series): Hands-on projects for building ambient agents
+- **Tutorial**: Independent examples and advanced patterns
+
+It uses Jupyter notebooks for interactive learning and includes LangGraph Studio integration for visual graph development.
 
 ## Technology Stack
 
@@ -93,19 +98,38 @@ module-1/studio/
 
 ## Code Architecture
 
-### Module Structure (module-1 through module-6)
+### Foundation Structure (foundation/)
 
-Each module follows this pattern:
+Foundation course contains 6 modules teaching LangGraph fundamentals:
 
 ```
-module-X/
-  ├── README.md           # Module overview (Korean)
-  ├── X-topic.ipynb       # Numbered learning notebooks
-  └── studio/             # LangGraph Studio graphs
-      ├── langgraph.json
-      ├── .env.example
-      ├── requirements.txt
-      └── *.py            # Graph implementations
+foundation/
+  ├── README.md          # Foundation series overview
+  └── module-X/          # Individual modules (1-6)
+      ├── README.md      # Module overview (Korean)
+      ├── X-topic.ipynb  # Numbered learning notebooks
+      └── studio/        # LangGraph Studio graphs
+          ├── langgraph.json
+          ├── .env.example
+          ├── requirements.txt
+          └── *.py       # Graph implementations
+```
+
+### Ambient Agents Structure (ambient-agents/)
+
+Project-based learning series for building ambient agents:
+
+```
+ambient-agents/
+  ├── README.md          # Series overview and Ambient Agents concepts
+  └── project-X/         # Individual projects (1-6)
+      ├── README.md      # Project overview and goals
+      ├── X-topic.ipynb  # Learning notebooks
+      └── studio/        # LangGraph Studio graphs
+          ├── langgraph.json
+          ├── .env.example
+          ├── requirements.txt
+          └── *.py       # Graph implementations
 ```
 
 ### Common LangGraph Patterns
@@ -187,18 +211,26 @@ GitHub Actions workflow (`.github/workflows/deploy_docs.yml`) handles documentat
 
 ## Module-Specific Notes
 
-**Module 1**: Basics - simple graphs, chains, routers, agents with tool calling
-**Module 2**: State schemas, reducers, message trimming, external memory with SQLite
-**Module 3**: Human-in-the-loop patterns - breakpoints, state editing, time travel
-**Module 4**: Parallelization, sub-graphs, map-reduce patterns, research assistant
-**Module 5**: Advanced memory - BaseStore interface, StateSchema, Redis integration
-**Module 6**: Deployment and client connections to LangGraph servers
+### Foundation Modules
+
+**Module 1** (foundation/module-1): Basics - simple graphs, chains, routers, agents with tool calling
+**Module 2** (foundation/module-2): State schemas, reducers, message trimming, external memory with SQLite
+**Module 3** (foundation/module-3): Human-in-the-loop patterns - breakpoints, state editing, time travel
+**Module 4** (foundation/module-4): Parallelization, sub-graphs, map-reduce patterns, research assistant
+**Module 5** (foundation/module-5): Advanced memory - BaseStore interface, StateSchema, Redis integration
+**Module 6** (foundation/module-6): Deployment and client connections to LangGraph servers
+
+### Ambient Agents Projects
+
+**Project 1** (ambient-agents/project-1): [Project description - to be filled during learning]
+**Project 2** (ambient-agents/project-2): [Project description - to be filled during learning]
+**Project 3+** (ambient-agents/project-3+): [Additional projects - to be added]
 
 ## Common Development Tasks
 
 ### Adding a New Studio Graph
 
-1. Create Python file in `module-X/studio/`
+1. Create Python file in `foundation/module-X/studio/` or `ambient-agents/project-X/studio/`
 2. Implement graph with `graph = builder.compile()`
 3. Add entry to `langgraph.json`: `"graph_name": "./file.py:graph"`
 4. Restart `langgraph dev` to load new graph
