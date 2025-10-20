@@ -14,27 +14,27 @@ tags:
 
 ## 목차
 
-### [모듈 1: LangGraph 입문](https://github.com/jeongsk/langchain-academy/blob/main/foundation/module-1/README.md)
+### [모듈 1: LangGraph 입문](https://github.com/jeongsk/langchain-academy/blob/main/langgraph-foundation/module-1/README.md)
 
 LangGraph의 기본 개념과 핵심 구성 요소를 학습하는 모듈입니다. 그래프, 노드, 에지의 기초부터 시작하여 메모리를 가진 에이전트 구축까지 단계별로 진행합니다.
 
-### [모듈 2: 상태 관리와 메모리](https://github.com/jeongsk/langchain-academy/blob/main/foundation/module-2/README.md)
+### [모듈 2: 상태 관리와 메모리](https://github.com/jeongsk/langchain-academy/blob/main/langgraph-foundation/module-2/README.md)
 
 LangGraph의 고급 상태 관리 기법과 메모리 시스템을 학습하는 모듈입니다. 상태 스키마 커스터마이징부터 시작하여 외부 데이터베이스를 활용한 지속적 메모리까지 단계별로 진행합니다.
 
-### [모듈 3: Human-in-the-Loop](https://github.com/jeongsk/langchain-academy/blob/main/foundation/module-3/README.md)
+### [모듈 3: Human-in-the-Loop](https://github.com/jeongsk/langchain-academy/blob/main/langgraph-foundation/module-3/README.md)
 
 LangGraph에서 사람이 개입할 수 있는 워크플로우를 구현하는 방법을 학습하는 모듈입니다. 스트리밍부터 시작하여 중단점, 상태 편집, 동적 중단점, 시간 여행까지 단계별로 진행합니다.
 
-### [모듈 4: 고급 LangGraph 기술](https://github.com/jeongsk/langchain-academy/blob/main/foundation/module-4/README.md)
+### [모듈 4: 고급 LangGraph 기술](https://github.com/jeongsk/langchain-academy/blob/main/langgraph-foundation/module-4/README.md)
 
 LangGraph의 병렬 처리, 서브그래프, 맵리듀스 등 고급 기능을 학습하고, 이를 활용하여 리서치 어시스턴트를 구축합니다.
 
-### [모듈 5: LangGraph 메모리 심화](https://github.com/jeongsk/langchain-academy/blob/main/foundation/module-5/README.md)
+### [모듈 5: LangGraph 메모리 심화](https://github.com/jeongsk/langchain-academy/blob/main/langgraph-foundation/module-5/README.md)
 
 LangGraph의 고급 메모리 관리 기법을 학습하는 모듈입니다. `BaseStore`를 활용한 메모리 저장소 커스터마이징부터 `StateSchema`를 이용한 복잡한 상태 관리까지 다룹니다.
 
-### [모듈 6: LangGraph 서버 배포 및 연결](https://github.com/jeongsk/langchain-academy/blob/main/foundation/module-6/README.md)
+### [모듈 6: LangGraph 서버 배포 및 연결](https://github.com/jeongsk/langchain-academy/blob/main/langgraph-foundation/module-6/README.md)
 
 LangGraph로 구축한 그래프를 원격 서버로 배포하고, 클라이언트에서 해당 서버에 연결하여 사용하는 방법을 학습합니다.
 
@@ -42,7 +42,7 @@ LangGraph로 구축한 그래프를 원격 서버로 배포하고, 클라이언�
 
 Foundation 과정을 완료한 후에는:
 
-- **[Ambient Agents 프로젝트](https://github.com/jeongsk/langchain-academy/blob/main/ambient-agents/README.md)**: 실전 프로젝트로 학습한 내용 적용
+- **[Ambient Agents 프로젝트](https://github.com/jeongsk/langchain-academy/blob/main/projects/ambient-agents/README.md)**: 실전 프로젝트로 학습한 내용 적용
 - **[Tutorial](https://github.com/jeongsk/langchain-academy/blob/main/tutorial/README.md)**: 다양한 패턴과 예제 탐구
 
 ## 시작하기

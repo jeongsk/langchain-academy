@@ -18,24 +18,24 @@ LangGraph Academy에 오신 것을 환영합니다! 본 아카데미는 LangGrap
 
 ## 목차
 
-### 📚 [Foundation Introduction to LangGraph](./foundation/README.md)
+### 📚 [Foundation Introduction to LangGraph](./langgraph-foundation/README.md)
 
 LangGraph의 기초부터 프로덕션 배포까지 여섯 개의 모듈로 구성된 입문 과정입니다.
 
-- **[Module 1: LangGraph 입문](./foundation/module-1/README.md)**: 그래프, 노드, 에지의 기초부터 에이전트 구축까지
-- **[Module 2: 상태 관리와 메모리](./foundation/module-2/README.md)**: 고급 상태 관리 기법과 메모리 시스템
-- **[Module 3: Human-in-the-Loop](./foundation/module-3/README.md)**: 사람이 개입하는 워크플로우 구현
-- **[Module 4: 고급 LangGraph 기술](./foundation/module-4/README.md)**: 병렬 처리, 서브그래프, 맵리듀스 패턴
-- **[Module 5: LangGraph 메모리 심화](./foundation/module-5/README.md)**: BaseStore와 StateSchema를 활용한 메모리 관리
-- **[Module 6: LangGraph 서버 배포 및 연결](./foundation/module-6/README.md)**: 프로덕션 배포 및 클라이언트 연결
+- **[Module 1: LangGraph 입문](./langgraph-foundation/module-1/README.md)**: 그래프, 노드, 에지의 기초부터 에이전트 구축까지
+- **[Module 2: 상태 관리와 메모리](./langgraph-foundation/module-2/README.md)**: 고급 상태 관리 기법과 메모리 시스템
+- **[Module 3: Human-in-the-Loop](./langgraph-foundation/module-3/README.md)**: 사람이 개입하는 워크플로우 구현
+- **[Module 4: 고급 LangGraph 기술](./langgraph-foundation/module-4/README.md)**: 병렬 처리, 서브그래프, 맵리듀스 패턴
+- **[Module 5: LangGraph 메모리 심화](./langgraph-foundation/module-5/README.md)**: BaseStore와 StateSchema를 활용한 메모리 관리
+- **[Module 6: LangGraph 서버 배포 및 연결](./langgraph-foundation/module-6/README.md)**: 프로덕션 배포 및 클라이언트 연결
 
-### 🚀 [Project: Ambient Agents with LangGraph](./ambient-agents/README.md)
+### 🚀 [Project: Ambient Agents with LangGraph](./projects/ambient-agents/README.md)
 
 실전 프로젝트를 통해 Ambient Agents를 구현하며 학습하는 프로젝트 중심 실습 과정입니다.
 
-- **[Project 1](./ambient-agents/project-1/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
-- **[Project 2](./ambient-agents/project-2/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
-- **[Project 3](./ambient-agents/project-3/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
+- **[Project 1](./projects/ambient-agents/project-1/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
+- **[Project 2](./projects/ambient-agents/project-2/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
+- **[Project 3](./projects/ambient-agents/project-3/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
 
 ### 💡 [Tutorial & Examples](./tutorial/README.md)
 
@@ -118,7 +118,7 @@ Tavily Search API는 대규모 언어 모델(LLM)과 RAG(Retrieval-Augmented Gen
 - LangGraph Studio는 에이전트를 확인하고 테스트하기 위한 맞춤형 통합 개발 환경(IDE)입니다.
 - Studio는 로컬에서 실행할 수 있으며 Mac, Windows, Linux에서 브라우저로 열 수 있습니다.
 - 로컬 Studio 개발 서버에 대한 설명은 [여기](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/#local-development-server)와 [여기](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/)를 참조하세요.
-- LangGraph Studio용 그래프는 foundation/module-X/studio/ 및 ambient-agents/project-X/studio/ 폴더에 있습니다.
+- LangGraph Studio용 그래프는 langgraph-foundation/module-X/studio/ 및 projects/ambient-agents/project-X/studio/ 폴더에 있습니다.
 - 로컬 개발 서버를 시작하려면 각 모듈의 /studio 디렉터리에서 터미널에 다음 명령을 실행하세요:
 
 ```shell
@@ -139,16 +139,16 @@ langgraph dev
 ```bash
 # Foundation 모듈 .env 설정
 for i in {1..6}; do
-  cp foundation/module-$i/studio/.env.example foundation/module-$i/studio/.env
-  echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > foundation/module-$i/studio/.env
+  cp langgraph-foundation/module-$i/studio/.env.example langgraph-foundation/module-$i/studio/.env
+  echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > langgraph-foundation/module-$i/studio/.env
 done
-echo "TAVILY_API_KEY=\"$TAVILY_API_KEY\"" >> foundation/module-4/studio/.env
+echo "TAVILY_API_KEY=\"$TAVILY_API_KEY\"" >> langgraph-foundation/module-4/studio/.env
 
 # Ambient Agents 프로젝트 .env 설정 (프로젝트 생성 후)
 for i in {1..6}; do
-  if [ -d "ambient-agents/project-$i/studio" ]; then
-    cp ambient-agents/project-$i/studio/.env.example ambient-agents/project-$i/studio/.env
-    echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > ambient-agents/project-$i/studio/.env
+  if [ -d "projects/ambient-agents/project-$i/studio" ]; then
+    cp projects/ambient-agents/project-$i/studio/.env.example projects/ambient-agents/project-$i/studio/.env
+    echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" > projects/ambient-agents/project-$i/studio/.env
   fi
 done
 ```

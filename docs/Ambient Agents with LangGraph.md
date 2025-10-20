@@ -25,15 +25,15 @@ tags:
 
 ## 프로젝트 목차
 
-### [프로젝트 1](https://github.com/jeongsk/langchain-academy/blob/main/ambient-agents/project-1/README.md)
+### [프로젝트 1](https://github.com/jeongsk/langchain-academy/blob/main/projects/ambient-agents/project-1/README.md)
 
 [프로젝트 제목 - 학습 중 업데이트 예정]
 
-### [프로젝트 2](https://github.com/jeongsk/langchain-academy/blob/main/ambient-agents/project-2/README.md)
+### [프로젝트 2](https://github.com/jeongsk/langchain-academy/blob/main/projects/ambient-agents/project-2/README.md)
 
 [프로젝트 제목 - 학습 중 업데이트 예정]
 
-### [프로젝트 3](https://github.com/jeongsk/langchain-academy/blob/main/ambient-agents/project-3/README.md)
+### [프로젝트 3](https://github.com/jeongsk/langchain-academy/blob/main/projects/ambient-agents/project-3/README.md)
 
 [프로젝트 제목 - 학습 중 업데이트 예정]
 

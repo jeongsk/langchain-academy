@@ -98,12 +98,12 @@ module-1/studio/
 
 ## Code Architecture
 
-### Foundation Structure (foundation/)
+### Foundation Structure (langgraph-foundation/)
 
 Foundation course contains 6 modules teaching LangGraph fundamentals:
 
 ```
-foundation/
+langgraph-foundation/
   ├── README.md          # Foundation series overview
   └── module-X/          # Individual modules (1-6)
       ├── README.md      # Module overview (Korean)
@@ -115,21 +115,22 @@ foundation/
           └── *.py       # Graph implementations
 ```
 
-### Ambient Agents Structure (ambient-agents/)
+### Ambient Agents Structure (projects/ambient-agents/)
 
 Project-based learning series for building ambient agents:
 
 ```
-ambient-agents/
-  ├── README.md          # Series overview and Ambient Agents concepts
-  └── project-X/         # Individual projects (1-6)
-      ├── README.md      # Project overview and goals
-      ├── X-topic.ipynb  # Learning notebooks
-      └── studio/        # LangGraph Studio graphs
-          ├── langgraph.json
-          ├── .env.example
-          ├── requirements.txt
-          └── *.py       # Graph implementations
+projects/
+  └── ambient-agents/
+      ├── README.md          # Series overview and Ambient Agents concepts
+      └── project-X/         # Individual projects (1-6)
+          ├── README.md      # Project overview and goals
+          ├── X-topic.ipynb  # Learning notebooks
+          └── studio/        # LangGraph Studio graphs
+              ├── langgraph.json
+              ├── .env.example
+              ├── requirements.txt
+              └── *.py       # Graph implementations
 ```
 
 ### Common LangGraph Patterns
@@ -213,24 +214,24 @@ GitHub Actions workflow (`.github/workflows/deploy_docs.yml`) handles documentat
 
 ### Foundation Modules
 
-**Module 1** (foundation/module-1): Basics - simple graphs, chains, routers, agents with tool calling
-**Module 2** (foundation/module-2): State schemas, reducers, message trimming, external memory with SQLite
-**Module 3** (foundation/module-3): Human-in-the-loop patterns - breakpoints, state editing, time travel
-**Module 4** (foundation/module-4): Parallelization, sub-graphs, map-reduce patterns, research assistant
-**Module 5** (foundation/module-5): Advanced memory - BaseStore interface, StateSchema, Redis integration
-**Module 6** (foundation/module-6): Deployment and client connections to LangGraph servers
+**Module 1** (langgraph-foundation/module-1): Basics - simple graphs, chains, routers, agents with tool calling
+**Module 2** (langgraph-foundation/module-2): State schemas, reducers, message trimming, external memory with SQLite
+**Module 3** (langgraph-foundation/module-3): Human-in-the-loop patterns - breakpoints, state editing, time travel
+**Module 4** (langgraph-foundation/module-4): Parallelization, sub-graphs, map-reduce patterns, research assistant
+**Module 5** (langgraph-foundation/module-5): Advanced memory - BaseStore interface, StateSchema, Redis integration
+**Module 6** (langgraph-foundation/module-6): Deployment and client connections to LangGraph servers
 
 ### Ambient Agents Projects
 
-**Project 1** (ambient-agents/project-1): [Project description - to be filled during learning]
-**Project 2** (ambient-agents/project-2): [Project description - to be filled during learning]
-**Project 3+** (ambient-agents/project-3+): [Additional projects - to be added]
+**Project 1** (projects/ambient-agents/project-1): [Project description - to be filled during learning]
+**Project 2** (projects/ambient-agents/project-2): [Project description - to be filled during learning]
+**Project 3+** (projects/ambient-agents/project-3+): [Additional projects - to be added]
 
 ## Common Development Tasks
 
 ### Adding a New Studio Graph
 
-1. Create Python file in `foundation/module-X/studio/` or `ambient-agents/project-X/studio/`
+1. Create Python file in `langgraph-foundation/module-X/studio/` or `projects/ambient-agents/project-X/studio/`
 2. Implement graph with `graph = builder.compile()`
 3. Add entry to `langgraph.json`: `"graph_name": "./file.py:graph"`
 4. Restart `langgraph dev` to load new graph

@@ -138,6 +138,7 @@ celerybeat.pid
 .env
 .envrc
 .venv
+.venv*
 env/
 venv/
 ENV/
@@ -234,3 +235,4 @@ projects/**/cache
 # Obsidian
 !.obsidian
 .obsidian/workspace.json
+.infio_json_db
