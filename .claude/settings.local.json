@@ -2,9 +2,14 @@
   "permissions": {
     "allow": [
       "WebFetch",
-      "Bash"
+      "Bash",
+      "mcp__sequential-thinking__sequentialthinking"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "ask_for_obsidian_plugin_dev"
+  ]
 }
