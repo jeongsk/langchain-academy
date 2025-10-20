@@ -131,7 +131,7 @@ langgraph dev
 
 프로젝트를 완료한 후에는:
 
-- **[Tutorial](../tutorial/README.md)**: 다양한 고급 패턴 및 예제 탐구
+- **[Tutorial](../langgraph-tutorial/README.md)**: 다양한 고급 패턴 및 예제 탐구
 - 자신만의 Ambient Agent 프로젝트 구축
 - LangGraph 커뮤니티에 기여
 

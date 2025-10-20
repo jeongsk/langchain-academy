@@ -58,7 +58,7 @@ COHERE_API_KEY=         # Optional
 
 ```bash
 jupyter notebook
-# Navigate to module-X/ or tutorial/ directories
+# Navigate to module-X/ or langgraph-tutorial/ directories
 ```
 
 ## LangGraph Studio Development
@@ -166,7 +166,7 @@ graph = builder.compile(checkpointer=memory)
 
 Tutorial are production-like implementations combining multiple concepts:
 
-**QA-RAG-Agent Pattern** (`tutorial/11-QA-RAG-Agent/studio/`):
+**QA-RAG-Agent Pattern** (`langgraph-tutorial/11-QA-RAG-Agent/studio/`):
 
 - `states.py`: State schema definitions
 - `nodes.py`: Business logic nodes
@@ -238,11 +238,11 @@ GitHub Actions workflow (`.github/workflows/deploy_docs.yml`) handles documentat
 
 ### Creating a New Project
 
-Follow the pattern in `tutorial/11-QA-RAG-Agent/`:
+Follow the pattern in `langgraph-tutorial/11-QA-RAG-Agent/`:
 
 - Separate concerns into states, nodes, tools, retrievers
 - Include `langgraph.json` for Studio integration
-- Document in `tutorial/README.md`
+- Document in `langgraph-tutorial/README.md`
 
 ### Working with Vector Stores
 

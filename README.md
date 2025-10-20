@@ -37,7 +37,7 @@ LangGraph의 기초부터 프로덕션 배포까지 여섯 개의 모듈로 구�
 - **[Project 2](./projects/ambient-agents/project-2/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
 - **[Project 3](./projects/ambient-agents/project-3/README.md)**: [프로젝트 제목 - 학습 중 업데이트 예정]
 
-### 💡 [Tutorial & Examples](./tutorial/README.md)
+### 💡 [Tutorial & Examples](./langgraph-tutorial/README.md)
 
 다양한 패턴과 고급 기법을 다루는 독립적인 예제 및 참고 자료입니다.
 

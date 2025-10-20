@@ -91,7 +91,7 @@ LangGraph로 구축한 그래프를 원격 서버로 배포하고, 클라이언�
 Foundation 과정을 완료한 후에는:
 
 - **[Ambient Agents](../projects/ambient-agents/README.md)**: 실전 프로젝트로 학습한 내용 적용
-- **[Tutorial](../tutorial/README.md)**: 다양한 패턴과 예제 탐구
+- **[Tutorial](../langgraph-tutorial/README.md)**: 다양한 패턴과 예제 탐구
 
 ## 리소스
 
