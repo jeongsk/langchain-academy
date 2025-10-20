@@ -1,18 +1,8 @@
 ---
 created: 2025-10-04 18:15:39
-updated: 2025-10-10 23:47:02
-tags:
-  - LangGraph
-  - 프레임워크
-  - AI_에이전트
-  - 시작하기
+updated: 2025-10-21 00:00:05
+tags: [시작하기, 프레임워크, AI_에이전트, LangGraph]
 ---
-
-[![버전](https://img.shields.io/pypi/v/langgraph.svg)](https://pypi.org/project/langgraph/)
-[![다운로드](https://static.pepy.tech/badge/langgraph/month)](https://pepy.tech/project/langgraph)
-[![오픈 이슈](https://img.shields.io/github/issues-raw/langchain-ai/langgraph)](https://github.com/langchain-ai/langgraph/issues)
-[![문서](https://img.shields.io/badge/docs-latest-blue)](https://langchain-ai.github.io/langgraph/)
-
 Klarna, Replit, Elastic 등 에이전트의 미래를 만들어가는 기업들의 신뢰를 받는 LangGraph는 오래 실행되는 상태 저장 [[랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]]를 구축, 관리, 배포하기 위한 로우-레벨 오케스트레이션 프레임워크입니다.
 
 ## 시작하기
