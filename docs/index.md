@@ -6,7 +6,9 @@ tags: [학습_노트, AI_에이전트, LangGraph, MOC]
 ---
 LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. 생각보다 개념이 어렵지 않은데, 막상 실전에서 어떻게 활용할지 고민이 됩니다. 이 문서들은 공부하면서 이해한 내용과 삽질했던 경험들을 정리한 것입니다.
 
-## 학습 내용
+## 학습 트랙
+
+### Foundation - LangGraph 기초
 
 1. **LangGraph 입문** - 처음엔 그래프라는 개념이 낯설었는데, 노드와 엣지로 워크플로우를 표현한다는 것이 점점 이해가 되기 시작했습니다
 2. **상태 관리와 메모리** - 에이전트가 대화 맥락을 기억하는 것이 생각보다 중요합니다
@@ -15,9 +17,14 @@ LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. �
 5. **LangGraph 메모리 심화** - 메모리 관리가 생각보다 복잡했습니다. 특히 장기 기억 부분이 그렇습니다
 6. **LangGraph 서버 배포 및 연결** - 로컬에서 실행하는 것과 실제 서비스는 또 다른 이야기입니다
 
+### Ambient Agents - 실전 프로젝트
+
+맥락을 이해하고 능동적으로 행동하는 Ambient Agents를 직접 구현해보며 배우고 있습니다. Foundation에서 배운 내용을 실제로 적용하는 과정이 생각보다 재미있습니다.
+
 ## 시작하기
 
 - [Foundation Introduction to LangGraph](Foundation%20Introduction%20to%20LangGraph.md) - 여기서부터 시작했습니다
+- [Ambient Agents with LangGraph](Ambient%20Agents%20with%20LangGraph.md) - 실전 프로젝트로 넘어가는 단계입니다
 - [개발 환경 설정](개발%20환경%20설정.md) - 처음에 환경 설정하면서 헤맸던 부분들을 정리했습니다
 
 ## 참고 자료
