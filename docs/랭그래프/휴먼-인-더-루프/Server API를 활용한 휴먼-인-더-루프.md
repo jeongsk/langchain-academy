@@ -1,15 +1,11 @@
 ---
 created: 2025-10-15 00:40:29
-updated: 2025-10-15 00:48:22
+updated: 2025-10-20 11:25:51
 source: https://docs.langchain.com/langsmith/add-human-in-the-loop
-tags:
-  - LangGraph
-  - 휴먼_인_더_루프
-  - Server_API
-  - SDK
-  - 튜토리얼
-  - 중단_Interrupt
+tags: [중단_Interrupt, 튜토리얼, 휴먼_인_더_루프, LangGraph, SDK, Server_API]
 ---
+## 개요
+
 [[랭그래프/에이전트/에이전트란 무엇인가요?|에이전트]]나 워크플로우에서 도구 호출을 검토하고 편집하며 승인하려면, [[랭그래프/LangGraph|LangGraph]]의 [[랭그래프/휴먼-인-더-루프/휴먼-인-더-루프 개요|휴먼-인-더-루프]] 기능을 사용하세요. 이 문서는 특히 [[랭그래프/LangGraph 배포 가이드|배포된 LangGraph 서버]]와 상호작용하는 방법을 다룹니다.
 
 ## 동적 인터럽트
