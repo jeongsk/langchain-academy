@@ -1,12 +1,82 @@
-{ // Ruff를 기본 포매터로 설정
+{
+    // ============================================
+    // Python 설정
+    // ============================================
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.fixAll.ruff": "explicit",
             "source.organizeImports.ruff": "explicit"
-        }
+        },
+        "editor.rulers": [
+            88,
+            120
+        ],
+        "editor.wordWrap": "off"
     },
+    // Python 언어 서버 설정 (Pylance)
+    "python.languageServer": "Pylance",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    // Ruff 설정 (린터 & 포매터)
+    "ruff.enable": true,
+    "ruff.lint.enable": true,
+    "ruff.organizeImports": true,
+    "ruff.nativeServer": "on",
+    // Python 테스팅
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    // ============================================
+    // Jupyter Notebook 설정
+    // ============================================
+    "[ipynb]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    // Jupyter 실행 설정
+    "jupyter.askForKernelRestart": false,
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "jupyter.debugJustMyCode": false,
+    // Jupyter 출력 설정
+    "notebook.output.textLineLimit": 500,
+    "notebook.output.scrolling": true,
+    "notebook.lineNumbers": "on",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    // Jupyter 코드 실행 설정
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    // Jupyter 미니맵 및 브레드크럼
+    "notebook.outline.showCodeCells": true,
+    "notebook.breadcrumbs.showCodeCells": true,
+    // ============================================
+    // 에디터 일반 설정
+    // ============================================
+    "editor.inlayHints.enabled": "onUnlessPressed",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.snippetSuggestions": "top",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    // ============================================
+    // 파일 탐색기 설정
+    // ============================================
     "files.exclude": {
         "**/__pycache__": true,
         "**/.cache": true,
@@ -20,8 +90,54 @@
         "**/.tox": true,
         "**/.venv*": true,
         "**/.infio_json_db": true,
+        "**/*.pyc": true,
+        "**/.ipynb_checkpoints": true
     },
+    // 파일 감시 제외
+    "files.watcherExclude": {
+        "**/.venv*/**": true,
+        "**/node_modules/**": true,
+        "**/__pycache__/**": true,
+        "**/.pytest_cache/**": true,
+        "**/.ruff_cache/**": true
+    },
+    // 검색 제외
+    "search.exclude": {
+        "**/.venv*": true,
+        "**/node_modules": true,
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.ipynb_checkpoints": true
+    },
+    // ============================================
+    // Git 설정
+    // ============================================
+    "git.ignoreLimitWarning": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    // ============================================
+    // 기타 설정
+    // ============================================
+    // 자동 저장
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    // 공백 문자 표시
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    // 맞춤법 검사
     "cSpell.words": [
-        "splited"
-    ]
+        "splited",
+        "langgraph",
+        "langchain",
+        "langsmith",
+        "jupyter",
+        "ipynb",
+        "pytest",
+        "pylance"
+    ],
+    // 터미널 설정
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.scrollback": 10000
 }

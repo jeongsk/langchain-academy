@@ -38,19 +38,92 @@ dev = [
 
 [tool.ruff]
 line-length = 88
-target-version = "py311"
+target-version = "py312"  # 프로젝트에서 Python 3.12+ 사용 중
+indent-width = 4
+
+# 제외할 파일/디렉토리
+exclude = [
+    ".venv",
+    ".venv*",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".git",
+    "build",
+    "dist",
+    "*.egg-info",
+]
 
 [tool.ruff.lint]
 select = [
-    "E",  # pycodestyle errors
-    "W",  # pycodestyle warnings
-    "F",  # pyflakes
-    "I",  # isort
-    "B",  # flake8-bugbear
-    "C4", # flake8-comprehensions
+    "E",     # pycodestyle errors
+    "W",     # pycodestyle warnings
+    "F",     # pyflakes
+    "I",     # isort
+    "B",     # flake8-bugbear
+    "C4",    # flake8-comprehensions
+    "UP",    # pyupgrade
+    "N",     # pep8-naming
+    "YTT",   # flake8-2020
+    "ASYNC", # flake8-async
+    "S",     # flake8-bandit (보안)
+    "BLE",   # flake8-blind-except
+    "A",     # flake8-builtins
+    "COM",   # flake8-commas
+    "C90",   # mccabe (복잡도)
+    "ISC",   # flake8-implicit-str-concat
+    "ICN",   # flake8-import-conventions
+    "G",     # flake8-logging-format
+    "PIE",   # flake8-pie
+    "T20",   # flake8-print
+    "PT",    # flake8-pytest-style
+    "Q",     # flake8-quotes
+    "RSE",   # flake8-raise
+    "RET",   # flake8-return
+    "SIM",   # flake8-simplify
+    "TID",   # flake8-tidy-imports
+    "ARG",   # flake8-unused-arguments
+    "PTH",   # flake8-use-pathlib
+    "ERA",   # eradicate (주석 처리된 코드)
+    "PL",    # Pylint
+    "PERF",  # Perflint (성능)
+    "RUF",   # Ruff-specific rules
 ]
-ignore = []
+
+ignore = [
+    "E501",    # line-too-long (formatter가 처리)
+    "COM812",  # trailing-comma-missing (formatter와 충돌)
+    "ISC001",  # single-line-implicit-string-concatenation (formatter와 충돌)
+    "S101",    # assert 사용 (테스트에서 필요)
+    "T201",    # print 사용 (Jupyter notebook에서 필요)
+    "PLR0913", # too-many-arguments
+    "PLR0912", # too-many-branches
+    "ARG001",  # unused-function-argument (LangChain 콜백에서 필요)
+    "ARG002",  # unused-method-argument
+]
+
+# 파일별 무시 규칙
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]  # 미사용 import 허용
+"**/tests/**" = ["S101", "PLR2004", "ARG001"]  # 테스트 파일
+"**/studio/**" = ["T201", "S105"]  # Studio 예제 코드
+
+[tool.ruff.lint.isort]
+known-first-party = ["langgraph", "langchain"]
+force-sort-within-sections = true
+lines-after-imports = 2
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true  # docstring 내 코드도 포맷팅
+docstring-code-line-length = 72
