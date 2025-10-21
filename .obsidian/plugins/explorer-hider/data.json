@@ -16,6 +16,13 @@
       "selector": "",
       "hiddenInNav": true,
       "hiddenInBookmarks": true
+    },
+    {
+      "path": "archive",
+      "type": "string",
+      "selector": "",
+      "hiddenInNav": true,
+      "hiddenInBookmarks": true
     }
   ],
   "alwaysHideInBookmarks": false,
