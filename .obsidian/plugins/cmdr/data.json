@@ -8,19 +8,19 @@
     {
       "id": "obsidian-shellcommands:shell-command-yw5w8q0uj5",
       "icon": "lucide-code-2",
-      "name": "Shell commands: Execute: VSCode",
+      "name": "Open VSCode",
       "mode": "any"
     },
     {
       "id": "obsidian-shellcommands:shell-command-58oipie7vd",
       "icon": "lucide-notebook",
-      "name": "Shell commands: Execute: Jupyter",
+      "name": "Open Jupyter",
       "mode": "any"
     },
     {
       "id": "obsidian-shellcommands:shell-command-fq6jmy7q4y",
       "icon": "lucide-globe",
-      "name": "Shell commands: Execute: open langchain-academy.jeongsk.work",
+      "name": "Open Website",
       "mode": "any"
     }
   ],
