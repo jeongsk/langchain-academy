@@ -259,6 +259,6 @@ Projects use FAISS (CPU) for vector similarity search. Retriever initialization 
 
 ## Reports
 
-- @TAG_NORMALIZATION_REPORT.md
-- @DOCUMENT_LINK_ANALYSIS_REPORT.md
-- @DOCUMENT_NETWORK_VISUALIZATION.md
+- @.claude/TAG_NORMALIZATION_REPORT.md
+- @.claude/DOCUMENT_LINK_ANALYSIS_REPORT.md
+- @.claude/DOCUMENT_NETWORK_VISUALIZATION.md
