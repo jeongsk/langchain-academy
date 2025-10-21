@@ -1,3 +1,7 @@
+---
+created: 2025-10-22 00:41:40
+updated: 2025-10-22 00:55:06
+---
 # Project: Ambient Agents with LangGraph
 
 ## 소개
@@ -10,7 +14,7 @@ LangChain의 목표는 에이전트 애플리케이션 구축을 최대한 용�
 
 이러한 확장된 모델 기능은 새로운 종류의 에이전트 상호 작용을 가능하게 합니다. 이제 에이전트는 Slack 메시지나 GitHub 이슈와 같은 **이벤트 스트림에 의해 자율적으로 트리거될 수 있으며**, 백그라운드에서 장기간 여러 작업을 수행할 수 있게 되었습니다. 즉각적인 사용자 응답이 필요한 채팅 에이전트와 달리, 앰비언트 에이전트는 장기 실행되는 복잡한 작업을 위해 설계되었습니다.
 
-![overview](notebooks/img/overview.png)
+![overview](assets/overview.png)
 
 ## Ambient Agents란?
 
@@ -81,9 +85,9 @@ LangGraph는 이러한 요구 사항을 염두에 두고 설계된 에이전트 
 이 프로젝트 시리즈를 시작하기 전에 다음 내용을 이해하고 있는 것을 권장합니다:
 
 ### 필수
-- [Foundation Module 1-2](../../langgraph-foundation/module-1/README.md): LangGraph 기초 및 상태 관리
 - Python 프로그래밍 기본
 - LLM API 사용 경험 (OpenAI 등)
+- [Foundation Module 1-2](../../langgraph-foundation/module-1/README.md): LangGraph 기초 및 상태 관리
 
 ### 권장
 - [Foundation Module 3-4](../../langgraph-foundation/module-3/README.md): Human-in-the-loop 및 고급 패턴
@@ -102,7 +106,7 @@ LangGraph와 이 저장소에서 사용되는 개념에 대한 간략한 소개�
 * **노트북**: [notebooks/agent.ipynb](/notebooks/agent.ipynb)
 * **코드**: [src/email_assistant/email_assistant.py](/src/email_assistant/email_assistant.py)
 
-![overview-agent](notebooks/img/overview_agent.png)
+![overview-agent](assets/overview_agent.png)
 
 이 노트북은 이메일 트리아지 단계와 이메일 응답을 처리하는 에이전트를 결합하여 이메일 어시스턴트를 구축하는 방법을 보여줍니다. `src/email_assistant/email_assistant.py`에서 전체 구현을 확인할 수 있습니다.
 
@@ -111,13 +115,13 @@ LangGraph와 이 저장소에서 사용되는 개념에 대한 간략한 소개�
 - 에이전트를 사용한 이메일 응답 자동화
 - LangGraph를 활용한 복잡한 상태 관리
 
-![Screenshot 2025-04-04 at 4 06 18 PM](notebooks/img/studio.png)
+![Screenshot 2025-04-04 at 4 06 18 PM](assets/studio.png)
 
 ### Project 2: 평가 (Evaluation)
 
 * **노트북**: [notebooks/evaluation.ipynb](/notebooks/evaluation.ipynb)
 
-![overview-eval](notebooks/img/overview_eval.png)
+![overview-eval](assets/overview_eval.png)
 
 이 노트북은 [eval/email_dataset.py](/eval/email_dataset.py)의 이메일 데이터셋을 사용한 평가를 소개합니다. Pytest와 LangSmith `evaluate` API를 사용하여 평가를 실행하는 방법을 보여줍니다. LLM-as-a-judge를 사용한 이메일 응답 평가와 도구 호출 및 트리아지 결정에 대한 평가를 실행합니다.
 
@@ -127,14 +131,14 @@ LangGraph와 이 저장소에서 사용되는 개념에 대한 간략한 소개�
 - 도구 호출 및 의사 결정 품질 측정
 - Pytest를 통한 자동화된 테스트
 
-![Screenshot 2025-04-08 at 8 07 48 PM](notebooks/img/eval.png)
+![Screenshot 2025-04-08 at 8 07 48 PM](assets/eval.png)
 
 ### Project 3: Human-in-the-loop
 
 * **노트북**: [notebooks/hitl.ipynb](/notebooks/hitl.ipynb)
 * **코드**: [src/email_assistant/email_assistant_hitl.py](/src/email_assistant/email_assistant_hitl.py)
 
-![overview-hitl](notebooks/img/overview_hitl.png)
+![overview-hitl](assets/overview_hitl.png)
 
 이 노트북은 Human-in-the-loop(HITL)을 추가하여 사용자가 특정 도구 호출(예: 이메일 보내기, 회의 예약)을 검토할 수 있도록 하는 방법을 보여줍니다. 이를 위해 [Agent Inbox](https://github.com/langchain-ai/agent-inbox)를 Human-in-the-loop 인터페이스로 사용합니다. `src/email_assistant/email_assistant_hitl.py`에서 전체 구현을 확인할 수 있습니다.
 
@@ -144,14 +148,14 @@ LangGraph와 이 저장소에서 사용되는 개념에 대한 간략한 소개�
 - 에이전트 실행 중단 및 재개 메커니즘
 - 사용자 피드백 통합
 
-![Agent Inbox showing email threads](notebooks/img/agent-inbox.png)
+![Agent Inbox showing email threads](assets/agent-inbox.png)
 
 ### Project 4: 메모리 (Memory)
 
 * **노트북**: [notebooks/memory.ipynb](/notebooks/memory.ipynb)
 * **코드**: [src/email_assistant/email_assistant_hitl_memory.py](/src/email_assistant/email_assistant_hitl_memory.py)
 
-![overview-memory](notebooks/img/overview_memory.png)
+![overview-memory](assets/overview_memory.png)
 
 이 노트북은 이메일 어시스턴트에 메모리를 추가하여 시간이 지남에 따라 사용자 피드백을 학습하고 선호도에 적응할 수 있도록 하는 방법을 보여줍니다. 메모리 기능이 활성화된 어시스턴트([email_assistant_hitl_memory.py](/src/email_assistant/email_assistant_hitl_memory.py))는 [LangGraph Store](https://langchain-ai.github.io/langgraph/concepts/memory/#long-term-memory)를 사용하여 메모리를 지속합니다. `src/email_assistant/email_assistant_hitl_memory.py`에서 전체 구현을 확인할 수 있습니다.
 
