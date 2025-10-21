@@ -5,6 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Overview
 
 This is a Korean-language LangGraph academy course repository organized into three main tracks:
+
 - **Foundation** (6 modules): Core LangGraph concepts from basics to deployment
 - **Ambient Agents** (project series): Hands-on projects for building ambient agents
 - **Tutorial**: Independent examples and advanced patterns
@@ -255,3 +256,9 @@ Projects use FAISS (CPU) for vector similarity search. Retriever initialization 
 - Use `uv` instead of pip for dependency management
 - Each studio directory must have its own `.env` file with API keys
 - LangGraph Studio requires local dev server running via `langgraph dev`
+
+## Reports
+
+- @TAG_NORMALIZATION_REPORT.md
+- @DOCUMENT_LINK_ANALYSIS_REPORT.md
+- @DOCUMENT_NETWORK_VISUALIZATION.md
