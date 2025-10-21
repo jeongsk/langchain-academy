@@ -16,6 +16,12 @@
       "icon": "lucide-notebook",
       "name": "Shell commands: Execute: Jupyter",
       "mode": "any"
+    },
+    {
+      "id": "obsidian-shellcommands:shell-command-fq6jmy7q4y",
+      "icon": "lucide-globe",
+      "name": "Shell commands: Execute: open langchain-academy.jeongsk.work",
+      "mode": "any"
     }
   ],
   "rightRibbon": [],
