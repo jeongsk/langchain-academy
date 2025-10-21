@@ -42,14 +42,14 @@ pip install -U langgraph "langchain[anthropic]"
 ```python
 from langgraph.prebuilt import create_react_agent
 
-def get_weather(city: str) -> str:  
+def get_weather(city: str) -> str:
     """Get weather for a given city."""
     return f"It's always sunny in {city}!"
 
 agent = create_react_agent(
-    model="anthropic:claude-3-7-sonnet-latest",  
-    tools=[get_weather],  
-    prompt="You are a helpful assistant"  
+    model="anthropic:claude-3-7-sonnet-latest",
+    tools=[get_weather],
+    prompt="You are a helpful assistant"
 )
 
 # 에이전트 실행
@@ -98,7 +98,7 @@ from langchain_core.runnables import RunnableConfig
 from langgraph.prebuilt.chat_agent_executor import AgentState
 from langgraph.prebuilt import create_react_agent
 
-def prompt(state: AgentState, config: RunnableConfig) -> list[AnyMessage]:  
+def prompt(state: AgentState, config: RunnableConfig) -> list[AnyMessage]:
     user_name = config["configurable"].get("user_name")
     system_msg = f"You are a helpful assistant. Address the user as {user_name}."
     return [{"role": "system", "content": system_msg}] + state["messages"]
@@ -138,14 +138,14 @@ checkpointer = InMemorySaver()
 agent = create_react_agent(
     model="anthropic:claude-3-7-sonnet-latest",
     tools=[get_weather],
-    checkpointer=checkpointer  
+    checkpointer=checkpointer
 )
 
 # 에이전트 실행
 config = {"configurable": {"thread_id": "1"}}
 sf_response = agent.invoke(
     {"messages": [{"role": "user", "content": "what is the weather in sf"}]},
-    config  
+    config
 )
 ny_response = agent.invoke(
     {"messages": [{"role": "user", "content": "what about new york?"}]},
@@ -172,3 +172,10 @@ LLM 후처리
 - [에이전트를 로컬에 배포하기](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/)
 - [사전 구축된 에이전트에 대해 자세히 알아보기](https://langchain-ai.github.io/langgraph/agents/overview/)
 - [LangGraph Platform 빠른 시작](https://langchain-ai.github.io/langgraph/cloud/quick_start/)
+
+## 관련 문서
+
+- [[랭그래프/에이전트/에이전트란 무엇인가요?|에이전트란 무엇인가요?]]
+- [[랭그래프/에이전트/에이전트 아키텍처 개념|에이전트 아키텍처 개념]]
+- [[랭그래프/에이전트/워크플로우와 에이전트 패턴|워크플로우와 에이전트 패턴]]
+- [[랭그래프/에이전트/LLM 에이전트 아키텍처 패턴|LLM 에이전트 아키텍처 패턴]]
