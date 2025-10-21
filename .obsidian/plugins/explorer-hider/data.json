@@ -9,6 +9,13 @@
       "selector": "^",
       "hiddenInNav": true,
       "hiddenInBookmarks": true
+    },
+    {
+      "path": "CLAUDE.md",
+      "type": "string",
+      "selector": "",
+      "hiddenInNav": true,
+      "hiddenInBookmarks": true
     }
   ],
   "alwaysHideInBookmarks": false,
