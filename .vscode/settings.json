@@ -37,7 +37,16 @@
     // ============================================
     "[ipynb]": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "charliermarsh.ruff"
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        },
+        "editor.rulers": [
+            88,
+            120
+        ],
+        "editor.wordWrap": "off"
     },
     // Jupyter 실행 설정
     "jupyter.askForKernelRestart": false,
