@@ -2,5 +2,6 @@
   "cssTheme": "Cupertino",
   "interfaceFontFamily": "Pretendard",
   "textFontFamily": "RIDIBatang,Pretendard",
-  "monospaceFontFamily": "Source Code Pro,Fira Code"
+  "monospaceFontFamily": "Source Code Pro,Fira Code",
+  "enabledCssSnippets": []
 }
