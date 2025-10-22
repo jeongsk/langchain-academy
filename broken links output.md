@@ -1,6 +1,6 @@
 
 
-- [[../../agents/agent overview]] in [[docs/랭그래프/참조/사전구축된-에이전트]]
+- [[../../agents/agent overview]] in [[사전구축된 에이전트]]
 - [[persistence]] in [[docs/랭그래프/APIs/Graph API 개념]]
 - [[multi_agent]] in [[docs/랭그래프/APIs/Graph API 개념]]
 - [[human_in_the_loop]] in [[docs/랭그래프/APIs/Graph API 개념]]
