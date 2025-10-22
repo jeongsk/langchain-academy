@@ -16,5 +16,7 @@
   "explorer-hider",
   "recent-notes",
   "oz-clear-unused-images",
-  "obsidian-excalidraw-plugin"
+  "obsidian-excalidraw-plugin",
+  "find-orphaned-images",
+  "find-unlinked-files"
 ]
