@@ -1,7 +1,7 @@
 ---
 source: https://langchain-ai.github.io/langgraph/concepts/low_level/
 created: 2025-10-04 18:10:07
-updated: 2025-10-12 11:02:59
+updated: 2025-10-22 22:16:50
 ---
 ## 그래프
 
@@ -27,7 +27,7 @@ LangGraph의 기본 그래프 알고리즘은 [message passing](https://en.wikip
 
 그래프를 만들려면 먼저 State를 정의하고, Nodes와 Edges를 추가한 뒤 컴파일합니다. 컴파일이 정확히 무엇이며 왜 필요한가요?
 
-컴파일은 매우 간단한 단계입니다. 그래프 구조에 대한 기본 검사를 수행합니다(고아 노드가 없는지 등). 또한 여기서 [체크포인터](persistence.md)와 브레이크포인트 같은 런타임 인자를 지정할 수 있습니다. 그래프를 컴파일하려면 `.compile` 메서드를 호출하면 됩니다:
+컴파일은 매우 간단한 단계입니다. 그래프 구조에 대한 기본 검사를 수행합니다(고아 노드가 없는지 등). 또한 여기서 체크포인터와 브레이크포인트 같은 런타임 인자를 지정할 수 있습니다. 그래프를 컴파일하려면 `.compile` 메서드를 호출하면 됩니다:
 
 ```python
 graph = graph_builder.compile(...)
@@ -401,7 +401,7 @@ def my_node(state: State) -> Command[Literal["my_other_node"]]:
 
 ### 언제 Command를 사용하고 Conditional Edges를 사용하지 않을까?
 
-- **Command**: 상태를 업데이트하면서 동시에 다른 노드로 이동해야 할 때(예: [multi-agent handoffs](multi_agent.md#handoffs)).
+- **Command**: 상태를 업데이트하면서 동시에 다른 노드로 이동해야 할 때(예: [[멀티 에이전트 시스템#핸드오프|multi-agent handoffs]]
 - **Conditional Edges**: 상태 업데이트 없이 순수하게 흐름만 제어하고 싶을 때.
 
 ## 부모 그래프에서 노드 이동하기
@@ -429,7 +429,7 @@ def my_node(state: State) -> Command[Literal["other_subgraph"]]:
 
 ## Human‑in‑the‑loop
 
-`Command`는 휴먼‑인‑루프 워크플로우에서도 중요한 역할을 합니다. `interrupt()`로 사용자 입력을 받고, 그 입력을 `Command(resume="User input")`으로 전달해 실행을 재개합니다. 자세한 내용은 [개념 가이드](human_in_the_loop.md)를 확인하세요.
+`Command`는 휴먼‑인‑루프 워크플로우에서도 중요한 역할을 합니다. `interrupt()`로 사용자 입력을 받고, 그 입력을 `Command(resume="User input")`으로 전달해 실행을 재개합니다. 자세한 내용은 [[휴먼-인-더-루프 개요]]를 확인하세요.
 
 ## Graph Migrations
 
