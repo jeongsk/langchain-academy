@@ -60,7 +60,7 @@ jobs:
       - name: Configure Quartz
         # if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
-          sed -i 's/pageTitle: "Quartz 4"/pageTitle: "랭체인 아카데미"/' quartz-build/quartz.config.ts
+          sed -i 's/pageTitle: "Quartz 4"/pageTitle: "LangGraph Study"/' quartz-build/quartz.config.ts
           sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "langchain-academy.pages.dev"|' quartz-build/quartz.config.ts
           sed -i 's/body: "Source Sans Pro"/body: "Gowun Dodum"/' quartz-build/quartz.config.ts
           sed -i 's/header: "Schibsted Grotesk"/header: "Gowun Dodum"/' quartz-build/quartz.config.ts
