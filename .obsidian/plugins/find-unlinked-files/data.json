@@ -15,7 +15,9 @@
   "unresolvedLinksOutputFileName": "broken links output",
   "unresolvedLinksDirectoriesToIgnore": [
     "langgraph-foundation/",
-    "langgraph/"
+    "langgraph-tutorial/",
+    "projects/",
+    "settings/"
   ],
   "unresolvedLinksFilesToIgnore": [],
   "unresolvedLinksFileTypesToIgnore": [],
