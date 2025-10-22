@@ -1,14 +1,9 @@
 ---
 created: 2025-10-20 23:50:00
-updated: 2025-10-20 23:50:00
-tags:
-  - LangGraph
-  - Ambient_Agents
-  - 프로젝트
-  - MOC
+updated: 2025-10-22 20:21:12
+tags: [프로젝트, Ambient_Agents, LangGraph, MOC]
+title: Ambient Agents with LangGraph
 ---
-## 소개
-
 [[index|LangGraph Academy]]의 Ambient Agents 프로젝트 시리즈에 오신 것을 환영합니다! 본 과정은 LangGraph를 활용하여 실전 프로젝트를 구현하며 학습하는 프로젝트 중심 실습 과정입니다.
 
 각 프로젝트는 실제 사용 사례를 바탕으로 구성되어 있으며, [[Foundation Introduction to LangGraph|Foundation]] 과정에서 학습한 개념들을 실무에 적용하는 방법을 배웁니다.
