@@ -1,6 +1,6 @@
 ---
 created: 2025-10-22 00:41:40
-updated: 2025-10-22 00:55:06
+updated: 2025-10-22 01:07:04
 ---
 # Project: Ambient Agents with LangGraph
 
@@ -8,7 +8,7 @@ updated: 2025-10-22 00:55:06
 
 Ambient Agents 프로젝트 시리즈에 오신 것을 환영합니다!
 
-이 저장소는 에이전트를 처음부터 구축하는 방법을 안내합니다. Gmail API와 연결하여 이메일을 관리할 수 있는 ["앰비언트(ambient)"](https://blog.langchain.dev/introducing-ambient-agents/) 에이전트를 구축하는 것을 목표로 합니다.
+이 저장소는 에이전트를 처음부터 구축하는 방법을 안내합니다. Gmail API와 연결하여 이메일을 관리할 수 있는 ["앰비언트(ambient)"](https://langchain-academy.jeongsk.work/%EB%9E%AD%EA%B7%B8%EB%9E%98%ED%94%84/%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/Ambient-Agents-%EC%86%8C%EA%B0%9C) 에이전트를 구축하는 것을 목표로 합니다.
 
 LangChain의 목표는 에이전트 애플리케이션 구축을 최대한 용이하게 하는 것이며, **모델의 발전과 함께 에이전트의 상호 작용 방식도 변화하고 있습니다.** 과거에는 대부분 채팅 인터페이스를 통해 한 번에 하나의 상호 작용을 처리했지만, AI의 자율 수행 능력은 7개월마다 두 배로 증가하고 있습니다.
 
