@@ -31,12 +31,12 @@ LangGraph로 AI 에이전트를 만드는 방법을 공부하고 있습니다. �
 
 ### LangGraph
 
-- [랭그래프](랭그래프/LangGraph.md) - 공식 문서를 보면서 정리한 내용입니다
+- [랭그래프](LangGraph.md) - 공식 문서를 보면서 정리한 내용입니다
 - [랭그래프 공식 문서 1.0 한국어 번역](https://langchain-docs.jeongsk.work/oss/python/langgraph/overview) - 한국어로 번역된 공식 문서입니다
 
 ### AI 에이전트 설계 및 가이드
 
-- [[프롬프트 엔지니어링/index|프롬프트 엔지니어링]] - 프롬프트를 잘 작성하는 것이 생각보다 중요합니다
+- [[docs/300 프롬프트 엔지니어링/index|프롬프트 엔지니어링]] - 프롬프트를 잘 작성하는 것이 생각보다 중요합니다
 - [Google 생성형 AI 기반 에이전트 가이드](https://www.kaggle.com/whitepaper-agents?utm_source=pytorchkr&ref=pytorchkr) - Google이 공개한 생성형 AI 기반 Agents 개요 및 구현 가이드입니다. (PDF, 영문 42p)
 - [OpenAI, 에이전트 제작을 위한 실전 가이드](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf) - OpenAI가 공개한 에이전트 제작 가이드입니다. (PDF, 영문 34p)
 - [Agentic Design Patterns: A Hands-On Guide to Building Intelligent Systems](https://docs.google.com/document/d/1rsaK53T3Lg5KoGwvf8ukOUvbELRtH-V0LnOIFDxBryE/preview?tab=t.0#heading=h.pxcur8v2qagu) - Google CTO Office 수석 디렉터 Antonio Gulli의 LLM 시스템 접목 경험과 통찰을 담은 책입니다.
