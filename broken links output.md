@@ -1,5 +1,5 @@
 
-- [[랭그래프/LangGraph 배포 가이드]] in [[docs/랭그래프/에이전트/워크플로우와 에이전트 패턴]], [[docs/랭그래프/휴먼-인-더-루프/Server API를 활용한 휴먼-인-더-루프]]
+
 - [[../../agents/agent overview]] in [[docs/랭그래프/참조/사전구축된-에이전트]]
 - [[persistence]] in [[docs/랭그래프/APIs/Graph API 개념]]
 - [[multi_agent]] in [[docs/랭그래프/APIs/Graph API 개념]]
