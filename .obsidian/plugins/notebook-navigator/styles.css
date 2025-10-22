@@ -277,6 +277,84 @@ body {
     opacity: 0.9;
 }
 
+/* Floating circular button that shows when updates are available */
+.nn-update-indicator {
+    position: absolute;
+    bottom: calc(4px + env(safe-area-inset-bottom, 0px));
+    left: calc(4px + env(safe-area-inset-left, 0px));
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--interactive-accent) !important;
+    color: var(--text-on-accent);
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+    appearance: none;
+    line-height: 0;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        box-shadow 0.2s ease;
+    z-index: 11;
+}
+
+/* Hover state for update indicator */
+.nn-update-indicator:hover {
+    transform: scale(1.02);
+    opacity: 1;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+}
+
+/* Focus state for keyboard navigation */
+.nn-update-indicator:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 2px var(--background-primary),
+        0 0 0 4px var(--interactive-accent);
+    transform: scale(1.02);
+}
+
+/* Icon container within the update indicator button */
+.nn-update-indicator__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-on-accent);
+}
+
+/* Icon SVG sizing and styling */
+.nn-update-indicator__icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+/* Mobile adjustments for update indicator positioning and size */
+.nn-mobile .nn-update-indicator {
+    bottom: calc(56px + var(--nn-mobile-safe-area-bottom, env(safe-area-inset-bottom, 0px)));
+    left: calc(8px + env(safe-area-inset-left, 0px));
+    width: 28px;
+    height: 28px;
+}
+
+/* Mobile icon size adjustments */
+.nn-mobile .nn-update-indicator__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Fade-out animation state for update indicator */
+.nn-update-indicator.fade-out {
+    opacity: 0;
+    transform: scale(0.88);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
 .nn-update-status {
     margin-top: 6px;
     font-weight: 600;
@@ -305,6 +383,16 @@ body {
 
     .nn-update-banner.fade-out {
         transform: translateY(-12px);
+    }
+
+    .nn-update-indicator {
+        width: 24px;
+        height: 24px;
+    }
+
+    .nn-update-indicator__icon svg {
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -1218,31 +1306,35 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    align-items: center;
 }
 
 .nn-root-reorder-title {
-    font-size: var(--font-small);
+    font-size: var(--nn-desktop-header-font-size);
     font-weight: var(--nn-theme-list-header-breadcrumb-font-weight);
+    line-height: 1.3;
 }
 
-.is-mobile .nn-root-reorder-title {
-    font-size: var(--font-normal);
+.notebook-navigator-mobile .nn-root-reorder-title {
+    font-size: var(--nn-mobile-header-font-size);
 }
 
 .nn-root-reorder-title,
 .nn-root-reorder-hint {
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .nn-root-reorder-hint {
-    font-size: var(--font-smaller);
+    font-size: var(--font-ui-smaller);
     color: var(--text-muted);
+    line-height: 1.25;
 }
 
-.is-mobile .nn-root-reorder-hint {
-    font-size: var(--font-small);
+.notebook-navigator-mobile .nn-root-reorder-hint {
+    font-size: var(--font-ui-small);
 }
 
 .nn-root-reorder-list {
@@ -1252,8 +1344,46 @@ body {
     padding: 0;
 }
 
+.nn-root-reorder-section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.nn-root-reorder-section[data-reorder-drop-after='true']::after {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--interactive-accent);
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.nn-desktop .nn-root-reorder-section[data-reorder-drop-after='true']::after {
+    height: 3px;
+    bottom: -1px;
+    z-index: 5;
+}
+
+.nn-root-reorder-section-list {
+    display: flex;
+    flex-direction: column;
+}
+
 .nn-root-reorder-item {
     cursor: default;
+}
+
+.nn-root-reorder-item .nn-shortcut-label {
+    font-weight: var(--nn-theme-navitem-name-font-weight);
+}
+
+.nn-root-reorder-item .nn-shortcut-label[data-has-color='true'] {
+    font-weight: var(--nn-theme-navitem-custom-color-name-font-weight) !important;
 }
 
 .nn-root-reorder-item--missing .nn-shortcut-label {
@@ -1262,8 +1392,7 @@ body {
 }
 
 .nn-root-reorder-actions {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0.75rem;
     display: flex;
     justify-content: center;
 }
@@ -1494,7 +1623,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: var(--nn-theme-file-name-color);
+    color: var(--nn-theme-navitem-icon-color);
 }
 
 .nn-file-name-wrapper[data-multiline='true'] .nn-file-icon {
@@ -1518,11 +1647,11 @@ body {
 }
 
 .nn-file-icon[data-has-color='false'] {
-    color: var(--nn-theme-file-name-color);
+    color: var(--nn-theme-navitem-icon-color);
 }
 
 .nn-file.nn-selected .nn-file-icon[data-has-color='false'] {
-    color: var(--nn-theme-file-name-selected-color);
+    color: var(--nn-theme-navitem-selected-icon-color);
 }
 
 .nn-file-icon[data-has-color='true'] svg {
@@ -2760,6 +2889,8 @@ body.nn-resizing {
     display: flex;
     flex-wrap: wrap;
     gap: var(--size-2-3);
+    padding-bottom: var(--size-2-2);
+    border-bottom: 1px solid var(--background-modifier-border);
 }
 
 .nn-settings-tab-button {
@@ -3839,7 +3970,7 @@ body.nn-resizing {
 
 .nn-iconfont-fa-solid {
     font-weight: 900;
-    font-family: 'NotebookNavigatorFontAwesomeSolid', 'Font Awesome 6 Free', sans-serif;
+    font-family: 'NotebookNavigatorFontAwesomeSolid', 'Font Awesome 7 Free', sans-serif;
 }
 
 .nn-iconfont-rpg-awesome,
@@ -3955,6 +4086,57 @@ body.nn-resizing {
     color: var(--text-error);
 }
 
+/* ========================================================================
+   Transparency Toggles
+   ======================================================================== */
+
+/* Navigation pane transparency - applied when toggle is enabled */
+body.nn-navigation-pane-transparent .notebook-navigator {
+    background-color: transparent !important;
+}
+
+body.nn-navigation-pane-transparent .nn-navigation-pane {
+    background-color: transparent !important;
+}
+
+body.nn-navigation-pane-transparent .nn-navigation-pane .nn-pane-header {
+    background-color: transparent !important;
+}
+
+body.nn-navigation-pane-transparent .nn-shortcut-pinned {
+    background-color: transparent !important;
+}
+
+body.nn-navigation-pane-transparent .nn-navigation-pane-scroller {
+    background-color: transparent !important;
+}
+
+/* List pane transparency - applied when toggle is enabled */
+body.nn-list-pane-transparent .notebook-navigator {
+    background-color: transparent !important;
+}
+
+body.nn-list-pane-transparent .nn-list-pane {
+    background-color: transparent !important;
+}
+
+body.nn-list-pane-transparent .nn-list-pane .nn-pane-header {
+    background-color: transparent !important;
+}
+
+body.nn-list-pane-transparent .nn-list-pane-scroller {
+    background-color: transparent !important;
+}
+
+body.nn-list-pane-transparent .nn-list-title-area {
+    background-color: transparent !important;
+}
+
+body.nn-list-pane-transparent .nn-search-bar-container,
+body.nn-list-pane-transparent .nn-search-input-wrapper {
+    background-color: transparent !important;
+}
+
 /* @settings
 
 name: Notebook Navigator
@@ -3977,6 +4159,12 @@ settings:
         format: hex
         default-light: '#'
         default-dark: '#'
+    -
+    -
+        id: nn-navigation-pane-transparent
+        title: Navigation pane transparency
+        description: Make the navigation pane transparent (removes background).
+        type: class-toggle
     -
     -
         id: nn-nav-pane-items-heading
@@ -4251,6 +4439,13 @@ settings:
         format: hex
         default-light: '#'
         default-dark: '#'
+    -
+    -
+        id: nn-list-pane-transparent
+        title: List pane transparency
+        description: Make the list pane transparent (removes background).
+        type: class-toggle
+    -
     -
         id: nn-theme-list-search-active-bg
         title: Search field active background

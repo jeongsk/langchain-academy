@@ -11,9 +11,10 @@
   "ai-providers",
   "templater-obsidian",
   "local-gpt",
-  "infio-copilot",
   "obsidian-style-settings",
   "folder-notes",
   "explorer-hider",
-  "recent-notes"
+  "recent-notes",
+  "oz-clear-unused-images",
+  "obsidian-excalidraw-plugin"
 ]
