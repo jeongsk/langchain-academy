@@ -1,8 +1,8 @@
 ---
-title: "Agents"
-source: "https://langchain-ai.github.io/langgraph/reference/agents/"
+title: "사전 구축된 에이전트로 빠르게 시작하기: create_react_agent"
+source: https://langchain-ai.github.io/langgraph/reference/agents/
 created: 2025-10-07 12:47:13
-updated: 2025-10-22 22:23:04
+updated: 2025-10-22 22:29:50
 ---
 > [!warnint] `create_react_agent`는 deprecated 되었습니다.
 > `create_react_agent` 대신 [`create_agent`](https://reference.langchain.com/python/langchain/agents/)를 사용합니다.
