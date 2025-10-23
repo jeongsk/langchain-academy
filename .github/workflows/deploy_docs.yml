@@ -48,7 +48,7 @@ jobs:
       - name: Clone Quartz
         #if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
-          git clone --depth 1 --single-branch https://github.com/jackyzha0/quartz.git quartz-build
+          git clone --depth 1 --single-branch --branch v4 https://github.com/jackyzha0/quartz.git quartz-build
 
       - name: Configure Quartz
         #if: steps.cache-quartz.outputs.cache-hit != 'true'
