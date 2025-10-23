@@ -18,5 +18,6 @@
   "oz-clear-unused-images",
   "obsidian-excalidraw-plugin",
   "find-orphaned-images",
-  "find-unlinked-files"
+  "find-unlinked-files",
+  "custom-file-viewer"
 ]
