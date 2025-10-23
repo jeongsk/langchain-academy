@@ -23,7 +23,19 @@ dependencies = [
   "streamlit>=1.50.0",
   "trustcall>=0.0.39",
   "unstructured>=0.18.15",
-  "wikipedia>=1.4.0",
+  "wikipedia>=1.4.0","pandas",
+  "matplotlib",
+  "pytest",
+  "pytest-xdist",
+  "jupyter",
+  "langgraph-cli[inmem]",
+  "google-api-python-client>=2.128.0",
+  "google-auth-oauthlib",
+  "google-auth-httplib2",
+  "python-dotenv",
+  "pyppeteer",
+  "html2text",
+  "rich",
 ]
 description = "Add your description here"
 name = "foundation-introduction-to-langgraph"
