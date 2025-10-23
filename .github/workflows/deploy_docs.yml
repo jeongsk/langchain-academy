@@ -57,6 +57,7 @@ jobs:
           sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "langchain-academy.jeongsk.work"|' quartz-build/quartz.config.ts
           sed -i 's/body: "Source Sans Pro"/body: "Gowun Dodum"/' quartz-build/quartz.config.ts
           sed -i 's/header: "Schibsted Grotesk"/header: "Gowun Dodum"/' quartz-build/quartz.config.ts
+          cat quartz-build/quartz.config.ts
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
