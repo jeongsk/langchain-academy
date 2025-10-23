@@ -41,9 +41,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: quartz-build
-          key: quartz-repo-${{ steps.quartz-version.outputs.commit }}
+          key: quartz-${{ steps.quartz-version.outputs.commit }}
           restore-keys: |
-            quartz-repo-
+            quartz-
 
       - name: Clone Quartz
         if: steps.cache-quartz.outputs.cache-hit != 'true'
@@ -58,7 +58,7 @@ jobs:
           fi
 
       - name: Configure Quartz
-        # if: steps.cache-quartz.outputs.cache-hit != 'true'
+        if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
           sed -i 's/pageTitle: "Quartz 4"/pageTitle: "Jeongsk"/' quartz-build/quartz.config.ts
           sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "langchain-academy.jeongsk.work"|' quartz-build/quartz.config.ts
