@@ -51,7 +51,7 @@
     // Jupyter 실행 설정
     "jupyter.askForKernelRestart": false,
     "jupyter.interactiveWindow.textEditor.executeSelection": true,
-    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    // "jupyter.notebookFileRoot": "${workspaceFolder}",
     "jupyter.debugJustMyCode": false,
     // Jupyter 출력 설정
     "notebook.output.textLineLimit": 500,
@@ -97,7 +97,6 @@
         "**/.pytest_cache": true,
         "**/.ruff_cache": true,
         "**/.tox": true,
-        "**/.venv*": true,
         "**/.infio_json_db": true,
         "**/*.pyc": true,
         "**/.ipynb_checkpoints": true
