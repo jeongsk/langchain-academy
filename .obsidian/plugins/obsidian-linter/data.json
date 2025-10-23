@@ -279,7 +279,13 @@
   "foldersToIgnore": [
     "settings"
   ],
-  "filesToIgnore": [],
+  "filesToIgnore": [
+    {
+      "label": "README",
+      "match": "README",
+      "flags": "i"
+    }
+  ],
   "linterLocale": "system-default",
   "logLevel": "ERROR",
   "lintCommands": [],

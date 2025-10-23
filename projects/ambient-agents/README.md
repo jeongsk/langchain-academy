@@ -1,7 +1,3 @@
----
-created: 2025-10-22 00:41:40
-updated: 2025-10-22 01:07:04
----
 # Project: Ambient Agents with LangGraph
 
 ## 소개
