@@ -19,7 +19,7 @@
 - [**13-QA-RAG-Agent**](./13-qa-rag-agent/LangGraph-QA-RAG-Agent.ipynb): RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 문서 기반 Q&A 에이전트 프로젝트
 - [**14-Graphiti-Agent**](./14-graphiti-agent/README.md): Graphiti를 활용한 에이전트 프로젝트
 
-## 참고 자료
+아래는 제가 학습에 도움을 받은 자료입니다.
 
 ### 테디노트
 
