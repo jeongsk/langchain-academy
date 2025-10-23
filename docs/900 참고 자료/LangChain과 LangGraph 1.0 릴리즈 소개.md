@@ -1,6 +1,6 @@
 ---
 created: 2025-10-23 23:34:36
-updated: 2025-10-23 23:36:13
+updated: 2025-10-23 23:38:11
 ---
 ## 개요
 
@@ -215,5 +215,5 @@ LangChain의 에이전트 생성을 사용하여 기능적인 에이전트를 �
 
 ## 참고 링크
 
-- **LangGraph 공식 문서**: <https://langchain-ai.github.io/langgraph/>
-- **LangChain 공식 문서**: <https://python.langchain.com/>
+- **LangGraph 공식 문서**: https://docs.langchain.com/oss/python/langchain/overview
+- **LangChain 공식 문서**: https://docs.langchain.com/oss/python/langgraph/overview
