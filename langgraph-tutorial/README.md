@@ -1,6 +1,4 @@
-# 프로젝트
-
-## MOC
+# 랭그래프 튜토리얼
 
 - [**01-Agent-Simulation**](./01-agent-simulation/01-Agent-Simulation.ipynb): LangGraph를 활용한 에이전트 시뮬레이션 프로젝트
 - [**02-Meta-Prompt-Generation**](./02-meta-prompt-generation/02-Meta-Prompt-Generation.ipynb): LangGraph를 활용한 메타 프롬프트 생성 프로젝트
@@ -18,6 +16,8 @@
 - [**12-Perflexity-Clone**](./12-perflexity-clone/README.md): 퍼플렉시티 클론 코딩 프로젝트
 - [**13-QA-RAG-Agent**](./13-qa-rag-agent/LangGraph-QA-RAG-Agent.ipynb): RAG(Retrieval-Augmented Generation)를 활용한 LangGraph 문서 기반 Q&A 에이전트 프로젝트
 - [**14-Graphiti-Agent**](./14-graphiti-agent/README.md): Graphiti를 활용한 에이전트 프로젝트
+
+---
 
 아래는 제가 학습에 도움을 받은 자료입니다.
 
