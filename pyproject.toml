@@ -112,6 +112,7 @@ ignore = [
     "PLR0912", # too-many-branches
     "ARG001",  # unused-function-argument (LangChain 콜백에서 필요)
     "ARG002",  # unused-method-argument
+    "D101",
 ]
 
 # 파일별 무시 규칙
@@ -119,6 +120,7 @@ ignore = [
 "__init__.py" = ["F401", "F403"]  # 미사용 import 허용
 "**/tests/**" = ["S101", "PLR2004", "ARG001"]  # 테스트 파일
 "**/studio/**" = ["T201", "S105"]  # Studio 예제 코드
+""
 
 [tool.ruff.lint.isort]
 known-first-party = ["langgraph", "langchain"]
