@@ -1,7 +1,3 @@
----
-created: 2025-09-29 13:59:32
-updated: 2025-10-10 23:48:35
----
 # LangGraph Academy
 
 ## 소개
