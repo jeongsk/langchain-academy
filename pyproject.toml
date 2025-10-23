@@ -37,8 +37,7 @@ dependencies = [
   "html2text",
   "rich",
 ]
-description = "Add your description here"
-name = "foundation-introduction-to-langgraph"
+name = "langchain-academy"
 readme = "README.md"
 requires-python = ">=3.12"
 version = "0.1.0"
