@@ -90,7 +90,7 @@ jobs:
             quartz-build-${{ steps.quartz-version.outputs.commit }}-
 
       - name: Copy docs to Quartz content
-        if: steps.cache-build.outputs.cache-hit != 'true'
+        #if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           # Remove default content
           rm -rf quartz-build/content/*
@@ -102,7 +102,7 @@ jobs:
           find quartz-build/content -name '.DS_Store' -delete
 
       - name: Build Quartz site
-        if: steps.cache-build.outputs.cache-hit != 'true'
+        #if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           cd quartz-build
           npx quartz build
