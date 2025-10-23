@@ -1,14 +1,13 @@
 ---
 created: 2025-10-23 23:34:36
-updated: 2025-10-23 23:38:11
+updated: 2025-10-24 00:12:51
 ---
 ## 개요
 
 LangChain과 LangGraph 1.0 정식 릴리즈를 소개하는 공식 유튜브 영상의 요약입니다. LangChain의 공동 창립자이자 CEO인 해리슨과 오픈 소스 엔지니어들이 3년간의 발전 과정과 1.0 버전의 핵심 내용을 설명합니다.
 
-- **영상**: [Building LangChain and LangGraph 1.0](https://www.youtube.com/watch?v=r5Z_gYZb4Ns)
-- **출처**: LangChain 공식 유튜브 채널
-- **주요 발표자**: 해리슨 체이스(CEO), 시드니, 헌터, 윌(엔지니어)
+![](https://www.youtube.com/watch?v=r5Z_gYZb4Ns)
+> **주요 발표자**: 해리슨 체이스(CEO), 시드니, 헌터, 윌(엔지니어)
 
 ## LangChain의 초기 비전과 발전
 
