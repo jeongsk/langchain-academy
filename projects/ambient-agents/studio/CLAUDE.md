@@ -1,6 +1,6 @@
 # Agents in this Repository
 
-프로젝트 개요는 @README를 참조하세요.
+Please refer to @../README.md for the project overview.
 
 ## Overview
 
