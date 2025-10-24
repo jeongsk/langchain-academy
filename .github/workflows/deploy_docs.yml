@@ -36,34 +36,28 @@ jobs:
           echo "commit=$QUARTZ_COMMIT" >> $GITHUB_OUTPUT
           echo "Quartz HEAD commit: $QUARTZ_COMMIT"
 
-      - name: Cache Quartz repository
-        id: cache-quartz
-        uses: actions/cache@v4
-        with:
-          path: quartz-build
-          key: quartz-repo-${{ steps.quartz-version.outputs.commit }}
-          restore-keys: |
-            quartz-repo-
+#      - name: Cache Quartz repository
+#        id: cache-quartz
+#        uses: actions/cache@v4
+#        with:
+#          path: quartz-build
+#          key: quartz-repo-${{ steps.quartz-version.outputs.commit }}
+#          restore-keys: |
+#            quartz-repo-
 
       - name: Clone Quartz
-        if: steps.cache-quartz.outputs.cache-hit != 'true'
+        #if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
-          if [ -d quartz-build ]; then
-            cd quartz-build
-            git fetch origin
-            git reset --hard origin/main
-            cd ..
-          else
-            git clone --depth 1 --single-branch https://github.com/jackyzha0/quartz.git quartz-build
-          fi
+          git clone --depth 1 --single-branch --branch v4 https://github.com/jackyzha0/quartz.git quartz-build
 
       - name: Configure Quartz
-        # if: steps.cache-quartz.outputs.cache-hit != 'true'
+        #if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
-          sed -i 's/pageTitle: "Quartz 4"/pageTitle: "LangGraph Study"/' quartz-build/quartz.config.ts
-          sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "langchain-academy.pages.dev"|' quartz-build/quartz.config.ts
+          sed -i 's/pageTitle: "Quartz 4"/pageTitle: "Jeongsk"/' quartz-build/quartz.config.ts
+          sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "langchain-academy.jeongsk.work"|' quartz-build/quartz.config.ts
           sed -i 's/body: "Source Sans Pro"/body: "Gowun Dodum"/' quartz-build/quartz.config.ts
           sed -i 's/header: "Schibsted Grotesk"/header: "Gowun Dodum"/' quartz-build/quartz.config.ts
+          cat quartz-build/quartz.config.ts
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -96,7 +90,7 @@ jobs:
             quartz-build-${{ steps.quartz-version.outputs.commit }}-
 
       - name: Copy docs to Quartz content
-        if: steps.cache-build.outputs.cache-hit != 'true'
+        #if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           # Remove default content
           rm -rf quartz-build/content/*
@@ -108,7 +102,7 @@ jobs:
           find quartz-build/content -name '.DS_Store' -delete
 
       - name: Build Quartz site
-        if: steps.cache-build.outputs.cache-hit != 'true'
+        #if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           cd quartz-build
           npx quartz build
