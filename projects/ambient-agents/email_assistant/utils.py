@@ -1,5 +1,5 @@
 import json
-from typing import Any, List
+from typing import Any
 
 import html2text
 
@@ -160,6 +160,7 @@ def parse_gmail(email_input: dict) -> tuple[str, str, str, str, str]:
             - email_thread: Full email content
             - email_id: Email ID (or None if not available)
     """
+
     print("!Email_input from Gmail!")
     print(email_input)
 
@@ -193,7 +194,7 @@ def extract_message_content(message) -> str:
         return content
 
     # Handle list content (AIMessage format)
-    elif isinstance(content, list):
+    if isinstance(content, list):
         text_parts = []
         for item in content:
             if isinstance(item, dict) and "text" in item:
@@ -243,7 +244,7 @@ Correct Classification: {correct_routing}
     return "\n".join(formatted)
 
 
-def extract_tool_calls(messages: List[Any]) -> List[str]:
+def extract_tool_calls(messages: list[Any]) -> list[str]:
     """Extract tool call names from messages, safely handling messages without tool_calls."""
     tool_call_names = []
     for message in messages:
@@ -261,7 +262,7 @@ def extract_tool_calls(messages: List[Any]) -> List[str]:
     return tool_call_names
 
 
-def format_messages_string(messages: List[Any]) -> str:
+def format_messages_string(messages: list[Any]) -> str:
     """Format messages into a single string for analysis."""
     return "\n".join(message.pretty_repr() for message in messages)
 
