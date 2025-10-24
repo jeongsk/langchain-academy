@@ -12,6 +12,12 @@ on:
     paths:
       - 'docs/**'
   workflow_dispatch:
+    inputs:
+      use_cache:
+        description: 'Use cache for build (캐시 사용 여부)'
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -36,22 +42,24 @@ jobs:
           echo "commit=$QUARTZ_COMMIT" >> $GITHUB_OUTPUT
           echo "Quartz HEAD commit: $QUARTZ_COMMIT"
 
-#      - name: Cache Quartz repository
-#        id: cache-quartz
-#        uses: actions/cache@v4
-#        with:
-#          path: quartz-build
-#          key: quartz-repo-${{ steps.quartz-version.outputs.commit }}
-#          restore-keys: |
-#            quartz-repo-
+      - name: Cache Quartz repository
+        id: cache-quartz
+        # push/PR always uses cache, workflow_dispatch respects input
+        if: github.event_name != 'workflow_dispatch' || inputs.use_cache == true
+        uses: actions/cache@v4
+        with:
+          path: quartz-build
+          key: quartz-repo-${{ steps.quartz-version.outputs.commit }}
+          restore-keys: |
+            quartz-repo-
 
       - name: Clone Quartz
-        #if: steps.cache-quartz.outputs.cache-hit != 'true'
+        if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
           git clone --depth 1 --single-branch --branch v4 https://github.com/jackyzha0/quartz.git quartz-build
 
       - name: Configure Quartz
-        #if: steps.cache-quartz.outputs.cache-hit != 'true'
+        if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
           sed -i 's/pageTitle: "Quartz 4"/pageTitle: "Jeongsk"/' quartz-build/quartz.config.ts
           sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "langchain-academy.jeongsk.work"|' quartz-build/quartz.config.ts
@@ -90,7 +98,6 @@ jobs:
             quartz-build-${{ steps.quartz-version.outputs.commit }}-
 
       - name: Copy docs to Quartz content
-        #if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           # Remove default content
           rm -rf quartz-build/content/*
@@ -102,18 +109,36 @@ jobs:
           find quartz-build/content -name '.DS_Store' -delete
 
       - name: Build Quartz site
-        #if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
           cd quartz-build
           npx quartz build
 
       - name: Show cache status
         run: |
-          if [ "${{ steps.cache-build.outputs.cache-hit }}" == "true" ]; then
-            echo "✅ Build cache hit! Skipping build step."
+          echo "=== Cache Status Summary ==="
+
+          # Check manual cache disable
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ "${{ inputs.use_cache }}" == "false" ]; then
+            echo "🚫 Cache disabled for manual run"
+            echo "   → Quartz repository: Cloned fresh"
+            echo "   → Build output: Built fresh"
           else
-            echo "🔨 Cache miss. Build completed."
+            # Quartz repository cache status
+            if [ "${{ steps.cache-quartz.outputs.cache-hit }}" == "true" ]; then
+              echo "✅ Quartz repository: Cache hit (commit: ${{ steps.quartz-version.outputs.commit }})"
+            else
+              echo "🔨 Quartz repository: Cloned fresh"
+            fi
+
+            # Build cache status
+            if [ "${{ steps.cache-build.outputs.cache-hit }}" == "true" ]; then
+              echo "✅ Build output: Cache hit (docs hash: ${{ steps.docs-hash.outputs.hash }})"
+            else
+              echo "🔨 Build output: Built fresh"
+            fi
           fi
+
+          echo "============================"
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
