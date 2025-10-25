@@ -37,6 +37,13 @@
       "selector": "$",
       "hiddenInNav": true,
       "hiddenInBookmarks": true
+    },
+    {
+      "path": ".toml",
+      "type": "string",
+      "selector": "$",
+      "hiddenInNav": true,
+      "hiddenInBookmarks": true
     }
   ],
   "alwaysHideInBookmarks": false,
