@@ -44,7 +44,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 
 ### 개발 도구
 
-- [[MarkItDown - 파일을 Markdown으로 변환하는 도구]] - Microsoft의 LLM 친화적 파일 변환 유틸리티
+- [[MarkItDown - 문서 파일을 Markdown으로 변환하는 도구]] - Microsoft의 LLM 친화적 파일 변환 유틸리티
   - PDF, Office, 이미지, 오디오 등 다양한 형식 지원
   - MCP(Model Context Protocol) 서버 지원
   - 82,100+ GitHub 스타
@@ -77,7 +77,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 ### RAG 시스템
 
 - [[bRAG-langchain - RAG 애플리케이션 구축 가이드]]
-- [[MarkItDown - 파일을 Markdown으로 변환하는 도구]]
+- [[MarkItDown - 문서 파일을 Markdown으로 변환하는 도구]]
 
 ### 프롬프트 작성
 
@@ -99,7 +99,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 ### RAG 시스템 구축
 
 1. [[bRAG-langchain - RAG 애플리케이션 구축 가이드]] - RAG 기초 및 실습
-2. [[MarkItDown - 파일을 Markdown으로 변환하는 도구]] - 문서 전처리
+2. [[MarkItDown - 문서 파일을 Markdown으로 변환하는 도구]] - 문서 전처리
 3. [[DeepAgents - LangChain으로 고급 주식 조사 에이전트 구축하기]] - 고급 에이전트 통합
 
 ### 에이전트 개발

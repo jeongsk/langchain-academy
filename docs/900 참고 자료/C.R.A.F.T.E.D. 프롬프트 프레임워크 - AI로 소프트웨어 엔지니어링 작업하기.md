@@ -1,13 +1,19 @@
 ---
 title: "C.R.A.F.T.E.D. 프롬프트 프레임워크: AI로 소프트웨어 엔지니어링 작업 수행하기"
-author: "Steven Levey & Gregor Ojstersek"
+author: Steven Levey & Gregor Ojstersek
 source: https://newsletter.eng-leadership.com/p/how-to-use-ai-to-help-with-software
 created: 2025-10-25 00:00:00
 company: Revtelligent
-tags: [베스트프랙티스, 생산성, 소프트웨어엔지니어링, 프레임워크, 프롬프트엔지니어링, AI도구]
+tags:
+  - 베스트프랙티스
+  - 생산성
+  - 소프트웨어엔지니어링
+  - 프레임워크
+  - 프롬프트엔지니어링
+  - AI도구
 related:
   - "[[학습 자료 모음]]"
-  - "[[MarkItDown - 파일을 Markdown으로 변환하는 도구]]"
+  - "[[MarkItDown - 문서 파일을 Markdown으로 변환하는 도구]]"
 updated: 2025-10-25 11:20:13
 ---
 > 원문: https://newsletter.eng-leadership.com/p/how-to-use-ai-to-help-with-software

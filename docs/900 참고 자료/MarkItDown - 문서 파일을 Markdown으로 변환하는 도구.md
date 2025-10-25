@@ -17,9 +17,6 @@ tags:
 related:
   - "[[학습 자료 모음]]"
 ---
-
-# MarkItDown: 파일을 Markdown으로 변환하는 Microsoft 오픈소스 도구
-
 ## 개요
 
 **MarkItDown**은 LLM 및 관련 텍스트 분석 파이프라인에서 사용할 수 있도록 다양한 파일을 Markdown으로 변환하는 가벼운 Python 유틸리티입니다. Microsoft에서 개발한 오픈소스 프로젝트로, **82,100개 이상의 스타**를 받은 인기 있는 도구입니다.

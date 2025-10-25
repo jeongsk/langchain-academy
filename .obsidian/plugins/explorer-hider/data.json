@@ -23,6 +23,13 @@
       "selector": "",
       "hiddenInNav": true,
       "hiddenInBookmarks": true
+    },
+    {
+      "path": "uv.lock",
+      "type": "string",
+      "selector": "",
+      "hiddenInNav": true,
+      "hiddenInBookmarks": true
     }
   ],
   "alwaysHideInBookmarks": false,
