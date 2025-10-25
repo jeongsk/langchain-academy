@@ -7,20 +7,15 @@ authors:
 source: https://www.neweconomies.co/p/the-dawn-of-ai-agents
 publication: "NEW ECONOMIES"
 date: 2025-10-01
-tags:
-  - AI에이전트
-  - Forward-Deployed-Engineer
-  - 워크플로우이해
-  - 평가프레임워크
-  - 전문화
-  - 실무적용
-  - McKinsey연구
+tags: [실무적용, 워크플로우이해, 전문화, 평가프레임워크, AI에이전트, Forward-Deployed-Engineer, McKinsey연구]
 related:
-  - "[[Agents 2.0 - Shallow 에이전트에서 Deep 에이전트로]]"
   - "[[최신 AI 연구 논문 모음]]"
+  - "[[Agents 2.0 - Shallow 에이전트에서 Deep 에이전트로]]"
   - "[[DeepAgents - LangChain으로 고급 주식 조사 에이전트 구축하기]]"
+created: 2025-10-25 11:19:11
+updated: 2025-10-25 11:21:25
 ---
-
+> 원문: https://www.neweconomies.co/p/the-dawn-of-ai-agents
 # AI 에이전트의 시작: 실무에서 진짜 작동하는 것
 
 ## 개요

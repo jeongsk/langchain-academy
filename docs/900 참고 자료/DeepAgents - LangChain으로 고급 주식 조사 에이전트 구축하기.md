@@ -3,21 +3,15 @@ title: "DeepAgents: LangChain으로 Claude 수준의 주식 조사 에이전트 
 author: Sagar
 source: https://medium.com/@sagarnreddy/i-built-a-research-agent-like-claudes-analysis-tools-using-langchain-deepagents-795f51a3a63f
 repository: https://github.com/sagar-n/deepagents
-created: 2025-10-25
+created: 2025-10-25 00:00:00
 stars: 424
-tags:
-  - DeepAgents
-  - LangChain
-  - 주식분석
-  - AI에이전트
-  - 서브에이전트
-  - 금융분석
-  - Gradio
+tags: [금융분석, 서브에이전트, 주식분석, AI에이전트, DeepAgents, Gradio, LangChain]
 related:
-  - "[[Agents 2.0 - Shallow 에이전트에서 Deep 에이전트로]]"
   - "[[최신 AI 연구 논문 모음]]"
+  - "[[Agents 2.0 - Shallow 에이전트에서 Deep 에이전트로]]"
+updated: 2025-10-25 11:22:02
 ---
-
+> 원문: https://medium.com/@sagarnreddy/i-built-a-research-agent-like-claudes-analysis-tools-using-langchain-deepagents-795f51a3a63f
 # DeepAgents: LangChain으로 Claude 수준의 주식 조사 에이전트 구축하기
 
 ## 개요
