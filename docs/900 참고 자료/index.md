@@ -26,10 +26,12 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 
 ### 연구 논문
 
-- [[최신 AI 연구 논문 모음]] - AI 에이전트, LLM 구매 의도 예측, 조기 경험 기반 에이전트 학습 관련 최신 연구 3편
-  - Moloch's Bargain: AI 에이전트의 이중성
-  - LLM Purchase Intent Prediction: 구매 의도 예측
-  - Learning via Early Stopping: 조기 경험 기반 학습
+- [[최신 AI 연구 논문]] - AI와 LLM 분야의 최신 연구 논문 5편
+  - [[Moloch's Bargain - LLM 정렬 오류]] - AI 정렬 및 안전성
+  - [[LLM의 인간 구매 의도 재현]] - 비즈니스 응용
+  - [[초기 경험을 통한 에이전트 학습]] - 에이전트 학습
+  - [[ACE - 진화하는 컨텍스트를 통한 자가 개선]] - LLM 최적화
+  - [[GraphFlow - 지식 그래프 기반 RAG]] - RAG 및 지식 그래프
 
 ### 실무 경험 및 베스트 프랙티스
 
@@ -70,7 +72,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 
 - [[DeepAgents - LangChain으로 고급 주식 조사 에이전트 구축하기]]
 - [[AI 에이전트의 시작 - 실무에서 진짜 작동하는 것]]
-- [[최신 AI 연구 논문 모음]]
+- [[최신 AI 연구 논문]]
 
 ### RAG 시스템
 
@@ -108,7 +110,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 
 ### 최신 연구 및 동향
 
-1. [[최신 AI 연구 논문 모음]] - 최신 연구 논문 3편
+1. [[최신 AI 연구 논문]] - 최신 연구 논문 5편
 2. [[LangChain과 LangGraph 1.0 릴리즈 소개]] - 프레임워크 최신 업데이트
 3. [[AI 에이전트의 시작 - 실무에서 진짜 작동하는 것]] - 실무 트렌드
 
