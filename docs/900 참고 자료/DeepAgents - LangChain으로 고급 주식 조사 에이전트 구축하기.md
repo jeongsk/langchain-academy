@@ -11,7 +11,7 @@ related:
   - "[[Agents 2.0 - Shallow 에이전트에서 Deep 에이전트로]]"
 updated: 2025-10-25 11:22:02
 ---
-> 원문: https://medium.com/@sagarnreddy/i-built-a-research-agent-like-claudes-analysis-tools-using-langchain-deepagents-795f51a3a63f
+> 원문: <https://medium.com/@sagarnreddy/i-built-a-research-agent-like-claudes-analysis-tools-using-langchain-deepagents-795f51a3a63f>
 
 ## 개요
 
@@ -258,6 +258,7 @@ interface.launch()
 ### 단계별 프로세스
 
 1. **계획 수립**
+
    ```
    오케스트레이터: "이 분석을 3단계로 분해하겠습니다:
    1. 펀더멘털 분석가를 통한 재무 데이터 수집
@@ -266,6 +267,7 @@ interface.launch()
    ```
 
 2. **펀더멘털 분석 (서브 에이전트 1)**
+
    ```
    도구 호출: get_stock_price("AAPL")
    도구 호출: get_financial_statements("AAPL")
@@ -275,6 +277,7 @@ interface.launch()
    ```
 
 3. **기술적 분석 (서브 에이전트 2)**
+
    ```
    도구 호출: get_technical_indicators("AAPL")
 
@@ -283,6 +286,7 @@ interface.launch()
    ```
 
 4. **리스크 평가 (서브 에이전트 3)**
+
    ```
    분석: "주요 리스크:
          - 기술주 변동성 (보통)
@@ -291,6 +295,7 @@ interface.launch()
    ```
 
 5. **최종 종합**
+
    ```
    권고사항: 매수
    목표가: $210 (12개월)
@@ -305,11 +310,13 @@ interface.launch()
 ### 전통적 에이전트 vs. DeepAgent
 
 **전통적 에이전트:**
+
 ```
 단일 AI → 간단한 도구 호출 → 기본적인 응답
 ```
 
 **DeepAgent:**
+
 ```
 계획 수립 → 특화된 전문가들 → 데이터 종합 → 전문가급 분석
 ```
@@ -332,6 +339,7 @@ pip install -r requirements.txt
 ```
 
 **requirements.txt:**
+
 ```
 deepagents
 langchain-ollama
@@ -529,6 +537,7 @@ APPLE INC. (AAPL) 투자 분석
 ### 4. 확장성
 
 동일한 아키텍처를 다른 도메인에 적용할 수 있습니다:
+
 - 법률 연구
 - 의료 진단
 - 기술 실사
@@ -567,7 +576,5 @@ APPLE INC. (AAPL) 투자 분석
 **더 많은 실용적 AI 애플리케이션을 위해 저를 팔로우하세요!**
 
 ---
-
-**마지막 업데이트**: 2025-10-25
 
 > 💡 **핵심 메시지**: 진정한 AI의 능력은 모델의 스마트함이 아니라, 특화된 도구와 전문성의 체계적인 조율에 있습니다.

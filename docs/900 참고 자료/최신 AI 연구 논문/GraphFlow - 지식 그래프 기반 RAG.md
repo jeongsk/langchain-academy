@@ -188,7 +188,3 @@ GraphFlow는 지식 그래프 기반 RAG(Retrieval-Augmented Generation)를 위�
 
 - [[최신 AI 연구 논문]]
 - [[학습 자료 모음]]
-
----
-
-**마지막 업데이트**: 2025-10-25

@@ -31,21 +31,25 @@ related:
 MarkItDown은 다음과 같은 다양한 파일 형식을 Markdown으로 변환할 수 있습니다:
 
 #### 오피스 문서
+
 - **PDF** - 학술 논문, 보고서, 전자책
 - **PowerPoint** (.pptx) - 프레젠테이션
 - **Word** (.docx) - 문서
 - **Excel** (.xlsx, .xls) - 스프레드시트
 
 #### 미디어 파일
+
 - **이미지** - EXIF 메타데이터 및 OCR
 - **오디오** (.wav, .mp3) - EXIF 메타데이터 및 음성 전사
 
 #### 웹 및 데이터
+
 - **HTML** - 웹 페이지
 - **CSV, JSON, XML** - 구조화된 데이터
 - **YouTube URLs** - 동영상 전사
 
 #### 기타
+
 - **ZIP 파일** - 압축 파일 내용 반복 처리
 - **EPub** - 전자책
 - **Outlook 메시지** (.msg)
@@ -66,6 +70,7 @@ Claude Desktop과 같은 LLM 애플리케이션과의 통합을 위한 MCP 서�
 ### 4. 플러그인 시스템
 
 3rd-party 플러그인을 통한 확장 가능:
+
 - 기본적으로 비활성화
 - `--use-plugins` 플래그로 활성화
 - GitHub에서 `#markitdown-plugin` 해시태그로 검색 가능
@@ -80,6 +85,7 @@ Claude Desktop과 같은 LLM 애플리케이션과의 통합을 위한 MCP 서�
 ### 가상 환경 생성
 
 **표준 Python:**
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
@@ -88,6 +94,7 @@ venv\Scripts\activate  # Windows
 ```
 
 **uv 사용:**
+
 ```bash
 uv venv
 source .venv/bin/activate
@@ -95,6 +102,7 @@ source .venv/bin/activate
 ```
 
 **Anaconda:**
+
 ```bash
 conda create -n markitdown python=3.12
 conda activate markitdown
@@ -103,11 +111,13 @@ conda activate markitdown
 ### 패키지 설치
 
 **모든 선택적 의존성 포함:**
+
 ```bash
 pip install 'markitdown[all]'
 ```
 
 **소스에서 설치:**
+
 ```bash
 git clone https://github.com/microsoft/markitdown.git
 cd markitdown/packages/markitdown
@@ -123,6 +133,7 @@ pip install 'markitdown[pdf, docx, pptx]'
 ```
 
 **사용 가능한 옵션:**
+
 - `[all]` - 모든 선택적 의존성 설치
 - `[pptx]` - PowerPoint 파일
 - `[docx]` - Word 파일
@@ -139,21 +150,25 @@ pip install 'markitdown[pdf, docx, pptx]'
 ### 1. 커맨드 라인 인터페이스(CLI)
 
 **기본 사용:**
+
 ```bash
 markitdown path-to-file.pdf
 ```
 
 **출력 파일 지정:**
+
 ```bash
 markitdown path-to-file.pdf -o document.md
 ```
 
 **파이프 사용:**
+
 ```bash
 cat path-to-file.pdf | markitdown
 ```
 
 **플러그인 사용:**
+
 ```bash
 # 설치된 플러그인 목록 보기
 markitdown --list-plugins
@@ -165,6 +180,7 @@ markitdown --use-plugins path-to-file.pdf
 ### 2. Python API
 
 **기본 사용:**
+
 ```python
 from markitdown import MarkItDown
 
@@ -174,6 +190,7 @@ print(result.text_content)
 ```
 
 **플러그인 활성화:**
+
 ```python
 from markitdown import MarkItDown
 
@@ -183,6 +200,7 @@ print(result.text_content)
 ```
 
 **Azure Document Intelligence 사용:**
+
 ```python
 from markitdown import MarkItDown
 
@@ -195,6 +213,7 @@ print(result.text_content)
 ```
 
 **LLM을 사용한 이미지 설명:**
+
 ```python
 from markitdown import MarkItDown
 from openai import OpenAI
@@ -221,11 +240,13 @@ docker run --rm -i markitdown:latest < ~/your-file.pdf > output.md
 ### 1. LLM 파이프라인 전처리
 
 **사용 시나리오:**
+
 - PDF 논문을 Markdown으로 변환하여 LLM에 입력
 - PowerPoint 프레젠테이션을 텍스트로 추출하여 요약 생성
 - Excel 데이터를 구조화된 텍스트로 변환
 
 **예시 워크플로우:**
+
 ```python
 from markitdown import MarkItDown
 from openai import OpenAI
@@ -249,11 +270,13 @@ print(response.choices[0].message.content)
 ### 2. RAG 시스템 데이터 준비
 
 **사용 시나리오:**
+
 - 다양한 형식의 문서를 통일된 Markdown 형식으로 변환
 - 벡터 데이터베이스에 임베딩하기 전 전처리
 - 문서 구조 보존을 통한 검색 품질 향상
 
 **예시:**
+
 ```python
 from markitdown import MarkItDown
 from langchain.text_splitter import MarkdownTextSplitter
@@ -278,6 +301,7 @@ chunks = splitter.create_documents(markdown_docs)
 ### 3. 문서 아카이빙 및 검색
 
 **사용 시나리오:**
+
 - 레거시 문서를 검색 가능한 Markdown으로 변환
 - OCR을 통한 이미지 기반 문서 텍스트 추출
 - 통일된 형식으로 문서 관리
@@ -285,6 +309,7 @@ chunks = splitter.create_documents(markdown_docs)
 ### 4. 콘텐츠 추출 및 분석
 
 **사용 시나리오:**
+
 - YouTube 동영상 전사를 통한 콘텐츠 분석
 - 오디오 파일의 음성 인식 및 텍스트 변환
 - 웹 페이지 스크래핑 및 구조화
@@ -340,6 +365,7 @@ print(result.text_content)
 ```
 
 **장점:**
+
 - 복잡한 레이아웃 처리 향상
 - 다국어 지원
 - 표와 양식 추출 정확도 향상
@@ -351,10 +377,12 @@ print(result.text_content)
 3rd-party 플러그인을 개발하여 MarkItDown 기능 확장 가능:
 
 **참고 자료:**
+
 - 샘플 플러그인: `packages/markitdown-sample-plugin`
 - GitHub에서 `#markitdown-plugin` 검색
 
 **플러그인 개발 단계:**
+
 1. 샘플 플러그인 구조 참조
 2. 커스텀 DocumentConverter 구현
 3. setup.py에서 entry_points 정의
@@ -381,6 +409,7 @@ print(result.text_content)
    - [리뷰 가능한 PR](https://github.com/microsoft/markitdown/pulls?q=is%3Apr+is%3Aopen+label%3A%22open+for+reviewing%22)
 
 3. **테스트 및 검사 실행**
+
    ```bash
    cd packages/markitdown
    pip install hatch
@@ -430,9 +459,8 @@ print(result.text_content)
 
 ---
 
-**마지막 업데이트**: 2025-10-25
-
 **추가 정보**:
+
 - [공식 저장소](https://github.com/microsoft/markitdown)
 - [이슈 트래커](https://github.com/microsoft/markitdown/issues)
 - [기여 가이드](https://github.com/microsoft/markitdown/blob/main/README.md#contributing)
