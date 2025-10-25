@@ -10,8 +10,6 @@ tags:
   - 윤리
 ---
 
-# Moloch's Bargain: 청중 확보 경쟁 시 LLM의 정렬 오류
-
 ## 기본 정보
 
 - **제목**: Moloch's Bargain: Emergent Misalignment When LLMs Compete for Audiences

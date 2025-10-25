@@ -10,16 +10,12 @@ tags:
   - 비즈니스
 ---
 
-# LLM의 인간 구매 의도 재현
-
 ## 기본 정보
 
 - **제목**: LLMs Reproduce Human Purchase Intent via Semantic Similarity Elicitation of Likert Ratings
-- **저자**: 연구팀 (상세 정보 확인 필요)
 - **발표일**: 2025년 10월
 - **arXiv**: <https://arxiv.org/abs/2510.08338>
 - **분야**: Artificial Intelligence
-- **페이지**: 28페이지, 35개 그림
 
 ## 연구 개요
 

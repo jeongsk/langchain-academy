@@ -10,8 +10,6 @@ tags:
   - 흐름모델
 ---
 
-# GraphFlow: 지식 그래프 기반 RAG를 위한 흐름 모델
-
 ## 기본 정보
 
 - **제목**: GraphFlow: A Flow-Based Model for Knowledge Graph-Based RAG
