@@ -60,7 +60,7 @@ jobs:
           sed -i 's/header: "Schibsted Grotesk"/header: "Gowun Dodum"/' quartz-build/quartz.config.ts
           echo 'p, ul, text, a, tr, td, li, ol, ul, .katex, .math, .typst-doc, .typst-doc * { word-break: keep-all; }' >> quartz-build/quartz/styles/custom.scss
           cat quartz-build/quartz.config.ts
-          cat quartz-build/quartz-build/quartz/styles/custom.scss
+          cat quartz-build/quartz/styles/custom.scss
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
