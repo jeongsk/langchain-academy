@@ -1,15 +1,9 @@
 ---
 title: "ACE: 진화하는 컨텍스트를 통한 자가 개선 언어 모델"
-created: 2025-10-25
-updated: 2025-10-25
-tags:
-  - 연구논문
-  - 컨텍스트엔지니어링
-  - LLM최적화
-  - 자가개선
-  - 프롬프트최적화
+created: 2025-10-25 00:00:00
+updated: 2025-10-25 18:09:16
+tags: [연구논문, 자가개선, 컨텍스트엔지니어링, 프롬프트최적화, LLM최적화]
 ---
-
 ## 기본 정보
 
 - **제목**: Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models

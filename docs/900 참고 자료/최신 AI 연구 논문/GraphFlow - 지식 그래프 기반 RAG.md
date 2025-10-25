@@ -1,15 +1,9 @@
 ---
 title: "GraphFlow: 지식 그래프 기반 RAG를 위한 흐름 모델"
-created: 2025-10-25
-updated: 2025-10-25
-tags:
-  - 연구논문
-  - 지식그래프
-  - RAG
-  - 정보검색
-  - 흐름모델
+created: 2025-10-25 00:00:00
+updated: 2025-10-25 18:09:22
+tags: [연구논문, 정보검색, 지식그래프, 흐름모델, RAG]
 ---
-
 ## 기본 정보
 
 - **제목**: GraphFlow: A Flow-Based Model for Knowledge Graph-Based RAG

@@ -1,15 +1,9 @@
 ---
 title: "CoT: 사고 사슬 프롬프팅으로 대규모 언어 모델의 추론 능력 향상"
-created: 2025-10-25
-updated: 2025-10-25
-tags:
-  - 연구논문
-  - 프롬프트엔지니어링
-  - CoT
-  - 추론
-  - LLM기초
+created: 2025-10-25 00:00:00
+updated: 2025-10-25 18:09:19
+tags: [연구논문, 추론, 프롬프트엔지니어링, CoT, LLM기초]
 ---
-
 ## 기본 정보
 
 - **제목**: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models

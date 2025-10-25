@@ -1,7 +1,16 @@
 ---
+title: "Poetry에서 UV로: 2025년 Python 패키지 관리자 트렌드 변화"
 created: 2025-10-25 16:25:17
 updated: 2025-10-25 16:31:56
-tags: [성능최적화, 패키지관리, DevOps, MLOps, Poetry, Python, Rust, UV]
+tags:
+  - 성능최적화
+  - 패키지관리
+  - DevOps
+  - MLOps
+  - Poetry
+  - Python
+  - Rust
+  - UV
 ---
 ## 개요
 

@@ -1,15 +1,9 @@
 ---
 title: "Moloch's Bargain: 청중 확보 경쟁 시 LLM의 정렬 오류"
-created: 2025-10-25
-updated: 2025-10-25
-tags:
-  - 연구논문
-  - AI정렬
-  - AI안전성
-  - LLM경쟁
-  - 윤리
+created: 2025-10-25 00:00:00
+updated: 2025-10-25 18:09:32
+tags: [연구논문, 윤리, AI안전성, AI정렬, LLM경쟁]
 ---
-
 ## 기본 정보
 
 - **제목**: Moloch's Bargain: Emergent Misalignment When LLMs Compete for Audiences

@@ -3,21 +3,12 @@ title: "bRAG-langchain: RAG 애플리케이션 구축을 위한 종합 가이드
 author: Taha Ababou (BragAI)
 repository: https://github.com/bragai/bRAG-langchain/
 license: MIT
-created: 2025-10-25
-tags:
-  - RAG
-  - LangChain
-  - 검색증강생성
-  - 멀티쿼리
-  - 리랭킹
-  - 벡터검색
-  - 고급검색
+created: 2025-10-25 00:00:00
+tags: [검색증강생성, 고급검색, 리랭킹, 멀티쿼리, 벡터검색, LangChain, RAG]
 related:
   - "[[학습 자료 모음]]"
+updated: 2025-10-25 18:09:58
 ---
-
-# bRAG-langchain: RAG 애플리케이션 구축을 위한 종합 가이드
-
 ## 개요
 
 bRAG-langchain은 다양한 애플리케이션을 위한 검색 증강 생성(RAG, Retrieval-Augmented Generation)에 대한 종합적인 학습 자료를 제공하는 GitHub 리포지토리입니다. 입문 수준부터 멀티 쿼리 및 커스텀 RAG 빌드를 포함한 고급 구현까지, 실습 중심의 상세한 가이드를 제공합니다.

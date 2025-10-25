@@ -44,8 +44,8 @@ jobs:
 
       - name: Cache Quartz repository
         id: cache-quartz
-        # push/PR always uses cache, workflow_dispatch respects input
-        if: github.event_name != 'workflow_dispatch' || inputs.use_cache == true
+        # push/PR always creates new cache, workflow_dispatch respects input (inverted)
+        if: github.event_name == 'workflow_dispatch' && inputs.use_cache == false
         uses: actions/cache@v4
         with:
           path: quartz-build

@@ -12,7 +12,6 @@ related:
 updated: 2025-10-25 11:22:02
 ---
 > 원문: https://medium.com/@sagarnreddy/i-built-a-research-agent-like-claudes-analysis-tools-using-langchain-deepagents-795f51a3a63f
-# DeepAgents: LangChain으로 Claude 수준의 주식 조사 에이전트 구축하기
 
 ## 개요
 

@@ -16,7 +16,6 @@ created: 2025-10-25 11:19:11
 updated: 2025-10-25 11:21:25
 ---
 > 원문: https://www.neweconomies.co/p/the-dawn-of-ai-agents
-# AI 에이전트의 시작: 실무에서 진짜 작동하는 것
 
 ## 개요
 

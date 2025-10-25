@@ -1,15 +1,9 @@
 ---
 title: "LLM의 인간 구매 의도 재현"
-created: 2025-10-25
-updated: 2025-10-25
-tags:
-  - 연구논문
-  - 구매의도
-  - 마케팅
-  - LLM응용
-  - 비즈니스
+created: 2025-10-25 00:00:00
+updated: 2025-10-25 18:09:27
+tags: [구매의도, 마케팅, 비즈니스, 연구논문, LLM응용]
 ---
-
 ## 기본 정보
 
 - **제목**: LLMs Reproduce Human Purchase Intent via Semantic Similarity Elicitation of Likert Ratings
