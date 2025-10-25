@@ -12,12 +12,6 @@ on:
     paths:
       - 'docs/**'
   workflow_dispatch:
-    inputs:
-      use_cache:
-        description: 'Use cache for build (캐시 사용 여부)'
-        required: false
-        type: boolean
-        default: true
 
 permissions:
   contents: read
@@ -44,8 +38,6 @@ jobs:
 
       - name: Cache Quartz repository
         id: cache-quartz
-        # push/PR always creates new cache, workflow_dispatch respects input (inverted)
-        if: github.event_name == 'workflow_dispatch' && inputs.use_cache == false
         uses: actions/cache@v4
         with:
           path: quartz-build
@@ -61,7 +53,7 @@ jobs:
       - name: Configure Quartz
         if: steps.cache-quartz.outputs.cache-hit != 'true'
         run: |
-          sed -i "s/pageTitle: \"Quartz 4\"/pageTitle: \"Jeongsk's Logs\"/" quartz-build/quartz.config.ts
+          sed -i "s/pageTitle: \"Quartz 4\"/pageTitle: \"Jeongsk\"/" quartz-build/quartz.config.ts
           sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "log.jeongsk.work"|' quartz-build/quartz.config.ts
           sed -i 's/locale: "en-US"/locale: "ko-KR"/' quartz-build/quartz.config.ts
           sed -i 's/body: "Source Sans Pro"/body: "Gowun Dodum"/' quartz-build/quartz.config.ts

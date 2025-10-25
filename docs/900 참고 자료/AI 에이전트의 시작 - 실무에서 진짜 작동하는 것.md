@@ -25,7 +25,7 @@ updated: 2025-10-25 11:21:25
 
 ### 프로그램 정보
 
-**[Maven의 AI Agents 프로그램](https://maven.com/sara-davison/scale-with-aiworkflows-foundations)**을 통해 1,000명 이상이 AI 에이전트 구축을 배웠습니다. 4주 동안 학습자를 단계별로 안내하여 에이전틱 워크플로우를 구축합니다.
+[Maven의 AI Agents 프로그램](https://maven.com/sara-davison/scale-with-aiworkflows-foundations)을 통해 1,000명 이상이 AI 에이전트 구축을 배웠습니다. 4주 동안 학습자를 단계별로 안내하여 에이전틱 워크플로우를 구축합니다.
 
 - **참여자**: 1,000+ 학습자
 - **기간**: 4주 몰입형 과정
