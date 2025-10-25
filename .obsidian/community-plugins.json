@@ -19,5 +19,6 @@
   "obsidian-excalidraw-plugin",
   "find-orphaned-images",
   "find-unlinked-files",
-  "custom-file-viewer"
+  "custom-file-viewer",
+  "url-into-selection"
 ]
