@@ -1,6 +1,7 @@
 ---
 created: 2025-10-25 16:25:17
-updated: 2025-10-25 16:27:29
+updated: 2025-10-25 16:31:56
+tags: [성능최적화, 패키지관리, DevOps, MLOps, Poetry, Python, Rust, UV]
 ---
 ## 개요
 
@@ -136,36 +137,6 @@ COPY dist/*.whl .
 RUN uv pip install --system *.whl
 CMD ["app", "--help"]
 ```
-
-## 실제 마이그레이션 사례
-
-### 사례 1: 개인 개발자 (6개월 Poetry 사용 후 전환)
-
-**문제점**:
-
-- 복잡한 프로젝트에서 의존성 해결에 2-5분 소요
-- 단일 패키지 추가 시 30-60초 대기
-- 가상 환경 위치가 불명확
-
-**UV 전환 후**:
-
-- 의존성 해결 10-20초로 단축
-- 패키지 추가 2-3초로 단축
-- 명확한 `.venv` 위치
-
-### 사례 2: MLOps 프로젝트 (조직 차원 전환)
-
-**문제점**:
-
-- CI/CD 파이프라인 실행 시간 25분 이상
-- Poetry 전용 설정 파일 관리 부담
-- 표준 PEP와의 불일치
-
-**UV 전환 후**:
-
-- CI/CD 시간 5-10분으로 단축 (50-60% 감소)
-- `poetry.toml` 제거, 표준 `pyproject.toml`만 사용
-- 더 빠른 로컬 개발 환경
 
 ## 커뮤니티 채택 현황
 
@@ -310,8 +281,3 @@ UV는 단순히 더 빠른 도구가 아니라, Python 패키지 관리의 미�
 - [Why I Switched from Poetry to uv After 6 Months](https://dipjyotimetia.medium.com/why-i-switched-from-poetry-to-uv-after-6-months-20d02c8f789e)
 - [Poetry Was Good, Uv Is Better: An MLOps Migration Story](https://fmind.medium.com/poetry-was-good-uv-is-better-an-mlops-migration-story-f52bf0c6c703)
 - [Astral 공식 웹사이트](https://astral.sh/)
-
----
-
-**작성일**: 2025-10-25
-**키워드**: #Python #UV #Poetry #패키지관리 #Rust #성능최적화 #MLOps #DevOps
