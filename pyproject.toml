@@ -121,7 +121,7 @@ ignore = [
 "__init__.py" = ["F401", "F403"]  # 미사용 import 허용
 "**/tests/**" = ["S101", "PLR2004", "ARG001"]  # 테스트 파일
 "**/studio/**" = ["T201", "S105"]  # Studio 예제 코드
-"*.ipynb" = ["D101"]
+"*.ipynb" = ["D101", "T203"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["langgraph", "langchain"]
