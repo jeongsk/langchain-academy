@@ -25,9 +25,16 @@
       "hiddenInBookmarks": true
     },
     {
-      "path": "uv.lock",
+      "path": ".lock",
       "type": "string",
-      "selector": "",
+      "selector": "$",
+      "hiddenInNav": true,
+      "hiddenInBookmarks": true
+    },
+    {
+      "path": ".json",
+      "type": "string",
+      "selector": "$",
       "hiddenInNav": true,
       "hiddenInBookmarks": true
     }
