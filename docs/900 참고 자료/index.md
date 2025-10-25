@@ -20,7 +20,7 @@ tags:
 - [[LangChain과 LangGraph 1.0 릴리즈 소개]] - LangChain과 LangGraph의 공식 1.0 버전 릴리즈 소개 및 주요 변경사항
 - [[학습 자료 모음]] - LangChain 및 LangGraph 학습을 위한 다양한 튜토리얼과 실습 자료
 
-### RAG 시스템 구축
+### RAG 애플리케이션 개발
 
 - [[bRAG-langchain - RAG 애플리케이션 구축 가이드]] - 검색 증강 생성(RAG) 애플리케이션 구축을 위한 종합 가이드
   - 5단계 학습 경로
@@ -82,7 +82,7 @@ tags:
 - [[bRAG-langchain - RAG 애플리케이션 구축 가이드]]
 - [[MarkItDown - 파일을 Markdown으로 변환하는 도구]]
 
-### 프롬프트 엔지니어링
+### 프롬프트 작성
 
 - [[C.R.A.F.T.E.D. 프롬프트 프레임워크 - AI로 소프트웨어 엔지니어링 작업하기]]
 
