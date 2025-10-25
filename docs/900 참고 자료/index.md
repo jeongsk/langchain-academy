@@ -1,14 +1,14 @@
 ---
-title: "900 참고 자료 모음"
-description: "LangChain, LangGraph 및 AI 에이전트 개발을 위한 참고 자료 통합 인덱스"
+title: 9. 참고 자료 모음
+description: LangChain, LangGraph 및 AI 에이전트 개발을 위한 참고 자료 통합 인덱스
 created: 2025-10-25 00:00:00
-updated: 2025-10-25 13:27:09
+updated: 2025-10-25 21:16:54
 tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 ---
 
 이 폴더는 LangChain, LangGraph 및 AI 에이전트 개발과 관련된 모든 참고 자료를 포함합니다.
 
-## 📚 학습 자료 (Learning Resources)
+## 📚 학습 자료
 
 ### 공식 문서 및 릴리즈 노트
 
@@ -22,7 +22,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
   - 실습 Jupyter 노트북 제공
   - 멀티 쿼리 및 커스텀 RAG 구현
 
-## 🔬 AI 연구 및 실무 (Research & Practice)
+## 🔬 AI 연구 및 실무
 
 ### 연구 논문
 
@@ -40,7 +40,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
   - Evaluation-First 접근법
   - Forward-Deployed AI Practitioner 역할
 
-## 🛠️ 도구 및 프레임워크 (Tools & Frameworks)
+## 🛠️ 도구 및 프레임워크
 
 ### 개발 도구
 
@@ -56,7 +56,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
   - 실용적인 코드 예제 포함
   - 다중 언어 지원 (Python, JavaScript, Ruby)
 
-## 🎯 실전 프로젝트 (Practical Projects)
+## 🎯 실전 프로젝트
 
 ### 에이전트 구축 튜토리얼
 
@@ -66,7 +66,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
   - 오케스트레이터 패턴
   - 5분 설정 가이드
 
-## 📑 주제별 탐색 (Browse by Topic)
+## 📑 주제별 탐색
 
 ### AI 에이전트 아키텍처
 
@@ -88,7 +88,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 - [[LangChain과 LangGraph 1.0 릴리즈 소개]]
 - [[학습 자료 모음]]
 
-## 🎓 목적별 가이드 (Browse by Purpose)
+## 🎓 목적별 가이드
 
 ### 처음 시작하는 경우
 
