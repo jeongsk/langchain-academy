@@ -66,6 +66,7 @@ jobs:
           sed -i 's/locale: "en-US"/locale: "ko-KR"/' quartz-build/quartz.config.ts
           sed -i 's/body: "Source Sans Pro"/body: "Gowun Dodum"/' quartz-build/quartz.config.ts
           sed -i 's/header: "Schibsted Grotesk"/header: "Gowun Dodum"/' quartz-build/quartz.config.ts
+          echo '#quartz-body { word-break: keep-all; }' >> quartz-build/quartz/styles/custom.scss
           cat quartz-build/quartz.config.ts
 
       - name: Set up Node.js
