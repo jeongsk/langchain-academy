@@ -81,17 +81,6 @@ jobs:
           echo "hash=$DOCS_HASH" >> $GITHUB_OUTPUT
           echo "Docs content hash: $DOCS_HASH"
 
-      - name: Cache Quartz build
-        id: cache-build
-        uses: actions/cache@v4
-        with:
-          path: |
-            quartz-build/.quartz-cache
-            # quartz-build/public
-          key: quartz-build-${{ steps.quartz-version.outputs.commit }}-${{ steps.docs-hash.outputs.hash }}
-          restore-keys: |
-            quartz-build-${{ steps.quartz-version.outputs.commit }}-
-
       - name: Copy docs to Quartz content
         run: |
           # Remove default content
@@ -107,33 +96,6 @@ jobs:
         run: |
           cd quartz-build
           npx quartz build
-
-      - name: Show cache status
-        run: |
-          echo "=== Cache Status Summary ==="
-
-          # Check manual cache disable
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ "${{ inputs.use_cache }}" == "false" ]; then
-            echo "🚫 Cache disabled for manual run"
-            echo "   → Quartz repository: Cloned fresh"
-            echo "   → Build output: Built fresh"
-          else
-            # Quartz repository cache status
-            if [ "${{ steps.cache-quartz.outputs.cache-hit }}" == "true" ]; then
-              echo "✅ Quartz repository: Cache hit (commit: ${{ steps.quartz-version.outputs.commit }})"
-            else
-              echo "🔨 Quartz repository: Cloned fresh"
-            fi
-
-            # Build cache status
-            if [ "${{ steps.cache-build.outputs.cache-hit }}" == "true" ]; then
-              echo "✅ Build output: Cache hit (docs hash: ${{ steps.docs-hash.outputs.hash }})"
-            else
-              echo "🔨 Build output: Built fresh"
-            fi
-          fi
-
-          echo "============================"
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
