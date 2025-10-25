@@ -2,20 +2,15 @@
 title: "C.R.A.F.T.E.D. 프롬프트 프레임워크: AI로 소프트웨어 엔지니어링 작업 수행하기"
 author: "Steven Levey & Gregor Ojstersek"
 source: https://newsletter.eng-leadership.com/p/how-to-use-ai-to-help-with-software
-created: 2025-10-25
+created: 2025-10-25 00:00:00
 company: Revtelligent
-tags:
-  - 프롬프트엔지니어링
-  - AI도구
-  - 소프트웨어엔지니어링
-  - 생산성
-  - 프레임워크
-  - 베스트프랙티스
+tags: [베스트프랙티스, 생산성, 소프트웨어엔지니어링, 프레임워크, 프롬프트엔지니어링, AI도구]
 related:
   - "[[학습 자료 모음]]"
   - "[[MarkItDown - 파일을 Markdown으로 변환하는 도구]]"
+updated: 2025-10-25 11:20:13
 ---
-
+> 원문: https://newsletter.eng-leadership.com/p/how-to-use-ai-to-help-with-software
 # C.R.A.F.T.E.D. 프롬프트 프레임워크: AI로 소프트웨어 엔지니어링 작업 수행하기
 
 ## 개요
@@ -555,7 +550,7 @@ end
 
 ### AI 출력 결과
 
-```markdown
+````markdown
 # 최적화된 find_common_elements 메서드
 
 ```ruby
@@ -580,7 +575,7 @@ end
 - **메모리 할당 감소**: `<<`로 배열에 반복적으로 추가하는 대신, 단일 작업으로 결과 배열을 생성하는 `select`를 사용하여 가비지 컬렉션 오버헤드를 줄입니다.
 
 리팩토링된 메서드는 동일한 인터페이스를 유지하면서 상당한 성능 향상을 제공하며, O(n×m)과 O(n+m) 복잡도의 차이가 상당해지는 큰 입력 배열에서 특히 눈에 띕니다.
-```
+````
 
 ---
 
@@ -614,7 +609,7 @@ end
 
 ### 1. 코드 리뷰 자동화
 
-```xml
+````xml
 <prompt>
 <context>
 [풀 리퀘스트 diff]
@@ -624,11 +619,11 @@ end
 <format>Markdown 체크리스트</format>
 <tone>건설적이고 교육적</tone>
 </prompt>
-```
+````
 
 ### 2. 단위 테스트 생성
 
-```xml
+````xml
 <prompt>
 <context>[함수 코드]</context>
 <role>TDD 전문가</role>
@@ -637,11 +632,11 @@ end
 <examples>[샘플 테스트 패턴]</examples>
 <definition_of_done>100% 코드 커버리지, 외부 모킹 없음</definition_of_done>
 </prompt>
-```
+````
 
 ### 3. API 문서 작성
 
-```xml
+````xml
 <prompt>
 <context>[API 엔드포인트 코드]</context>
 <role>기술 문서 작성자</role>
@@ -650,11 +645,11 @@ end
 <tone>명확하고 간결</tone>
 <definition_of_done>모든 응답 코드 포함, 예제 포함</definition_of_done>
 </prompt>
-```
+````
 
 ### 4. 성능 최적화
 
-```xml
+````xml
 <prompt>
 <context>[느린 함수 + 프로파일링 데이터]</context>
 <role>성능 최적화 전문가</role>
@@ -663,11 +658,11 @@ end
 <tone>기술적, 데이터 기반</tone>
 <definition_of_done>Big-O 복잡도 개선, 알고리즘 변경 없음</definition_of_done>
 </prompt>
-```
+````
 
 ### 5. 레거시 코드 리팩토링
 
-```xml
+````xml
 <prompt>
 <context>[레거시 코드]</context>
 <role>현대적 패턴의 시니어 개발자</role>
@@ -677,7 +672,7 @@ end
 <examples>[원하는 패턴]</examples>
 <definition_of_done>기능 동등성 유지, 테스트 통과</definition_of_done>
 </prompt>
-```
+````
 
 ---
 
