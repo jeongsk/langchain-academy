@@ -87,7 +87,7 @@ AI는 생산성을 높이는 도구이지만, 효과적으로 사용하려면 �
 
 ### 실무 예제: C.R.A.F.T.E.D 사용
 
-```xml
+````xml
 <prompt>
 <context>
 다음 JavaScript 유틸리티 함수를 사용하고 있습니다:
@@ -121,7 +121,7 @@ function processData(data) {
 제공된 스타일 가이드 규칙을 준수하도록 `dataProcessor.js`의
 `processData` 함수를 업데이트하세요.
 </prompt>
-```
+````
 
 ### AI 출력 결과
 
@@ -154,7 +154,7 @@ AI가 되어야 할 사람을 알려줍니다. 이는 모델을 특정 지식 �
 
 ### 실무 예제: C.R.A.F.T.E.D 사용
 
-```xml
+````xml
 <prompt>
 <context>
 다음 AWS IAM 정책 문서를 검토하세요. 이 정책은 애플리케이션을 위해
@@ -185,7 +185,7 @@ AI가 되어야 할 사람을 알려줍니다. 이는 모델을 특정 지식 �
 Markdown으로 분석을 제공하세요.
 "## 취약점 분석" 제목을 사용하고 각 문제를 설명하는 글머리 기호 목록을 사용하세요.
 </prompt>
-```
+````
 
 ### AI 출력 결과
 
@@ -234,7 +234,7 @@ Markdown으로 분석을 제공하세요.
 
 ### 실무 예제: C.R.A.F.T.E.D 사용
 
-```xml
+````xml
 <prompt>
 <context>
 다음은 숫자 리스트의 제곱 합을 계산하는 Python 함수입니다.
@@ -259,7 +259,7 @@ Python을 사용한 테스트 주도 개발 전문 소프트웨어 엔지니어�
 단일 코드 블록에 테스트를 위한 Python 코드만 반환하세요.
 설명을 포함하지 마세요.
 </prompt>
-```
+````
 
 ### AI 출력 결과
 
@@ -291,7 +291,7 @@ def test_list_with_zero():
 
 ### 실무 예제: C.R.A.F.T.E.D 사용
 
-```xml
+````xml
 <prompt>
 <context>
 다음 Python 함수를 분석하세요:
@@ -320,7 +320,7 @@ def calculate_average(numbers):
 다른 텍스트나 설명을 포함하지 마세요.
 </format>
 </prompt>
-```
+````
 
 ### AI 출력 결과
 
@@ -342,7 +342,7 @@ def calculate_average(numbers):
 
 ### 실무 예제: C.R.A.F.T.E.D 사용
 
-```xml
+````xml
 <prompt>
 <context>
 주니어 개발자가 이 Python 코드 줄에 혼란스러워합니다:
@@ -364,7 +364,7 @@ def calculate_average(numbers):
 답을 바로 주지 마세요.
 </tone>
 </prompt>
-```
+````
 
 ### AI 출력 결과
 
@@ -398,7 +398,7 @@ def calculate_average(numbers):
 
 ### 실무 예제: C.R.A.F.T.E.D 사용
 
-```xml
+````xml
 <prompt>
 <context>
 "로그인 버튼을 수정했고 인증 모듈도 리팩토링했습니다."
@@ -422,7 +422,7 @@ def calculate_average(numbers):
 최종 커밋 메시지만 단일 문자열로 반환하세요.
 "Output:"이나 다른 레이블을 포함하지 마세요.
 </prompt>
-```
+````
 
 ### AI 출력 결과
 
@@ -444,7 +444,7 @@ fix: Repair login button and refactor auth module
 
 ### 실무 예제: C.R.A.F.T.E.D 사용
 
-```xml
+````xml
 <prompt>
 <context>
 Python에서 단일 리스트로 평탄화해야 하는 중첩 리스트가 있습니다.
@@ -473,7 +473,7 @@ nested_list = [[1, 2, 3], [4, 5], [6]]
 솔루션은 표준 Python 언어 기능만 사용하여 구현되어야 합니다.
 </definition_of_done>
 </prompt>
-```
+````
 
 ### AI 출력 결과
 
@@ -500,7 +500,7 @@ def flatten_list(nested_list):
 
 ### 완전한 C.R.A.F.T.E.D. 프롬프트
 
-```xml
+````xml
 <prompt>
 <context>
 다음 Ruby 메서드는 큰 배열에 대해 비효율적입니다:
@@ -549,7 +549,7 @@ end
 - 솔루션은 오류를 발생시키지 않고 빈 배열을 입력으로 처리해야 합니다.
 </definition_of_done>
 </prompt>
-```
+````
 
 **참고**: 위에는 의도적으로 `<examples>` 섹션이 없습니다! (마지막 생각 참조)
 
