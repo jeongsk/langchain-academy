@@ -6,11 +6,6 @@ on:
       - main
     paths:
       - 'docs/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'docs/**'
   workflow_dispatch:
 
 permissions:
@@ -60,26 +55,6 @@ jobs:
           sed -i 's/body: "Source Sans Pro"/body: "Gowun Dodum"/' quartz.config.ts
           sed -i 's/header: "Schibsted Grotesk"/header: "Gowun Dodum"/' quartz.config.ts
           echo 'p, ul, text, a, tr, td, li, ol, ul, .katex, .math, .typst-doc, .typst-doc * { word-break: keep-all; }' >> quartz/styles/custom.scss
-          cat quartz.config.ts
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-          cache-dependency-path: quartz-build/package-lock.json
-
-      - name: Install Quartz dependencies
-        run: |
-          cd quartz-build
-          npm ci
-
-      - name: Generate docs hash
-        id: docs-hash
-        run: |
-          DOCS_HASH=$(find docs -type f -exec sha256sum {} \; | sort | sha256sum | awk '{print $1}')
-          echo "hash=$DOCS_HASH" >> $GITHUB_OUTPUT
-          echo "Docs content hash: $DOCS_HASH"
 
       - name: Copy docs to Quartz content
         run: |
@@ -92,9 +67,17 @@ jobs:
           # Remove unnecessary files
           find quartz-build/content -name '.DS_Store' -delete
 
-      - name: Build Quartz site
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: quartz-build/package-lock.json
+
+      - name: Install & Build
         run: |
           cd quartz-build
+          npm ci
           npx quartz build
 
       - name: Deploy to Cloudflare Pages
