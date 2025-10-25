@@ -10,8 +10,8 @@ tags: [연구논문, 에이전트, 추론, 도구사용, LLM기초]
 - **저자**: Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao
 - **소속**: Princeton University, Google Research
 - **발표일**: 2022년 10월 6일 (arXiv), 2023년 (ICLR 2023)
-- **arXiv**: https://arxiv.org/abs/2210.03629
-- **프로젝트**: https://react-lm.github.io/
+- **arXiv**: <https://arxiv.org/abs/2210.03629>
+- **프로젝트**: <https://react-lm.github.io/>
 - **분야**: Computation and Language, Artificial Intelligence
 - **학회**: ICLR 2023 (International Conference on Learning Representations)
 
@@ -1065,9 +1065,9 @@ Action: Finish[통합된 답변]
 - [[최신 AI 연구 논문]]
 - [[에이전트 개발을 위해 반드시 읽어야 할 핵심 논문]]
 - [[학습 자료 모음]]
-- 논문: https://arxiv.org/abs/2210.03629
-- 프로젝트 사이트: https://react-lm.github.io/
-- 코드: https://github.com/ysymyth/ReAct
+- 논문: <https://arxiv.org/abs/2210.03629>
+- 프로젝트 사이트: <https://react-lm.github.io/>
+- 코드: <https://github.com/ysymyth/ReAct>
 
 ## 실전 가이드
 
@@ -1363,12 +1363,14 @@ class ReActAgent:
 **언제 ReAct를 사용해야 하는가?**
 
 ✅ **사용 권장**
+
 - 외부 정보가 필요한 작업
 - 다단계 추론이 필요한 작업
 - 투명성이 중요한 작업
 - 도구 사용이 필요한 작업
 
 ❌ **사용 비권장**
+
 - 단순한 작업 (오버헤드)
 - 실시간성이 매우 중요한 작업 (지연시간)
 - 비용이 매우 민감한 작업
