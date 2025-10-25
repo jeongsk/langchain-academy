@@ -100,10 +100,10 @@
     {
       "id": "fq6jmy7q4y",
       "platform_specific_commands": {
-        "default": "open https://langchain-academy.jeongsk.work"
+        "default": "open https://log.jeongsk.work"
       },
       "shells": {},
-      "alias": "open langchain-academy.jeongsk.work",
+      "alias": "open web",
       "icon": null,
       "confirm_execution": false,
       "ignore_error_codes": [],
