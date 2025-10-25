@@ -1,6 +1,6 @@
 ---
-title: "최신 AI 연구 논문 MOC"
-description: "AI와 LLM 분야의 최신 연구 논문 모음 - 주제별 탐색 가이드"
+title: 최신 AI 연구 논문 MOC
+description: AI와 LLM 분야의 최신 연구 논문 모음 - 주제별 탐색 가이드
 created: 2025-10-25
 updated: 2025-10-25
 tags:
@@ -9,6 +9,8 @@ tags:
   - LLM
   - AI에이전트
   - 인덱스
+aliases:
+  - 최신 AI 연구 논문
 ---
 
 # 최신 AI 연구 논문 MOC

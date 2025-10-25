@@ -26,7 +26,7 @@ tags: [참고자료, AI에이전트, LangChain, LangGraph, MOC]
 
 ### 연구 논문
 
-- [[최신 AI 연구 논문]] - AI와 LLM 분야의 최신 연구 논문 5편
+- [[docs/900 참고 자료/최신 AI 연구 논문/index|최신 AI 연구 논문]] - AI와 LLM 분야의 최신 연구 논문 5편
   - [[Moloch's Bargain - LLM 정렬 오류]] - AI 정렬 및 안전성
   - [[LLM의 인간 구매 의도 재현]] - 비즈니스 응용
   - [[초기 경험을 통한 에이전트 학습]] - 에이전트 학습
